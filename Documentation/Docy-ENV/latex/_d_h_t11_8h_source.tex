@@ -1,0 +1,40 @@
+\hypertarget{_d_h_t11_8h_source}{}\doxysection{DHT11.\+h}
+\label{_d_h_t11_8h_source}\index{C:/Users/acer/STM32CubeIDE/workspace\_1.10.2/Final\_Selec\_v3/Core/Inc/DHT11.h@{C:/Users/acer/STM32CubeIDE/workspace\_1.10.2/Final\_Selec\_v3/Core/Inc/DHT11.h}}
+\mbox{\hyperlink{_d_h_t11_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00002}00002\ \textcolor{comment}{\ *\ DHT11.h}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00004}00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Feb\ 15,\ 2023}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00005}00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ acer}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00006}00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00007}00007\ \textcolor{preprocessor}{\#ifndef\ INC\_DHT11\_H\_}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00008}00008\ \textcolor{preprocessor}{\#define\ INC\_DHT11\_H\_}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00010}00010\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ INC\_DHT11\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00012}\mbox{\hyperlink{_d_h_t11_8h_aebeb55e992ef02dd2d39a225e276585e}{00012}}\ \textcolor{preprocessor}{\#define\ DHT11\_PORT\ GPIOB}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00013}\mbox{\hyperlink{_d_h_t11_8h_a79111e78831efb8ac76fa8123357475e}{00013}}\ \textcolor{preprocessor}{\#define\ DHT11\_PIN\ GPIO\_PIN\_9}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00015}00015\ \textcolor{keyword}{extern}\ TIM\_HandleTypeDef\ \mbox{\hyperlink{_d_h_t11_8h_a25fc663547539bc49fecc0011bd76ab5}{htim1}};}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00016}00016\ \textcolor{comment}{//structure\ to\ store\ DHT11\ sensor\ values}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00017}\mbox{\hyperlink{struct_d_h_t11__value}{00017}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_d_h_t11__value}{DHT11\_value}}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00018}00018\ \{}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00019}\mbox{\hyperlink{struct_d_h_t11__value_a0486eb63d63d9b22a636b5acf3a4b289}{00019}}\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{struct_d_h_t11__value_ad2449d51a59211ef30d054412b336493}{DHT11\_temp}},\mbox{\hyperlink{struct_d_h_t11__value_a0486eb63d63d9b22a636b5acf3a4b289}{DHT11\_humi}};}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00020}\mbox{\hyperlink{_d_h_t11_8h_ac88e11ffa065f4c53d75428a5809220a}{00020}}\ \}\mbox{\hyperlink{_d_h_t11_8h_ac88e11ffa065f4c53d75428a5809220a}{DHT11\_read\_value}};}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00022}\mbox{\hyperlink{_d_h_t11_8h_a2dbbbd8e0fc90796f6389fc31ef811ad}{00022}}\ \textcolor{keyword}{extern}\ uint8\_t\ \mbox{\hyperlink{_d_h_t11_8h_ad9a2a1c5f490104dc717f5a48b3b8a27}{Rh\_byte1}},\ \mbox{\hyperlink{_d_h_t11_8h_a2dbbbd8e0fc90796f6389fc31ef811ad}{Rh\_byte2}},\ \mbox{\hyperlink{_d_h_t11_8h_a8b0074c25d30592e460b56b9f87d1ba9}{Temp\_byte1}},\ \mbox{\hyperlink{_d_h_t11_8h_a5544d12933412c17ee41513fa46cac02}{Temp\_byte2}};}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00023}\mbox{\hyperlink{_d_h_t11_8h_aa3731a0173b9bbde97d8a3cba6d13531}{00023}}\ \textcolor{keyword}{extern}\ uint16\_t\ \mbox{\hyperlink{_d_h_t11_8h_a4622f107cd73d99fbf4ca91205f3acca}{SUM}},\ \mbox{\hyperlink{_d_h_t11_8h_aa3731a0173b9bbde97d8a3cba6d13531}{RH}},\ \mbox{\hyperlink{_d_h_t11_8h_aab2ce7d9ba3bab5ef3b090c61e1eca6b}{TEMP}};}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00025}00025\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_d_h_t11_8h_acc64d813f9394380d679d8088391e83b}{delay}}\ (uint16\_t\ time);}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00026}00026\ \textcolor{comment}{/*************************GPIO\ pin\ configuration*****************************/}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00027}00027\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_d_h_t11_8h_aef1aec2157382676edb25c22e4b7ecef}{Set\_Pin\_Output}}\ (GPIO\_TypeDef\ *GPIOx,\ uint16\_t\ GPIO\_Pin);}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00028}00028\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_d_h_t11_8h_a3b8cee858a35581caf1bcb14ce5cb367}{Set\_Pin\_Input}}\ (GPIO\_TypeDef\ *GPIOx,\ uint16\_t\ GPIO\_Pin);}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00030}00030\ \textcolor{comment}{/*************************DHT11\ Function*************************************/}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00031}00031\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_d_h_t11_8h_ad22d2fc6f1c044bfca99e8f38c419d78}{DHT11\_Start}}\ (\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00032}00032\ \textcolor{keyword}{extern}\ uint8\_t\ \mbox{\hyperlink{_d_h_t11_8h_aaf1ec7026bcc0784c685b79753955ff4}{DHT11\_Read}}\ (\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00033}00033\ \textcolor{keyword}{extern}\ uint8\_t\ \mbox{\hyperlink{_d_h_t11_8h_a4abe1bb0e528279d5b260a9d44bc7ffb}{DHT11\_Check\_Response}}\ (\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8h_source_l00034}00034\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_d_h_t11__value}{DHT11\_read\_value}}\ \mbox{\hyperlink{_d_h_t11_8h_a90da1df4ae78a755072b7c76cf4dabfd}{DHT11\_Print\_Value}}(\textcolor{keywordtype}{void});}
+
+\end{DoxyCode}

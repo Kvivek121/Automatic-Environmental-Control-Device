@@ -1,0 +1,150 @@
+\hypertarget{_b_m_p280_8c_source}{}\doxysection{BMP280.\+c}
+\label{_b_m_p280_8c_source}\index{C:/Users/acer/STM32CubeIDE/workspace\_1.10.2/Final\_Selec\_v3/Core/Src/BMP280.c@{C:/Users/acer/STM32CubeIDE/workspace\_1.10.2/Final\_Selec\_v3/Core/Src/BMP280.c}}
+\mbox{\hyperlink{_b_m_p280_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_b_m_p280_8h}{BMP280.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{liquidcrystal__i2c_8h}{liquidcrystal\_i2c.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00004}\mbox{\hyperlink{_b_m_p280_8c_a2a9d5ec8e55acc2432d0878308de4bc7}{00004}}\ \textcolor{keywordtype}{signed}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{_b_m_p280_8c_a3d72ff2b32266596ae3baaf4fa6f2f50}{temperature\_raw}},\ \mbox{\hyperlink{_b_m_p280_8c_a2a9d5ec8e55acc2432d0878308de4bc7}{pressure\_raw}};}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00005}\mbox{\hyperlink{_b_m_p280_8c_a5c6fd14e092d5b1b3db9133918d6c88c}{00005}}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{_b_m_p280_8c_a9a07537928655a6f90cbb127e77aabc8}{dig\_T1}},\ \mbox{\hyperlink{_b_m_p280_8c_a5c6fd14e092d5b1b3db9133918d6c88c}{dig\_P1}};}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00006}\mbox{\hyperlink{_b_m_p280_8c_a6d7667e0986d0409dfdaa31d5f4ab05e}{00006}}\ \textcolor{keywordtype}{signed}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{_b_m_p280_8c_af657fd5581a3713d4325c6cf6619798e}{dig\_T2}},\ \mbox{\hyperlink{_b_m_p280_8c_a5b4a37c3483f9b66e3c9320c76bd191d}{dig\_T3}},\ \mbox{\hyperlink{_b_m_p280_8c_a6d7667e0986d0409dfdaa31d5f4ab05e}{dig\_P2}},\ \mbox{\hyperlink{_b_m_p280_8c_a4778d0f9f9c5c231c472e6f9cc34bff7}{dig\_P3}},\ \mbox{\hyperlink{_b_m_p280_8c_a60ff58d4f1f442387729c7f9a1942d63}{dig\_P4}},\ \mbox{\hyperlink{_b_m_p280_8c_aab5995336960b6917304bca095d1f896}{dig\_P5}},\ \mbox{\hyperlink{_b_m_p280_8c_ab40e5774b084a648dae55c161de91f66}{dig\_P6}},\ \mbox{\hyperlink{_b_m_p280_8c_aeae4c61fa98974140b9694edd4799883}{dig\_P7}},\ \mbox{\hyperlink{_b_m_p280_8c_af39515ecaa77e6b01544388fc7d44cfe}{dig\_P8}},\ \mbox{\hyperlink{_b_m_p280_8c_ae808932e571d157081b847f311cec555}{dig\_P9}};}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00007}\mbox{\hyperlink{_b_m_p280_8c_a0e13a4b4ae0cefdac2a413284239caa6}{00007}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{_b_m_p280_8c_afc1d28cfbce795d6ea954ebe725241f5}{temperature}},\ \mbox{\hyperlink{_b_m_p280_8c_ac870e1249bab4a2a68cc4126761d24ef}{pressure}},\ \mbox{\hyperlink{_b_m_p280_8c_a0e13a4b4ae0cefdac2a413284239caa6}{altitude}},\ \mbox{\hyperlink{_b_m_p280_8c_a98fc2874cec8addec2e0468bc677303c}{init\_height}};}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00009}\mbox{\hyperlink{_b_m_p280_8c_a5189133f9791964cfb7f6cee8a9ce27b}{00009}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{_b_m_p280_8c_a5189133f9791964cfb7f6cee8a9ce27b}{p\_reference}}\ =\ 95500;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00010}\mbox{\hyperlink{_b_m_p280_8c_ac1f0d71206317758c70cd96314b6fc02}{00010}}\ int32\_t\ \mbox{\hyperlink{_b_m_p280_8c_ac1f0d71206317758c70cd96314b6fc02}{t\_fine}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00012}\mbox{\hyperlink{_b_m_p280_8h_a7577a12a887998c60b62dcc8fdd9dbbf}{00012}}\ uint8\_t\ \mbox{\hyperlink{_b_m_p280_8c_a7577a12a887998c60b62dcc8fdd9dbbf}{readRegister}}(uint8\_t\ address)}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00013}00013\ \{}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00014}00014\ \ \ \ \ HAL\_GPIO\_WritePin(GPIOA,\ GPIO\_PIN\_8,\ GPIO\_PIN\_RESET);\textcolor{comment}{//spiCSNlow();}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00015}00015\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8c_aef20ed38fe5d55700f0ccdbd5b77ba71}{spiReadWrite}}(address);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00016}00016\ \ \ \ \ uint8\_t\ value\ =\ \mbox{\hyperlink{_b_m_p280_8c_aef20ed38fe5d55700f0ccdbd5b77ba71}{spiReadWrite}}(0);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00017}00017\ \ \ \ \ HAL\_GPIO\_WritePin(GPIOA,\ GPIO\_PIN\_8,\ GPIO\_PIN\_SET);\textcolor{comment}{//spiCSNhigh();}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00018}00018\ \ \ \ \ \textcolor{keywordflow}{return}\ value;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00019}00019\ \}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00021}\mbox{\hyperlink{_b_m_p280_8h_a03d1b94ea3a07a44504a0385a1914e12}{00021}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_b_m_p280_8c_a03d1b94ea3a07a44504a0385a1914e12}{writeRegister}}(uint8\_t\ address,\ uint8\_t\ value)}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00023}00023\ \ \ \ \ HAL\_GPIO\_WritePin(GPIOA,\ GPIO\_PIN\_8,\ GPIO\_PIN\_RESET);\textcolor{comment}{//spiCSNlow();}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00024}00024\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8c_aef20ed38fe5d55700f0ccdbd5b77ba71}{spiReadWrite}}(address\ \&\ \mbox{\hyperlink{_b_m_p280_8h_ad3f8d007f531e2b572aae8baaaa6d604}{BMP280\_SPI\_MASK\_WRITE}});}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00025}00025\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8c_aef20ed38fe5d55700f0ccdbd5b77ba71}{spiReadWrite}}(value);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00026}00026\ \ \ \ \ HAL\_GPIO\_WritePin(GPIOA,\ GPIO\_PIN\_8,\ GPIO\_PIN\_SET);\textcolor{comment}{//spiCSNhigh();}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00027}00027\ \}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00029}\mbox{\hyperlink{_b_m_p280_8h_afda0d94a266ff3e0e81213e20b8b58a9}{00029}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_b_m_p280_8c_afda0d94a266ff3e0e81213e20b8b58a9}{readMBRegister}}(uint8\_t\ address,\ uint8\_t\ *values,\ uint8\_t\ length)}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00030}00030\ \{}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00031}00031\ \ \ \ \ HAL\_GPIO\_WritePin(GPIOA,\ GPIO\_PIN\_8,\ GPIO\_PIN\_RESET);\textcolor{comment}{//spiCSNlow();}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00032}00032\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8c_aef20ed38fe5d55700f0ccdbd5b77ba71}{spiReadWrite}}(address);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{while}\ (length-\/-\/)}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00034}00034\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00035}00035\ \ \ \ \ \ \ \ \ *values++\ =\ \mbox{\hyperlink{_b_m_p280_8c_aef20ed38fe5d55700f0ccdbd5b77ba71}{spiReadWrite}}(0);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00037}00037\ \ \ \ \ HAL\_GPIO\_WritePin(GPIOA,\ GPIO\_PIN\_8,\ GPIO\_PIN\_SET);\textcolor{comment}{//spiCSNhigh();}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00038}00038\ \}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00040}\mbox{\hyperlink{_b_m_p280_8h_aef20ed38fe5d55700f0ccdbd5b77ba71}{00040}}\ uint8\_t\ \mbox{\hyperlink{_b_m_p280_8c_aef20ed38fe5d55700f0ccdbd5b77ba71}{spiReadWrite}}(uint8\_t\ tx\_message)}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00041}00041\ \{}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00042}00042\ \ \ \ \ uint8\_t\ rx\_message\ =\ 255;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00043}00043\ \ \ \ \ HAL\_SPI\_TransmitReceive(\&\mbox{\hyperlink{_b_m_p280_8h_ab9da65f935e805137e2eb4e18c5ab224}{hspi2}},\ \&tx\_message,\ \&rx\_message,\ 1,HAL\_MAX\_DELAY);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00044}00044\ \ \ \ \ \textcolor{keywordflow}{return}\ rx\_message;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00045}00045\ \}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00048}\mbox{\hyperlink{_b_m_p280_8h_acb159e980500707f4b78480997970b88}{00048}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_b_m_p280_8c_a8562fa0fe64fc13f61e08c29eba2e495}{BMP280\_get\_calib\_values}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00049}00049\ \{}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00050}00050\ \ \ \ \ uint8\_t\ rx\_buff[24];}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00051}00051\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8c_afda0d94a266ff3e0e81213e20b8b58a9}{readMBRegister}}(\mbox{\hyperlink{_b_m_p280_8h_a68622050abfca784a2080b6edc8fc1e0}{BMP280\_REG\_CALIB}},\ rx\_buff,\ 24);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00053}00053\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8c_a9a07537928655a6f90cbb127e77aabc8}{dig\_T1}}=(rx\_buff[0])+(rx\_buff[1]<<8);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00054}00054\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8c_af657fd5581a3713d4325c6cf6619798e}{dig\_T2}}=(rx\_buff[2])+(rx\_buff[3]<<8);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00055}00055\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8c_a5b4a37c3483f9b66e3c9320c76bd191d}{dig\_T3}}=(rx\_buff[4])+(rx\_buff[5]<<8);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00056}00056\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8c_a5c6fd14e092d5b1b3db9133918d6c88c}{dig\_P1}}=(rx\_buff[6])+(rx\_buff[7]<<8);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00057}00057\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8c_a6d7667e0986d0409dfdaa31d5f4ab05e}{dig\_P2}}=(rx\_buff[8])+(rx\_buff[9]<<8);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00058}00058\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8c_a4778d0f9f9c5c231c472e6f9cc34bff7}{dig\_P3}}=(rx\_buff[10])+(rx\_buff[11]<<8);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00059}00059\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8c_a60ff58d4f1f442387729c7f9a1942d63}{dig\_P4}}=(rx\_buff[12])+(rx\_buff[13]<<8);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00060}00060\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8c_aab5995336960b6917304bca095d1f896}{dig\_P5}}=(rx\_buff[14])+(rx\_buff[15]<<8);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00061}00061\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8c_ab40e5774b084a648dae55c161de91f66}{dig\_P6}}=(rx\_buff[16])+(rx\_buff[17]<<8);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00062}00062\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8c_aeae4c61fa98974140b9694edd4799883}{dig\_P7}}=(rx\_buff[18])+(rx\_buff[19]<<8);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00063}00063\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8c_af39515ecaa77e6b01544388fc7d44cfe}{dig\_P8}}=(rx\_buff[20])+(rx\_buff[21]<<8);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00064}00064\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8c_ae808932e571d157081b847f311cec555}{dig\_P9}}=(rx\_buff[22])+(rx\_buff[23]<<8);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00066}00066\ \}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00068}\mbox{\hyperlink{_b_m_p280_8h_ae3168b9163675628a89fc1e422de4b5e}{00068}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_b_m_p280_8c_ae3168b9163675628a89fc1e422de4b5e}{BMP280\_init}}()}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00069}00069\ \{}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00070}00070\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8c_a03d1b94ea3a07a44504a0385a1914e12}{writeRegister}}(\ 0xF5,\ \ 0b10010000);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00071}00071\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8c_a03d1b94ea3a07a44504a0385a1914e12}{writeRegister}}(\ 0xF4,\ \ 0b01010111);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00073}00073\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8c_a8562fa0fe64fc13f61e08c29eba2e495}{BMP280\_get\_calib\_values}}();}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00074}00074\ \}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00076}\mbox{\hyperlink{_b_m_p280_8h_a631a6834a2390b88c16a10f843c43d65}{00076}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structreading}{reading}}\ \mbox{\hyperlink{_b_m_p280_8c_a631a6834a2390b88c16a10f843c43d65}{BMP280\_measure}}()}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00077}00077\ \{}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00078}00078\ \ \ \ \ \mbox{\hyperlink{structreading}{read\_value}}\ read\_value\_bmp280;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00079}00079\ \ \ \ \ uint8\_t\ data[6];}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00080}00080\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8h_afda0d94a266ff3e0e81213e20b8b58a9}{readMBRegister}}(\mbox{\hyperlink{_b_m_p280_8h_a06f8ce3e8566066c7ee1eb0a1cf61f95}{BMP280\_REG\_DATA}},\ data,\ 6);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00082}00082\ \ \ \ \ int32\_t\ adc\_P\ =\ data[0]\ <<\ 12\ |\ data[1]\ <<\ 4\ |\ data[2]\ >>\ 4;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00083}00083\ \ \ \ \ int32\_t\ adc\_T\ =\ data[3]\ <<\ 12\ |\ data[4]\ <<\ 4\ |\ data[5]\ >>\ 4;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00085}00085\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8h_afc1d28cfbce795d6ea954ebe725241f5}{temperature}}\ =\ (float)\ \mbox{\hyperlink{_b_m_p280_8h_a551bba6dee710a9094921214413fce8d}{compensate\_temperature}}(adc\_T)\ /\ 100.0;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00086}00086\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8h_ac870e1249bab4a2a68cc4126761d24ef}{pressure}}\ =\ (float)\ \mbox{\hyperlink{_b_m_p280_8h_af6079c6b3e672b3589085c593c297240}{compensate\_pressure}}(adc\_P)\ /\ 256.0;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00088}00088\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{_b_m_p280_8c_a5189133f9791964cfb7f6cee8a9ce27b}{p\_reference}}\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00089}00089\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00090}00090\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8h_a0e13a4b4ae0cefdac2a413284239caa6}{altitude}}\ =\ (1.0\ -\/\ pow(\mbox{\hyperlink{_b_m_p280_8h_ac870e1249bab4a2a68cc4126761d24ef}{pressure}}\ /\ \mbox{\hyperlink{_b_m_p280_8c_a5189133f9791964cfb7f6cee8a9ce27b}{p\_reference}},\ 0.1903))\ *\ 4433076.0;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00091}00091\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00092}00092\ \textcolor{comment}{\ \ \ \ /******************************Displaying\ Temperature\ and\ Pressure*****************************/}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00093}00093\ \ \ \ \ \textcolor{comment}{/*char\ buf1[10],buf2[10];}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00094}00094\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00095}00095\ \textcolor{comment}{\ \ \ \ HAL\_Delay(500);}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00096}00096\ \textcolor{comment}{\ \ \ \ HD44780\_SetCursor(0,0);}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00097}00097\ \textcolor{comment}{\ \ \ \ gcvt(temperature,\ 10,\ buf1);}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00098}00098\ \textcolor{comment}{\ \ \ \ HD44780\_Clear();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //converting\ float\ to\ string}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00099}00099\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00100}00100\ \textcolor{comment}{\ \ \ \ HD44780\_PrintStr(buf1);\ \ \ \ \ \ \ \ \ //print\ temperature\ values\ to\ LCD}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00101}00101\ \textcolor{comment}{\ \ \ \ HAL\_Delay(500);}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00102}00102\ \textcolor{comment}{\ \ \ \ HD44780\_SetCursor(0,1);}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00103}00103\ \textcolor{comment}{\ \ \ \ gcvt(pressure/4,\ 10,\ buf2);}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00104}00104\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00105}00105\ \textcolor{comment}{\ \ \ \ HD44780\_PrintStr(buf2);\ */}\ \ \textcolor{comment}{//print\ pressure\ values\ to\ LCD}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00106}00106\ \textcolor{comment}{\ \ \ \ /**********************************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00107}00107\ \textcolor{comment}{\ \ \ \ /******************************Returing\ Values\ in\ a\ Structure**********************************/}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00108}00108\ \ \ \ \ read\_value\_bmp280.temp=\mbox{\hyperlink{_b_m_p280_8h_afc1d28cfbce795d6ea954ebe725241f5}{temperature}};}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00109}00109\ \ \ \ \ read\_value\_bmp280.press=\mbox{\hyperlink{_b_m_p280_8h_ac870e1249bab4a2a68cc4126761d24ef}{pressure}};}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00110}00110\ \ \ \ \ read\_value\_bmp280.alti=\mbox{\hyperlink{_b_m_p280_8h_a0e13a4b4ae0cefdac2a413284239caa6}{altitude}};}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00112}00112\ \ \ \ \ \textcolor{keywordflow}{return}\ read\_value\_bmp280;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00113}00113\ \}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00115}\mbox{\hyperlink{_b_m_p280_8h_a551bba6dee710a9094921214413fce8d}{00115}}\ int32\_t\ \mbox{\hyperlink{_b_m_p280_8c_a551bba6dee710a9094921214413fce8d}{compensate\_temperature}}(int32\_t\ uncomp\_temp)}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00116}00116\ \{}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00117}00117\ \ \ \ \ int32\_t\ var1,\ var2;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00118}00118\ \ \ \ \ var1\ =\ ((((uncomp\_temp\ /\ 8)-\/\ ((int32\_t)\mbox{\hyperlink{_b_m_p280_8c_a9a07537928655a6f90cbb127e77aabc8}{dig\_T1}}\ <<\ 1)))\ *\ ((int32\_t)\mbox{\hyperlink{_b_m_p280_8c_af657fd5581a3713d4325c6cf6619798e}{dig\_T2}}))\ /\ 2048;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00119}00119\ \ \ \ \ var2\ =\ (((((uncomp\_temp\ /\ 16)\ -\/\ ((int32\_t)\mbox{\hyperlink{_b_m_p280_8c_a9a07537928655a6f90cbb127e77aabc8}{dig\_T1}}))\ *\ ((uncomp\_temp\ /\ 16)\ -\/\ ((int32\_t)\mbox{\hyperlink{_b_m_p280_8c_a9a07537928655a6f90cbb127e77aabc8}{dig\_T1}})))\ /\ 4096)\ *\ ((int32\_t)\mbox{\hyperlink{_b_m_p280_8c_a5b4a37c3483f9b66e3c9320c76bd191d}{dig\_T3}}))\ /\ 16384;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00120}00120\ \ \ \ \ \mbox{\hyperlink{_b_m_p280_8c_ac1f0d71206317758c70cd96314b6fc02}{t\_fine}}\ =\ var1\ +\ var2;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00121}00121\ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{_b_m_p280_8c_ac1f0d71206317758c70cd96314b6fc02}{t\_fine}}\ *\ 5\ +\ 128)\ /\ 256;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00122}00122\ \}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00124}\mbox{\hyperlink{_b_m_p280_8h_af6079c6b3e672b3589085c593c297240}{00124}}\ uint32\_t\ \mbox{\hyperlink{_b_m_p280_8c_af6079c6b3e672b3589085c593c297240}{compensate\_pressure}}(int32\_t\ uncomp\_pres)}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00125}00125\ \{}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00126}00126\ \ \ \ \ int64\_t\ var1,\ var2,\ p;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00128}00128\ \ \ \ \ var1\ =\ ((int64\_t)\ (\mbox{\hyperlink{_b_m_p280_8c_ac1f0d71206317758c70cd96314b6fc02}{t\_fine}}))\ -\/\ 128000;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00129}00129\ \ \ \ \ var2\ =\ var1\ *\ var1\ *\ (int64\_t)\mbox{\hyperlink{_b_m_p280_8c_ab40e5774b084a648dae55c161de91f66}{dig\_P6}};}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00130}00130\ \ \ \ \ var2\ =\ var2\ +\ ((var1\ *\ (int64\_t)\mbox{\hyperlink{_b_m_p280_8c_aab5995336960b6917304bca095d1f896}{dig\_P5}})\ *\ 131072);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00131}00131\ \ \ \ \ var2\ =\ var2\ +\ (((int64\_t)\mbox{\hyperlink{_b_m_p280_8c_a60ff58d4f1f442387729c7f9a1942d63}{dig\_P4}})\ *\ 34359738368);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00132}00132\ \ \ \ \ var1\ =\ ((var1\ *\ var1\ *\ (int64\_t)\mbox{\hyperlink{_b_m_p280_8c_a4778d0f9f9c5c231c472e6f9cc34bff7}{dig\_P3}})\ /\ 256)\ +\ ((var1\ *\ (int64\_t)\mbox{\hyperlink{_b_m_p280_8c_a6d7667e0986d0409dfdaa31d5f4ab05e}{dig\_P2}})\ *\ 4096);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00133}00133\ \ \ \ \ var1\ =\ ((INT64\_C(0x800000000000)\ +\ var1)\ *\ ((int64\_t)\mbox{\hyperlink{_b_m_p280_8c_a5c6fd14e092d5b1b3db9133918d6c88c}{dig\_P1}}))\ /\ 8589934592;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00134}00134\ \ \ \ \ \textcolor{keywordflow}{if}\ (var1\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00135}00135\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00137}00137\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00138}00138\ \ \ \ \ p\ =\ 1048576\ -\/\ uncomp\_pres;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00139}00139\ \ \ \ \ p\ =\ (((((p\ *\ 2147483648U))\ -\/\ var2)\ *\ 3125)\ /\ var1);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00140}00140\ \ \ \ \ var1\ =\ (((int64\_t)\mbox{\hyperlink{_b_m_p280_8c_ae808932e571d157081b847f311cec555}{dig\_P9}})\ *\ (p\ /\ 8192)\ *\ (p\ /\ 8192))\ /\ 33554432;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00141}00141\ \ \ \ \ var2\ =\ (((int64\_t)\mbox{\hyperlink{_b_m_p280_8c_af39515ecaa77e6b01544388fc7d44cfe}{dig\_P8}})\ *\ p)\ /\ 524288;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00142}00142\ \ \ \ \ p\ =\ ((p\ +\ var1\ +\ var2)\ /\ 256)\ +\ (((int64\_t)\mbox{\hyperlink{_b_m_p280_8c_aeae4c61fa98974140b9694edd4799883}{dig\_P7}})\ *\ 16);}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00143}00143\ \ \ \ \ \textcolor{keywordflow}{return}\ (uint32\_t)\ p;}
+\DoxyCodeLine{\Hypertarget{_b_m_p280_8c_source_l00144}00144\ \}}
+
+\end{DoxyCode}

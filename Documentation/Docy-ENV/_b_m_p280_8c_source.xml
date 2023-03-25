@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__b_m_p280_8c_source" xml:lang="en-US">
+<title>BMP280.c</title>
+<indexterm><primary>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Src/BMP280.c</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__b_m_p280_8c_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__b_m_p280_8h">BMP280.h</link>&quot;</emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00002"/>00002 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_liquidcrystal__i2c_8h">liquidcrystal_i2c.h</link>&quot;</emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00003"/>00003 
+<anchor xml:id="__b_m_p280_8c_source_1l00004"/><link linkend="__b_m_p280_8c_1a2a9d5ec8e55acc2432d0878308de4bc7">00004</link> <emphasis role="keywordtype">signed</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;<link linkend="__b_m_p280_8c_1a3d72ff2b32266596ae3baaf4fa6f2f50">temperature_raw</link>,&#32;<link linkend="__b_m_p280_8c_1a2a9d5ec8e55acc2432d0878308de4bc7">pressure_raw</link>;
+<anchor xml:id="__b_m_p280_8c_source_1l00005"/><link linkend="__b_m_p280_8c_1a5c6fd14e092d5b1b3db9133918d6c88c">00005</link> <emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">short</emphasis>&#32;<link linkend="__b_m_p280_8c_1a9a07537928655a6f90cbb127e77aabc8">dig_T1</link>,&#32;<link linkend="__b_m_p280_8c_1a5c6fd14e092d5b1b3db9133918d6c88c">dig_P1</link>;
+<anchor xml:id="__b_m_p280_8c_source_1l00006"/><link linkend="__b_m_p280_8c_1a6d7667e0986d0409dfdaa31d5f4ab05e">00006</link> <emphasis role="keywordtype">signed</emphasis>&#32;<emphasis role="keywordtype">short</emphasis>&#32;<link linkend="__b_m_p280_8c_1af657fd5581a3713d4325c6cf6619798e">dig_T2</link>,&#32;<link linkend="__b_m_p280_8c_1a5b4a37c3483f9b66e3c9320c76bd191d">dig_T3</link>,&#32;<link linkend="__b_m_p280_8c_1a6d7667e0986d0409dfdaa31d5f4ab05e">dig_P2</link>,&#32;<link linkend="__b_m_p280_8c_1a4778d0f9f9c5c231c472e6f9cc34bff7">dig_P3</link>,&#32;<link linkend="__b_m_p280_8c_1a60ff58d4f1f442387729c7f9a1942d63">dig_P4</link>,&#32;<link linkend="__b_m_p280_8c_1aab5995336960b6917304bca095d1f896">dig_P5</link>,&#32;<link linkend="__b_m_p280_8c_1ab40e5774b084a648dae55c161de91f66">dig_P6</link>,&#32;<link linkend="__b_m_p280_8c_1aeae4c61fa98974140b9694edd4799883">dig_P7</link>,&#32;<link linkend="__b_m_p280_8c_1af39515ecaa77e6b01544388fc7d44cfe">dig_P8</link>,&#32;<link linkend="__b_m_p280_8c_1ae808932e571d157081b847f311cec555">dig_P9</link>;
+<anchor xml:id="__b_m_p280_8c_source_1l00007"/><link linkend="__b_m_p280_8c_1a0e13a4b4ae0cefdac2a413284239caa6">00007</link> <emphasis role="keywordtype">float</emphasis>&#32;<link linkend="__b_m_p280_8c_1afc1d28cfbce795d6ea954ebe725241f5">temperature</link>,&#32;<link linkend="__b_m_p280_8c_1ac870e1249bab4a2a68cc4126761d24ef">pressure</link>,&#32;<link linkend="__b_m_p280_8c_1a0e13a4b4ae0cefdac2a413284239caa6">altitude</link>,&#32;<link linkend="__b_m_p280_8c_1a98fc2874cec8addec2e0468bc677303c">init_height</link>;
+<anchor xml:id="__b_m_p280_8c_source_1l00008"/>00008 
+<anchor xml:id="__b_m_p280_8c_source_1l00009"/><link linkend="__b_m_p280_8c_1a5189133f9791964cfb7f6cee8a9ce27b">00009</link> <emphasis role="keywordtype">float</emphasis>&#32;<link linkend="__b_m_p280_8c_1a5189133f9791964cfb7f6cee8a9ce27b">p_reference</link>&#32;=&#32;95500;
+<anchor xml:id="__b_m_p280_8c_source_1l00010"/><link linkend="__b_m_p280_8c_1ac1f0d71206317758c70cd96314b6fc02">00010</link> int32_t&#32;<link linkend="__b_m_p280_8c_1ac1f0d71206317758c70cd96314b6fc02">t_fine</link>&#32;=&#32;0;
+<anchor xml:id="__b_m_p280_8c_source_1l00011"/>00011 
+<anchor xml:id="__b_m_p280_8c_source_1l00012"/><link linkend="__b_m_p280_8h_1a7577a12a887998c60b62dcc8fdd9dbbf">00012</link> uint8_t&#32;<link linkend="__b_m_p280_8c_1a7577a12a887998c60b62dcc8fdd9dbbf">readRegister</link>(uint8_t&#32;address)
+<anchor xml:id="__b_m_p280_8c_source_1l00013"/>00013 {
+<anchor xml:id="__b_m_p280_8c_source_1l00014"/>00014 &#32;&#32;&#32;&#32;HAL_GPIO_WritePin(GPIOA,&#32;GPIO_PIN_8,&#32;GPIO_PIN_RESET);<emphasis role="comment">//spiCSNlow();</emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00015"/>00015 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8c_1aef20ed38fe5d55700f0ccdbd5b77ba71">spiReadWrite</link>(address);
+<anchor xml:id="__b_m_p280_8c_source_1l00016"/>00016 &#32;&#32;&#32;&#32;uint8_t&#32;value&#32;=&#32;<link linkend="__b_m_p280_8c_1aef20ed38fe5d55700f0ccdbd5b77ba71">spiReadWrite</link>(0);
+<anchor xml:id="__b_m_p280_8c_source_1l00017"/>00017 &#32;&#32;&#32;&#32;HAL_GPIO_WritePin(GPIOA,&#32;GPIO_PIN_8,&#32;GPIO_PIN_SET);<emphasis role="comment">//spiCSNhigh();</emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;value;
+<anchor xml:id="__b_m_p280_8c_source_1l00019"/>00019 }
+<anchor xml:id="__b_m_p280_8c_source_1l00020"/>00020 
+<anchor xml:id="__b_m_p280_8c_source_1l00021"/><link linkend="__b_m_p280_8h_1a03d1b94ea3a07a44504a0385a1914e12">00021</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__b_m_p280_8c_1a03d1b94ea3a07a44504a0385a1914e12">writeRegister</link>(uint8_t&#32;address,&#32;uint8_t&#32;value)
+<anchor xml:id="__b_m_p280_8c_source_1l00022"/>00022 {
+<anchor xml:id="__b_m_p280_8c_source_1l00023"/>00023 &#32;&#32;&#32;&#32;HAL_GPIO_WritePin(GPIOA,&#32;GPIO_PIN_8,&#32;GPIO_PIN_RESET);<emphasis role="comment">//spiCSNlow();</emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00024"/>00024 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8c_1aef20ed38fe5d55700f0ccdbd5b77ba71">spiReadWrite</link>(address&#32;&amp;&#32;<link linkend="__b_m_p280_8h_1ad3f8d007f531e2b572aae8baaaa6d604">BMP280_SPI_MASK_WRITE</link>);
+<anchor xml:id="__b_m_p280_8c_source_1l00025"/>00025 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8c_1aef20ed38fe5d55700f0ccdbd5b77ba71">spiReadWrite</link>(value);
+<anchor xml:id="__b_m_p280_8c_source_1l00026"/>00026 &#32;&#32;&#32;&#32;HAL_GPIO_WritePin(GPIOA,&#32;GPIO_PIN_8,&#32;GPIO_PIN_SET);<emphasis role="comment">//spiCSNhigh();</emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00027"/>00027 }
+<anchor xml:id="__b_m_p280_8c_source_1l00028"/>00028 
+<anchor xml:id="__b_m_p280_8c_source_1l00029"/><link linkend="__b_m_p280_8h_1afda0d94a266ff3e0e81213e20b8b58a9">00029</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__b_m_p280_8c_1afda0d94a266ff3e0e81213e20b8b58a9">readMBRegister</link>(uint8_t&#32;address,&#32;uint8_t&#32;*values,&#32;uint8_t&#32;length)
+<anchor xml:id="__b_m_p280_8c_source_1l00030"/>00030 {
+<anchor xml:id="__b_m_p280_8c_source_1l00031"/>00031 &#32;&#32;&#32;&#32;HAL_GPIO_WritePin(GPIOA,&#32;GPIO_PIN_8,&#32;GPIO_PIN_RESET);<emphasis role="comment">//spiCSNlow();</emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00032"/>00032 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8c_1aef20ed38fe5d55700f0ccdbd5b77ba71">spiReadWrite</link>(address);
+<anchor xml:id="__b_m_p280_8c_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(length--)
+<anchor xml:id="__b_m_p280_8c_source_1l00034"/>00034 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__b_m_p280_8c_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*values++&#32;=&#32;<link linkend="__b_m_p280_8c_1aef20ed38fe5d55700f0ccdbd5b77ba71">spiReadWrite</link>(0);
+<anchor xml:id="__b_m_p280_8c_source_1l00036"/>00036 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_m_p280_8c_source_1l00037"/>00037 &#32;&#32;&#32;&#32;HAL_GPIO_WritePin(GPIOA,&#32;GPIO_PIN_8,&#32;GPIO_PIN_SET);<emphasis role="comment">//spiCSNhigh();</emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00038"/>00038 }
+<anchor xml:id="__b_m_p280_8c_source_1l00039"/>00039 
+<anchor xml:id="__b_m_p280_8c_source_1l00040"/><link linkend="__b_m_p280_8h_1aef20ed38fe5d55700f0ccdbd5b77ba71">00040</link> uint8_t&#32;<link linkend="__b_m_p280_8c_1aef20ed38fe5d55700f0ccdbd5b77ba71">spiReadWrite</link>(uint8_t&#32;tx_message)
+<anchor xml:id="__b_m_p280_8c_source_1l00041"/>00041 {
+<anchor xml:id="__b_m_p280_8c_source_1l00042"/>00042 &#32;&#32;&#32;&#32;uint8_t&#32;rx_message&#32;=&#32;255;
+<anchor xml:id="__b_m_p280_8c_source_1l00043"/>00043 &#32;&#32;&#32;&#32;HAL_SPI_TransmitReceive(&amp;<link linkend="__b_m_p280_8h_1ab9da65f935e805137e2eb4e18c5ab224">hspi2</link>,&#32;&amp;tx_message,&#32;&amp;rx_message,&#32;1,HAL_MAX_DELAY);
+<anchor xml:id="__b_m_p280_8c_source_1l00044"/>00044 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;rx_message;
+<anchor xml:id="__b_m_p280_8c_source_1l00045"/>00045 }
+<anchor xml:id="__b_m_p280_8c_source_1l00046"/>00046 
+<anchor xml:id="__b_m_p280_8c_source_1l00047"/>00047 
+<anchor xml:id="__b_m_p280_8c_source_1l00048"/><link linkend="__b_m_p280_8h_1acb159e980500707f4b78480997970b88">00048</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__b_m_p280_8c_1a8562fa0fe64fc13f61e08c29eba2e495">BMP280_get_calib_values</link>(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="__b_m_p280_8c_source_1l00049"/>00049 {
+<anchor xml:id="__b_m_p280_8c_source_1l00050"/>00050 &#32;&#32;&#32;&#32;uint8_t&#32;rx_buff[24];
+<anchor xml:id="__b_m_p280_8c_source_1l00051"/>00051 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8c_1afda0d94a266ff3e0e81213e20b8b58a9">readMBRegister</link>(<link linkend="__b_m_p280_8h_1a68622050abfca784a2080b6edc8fc1e0">BMP280_REG_CALIB</link>,&#32;rx_buff,&#32;24);
+<anchor xml:id="__b_m_p280_8c_source_1l00052"/>00052 
+<anchor xml:id="__b_m_p280_8c_source_1l00053"/>00053 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8c_1a9a07537928655a6f90cbb127e77aabc8">dig_T1</link>=(rx_buff[0])+(rx_buff[1]&lt;&lt;8);
+<anchor xml:id="__b_m_p280_8c_source_1l00054"/>00054 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8c_1af657fd5581a3713d4325c6cf6619798e">dig_T2</link>=(rx_buff[2])+(rx_buff[3]&lt;&lt;8);
+<anchor xml:id="__b_m_p280_8c_source_1l00055"/>00055 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8c_1a5b4a37c3483f9b66e3c9320c76bd191d">dig_T3</link>=(rx_buff[4])+(rx_buff[5]&lt;&lt;8);
+<anchor xml:id="__b_m_p280_8c_source_1l00056"/>00056 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8c_1a5c6fd14e092d5b1b3db9133918d6c88c">dig_P1</link>=(rx_buff[6])+(rx_buff[7]&lt;&lt;8);
+<anchor xml:id="__b_m_p280_8c_source_1l00057"/>00057 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8c_1a6d7667e0986d0409dfdaa31d5f4ab05e">dig_P2</link>=(rx_buff[8])+(rx_buff[9]&lt;&lt;8);
+<anchor xml:id="__b_m_p280_8c_source_1l00058"/>00058 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8c_1a4778d0f9f9c5c231c472e6f9cc34bff7">dig_P3</link>=(rx_buff[10])+(rx_buff[11]&lt;&lt;8);
+<anchor xml:id="__b_m_p280_8c_source_1l00059"/>00059 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8c_1a60ff58d4f1f442387729c7f9a1942d63">dig_P4</link>=(rx_buff[12])+(rx_buff[13]&lt;&lt;8);
+<anchor xml:id="__b_m_p280_8c_source_1l00060"/>00060 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8c_1aab5995336960b6917304bca095d1f896">dig_P5</link>=(rx_buff[14])+(rx_buff[15]&lt;&lt;8);
+<anchor xml:id="__b_m_p280_8c_source_1l00061"/>00061 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8c_1ab40e5774b084a648dae55c161de91f66">dig_P6</link>=(rx_buff[16])+(rx_buff[17]&lt;&lt;8);
+<anchor xml:id="__b_m_p280_8c_source_1l00062"/>00062 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8c_1aeae4c61fa98974140b9694edd4799883">dig_P7</link>=(rx_buff[18])+(rx_buff[19]&lt;&lt;8);
+<anchor xml:id="__b_m_p280_8c_source_1l00063"/>00063 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8c_1af39515ecaa77e6b01544388fc7d44cfe">dig_P8</link>=(rx_buff[20])+(rx_buff[21]&lt;&lt;8);
+<anchor xml:id="__b_m_p280_8c_source_1l00064"/>00064 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8c_1ae808932e571d157081b847f311cec555">dig_P9</link>=(rx_buff[22])+(rx_buff[23]&lt;&lt;8);
+<anchor xml:id="__b_m_p280_8c_source_1l00065"/>00065 
+<anchor xml:id="__b_m_p280_8c_source_1l00066"/>00066 }
+<anchor xml:id="__b_m_p280_8c_source_1l00067"/>00067 
+<anchor xml:id="__b_m_p280_8c_source_1l00068"/><link linkend="__b_m_p280_8h_1ae3168b9163675628a89fc1e422de4b5e">00068</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__b_m_p280_8c_1ae3168b9163675628a89fc1e422de4b5e">BMP280_init</link>()
+<anchor xml:id="__b_m_p280_8c_source_1l00069"/>00069 {
+<anchor xml:id="__b_m_p280_8c_source_1l00070"/>00070 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8c_1a03d1b94ea3a07a44504a0385a1914e12">writeRegister</link>(&#32;0xF5,&#32;&#32;0b10010000);
+<anchor xml:id="__b_m_p280_8c_source_1l00071"/>00071 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8c_1a03d1b94ea3a07a44504a0385a1914e12">writeRegister</link>(&#32;0xF4,&#32;&#32;0b01010111);
+<anchor xml:id="__b_m_p280_8c_source_1l00072"/>00072 
+<anchor xml:id="__b_m_p280_8c_source_1l00073"/>00073 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8c_1a8562fa0fe64fc13f61e08c29eba2e495">BMP280_get_calib_values</link>();
+<anchor xml:id="__b_m_p280_8c_source_1l00074"/>00074 }
+<anchor xml:id="__b_m_p280_8c_source_1l00075"/>00075 
+<anchor xml:id="__b_m_p280_8c_source_1l00076"/><link linkend="__b_m_p280_8h_1a631a6834a2390b88c16a10f843c43d65">00076</link> <emphasis role="keyword">struct&#32;</emphasis><link linkend="_structreading">reading</link>&#32;<link linkend="__b_m_p280_8c_1a631a6834a2390b88c16a10f843c43d65">BMP280_measure</link>()
+<anchor xml:id="__b_m_p280_8c_source_1l00077"/>00077 {
+<anchor xml:id="__b_m_p280_8c_source_1l00078"/>00078 &#32;&#32;&#32;&#32;<link linkend="_structreading">read_value</link>&#32;read_value_bmp280;
+<anchor xml:id="__b_m_p280_8c_source_1l00079"/>00079 &#32;&#32;&#32;&#32;uint8_t&#32;data[6];
+<anchor xml:id="__b_m_p280_8c_source_1l00080"/>00080 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8h_1afda0d94a266ff3e0e81213e20b8b58a9">readMBRegister</link>(<link linkend="__b_m_p280_8h_1a06f8ce3e8566066c7ee1eb0a1cf61f95">BMP280_REG_DATA</link>,&#32;data,&#32;6);
+<anchor xml:id="__b_m_p280_8c_source_1l00081"/>00081 
+<anchor xml:id="__b_m_p280_8c_source_1l00082"/>00082 &#32;&#32;&#32;&#32;int32_t&#32;adc_P&#32;=&#32;data[0]&#32;&lt;&lt;&#32;12&#32;|&#32;data[1]&#32;&lt;&lt;&#32;4&#32;|&#32;data[2]&#32;&gt;&gt;&#32;4;
+<anchor xml:id="__b_m_p280_8c_source_1l00083"/>00083 &#32;&#32;&#32;&#32;int32_t&#32;adc_T&#32;=&#32;data[3]&#32;&lt;&lt;&#32;12&#32;|&#32;data[4]&#32;&lt;&lt;&#32;4&#32;|&#32;data[5]&#32;&gt;&gt;&#32;4;
+<anchor xml:id="__b_m_p280_8c_source_1l00084"/>00084 
+<anchor xml:id="__b_m_p280_8c_source_1l00085"/>00085 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8h_1afc1d28cfbce795d6ea954ebe725241f5">temperature</link>&#32;=&#32;(float)&#32;<link linkend="__b_m_p280_8h_1a551bba6dee710a9094921214413fce8d">compensate_temperature</link>(adc_T)&#32;/&#32;100.0;
+<anchor xml:id="__b_m_p280_8c_source_1l00086"/>00086 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8h_1ac870e1249bab4a2a68cc4126761d24ef">pressure</link>&#32;=&#32;(float)&#32;<link linkend="__b_m_p280_8h_1af6079c6b3e672b3589085c593c297240">compensate_pressure</link>(adc_P)&#32;/&#32;256.0;
+<anchor xml:id="__b_m_p280_8c_source_1l00087"/>00087 
+<anchor xml:id="__b_m_p280_8c_source_1l00088"/>00088 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="__b_m_p280_8c_1a5189133f9791964cfb7f6cee8a9ce27b">p_reference</link>&#32;&gt;&#32;0)
+<anchor xml:id="__b_m_p280_8c_source_1l00089"/>00089 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__b_m_p280_8c_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8h_1a0e13a4b4ae0cefdac2a413284239caa6">altitude</link>&#32;=&#32;(1.0&#32;-&#32;pow(<link linkend="__b_m_p280_8h_1ac870e1249bab4a2a68cc4126761d24ef">pressure</link>&#32;/&#32;<link linkend="__b_m_p280_8c_1a5189133f9791964cfb7f6cee8a9ce27b">p_reference</link>,&#32;0.1903))&#32;*&#32;4433076.0;
+<anchor xml:id="__b_m_p280_8c_source_1l00091"/>00091 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_m_p280_8c_source_1l00092"/>00092 <emphasis role="comment">&#32;&#32;&#32;&#32;/******************************Displaying&#32;Temperature&#32;and&#32;Pressure*****************************/</emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00093"/>00093 &#32;&#32;&#32;&#32;<emphasis role="comment">/*char&#32;buf1[10],buf2[10];</emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00094"/>00094 <emphasis role="comment"></emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00095"/>00095 <emphasis role="comment">&#32;&#32;&#32;&#32;HAL_Delay(500);</emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00096"/>00096 <emphasis role="comment">&#32;&#32;&#32;&#32;HD44780_SetCursor(0,0);</emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00097"/>00097 <emphasis role="comment">&#32;&#32;&#32;&#32;gcvt(temperature,&#32;10,&#32;buf1);</emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00098"/>00098 <emphasis role="comment">&#32;&#32;&#32;&#32;HD44780_Clear();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//converting&#32;float&#32;to&#32;string</emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00099"/>00099 <emphasis role="comment"></emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00100"/>00100 <emphasis role="comment">&#32;&#32;&#32;&#32;HD44780_PrintStr(buf1);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//print&#32;temperature&#32;values&#32;to&#32;LCD</emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00101"/>00101 <emphasis role="comment">&#32;&#32;&#32;&#32;HAL_Delay(500);</emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00102"/>00102 <emphasis role="comment">&#32;&#32;&#32;&#32;HD44780_SetCursor(0,1);</emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00103"/>00103 <emphasis role="comment">&#32;&#32;&#32;&#32;gcvt(pressure/4,&#32;10,&#32;buf2);</emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00104"/>00104 <emphasis role="comment"></emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00105"/>00105 <emphasis role="comment">&#32;&#32;&#32;&#32;HD44780_PrintStr(buf2);&#32;*/</emphasis>&#32;&#32;<emphasis role="comment">//print&#32;pressure&#32;values&#32;to&#32;LCD</emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00106"/>00106 <emphasis role="comment">&#32;&#32;&#32;&#32;/**********************************************************************************************/</emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00107"/>00107 <emphasis role="comment">&#32;&#32;&#32;&#32;/******************************Returing&#32;Values&#32;in&#32;a&#32;Structure**********************************/</emphasis>
+<anchor xml:id="__b_m_p280_8c_source_1l00108"/>00108 &#32;&#32;&#32;&#32;read_value_bmp280.temp=<link linkend="__b_m_p280_8h_1afc1d28cfbce795d6ea954ebe725241f5">temperature</link>;
+<anchor xml:id="__b_m_p280_8c_source_1l00109"/>00109 &#32;&#32;&#32;&#32;read_value_bmp280.press=<link linkend="__b_m_p280_8h_1ac870e1249bab4a2a68cc4126761d24ef">pressure</link>;
+<anchor xml:id="__b_m_p280_8c_source_1l00110"/>00110 &#32;&#32;&#32;&#32;read_value_bmp280.alti=<link linkend="__b_m_p280_8h_1a0e13a4b4ae0cefdac2a413284239caa6">altitude</link>;
+<anchor xml:id="__b_m_p280_8c_source_1l00111"/>00111 
+<anchor xml:id="__b_m_p280_8c_source_1l00112"/>00112 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;read_value_bmp280;
+<anchor xml:id="__b_m_p280_8c_source_1l00113"/>00113 }
+<anchor xml:id="__b_m_p280_8c_source_1l00114"/>00114 
+<anchor xml:id="__b_m_p280_8c_source_1l00115"/><link linkend="__b_m_p280_8h_1a551bba6dee710a9094921214413fce8d">00115</link> int32_t&#32;<link linkend="__b_m_p280_8c_1a551bba6dee710a9094921214413fce8d">compensate_temperature</link>(int32_t&#32;uncomp_temp)
+<anchor xml:id="__b_m_p280_8c_source_1l00116"/>00116 {
+<anchor xml:id="__b_m_p280_8c_source_1l00117"/>00117 &#32;&#32;&#32;&#32;int32_t&#32;var1,&#32;var2;
+<anchor xml:id="__b_m_p280_8c_source_1l00118"/>00118 &#32;&#32;&#32;&#32;var1&#32;=&#32;((((uncomp_temp&#32;/&#32;8)-&#32;((int32_t)<link linkend="__b_m_p280_8c_1a9a07537928655a6f90cbb127e77aabc8">dig_T1</link>&#32;&lt;&lt;&#32;1)))&#32;*&#32;((int32_t)<link linkend="__b_m_p280_8c_1af657fd5581a3713d4325c6cf6619798e">dig_T2</link>))&#32;/&#32;2048;
+<anchor xml:id="__b_m_p280_8c_source_1l00119"/>00119 &#32;&#32;&#32;&#32;var2&#32;=&#32;(((((uncomp_temp&#32;/&#32;16)&#32;-&#32;((int32_t)<link linkend="__b_m_p280_8c_1a9a07537928655a6f90cbb127e77aabc8">dig_T1</link>))&#32;*&#32;((uncomp_temp&#32;/&#32;16)&#32;-&#32;((int32_t)<link linkend="__b_m_p280_8c_1a9a07537928655a6f90cbb127e77aabc8">dig_T1</link>)))&#32;/&#32;4096)&#32;*&#32;((int32_t)<link linkend="__b_m_p280_8c_1a5b4a37c3483f9b66e3c9320c76bd191d">dig_T3</link>))&#32;/&#32;16384;
+<anchor xml:id="__b_m_p280_8c_source_1l00120"/>00120 &#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8c_1ac1f0d71206317758c70cd96314b6fc02">t_fine</link>&#32;=&#32;var1&#32;+&#32;var2;
+<anchor xml:id="__b_m_p280_8c_source_1l00121"/>00121 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(<link linkend="__b_m_p280_8c_1ac1f0d71206317758c70cd96314b6fc02">t_fine</link>&#32;*&#32;5&#32;+&#32;128)&#32;/&#32;256;
+<anchor xml:id="__b_m_p280_8c_source_1l00122"/>00122 }
+<anchor xml:id="__b_m_p280_8c_source_1l00123"/>00123 
+<anchor xml:id="__b_m_p280_8c_source_1l00124"/><link linkend="__b_m_p280_8h_1af6079c6b3e672b3589085c593c297240">00124</link> uint32_t&#32;<link linkend="__b_m_p280_8c_1af6079c6b3e672b3589085c593c297240">compensate_pressure</link>(int32_t&#32;uncomp_pres)
+<anchor xml:id="__b_m_p280_8c_source_1l00125"/>00125 {
+<anchor xml:id="__b_m_p280_8c_source_1l00126"/>00126 &#32;&#32;&#32;&#32;int64_t&#32;var1,&#32;var2,&#32;p;
+<anchor xml:id="__b_m_p280_8c_source_1l00127"/>00127 
+<anchor xml:id="__b_m_p280_8c_source_1l00128"/>00128 &#32;&#32;&#32;&#32;var1&#32;=&#32;((int64_t)&#32;(<link linkend="__b_m_p280_8c_1ac1f0d71206317758c70cd96314b6fc02">t_fine</link>))&#32;-&#32;128000;
+<anchor xml:id="__b_m_p280_8c_source_1l00129"/>00129 &#32;&#32;&#32;&#32;var2&#32;=&#32;var1&#32;*&#32;var1&#32;*&#32;(int64_t)<link linkend="__b_m_p280_8c_1ab40e5774b084a648dae55c161de91f66">dig_P6</link>;
+<anchor xml:id="__b_m_p280_8c_source_1l00130"/>00130 &#32;&#32;&#32;&#32;var2&#32;=&#32;var2&#32;+&#32;((var1&#32;*&#32;(int64_t)<link linkend="__b_m_p280_8c_1aab5995336960b6917304bca095d1f896">dig_P5</link>)&#32;*&#32;131072);
+<anchor xml:id="__b_m_p280_8c_source_1l00131"/>00131 &#32;&#32;&#32;&#32;var2&#32;=&#32;var2&#32;+&#32;(((int64_t)<link linkend="__b_m_p280_8c_1a60ff58d4f1f442387729c7f9a1942d63">dig_P4</link>)&#32;*&#32;34359738368);
+<anchor xml:id="__b_m_p280_8c_source_1l00132"/>00132 &#32;&#32;&#32;&#32;var1&#32;=&#32;((var1&#32;*&#32;var1&#32;*&#32;(int64_t)<link linkend="__b_m_p280_8c_1a4778d0f9f9c5c231c472e6f9cc34bff7">dig_P3</link>)&#32;/&#32;256)&#32;+&#32;((var1&#32;*&#32;(int64_t)<link linkend="__b_m_p280_8c_1a6d7667e0986d0409dfdaa31d5f4ab05e">dig_P2</link>)&#32;*&#32;4096);
+<anchor xml:id="__b_m_p280_8c_source_1l00133"/>00133 &#32;&#32;&#32;&#32;var1&#32;=&#32;((INT64_C(0x800000000000)&#32;+&#32;var1)&#32;*&#32;((int64_t)<link linkend="__b_m_p280_8c_1a5c6fd14e092d5b1b3db9133918d6c88c">dig_P1</link>))&#32;/&#32;8589934592;
+<anchor xml:id="__b_m_p280_8c_source_1l00134"/>00134 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(var1&#32;==&#32;0)
+<anchor xml:id="__b_m_p280_8c_source_1l00135"/>00135 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__b_m_p280_8c_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__b_m_p280_8c_source_1l00137"/>00137 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_m_p280_8c_source_1l00138"/>00138 &#32;&#32;&#32;&#32;p&#32;=&#32;1048576&#32;-&#32;uncomp_pres;
+<anchor xml:id="__b_m_p280_8c_source_1l00139"/>00139 &#32;&#32;&#32;&#32;p&#32;=&#32;(((((p&#32;*&#32;2147483648U))&#32;-&#32;var2)&#32;*&#32;3125)&#32;/&#32;var1);
+<anchor xml:id="__b_m_p280_8c_source_1l00140"/>00140 &#32;&#32;&#32;&#32;var1&#32;=&#32;(((int64_t)<link linkend="__b_m_p280_8c_1ae808932e571d157081b847f311cec555">dig_P9</link>)&#32;*&#32;(p&#32;/&#32;8192)&#32;*&#32;(p&#32;/&#32;8192))&#32;/&#32;33554432;
+<anchor xml:id="__b_m_p280_8c_source_1l00141"/>00141 &#32;&#32;&#32;&#32;var2&#32;=&#32;(((int64_t)<link linkend="__b_m_p280_8c_1af39515ecaa77e6b01544388fc7d44cfe">dig_P8</link>)&#32;*&#32;p)&#32;/&#32;524288;
+<anchor xml:id="__b_m_p280_8c_source_1l00142"/>00142 &#32;&#32;&#32;&#32;p&#32;=&#32;((p&#32;+&#32;var1&#32;+&#32;var2)&#32;/&#32;256)&#32;+&#32;(((int64_t)<link linkend="__b_m_p280_8c_1aeae4c61fa98974140b9694edd4799883">dig_P7</link>)&#32;*&#32;16);
+<anchor xml:id="__b_m_p280_8c_source_1l00143"/>00143 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(uint32_t)&#32;p;
+<anchor xml:id="__b_m_p280_8c_source_1l00144"/>00144 }
+</programlisting></section>

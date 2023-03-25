@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_e6bb53534ac0e427887cf7a94c0c004e" xml:lang="en-US">
+<title>C: Directory Reference</title>
+<indexterm><primary>C: Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Directories    </title>
+        <itemizedlist>
+            <listitem><para>directory <link linkend="_dir_8ceffd4ee35c3518d4e8bdc7e638efe8">Users</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

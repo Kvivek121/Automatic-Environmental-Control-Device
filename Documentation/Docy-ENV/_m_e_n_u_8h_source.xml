@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__m_e_n_u_8h_source" xml:lang="en-US">
+<title>MENU.h</title>
+<indexterm><primary>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Inc/MENU.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__m_e_n_u_8h_source_1l00001"/>00001 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="__m_e_n_u_8h_source_1l00002"/>00002 <emphasis role="comment">&#32;*&#32;MENU.h</emphasis>
+<anchor xml:id="__m_e_n_u_8h_source_1l00003"/>00003 <emphasis role="comment">&#32;*</emphasis>
+<anchor xml:id="__m_e_n_u_8h_source_1l00004"/>00004 <emphasis role="comment">&#32;*&#32;&#32;Created&#32;on:&#32;Feb&#32;21,&#32;2023</emphasis>
+<anchor xml:id="__m_e_n_u_8h_source_1l00005"/>00005 <emphasis role="comment">&#32;*&#32;&#32;&#32;&#32;&#32;&#32;Author:&#32;acer</emphasis>
+<anchor xml:id="__m_e_n_u_8h_source_1l00006"/>00006 <emphasis role="comment">&#32;*/</emphasis>
+<anchor xml:id="__m_e_n_u_8h_source_1l00007"/>00007 
+<anchor xml:id="__m_e_n_u_8h_source_1l00008"/>00008 <emphasis role="preprocessor">#ifndef&#32;INC_MENU_H_</emphasis>
+<anchor xml:id="__m_e_n_u_8h_source_1l00009"/>00009 <emphasis role="preprocessor">#define&#32;INC_MENU_H_</emphasis>
+<anchor xml:id="__m_e_n_u_8h_source_1l00010"/>00010 
+<anchor xml:id="__m_e_n_u_8h_source_1l00011"/>00011 
+<anchor xml:id="__m_e_n_u_8h_source_1l00012"/>00012 
+<anchor xml:id="__m_e_n_u_8h_source_1l00013"/>00013 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;INC_MENU_H_&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+<anchor xml:id="__m_e_n_u_8h_source_1l00014"/>00014 
+<anchor xml:id="__m_e_n_u_8h_source_1l00015"/><link linkend="__m_e_n_u_8h_1a3d1e8ccda4e6f5cc34f8a6184b75a4a7">00015</link> <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__m_e_n_u_8h_1a0356cc3c38d5913ed46e2a3c1eb3c499">temp_threshold</link>,&#32;&#32;<link linkend="__m_e_n_u_8h_1a3d1e8ccda4e6f5cc34f8a6184b75a4a7">humi_threshold</link>,&#32;<link linkend="__m_e_n_u_8h_1a4f1e395aea1fba2dbbb40dd45d9df939">press_threshold</link>;
+<anchor xml:id="__m_e_n_u_8h_source_1l00016"/>00016 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__m_e_n_u_8h_1ad43c3812e6d13e0518d9f8b8f463ffcf">count</link>;
+<anchor xml:id="__m_e_n_u_8h_source_1l00017"/>00017 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__m_e_n_u_8h_1a60b91f7a9f04c1e36e4f1f1a01d04120">time_elapsed</link>;
+<anchor xml:id="__m_e_n_u_8h_source_1l00018"/>00018 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">volatile</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__m_e_n_u_8h_1ae20b057392172760910dcd983669d5a2">pos_button</link>&#32;;
+<anchor xml:id="__m_e_n_u_8h_source_1l00019"/>00019 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">volatile</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__m_e_n_u_8h_1a51b2f20e7cec7af8b4b73737d1fedb06">neg_button</link>;
+<anchor xml:id="__m_e_n_u_8h_source_1l00020"/>00020 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">volatile</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__m_e_n_u_8h_1a234ac5d88f28f16f8469163f16805e99">menu_button</link>;
+<anchor xml:id="__m_e_n_u_8h_source_1l00021"/>00021 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__m_e_n_u_8h_1a88fd7127474308c6efa6886573ce3192">Welcom_count</link>;
+<anchor xml:id="__m_e_n_u_8h_source_1l00022"/>00022 
+<anchor xml:id="__m_e_n_u_8h_source_1l00023"/>00023 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__m_e_n_u_8h_1afdf1ca9e7afc3e7ec41b47fea4b3d80d">Menu</link>();
+</programlisting></section>

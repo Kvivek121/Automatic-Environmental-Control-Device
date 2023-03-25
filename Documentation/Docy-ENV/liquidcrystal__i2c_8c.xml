@@ -1,0 +1,248 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_liquidcrystal__i2c_8c" xml:lang="en-US">
+<title>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Src/liquidcrystal_i2c.c File Reference</title>
+<indexterm><primary>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Src/liquidcrystal_i2c.c</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;liquidcrystal_i2c.h&quot;<?linebreak?>#include &quot;stdio.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>static void <link linkend="_liquidcrystal__i2c_8c_1a91bee4670712c8170bad56bcb9e674cb">SendCommand</link> (uint8_t)</para>
+</listitem>
+            <listitem><para>static void <link linkend="_liquidcrystal__i2c_8c_1a0c7d3765d4e552f9e9ac0158072b4e3d">SendChar</link> (uint8_t)</para>
+</listitem>
+            <listitem><para>static void <link linkend="_liquidcrystal__i2c_8c_1a0b9a98e3d1f8e1607a233dae8054967e">Send</link> (uint8_t, uint8_t)</para>
+</listitem>
+            <listitem><para>static void <link linkend="_liquidcrystal__i2c_8c_1a29d12b27356d6e59ded506a361c7914e">Write4Bits</link> (uint8_t)</para>
+</listitem>
+            <listitem><para>static void <link linkend="_liquidcrystal__i2c_8c_1af9ef4df56836f166bde157a0fc9d3f44">ExpanderWrite</link> (uint8_t)</para>
+</listitem>
+            <listitem><para>static void <link linkend="_liquidcrystal__i2c_8c_1a51ceff037e8ee2986612154944835665">PulseEnable</link> (uint8_t)</para>
+</listitem>
+            <listitem><para>static void <link linkend="_liquidcrystal__i2c_8c_1ab44ba9fe04754905ee42289b88381b14">DelayInit</link> (void)</para>
+</listitem>
+            <listitem><para>static void <link linkend="_liquidcrystal__i2c_8c_1ac02f4d7df4ab9c5a0813d3446ef1872d">DelayUS</link> (uint32_t)</para>
+</listitem>
+            <listitem><para>void <link linkend="_liquidcrystal__i2c_8c_1a97d4f7a1f8a23938955ba343380f13d1">HD44780_Init</link> (uint8_t rows)</para>
+</listitem>
+            <listitem><para>void <link linkend="_liquidcrystal__i2c_8c_1abe31ef769fa9a1941c6d5e51fc63b3fd">HD44780_Clear</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_liquidcrystal__i2c_8c_1a0e2a70008b6b991562badef8f2bcc4f5">HD44780_Home</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_liquidcrystal__i2c_8c_1a539dfd78c4614defb8e50249b855d193">HD44780_SetCursor</link> (uint8_t col, uint8_t row)</para>
+</listitem>
+            <listitem><para>void <link linkend="_liquidcrystal__i2c_8c_1acff5f142b39d9be81e16307b924d7143">HD44780_Display</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_liquidcrystal__i2c_8c_1aeb020d5cc7985ee54c28f0d3fbc9f99b">HD44780_CreateSpecialChar</link> (uint8_t location, uint8_t charmap[])</para>
+</listitem>
+            <listitem><para>void <link linkend="_liquidcrystal__i2c_8c_1a7a9b443808c73ec3ee633762a5fcd454">HD44780_PrintStr</link> (const char c[])</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>I2C_HandleTypeDef <link linkend="_liquidcrystal__i2c_8c_1af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</link></para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_liquidcrystal__i2c_8c_1ac5ee31d2518cd9b8936d8b69d4938c09">dpFunction</link></para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_liquidcrystal__i2c_8c_1a99b44d4e6dea8b547ee824b3ec90a44f">dpControl</link></para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_liquidcrystal__i2c_8c_1a5992ca55a2763f066446894eb2177f1d">dpMode</link></para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_liquidcrystal__i2c_8c_1ad954245ca59635459b3368eba1d28f54">dpRows</link></para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_liquidcrystal__i2c_8c_1ac1c0ae2f596ae15916fb039fbb0c24ea">dpBacklight</link></para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_liquidcrystal__i2c_8c_1acfe7a7926addcac0db8ef202a00e5cbe">special1</link> [8]</para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_liquidcrystal__i2c_8c_1a07edfb9508b377544a55fdb615e8e4ab">special2</link> [8]</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_liquidcrystal__i2c_8c_1ab44ba9fe04754905ee42289b88381b14"/><section>
+    <title>DelayInit()</title>
+<indexterm><primary>DelayInit</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>DelayInit</secondary></indexterm>
+<para><computeroutput>static void DelayInit (void )<computeroutput>[static]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_liquidcrystal__i2c_8c_source_1l00189">189</link> of file <link linkend="_liquidcrystal__i2c_8c_source">liquidcrystal_i2c.c</link>.</para>
+</section>
+<anchor xml:id="_liquidcrystal__i2c_8c_1ac02f4d7df4ab9c5a0813d3446ef1872d"/><section>
+    <title>DelayUS()</title>
+<indexterm><primary>DelayUS</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>DelayUS</secondary></indexterm>
+<para><computeroutput>static void DelayUS (uint32_t us)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_liquidcrystal__i2c_8c_source_1l00205">205</link> of file <link linkend="_liquidcrystal__i2c_8c_source">liquidcrystal_i2c.c</link>.</para>
+</section>
+<anchor xml:id="_liquidcrystal__i2c_8c_1af9ef4df56836f166bde157a0fc9d3f44"/><section>
+    <title>ExpanderWrite()</title>
+<indexterm><primary>ExpanderWrite</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>ExpanderWrite</secondary></indexterm>
+<para><computeroutput>static void ExpanderWrite (uint8_t _data)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_liquidcrystal__i2c_8c_source_1l00174">174</link> of file <link linkend="_liquidcrystal__i2c_8c_source">liquidcrystal_i2c.c</link>.</para>
+</section>
+<anchor xml:id="_liquidcrystal__i2c_8c_1abe31ef769fa9a1941c6d5e51fc63b3fd"/><section>
+    <title>HD44780_Clear()</title>
+<indexterm><primary>HD44780_Clear</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>HD44780_Clear</secondary></indexterm>
+<para><computeroutput>void HD44780_Clear ( )</computeroutput></para><para>
+Definition at line <link linkend="_liquidcrystal__i2c_8c_source_1l00104">104</link> of file <link linkend="_liquidcrystal__i2c_8c_source">liquidcrystal_i2c.c</link>.</para>
+</section>
+<anchor xml:id="_liquidcrystal__i2c_8c_1aeb020d5cc7985ee54c28f0d3fbc9f99b"/><section>
+    <title>HD44780_CreateSpecialChar()</title>
+<indexterm><primary>HD44780_CreateSpecialChar</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>HD44780_CreateSpecialChar</secondary></indexterm>
+<para><computeroutput>void HD44780_CreateSpecialChar (uint8_t location, uint8_t charmap[])</computeroutput></para><para>
+Definition at line <link linkend="_liquidcrystal__i2c_8c_source_1l00134">134</link> of file <link linkend="_liquidcrystal__i2c_8c_source">liquidcrystal_i2c.c</link>.</para>
+</section>
+<anchor xml:id="_liquidcrystal__i2c_8c_1acff5f142b39d9be81e16307b924d7143"/><section>
+    <title>HD44780_Display()</title>
+<indexterm><primary>HD44780_Display</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>HD44780_Display</secondary></indexterm>
+<para><computeroutput>void HD44780_Display ( )</computeroutput></para><para>
+Definition at line <link linkend="_liquidcrystal__i2c_8c_source_1l00128">128</link> of file <link linkend="_liquidcrystal__i2c_8c_source">liquidcrystal_i2c.c</link>.</para>
+</section>
+<anchor xml:id="_liquidcrystal__i2c_8c_1a0e2a70008b6b991562badef8f2bcc4f5"/><section>
+    <title>HD44780_Home()</title>
+<indexterm><primary>HD44780_Home</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>HD44780_Home</secondary></indexterm>
+<para><computeroutput>void HD44780_Home ( )</computeroutput></para><para>
+Definition at line <link linkend="_liquidcrystal__i2c_8c_source_1l00110">110</link> of file <link linkend="_liquidcrystal__i2c_8c_source">liquidcrystal_i2c.c</link>.</para>
+</section>
+<anchor xml:id="_liquidcrystal__i2c_8c_1a97d4f7a1f8a23938955ba343380f13d1"/><section>
+    <title>HD44780_Init()</title>
+<indexterm><primary>HD44780_Init</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>HD44780_Init</secondary></indexterm>
+<para><computeroutput>void HD44780_Init (uint8_t rows)</computeroutput></para><para>
+Definition at line <link linkend="_liquidcrystal__i2c_8c_source_1l00049">49</link> of file <link linkend="_liquidcrystal__i2c_8c_source">liquidcrystal_i2c.c</link>.</para>
+</section>
+<anchor xml:id="_liquidcrystal__i2c_8c_1a7a9b443808c73ec3ee633762a5fcd454"/><section>
+    <title>HD44780_PrintStr()</title>
+<indexterm><primary>HD44780_PrintStr</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>HD44780_PrintStr</secondary></indexterm>
+<para><computeroutput>void HD44780_PrintStr (const char c[])</computeroutput></para><para>
+Definition at line <link linkend="_liquidcrystal__i2c_8c_source_1l00144">144</link> of file <link linkend="_liquidcrystal__i2c_8c_source">liquidcrystal_i2c.c</link>.</para>
+</section>
+<anchor xml:id="_liquidcrystal__i2c_8c_1a539dfd78c4614defb8e50249b855d193"/><section>
+    <title>HD44780_SetCursor()</title>
+<indexterm><primary>HD44780_SetCursor</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>HD44780_SetCursor</secondary></indexterm>
+<para><computeroutput>void HD44780_SetCursor (uint8_t col, uint8_t row)</computeroutput></para><para>
+Definition at line <link linkend="_liquidcrystal__i2c_8c_source_1l00116">116</link> of file <link linkend="_liquidcrystal__i2c_8c_source">liquidcrystal_i2c.c</link>.</para>
+</section>
+<anchor xml:id="_liquidcrystal__i2c_8c_1a51ceff037e8ee2986612154944835665"/><section>
+    <title>PulseEnable()</title>
+<indexterm><primary>PulseEnable</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>PulseEnable</secondary></indexterm>
+<para><computeroutput>static void PulseEnable (uint8_t _data)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_liquidcrystal__i2c_8c_source_1l00180">180</link> of file <link linkend="_liquidcrystal__i2c_8c_source">liquidcrystal_i2c.c</link>.</para>
+</section>
+<anchor xml:id="_liquidcrystal__i2c_8c_1a0b9a98e3d1f8e1607a233dae8054967e"/><section>
+    <title>Send()</title>
+<indexterm><primary>Send</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>Send</secondary></indexterm>
+<para><computeroutput>static void Send (uint8_t value, uint8_t mode)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_liquidcrystal__i2c_8c_source_1l00160">160</link> of file <link linkend="_liquidcrystal__i2c_8c_source">liquidcrystal_i2c.c</link>.</para>
+</section>
+<anchor xml:id="_liquidcrystal__i2c_8c_1a0c7d3765d4e552f9e9ac0158072b4e3d"/><section>
+    <title>SendChar()</title>
+<indexterm><primary>SendChar</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>SendChar</secondary></indexterm>
+<para><computeroutput>static void SendChar (uint8_t ch)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_liquidcrystal__i2c_8c_source_1l00155">155</link> of file <link linkend="_liquidcrystal__i2c_8c_source">liquidcrystal_i2c.c</link>.</para>
+</section>
+<anchor xml:id="_liquidcrystal__i2c_8c_1a91bee4670712c8170bad56bcb9e674cb"/><section>
+    <title>SendCommand()</title>
+<indexterm><primary>SendCommand</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>SendCommand</secondary></indexterm>
+<para><computeroutput>static void SendCommand (uint8_t cmd)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_liquidcrystal__i2c_8c_source_1l00150">150</link> of file <link linkend="_liquidcrystal__i2c_8c_source">liquidcrystal_i2c.c</link>.</para>
+</section>
+<anchor xml:id="_liquidcrystal__i2c_8c_1a29d12b27356d6e59ded506a361c7914e"/><section>
+    <title>Write4Bits()</title>
+<indexterm><primary>Write4Bits</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>Write4Bits</secondary></indexterm>
+<para><computeroutput>static void Write4Bits (uint8_t value)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_liquidcrystal__i2c_8c_source_1l00168">168</link> of file <link linkend="_liquidcrystal__i2c_8c_source">liquidcrystal_i2c.c</link>.</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_liquidcrystal__i2c_8c_1ac1c0ae2f596ae15916fb039fbb0c24ea"/><section>
+    <title>dpBacklight</title>
+<indexterm><primary>dpBacklight</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>dpBacklight</secondary></indexterm>
+<para><computeroutput>uint8_t dpBacklight</computeroutput></para><para>
+Definition at line <link linkend="_liquidcrystal__i2c_8c_source_1l00016">16</link> of file <link linkend="_liquidcrystal__i2c_8c_source">liquidcrystal_i2c.c</link>.</para>
+</section>
+<anchor xml:id="_liquidcrystal__i2c_8c_1a99b44d4e6dea8b547ee824b3ec90a44f"/><section>
+    <title>dpControl</title>
+<indexterm><primary>dpControl</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>dpControl</secondary></indexterm>
+<para><computeroutput>uint8_t dpControl</computeroutput></para><para>
+Definition at line <link linkend="_liquidcrystal__i2c_8c_source_1l00013">13</link> of file <link linkend="_liquidcrystal__i2c_8c_source">liquidcrystal_i2c.c</link>.</para>
+</section>
+<anchor xml:id="_liquidcrystal__i2c_8c_1ac5ee31d2518cd9b8936d8b69d4938c09"/><section>
+    <title>dpFunction</title>
+<indexterm><primary>dpFunction</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>dpFunction</secondary></indexterm>
+<para><computeroutput>uint8_t dpFunction</computeroutput></para><para>
+Definition at line <link linkend="_liquidcrystal__i2c_8c_source_1l00012">12</link> of file <link linkend="_liquidcrystal__i2c_8c_source">liquidcrystal_i2c.c</link>.</para>
+</section>
+<anchor xml:id="_liquidcrystal__i2c_8c_1a5992ca55a2763f066446894eb2177f1d"/><section>
+    <title>dpMode</title>
+<indexterm><primary>dpMode</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>dpMode</secondary></indexterm>
+<para><computeroutput>uint8_t dpMode</computeroutput></para><para>
+Definition at line <link linkend="_liquidcrystal__i2c_8c_source_1l00014">14</link> of file <link linkend="_liquidcrystal__i2c_8c_source">liquidcrystal_i2c.c</link>.</para>
+</section>
+<anchor xml:id="_liquidcrystal__i2c_8c_1ad954245ca59635459b3368eba1d28f54"/><section>
+    <title>dpRows</title>
+<indexterm><primary>dpRows</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>dpRows</secondary></indexterm>
+<para><computeroutput>uint8_t dpRows</computeroutput></para><para>
+Definition at line <link linkend="_liquidcrystal__i2c_8c_source_1l00015">15</link> of file <link linkend="_liquidcrystal__i2c_8c_source">liquidcrystal_i2c.c</link>.</para>
+</section>
+<anchor xml:id="_liquidcrystal__i2c_8c_1af7b2c26e44dadaaa798a5c3d82914ba7"/><section>
+    <title>hi2c1</title>
+<indexterm><primary>hi2c1</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>hi2c1</secondary></indexterm>
+<para><computeroutput>I2C_HandleTypeDef hi2c1<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_main_8c_source_1l00047">47</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+<anchor xml:id="_liquidcrystal__i2c_8c_1acfe7a7926addcac0db8ef202a00e5cbe"/><section>
+    <title>special1</title>
+<indexterm><primary>special1</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>special1</secondary></indexterm>
+<para><computeroutput>uint8_t special1[8]</computeroutput></para><emphasis role="strong">Initial value:</emphasis><programlisting linenumbering="unnumbered">=&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0b00000,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0b11001,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0b11011,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0b00110,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0b01100,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0b11011,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0b10011,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0b00000
+}
+</programlisting><para>
+Definition at line <link linkend="_liquidcrystal__i2c_8c_source_1l00027">27</link> of file <link linkend="_liquidcrystal__i2c_8c_source">liquidcrystal_i2c.c</link>.</para>
+</section>
+<anchor xml:id="_liquidcrystal__i2c_8c_1a07edfb9508b377544a55fdb615e8e4ab"/><section>
+    <title>special2</title>
+<indexterm><primary>special2</primary><secondary>liquidcrystal_i2c.c</secondary></indexterm>
+<indexterm><primary>liquidcrystal_i2c.c</primary><secondary>special2</secondary></indexterm>
+<para><computeroutput>uint8_t special2[8]</computeroutput></para><emphasis role="strong">Initial value:</emphasis><programlisting linenumbering="unnumbered">=&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0b11000,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0b11000,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0b00110,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0b01001,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0b01000,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0b01001,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0b00110,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0b00000
+}
+</programlisting><para>
+Definition at line <link linkend="_liquidcrystal__i2c_8c_source_1l00038">38</link> of file <link linkend="_liquidcrystal__i2c_8c_source">liquidcrystal_i2c.c</link>.</para>
+</section>
+</section>
+</section>

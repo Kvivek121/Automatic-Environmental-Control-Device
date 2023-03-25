@@ -1,0 +1,414 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_main_8c_source" xml:lang="en-US">
+<title>main.c</title>
+<indexterm><primary>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Src/main.c</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_main_8c_source_1l00001"/>00001 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;Header&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00018"/>00018 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;Header&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00019"/>00019 <emphasis role="comment">/*&#32;Includes&#32;------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00020"/>00020 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_main_8h">main.h</link>&quot;</emphasis>
+<anchor xml:id="_main_8c_source_1l00021"/>00021 
+<anchor xml:id="_main_8c_source_1l00022"/>00022 <emphasis role="comment">/*&#32;Private&#32;includes&#32;----------------------------------------------------------*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00023"/>00023 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;Includes&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00024"/>00024 <emphasis role="preprocessor">#include&#32;&quot;stdio.h&quot;</emphasis>
+<anchor xml:id="_main_8c_source_1l00025"/>00025 
+<anchor xml:id="_main_8c_source_1l00026"/>00026 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__m_e_n_u_8h">MENU.h</link>&quot;</emphasis>
+<anchor xml:id="_main_8c_source_1l00027"/>00027 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_h_t11_8h">DHT11.h</link>&quot;</emphasis>
+<anchor xml:id="_main_8c_source_1l00028"/>00028 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__b_m_p280_8h">BMP280.h</link>&quot;</emphasis>
+<anchor xml:id="_main_8c_source_1l00029"/>00029 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_liquidcrystal__i2c_8h">liquidcrystal_i2c.h</link>&quot;</emphasis>
+<anchor xml:id="_main_8c_source_1l00030"/>00030 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;Includes&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00031"/>00031 
+<anchor xml:id="_main_8c_source_1l00032"/>00032 <emphasis role="comment">/*&#32;Private&#32;typedef&#32;-----------------------------------------------------------*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00033"/>00033 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;PTD&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00034"/>00034 
+<anchor xml:id="_main_8c_source_1l00035"/>00035 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;PTD&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00036"/>00036 
+<anchor xml:id="_main_8c_source_1l00037"/>00037 <emphasis role="comment">/*&#32;Private&#32;define&#32;------------------------------------------------------------*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00038"/>00038 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;PD&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00039"/>00039 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;PD&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00040"/>00040 
+<anchor xml:id="_main_8c_source_1l00041"/>00041 <emphasis role="comment">/*&#32;Private&#32;macro&#32;-------------------------------------------------------------*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00042"/>00042 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;PM&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00043"/>00043 
+<anchor xml:id="_main_8c_source_1l00044"/>00044 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;PM&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00045"/>00045 
+<anchor xml:id="_main_8c_source_1l00046"/>00046 <emphasis role="comment">/*&#32;Private&#32;variables&#32;---------------------------------------------------------*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00047"/><link linkend="__b_m_p280_8h_1af7b2c26e44dadaaa798a5c3d82914ba7">00047</link> I2C_HandleTypeDef&#32;<link linkend="_main_8c_1af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</link>;
+<anchor xml:id="_main_8c_source_1l00048"/>00048 
+<anchor xml:id="_main_8c_source_1l00049"/><link linkend="__b_m_p280_8h_1ab9da65f935e805137e2eb4e18c5ab224">00049</link> SPI_HandleTypeDef&#32;<link linkend="_main_8c_1ab9da65f935e805137e2eb4e18c5ab224">hspi2</link>;
+<anchor xml:id="_main_8c_source_1l00050"/>00050 
+<anchor xml:id="_main_8c_source_1l00051"/><link linkend="__d_h_t11_8h_1a25fc663547539bc49fecc0011bd76ab5">00051</link> TIM_HandleTypeDef&#32;<link linkend="_main_8c_1a25fc663547539bc49fecc0011bd76ab5">htim1</link>;
+<anchor xml:id="_main_8c_source_1l00052"/>00052 
+<anchor xml:id="_main_8c_source_1l00053"/>00053 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;PV&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00054"/>00054 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_main_8c_1ad43c3812e6d13e0518d9f8b8f463ffcf">count</link>;
+<anchor xml:id="_main_8c_source_1l00055"/>00055 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">volatile</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_main_8c_1a234ac5d88f28f16f8469163f16805e99">menu_button</link>;
+<anchor xml:id="_main_8c_source_1l00056"/>00056 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;PV&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00057"/>00057 
+<anchor xml:id="_main_8c_source_1l00058"/>00058 <emphasis role="comment">/*&#32;Private&#32;function&#32;prototypes&#32;-----------------------------------------------*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00059"/>00059 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8c_1a70af21c671abfcc773614a9a4f63d920">SystemClock_Config</link>(<emphasis role="keywordtype">void</emphasis>);
+<anchor xml:id="_main_8c_source_1l00060"/>00060 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8c_1ae89fdd15729ad41a66911190fcbab23a">MX_GPIO_Init</link>(<emphasis role="keywordtype">void</emphasis>);
+<anchor xml:id="_main_8c_source_1l00061"/>00061 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8c_1a4230d11f81d0b16e112f1cc3f40cb42f">MX_I2C1_Init</link>(<emphasis role="keywordtype">void</emphasis>);
+<anchor xml:id="_main_8c_source_1l00062"/>00062 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8c_1ade0c8abfcfc1615647bfdd244bd1ee00">MX_SPI2_Init</link>(<emphasis role="keywordtype">void</emphasis>);
+<anchor xml:id="_main_8c_source_1l00063"/>00063 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8c_1a1d1beb7da60021ee1adbca294f28ba88">MX_TIM1_Init</link>(<emphasis role="keywordtype">void</emphasis>);
+<anchor xml:id="_main_8c_source_1l00064"/>00064 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;PFP&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00065"/>00065 
+<anchor xml:id="_main_8c_source_1l00066"/>00066 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;PFP&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00067"/>00067 
+<anchor xml:id="_main_8c_source_1l00068"/>00068 <emphasis role="comment">/*&#32;Private&#32;user&#32;code&#32;---------------------------------------------------------*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00069"/>00069 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;0&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00070"/>00070 
+<anchor xml:id="_main_8c_source_1l00071"/>00071 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;0&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00072"/>00072 
+<anchor xml:id="_main_8c_source_1l00077"/><link linkend="_main_8c_1a840291bc02cba5474a4cb46a9b9566fe">00077</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_main_8c_1a840291bc02cba5474a4cb46a9b9566fe">main</link>(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="_main_8c_source_1l00078"/>00078 {
+<anchor xml:id="_main_8c_source_1l00079"/>00079 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;1&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00080"/>00080 
+<anchor xml:id="_main_8c_source_1l00081"/>00081 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;1&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00082"/>00082 
+<anchor xml:id="_main_8c_source_1l00083"/>00083 &#32;&#32;<emphasis role="comment">/*&#32;MCU&#32;Configuration--------------------------------------------------------*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00084"/>00084 
+<anchor xml:id="_main_8c_source_1l00085"/>00085 &#32;&#32;<emphasis role="comment">/*&#32;Reset&#32;of&#32;all&#32;peripherals,&#32;Initializes&#32;the&#32;Flash&#32;interface&#32;and&#32;the&#32;Systick.&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00086"/>00086 &#32;&#32;HAL_Init();
+<anchor xml:id="_main_8c_source_1l00087"/>00087 
+<anchor xml:id="_main_8c_source_1l00088"/>00088 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;Init&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00089"/>00089 
+<anchor xml:id="_main_8c_source_1l00090"/>00090 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;Init&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00091"/>00091 
+<anchor xml:id="_main_8c_source_1l00092"/>00092 &#32;&#32;<emphasis role="comment">/*&#32;Configure&#32;the&#32;system&#32;clock&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00093"/>00093 &#32;&#32;<link linkend="_main_8c_1a70af21c671abfcc773614a9a4f63d920">SystemClock_Config</link>();
+<anchor xml:id="_main_8c_source_1l00094"/>00094 
+<anchor xml:id="_main_8c_source_1l00095"/>00095 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;SysInit&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00096"/>00096 
+<anchor xml:id="_main_8c_source_1l00097"/>00097 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;SysInit&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00098"/>00098 
+<anchor xml:id="_main_8c_source_1l00099"/>00099 &#32;&#32;<emphasis role="comment">/*&#32;Initialize&#32;all&#32;configured&#32;peripherals&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00100"/>00100 &#32;&#32;<link linkend="_main_8c_1ae89fdd15729ad41a66911190fcbab23a">MX_GPIO_Init</link>();
+<anchor xml:id="_main_8c_source_1l00101"/>00101 &#32;&#32;<link linkend="_main_8c_1a4230d11f81d0b16e112f1cc3f40cb42f">MX_I2C1_Init</link>();
+<anchor xml:id="_main_8c_source_1l00102"/>00102 &#32;&#32;<link linkend="_main_8c_1ade0c8abfcfc1615647bfdd244bd1ee00">MX_SPI2_Init</link>();
+<anchor xml:id="_main_8c_source_1l00103"/>00103 &#32;&#32;<link linkend="_main_8c_1a1d1beb7da60021ee1adbca294f28ba88">MX_TIM1_Init</link>();
+<anchor xml:id="_main_8c_source_1l00104"/>00104 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;2&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00105"/>00105 
+<anchor xml:id="_main_8c_source_1l00106"/>00106 <emphasis role="comment">&#32;&#32;/*****************************************************************************************************/</emphasis>
+<anchor xml:id="_main_8c_source_1l00107"/>00107 <emphasis role="comment">&#32;&#32;/*****************************************16X2&#32;LCD&#32;Initialization*************************************/</emphasis>
+<anchor xml:id="_main_8c_source_1l00108"/>00108 
+<anchor xml:id="_main_8c_source_1l00109"/>00109 &#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1a97d4f7a1f8a23938955ba343380f13d1">HD44780_Init</link>(2);
+<anchor xml:id="_main_8c_source_1l00110"/>00110 &#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1af313a9f7b2c955a408d6045a00f65aea">HD44780_PrintStr</link>(<emphasis role="stringliteral">&quot;WELCOME!!!&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00111"/>00111 
+<anchor xml:id="_main_8c_source_1l00112"/>00112 <emphasis role="comment">&#32;&#32;/*****************************************************************************************************/</emphasis>
+<anchor xml:id="_main_8c_source_1l00113"/>00113 <emphasis role="comment">&#32;&#32;/*****************************************&#32;DHT11&#32;Timer&#32;&#32;Start*****************************************/</emphasis>
+<anchor xml:id="_main_8c_source_1l00114"/>00114 
+<anchor xml:id="_main_8c_source_1l00115"/>00115 &#32;&#32;HAL_TIM_Base_Start(&amp;<link linkend="_main_8c_1a25fc663547539bc49fecc0011bd76ab5">htim1</link>);
+<anchor xml:id="_main_8c_source_1l00116"/>00116 &#32;&#32;<link linkend="_struct_d_h_t11__value">DHT11_read_value</link>&#32;DHT11_read_value2;&#32;&#32;<emphasis role="comment">//structure&#32;to&#32;store&#32;Temperature&#32;and&#32;humidity&#32;value</emphasis>
+<anchor xml:id="_main_8c_source_1l00117"/>00117 &#32;&#32;uint8_t&#32;RHI,&#32;TCI;
+<anchor xml:id="_main_8c_source_1l00118"/>00118 &#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;strCopy1[15];
+<anchor xml:id="_main_8c_source_1l00119"/>00119 
+<anchor xml:id="_main_8c_source_1l00120"/>00120 <emphasis role="comment">&#32;&#32;/*****************************************************************************************************/</emphasis>
+<anchor xml:id="_main_8c_source_1l00121"/>00121 <emphasis role="comment">&#32;&#32;/*****************************************BMP280&#32;&#32;&#32;Initialization*************************************/</emphasis>
+<anchor xml:id="_main_8c_source_1l00122"/>00122 
+<anchor xml:id="_main_8c_source_1l00123"/>00123 &#32;&#32;<link linkend="__b_m_p280_8h_1ae3168b9163675628a89fc1e422de4b5e">BMP280_init</link>();
+<anchor xml:id="_main_8c_source_1l00124"/>00124 &#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;buf1[10];&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Buffer&#32;for&#32;storing&#32;float&#32;to&#32;string&#32;converted&#32;value</emphasis>
+<anchor xml:id="_main_8c_source_1l00125"/>00125 &#32;&#32;<link linkend="_structreading">read_value</link>&#32;read_value_main;&#32;&#32;&#32;&#32;<emphasis role="comment">//structure&#32;of&#32;BMP280&#32;measure&#32;function&#32;passing&#32;temperature,pressure,altitude&#32;value</emphasis>
+<anchor xml:id="_main_8c_source_1l00126"/>00126 &#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;t[3];
+<anchor xml:id="_main_8c_source_1l00127"/>00127 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;2&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00128"/>00128 
+<anchor xml:id="_main_8c_source_1l00129"/>00129 &#32;&#32;<emphasis role="comment">/*&#32;Infinite&#32;loop&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00130"/>00130 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;WHILE&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00131"/>00131 
+<anchor xml:id="_main_8c_source_1l00132"/>00132 &#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(1)
+<anchor xml:id="_main_8c_source_1l00133"/>00133 &#32;&#32;{
+<anchor xml:id="_main_8c_source_1l00134"/>00134 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;WHILE&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00135"/>00135 
+<anchor xml:id="_main_8c_source_1l00136"/>00136 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;3&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__b_m_p280_8h_1acb159e980500707f4b78480997970b88">BMP280_get_calib_values</link>();
+<anchor xml:id="_main_8c_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;HAL_Delay(100);
+<anchor xml:id="_main_8c_source_1l00139"/>00139 
+<anchor xml:id="_main_8c_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Reading&#32;BMP280&#32;sensor&#32;value&#32;in&#32;a&#32;structure</emphasis>
+<anchor xml:id="_main_8c_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;read_value_main=<link linkend="__b_m_p280_8h_1a631a6834a2390b88c16a10f843c43d65">BMP280_measure</link>();
+<anchor xml:id="_main_8c_source_1l00142"/>00142 
+<anchor xml:id="_main_8c_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;t[0]=read_value_main.<link linkend="_structreading_1a24d61a35b72d7299eb6b5f48e71a571b">temp</link>;
+<anchor xml:id="_main_8c_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;t[1]=read_value_main.<link linkend="_structreading_1a512591c298ab1304bf391d08271daf2b">press</link>/100;
+<anchor xml:id="_main_8c_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;t[2]=-1*read_value_main.<link linkend="_structreading_1aa97670ab3ffe5a94fe4d8e807083825e">alti</link>/100;
+<anchor xml:id="_main_8c_source_1l00146"/>00146 
+<anchor xml:id="_main_8c_source_1l00147"/>00147 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Displaying&#32;The&#32;value&#32;collected&#32;from&#32;BMP289&#32;sensor</emphasis>
+<anchor xml:id="_main_8c_source_1l00148"/>00148 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1abe31ef769fa9a1941c6d5e51fc63b3fd">HD44780_Clear</link>();
+<anchor xml:id="_main_8c_source_1l00149"/>00149 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1a8ad667447dffc6a0833d8e54c7853ac8">HD44780_SetCursor</link>(2,0);
+<anchor xml:id="_main_8c_source_1l00150"/>00150 &#32;&#32;&#32;&#32;&#32;&#32;gcvt(t[0],&#32;7,&#32;buf1);
+<anchor xml:id="_main_8c_source_1l00151"/>00151 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1af313a9f7b2c955a408d6045a00f65aea">HD44780_PrintStr</link>(<emphasis role="stringliteral">&quot;Temperature:&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00152"/>00152 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1a8ad667447dffc6a0833d8e54c7853ac8">HD44780_SetCursor</link>(5,1);
+<anchor xml:id="_main_8c_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1af313a9f7b2c955a408d6045a00f65aea">HD44780_PrintStr</link>(buf1);
+<anchor xml:id="_main_8c_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;HAL_Delay(1000);
+<anchor xml:id="_main_8c_source_1l00155"/>00155 
+<anchor xml:id="_main_8c_source_1l00156"/>00156 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1abe31ef769fa9a1941c6d5e51fc63b3fd">HD44780_Clear</link>();
+<anchor xml:id="_main_8c_source_1l00157"/>00157 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1a8ad667447dffc6a0833d8e54c7853ac8">HD44780_SetCursor</link>(2,0);
+<anchor xml:id="_main_8c_source_1l00158"/>00158 &#32;&#32;&#32;&#32;&#32;&#32;gcvt(t[1],&#32;5,&#32;buf1);
+<anchor xml:id="_main_8c_source_1l00159"/>00159 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1af313a9f7b2c955a408d6045a00f65aea">HD44780_PrintStr</link>(<emphasis role="stringliteral">&quot;Pressure:&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00160"/>00160 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1a8ad667447dffc6a0833d8e54c7853ac8">HD44780_SetCursor</link>(5,1);
+<anchor xml:id="_main_8c_source_1l00161"/>00161 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1af313a9f7b2c955a408d6045a00f65aea">HD44780_PrintStr</link>(buf1);
+<anchor xml:id="_main_8c_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;HAL_Delay(1000);
+<anchor xml:id="_main_8c_source_1l00163"/>00163 
+<anchor xml:id="_main_8c_source_1l00164"/>00164 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;/*****************************************************************************************************************/</emphasis>
+<anchor xml:id="_main_8c_source_1l00165"/>00165 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;/************************************************Value&#32;from&#32;DHT11&#32;sensor******************************************/</emphasis>
+<anchor xml:id="_main_8c_source_1l00166"/>00166 
+<anchor xml:id="_main_8c_source_1l00167"/>00167 &#32;&#32;&#32;&#32;&#32;&#32;DHT11_read_value2=<link linkend="__d_h_t11_8h_1a90da1df4ae78a755072b7c76cf4dabfd">DHT11_Print_Value</link>();
+<anchor xml:id="_main_8c_source_1l00168"/>00168 &#32;&#32;&#32;&#32;&#32;&#32;TCI&#32;=DHT11_read_value2.<link linkend="_struct_d_h_t11__value_1ad2449d51a59211ef30d054412b336493">DHT11_temp</link>;
+<anchor xml:id="_main_8c_source_1l00169"/>00169 &#32;&#32;&#32;&#32;&#32;&#32;RHI&#32;=DHT11_read_value2.<link linkend="_struct_d_h_t11__value_1a0486eb63d63d9b22a636b5acf3a4b289">DHT11_humi</link>;
+<anchor xml:id="_main_8c_source_1l00170"/>00170 
+<anchor xml:id="_main_8c_source_1l00171"/>00171 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1abe31ef769fa9a1941c6d5e51fc63b3fd">HD44780_Clear</link>();
+<anchor xml:id="_main_8c_source_1l00172"/>00172 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1a8ad667447dffc6a0833d8e54c7853ac8">HD44780_SetCursor</link>(2,0);
+<anchor xml:id="_main_8c_source_1l00173"/>00173 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1af313a9f7b2c955a408d6045a00f65aea">HD44780_PrintStr</link>(<emphasis role="stringliteral">&quot;Humidity:&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00174"/>00174 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1a8ad667447dffc6a0833d8e54c7853ac8">HD44780_SetCursor</link>(5,1);
+<anchor xml:id="_main_8c_source_1l00175"/>00175 &#32;&#32;&#32;&#32;&#32;&#32;sprintf(strCopy1,&#32;<emphasis role="stringliteral">&quot;%d.%d&#32;%%&#32;&quot;</emphasis>,RHI);
+<anchor xml:id="_main_8c_source_1l00176"/>00176 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1af313a9f7b2c955a408d6045a00f65aea">HD44780_PrintStr</link>(strCopy1);
+<anchor xml:id="_main_8c_source_1l00177"/>00177 &#32;&#32;&#32;&#32;&#32;&#32;HAL_Delay(1000);
+<anchor xml:id="_main_8c_source_1l00178"/>00178 
+<anchor xml:id="_main_8c_source_1l00179"/>00179 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;/*****************************************************************************************************************/</emphasis>
+<anchor xml:id="_main_8c_source_1l00180"/>00180 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;/***************************************Relay&#32;program&#32;to&#32;Take&#32;corrective&#32;measures*********************************/</emphasis>
+<anchor xml:id="_main_8c_source_1l00181"/>00181 
+<anchor xml:id="_main_8c_source_1l00182"/>00182 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(t[0]&gt;31)&#32;&#32;&#32;<emphasis role="comment">//Temperature</emphasis>
+<anchor xml:id="_main_8c_source_1l00183"/>00183 &#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8c_source_1l00184"/>00184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;HAL_GPIO_WritePin(GPIOB,&#32;GPIO_PIN_3,&#32;GPIO_PIN_SET);
+<anchor xml:id="_main_8c_source_1l00185"/>00185 &#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8c_source_1l00186"/>00186 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="_main_8c_source_1l00187"/>00187 &#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8c_source_1l00188"/>00188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;HAL_GPIO_WritePin(GPIOB,&#32;GPIO_PIN_3,&#32;GPIO_PIN_RESET);
+<anchor xml:id="_main_8c_source_1l00189"/>00189 &#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8c_source_1l00190"/>00190 
+<anchor xml:id="_main_8c_source_1l00191"/>00191 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(t[1]&gt;970)&#32;<emphasis role="comment">//Pressure</emphasis>
+<anchor xml:id="_main_8c_source_1l00192"/>00192 &#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8c_source_1l00193"/>00193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;HAL_GPIO_WritePin(GPIOB,&#32;GPIO_PIN_4,&#32;GPIO_PIN_SET);
+<anchor xml:id="_main_8c_source_1l00194"/>00194 &#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8c_source_1l00195"/>00195 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="_main_8c_source_1l00196"/>00196 &#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8c_source_1l00197"/>00197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;HAL_GPIO_WritePin(GPIOB,&#32;GPIO_PIN_4,&#32;GPIO_PIN_RESET);
+<anchor xml:id="_main_8c_source_1l00198"/>00198 &#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8c_source_1l00199"/>00199 
+<anchor xml:id="_main_8c_source_1l00200"/>00200 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(RHI&gt;45)&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Humidity</emphasis>
+<anchor xml:id="_main_8c_source_1l00201"/>00201 &#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8c_source_1l00202"/>00202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;HAL_GPIO_WritePin(GPIOB,&#32;GPIO_PIN_5,&#32;GPIO_PIN_SET);
+<anchor xml:id="_main_8c_source_1l00203"/>00203 &#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8c_source_1l00204"/>00204 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="_main_8c_source_1l00205"/>00205 &#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8c_source_1l00206"/>00206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;HAL_GPIO_WritePin(GPIOB,&#32;GPIO_PIN_5,&#32;GPIO_PIN_RESET);
+<anchor xml:id="_main_8c_source_1l00207"/>00207 &#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8c_source_1l00208"/>00208 
+<anchor xml:id="_main_8c_source_1l00209"/>00209 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;/****************************************************************************************************************/</emphasis>
+<anchor xml:id="_main_8c_source_1l00210"/>00210 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;/************************************************Interrupt&#32;Button&#32;Code&#32;******************************************/</emphasis>
+<anchor xml:id="_main_8c_source_1l00211"/>00211 
+<anchor xml:id="_main_8c_source_1l00212"/>00212 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_main_8c_1a234ac5d88f28f16f8469163f16805e99">menu_button</link>==1&#32;&amp;&amp;&#32;<link linkend="_main_8c_1ad43c3812e6d13e0518d9f8b8f463ffcf">count</link>&gt;0)&#32;&#32;&#32;<emphasis role="comment">//interrupt</emphasis>
+<anchor xml:id="_main_8c_source_1l00213"/>00213 &#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8c_source_1l00214"/>00214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8h_1afdf1ca9e7afc3e7ec41b47fea4b3d80d">Menu</link>();
+<anchor xml:id="_main_8c_source_1l00215"/>00215 &#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8c_source_1l00216"/>00216 &#32;&#32;}
+<anchor xml:id="_main_8c_source_1l00217"/>00217 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;3&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00218"/>00218 }
+<anchor xml:id="_main_8c_source_1l00219"/>00219 
+<anchor xml:id="_main_8c_source_1l00224"/><link linkend="_main_8c_1a70af21c671abfcc773614a9a4f63d920">00224</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8c_1a70af21c671abfcc773614a9a4f63d920">SystemClock_Config</link>(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="_main_8c_source_1l00225"/>00225 {
+<anchor xml:id="_main_8c_source_1l00226"/>00226 &#32;&#32;RCC_OscInitTypeDef&#32;RCC_OscInitStruct&#32;=&#32;{0};
+<anchor xml:id="_main_8c_source_1l00227"/>00227 &#32;&#32;RCC_ClkInitTypeDef&#32;RCC_ClkInitStruct&#32;=&#32;{0};
+<anchor xml:id="_main_8c_source_1l00228"/>00228 
+<anchor xml:id="_main_8c_source_1l00232"/>00232 &#32;&#32;RCC_OscInitStruct.OscillatorType&#32;=&#32;RCC_OSCILLATORTYPE_HSE;
+<anchor xml:id="_main_8c_source_1l00233"/>00233 &#32;&#32;RCC_OscInitStruct.HSEState&#32;=&#32;RCC_HSE_ON;
+<anchor xml:id="_main_8c_source_1l00234"/>00234 &#32;&#32;RCC_OscInitStruct.HSEPredivValue&#32;=&#32;RCC_HSE_PREDIV_DIV1;
+<anchor xml:id="_main_8c_source_1l00235"/>00235 &#32;&#32;RCC_OscInitStruct.HSIState&#32;=&#32;RCC_HSI_ON;
+<anchor xml:id="_main_8c_source_1l00236"/>00236 &#32;&#32;RCC_OscInitStruct.PLL.PLLState&#32;=&#32;RCC_PLL_ON;
+<anchor xml:id="_main_8c_source_1l00237"/>00237 &#32;&#32;RCC_OscInitStruct.PLL.PLLSource&#32;=&#32;RCC_PLLSOURCE_HSE;
+<anchor xml:id="_main_8c_source_1l00238"/>00238 &#32;&#32;RCC_OscInitStruct.PLL.PLLMUL&#32;=&#32;RCC_PLL_MUL9;
+<anchor xml:id="_main_8c_source_1l00239"/>00239 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(HAL_RCC_OscConfig(&amp;RCC_OscInitStruct)&#32;!=&#32;HAL_OK)
+<anchor xml:id="_main_8c_source_1l00240"/>00240 &#32;&#32;{
+<anchor xml:id="_main_8c_source_1l00241"/>00241 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a1730ffe1e560465665eb47d9264826f9">Error_Handler</link>();
+<anchor xml:id="_main_8c_source_1l00242"/>00242 &#32;&#32;}
+<anchor xml:id="_main_8c_source_1l00243"/>00243 
+<anchor xml:id="_main_8c_source_1l00246"/>00246 &#32;&#32;RCC_ClkInitStruct.ClockType&#32;=&#32;RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+<anchor xml:id="_main_8c_source_1l00247"/>00247 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;|RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+<anchor xml:id="_main_8c_source_1l00248"/>00248 &#32;&#32;RCC_ClkInitStruct.SYSCLKSource&#32;=&#32;RCC_SYSCLKSOURCE_PLLCLK;
+<anchor xml:id="_main_8c_source_1l00249"/>00249 &#32;&#32;RCC_ClkInitStruct.AHBCLKDivider&#32;=&#32;RCC_SYSCLK_DIV1;
+<anchor xml:id="_main_8c_source_1l00250"/>00250 &#32;&#32;RCC_ClkInitStruct.APB1CLKDivider&#32;=&#32;RCC_HCLK_DIV2;
+<anchor xml:id="_main_8c_source_1l00251"/>00251 &#32;&#32;RCC_ClkInitStruct.APB2CLKDivider&#32;=&#32;RCC_HCLK_DIV1;
+<anchor xml:id="_main_8c_source_1l00252"/>00252 
+<anchor xml:id="_main_8c_source_1l00253"/>00253 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(HAL_RCC_ClockConfig(&amp;RCC_ClkInitStruct,&#32;FLASH_LATENCY_2)&#32;!=&#32;HAL_OK)
+<anchor xml:id="_main_8c_source_1l00254"/>00254 &#32;&#32;{
+<anchor xml:id="_main_8c_source_1l00255"/>00255 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a1730ffe1e560465665eb47d9264826f9">Error_Handler</link>();
+<anchor xml:id="_main_8c_source_1l00256"/>00256 &#32;&#32;}
+<anchor xml:id="_main_8c_source_1l00257"/>00257 }
+<anchor xml:id="_main_8c_source_1l00258"/>00258 
+<anchor xml:id="_main_8c_source_1l00264"/><link linkend="_main_8c_1a4230d11f81d0b16e112f1cc3f40cb42f">00264</link> <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8c_1a4230d11f81d0b16e112f1cc3f40cb42f">MX_I2C1_Init</link>(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="_main_8c_source_1l00265"/>00265 {
+<anchor xml:id="_main_8c_source_1l00266"/>00266 
+<anchor xml:id="_main_8c_source_1l00267"/>00267 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;I2C1_Init&#32;0&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00268"/>00268 
+<anchor xml:id="_main_8c_source_1l00269"/>00269 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;I2C1_Init&#32;0&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00270"/>00270 
+<anchor xml:id="_main_8c_source_1l00271"/>00271 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;I2C1_Init&#32;1&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00272"/>00272 
+<anchor xml:id="_main_8c_source_1l00273"/>00273 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;I2C1_Init&#32;1&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00274"/>00274 &#32;&#32;<link linkend="_main_8c_1af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</link>.Instance&#32;=&#32;I2C1;
+<anchor xml:id="_main_8c_source_1l00275"/>00275 &#32;&#32;<link linkend="_main_8c_1af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</link>.Init.ClockSpeed&#32;=&#32;100000;
+<anchor xml:id="_main_8c_source_1l00276"/>00276 &#32;&#32;<link linkend="_main_8c_1af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</link>.Init.DutyCycle&#32;=&#32;I2C_DUTYCYCLE_2;
+<anchor xml:id="_main_8c_source_1l00277"/>00277 &#32;&#32;<link linkend="_main_8c_1af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</link>.Init.OwnAddress1&#32;=&#32;0;
+<anchor xml:id="_main_8c_source_1l00278"/>00278 &#32;&#32;<link linkend="_main_8c_1af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</link>.Init.AddressingMode&#32;=&#32;I2C_ADDRESSINGMODE_7BIT;
+<anchor xml:id="_main_8c_source_1l00279"/>00279 &#32;&#32;<link linkend="_main_8c_1af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</link>.Init.DualAddressMode&#32;=&#32;I2C_DUALADDRESS_DISABLE;
+<anchor xml:id="_main_8c_source_1l00280"/>00280 &#32;&#32;<link linkend="_main_8c_1af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</link>.Init.OwnAddress2&#32;=&#32;0;
+<anchor xml:id="_main_8c_source_1l00281"/>00281 &#32;&#32;<link linkend="_main_8c_1af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</link>.Init.GeneralCallMode&#32;=&#32;I2C_GENERALCALL_DISABLE;
+<anchor xml:id="_main_8c_source_1l00282"/>00282 &#32;&#32;<link linkend="_main_8c_1af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</link>.Init.NoStretchMode&#32;=&#32;I2C_NOSTRETCH_DISABLE;
+<anchor xml:id="_main_8c_source_1l00283"/>00283 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(HAL_I2C_Init(&amp;<link linkend="_main_8c_1af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</link>)&#32;!=&#32;HAL_OK)
+<anchor xml:id="_main_8c_source_1l00284"/>00284 &#32;&#32;{
+<anchor xml:id="_main_8c_source_1l00285"/>00285 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a1730ffe1e560465665eb47d9264826f9">Error_Handler</link>();
+<anchor xml:id="_main_8c_source_1l00286"/>00286 &#32;&#32;}
+<anchor xml:id="_main_8c_source_1l00287"/>00287 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;I2C1_Init&#32;2&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00288"/>00288 
+<anchor xml:id="_main_8c_source_1l00289"/>00289 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;I2C1_Init&#32;2&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00290"/>00290 
+<anchor xml:id="_main_8c_source_1l00291"/>00291 }
+<anchor xml:id="_main_8c_source_1l00292"/>00292 
+<anchor xml:id="_main_8c_source_1l00298"/><link linkend="_main_8c_1ade0c8abfcfc1615647bfdd244bd1ee00">00298</link> <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8c_1ade0c8abfcfc1615647bfdd244bd1ee00">MX_SPI2_Init</link>(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="_main_8c_source_1l00299"/>00299 {
+<anchor xml:id="_main_8c_source_1l00300"/>00300 
+<anchor xml:id="_main_8c_source_1l00301"/>00301 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;SPI2_Init&#32;0&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00302"/>00302 
+<anchor xml:id="_main_8c_source_1l00303"/>00303 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;SPI2_Init&#32;0&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00304"/>00304 
+<anchor xml:id="_main_8c_source_1l00305"/>00305 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;SPI2_Init&#32;1&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00306"/>00306 
+<anchor xml:id="_main_8c_source_1l00307"/>00307 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;SPI2_Init&#32;1&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00308"/>00308 &#32;&#32;<emphasis role="comment">/*&#32;SPI2&#32;parameter&#32;configuration*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00309"/>00309 &#32;&#32;<link linkend="_main_8c_1ab9da65f935e805137e2eb4e18c5ab224">hspi2</link>.Instance&#32;=&#32;SPI2;
+<anchor xml:id="_main_8c_source_1l00310"/>00310 &#32;&#32;<link linkend="_main_8c_1ab9da65f935e805137e2eb4e18c5ab224">hspi2</link>.Init.Mode&#32;=&#32;SPI_MODE_MASTER;
+<anchor xml:id="_main_8c_source_1l00311"/>00311 &#32;&#32;<link linkend="_main_8c_1ab9da65f935e805137e2eb4e18c5ab224">hspi2</link>.Init.Direction&#32;=&#32;SPI_DIRECTION_2LINES;
+<anchor xml:id="_main_8c_source_1l00312"/>00312 &#32;&#32;<link linkend="_main_8c_1ab9da65f935e805137e2eb4e18c5ab224">hspi2</link>.Init.DataSize&#32;=&#32;SPI_DATASIZE_8BIT;
+<anchor xml:id="_main_8c_source_1l00313"/>00313 &#32;&#32;<link linkend="_main_8c_1ab9da65f935e805137e2eb4e18c5ab224">hspi2</link>.Init.CLKPolarity&#32;=&#32;SPI_POLARITY_LOW;
+<anchor xml:id="_main_8c_source_1l00314"/>00314 &#32;&#32;<link linkend="_main_8c_1ab9da65f935e805137e2eb4e18c5ab224">hspi2</link>.Init.CLKPhase&#32;=&#32;SPI_PHASE_1EDGE;
+<anchor xml:id="_main_8c_source_1l00315"/>00315 &#32;&#32;<link linkend="_main_8c_1ab9da65f935e805137e2eb4e18c5ab224">hspi2</link>.Init.NSS&#32;=&#32;SPI_NSS_SOFT;
+<anchor xml:id="_main_8c_source_1l00316"/>00316 &#32;&#32;<link linkend="_main_8c_1ab9da65f935e805137e2eb4e18c5ab224">hspi2</link>.Init.BaudRatePrescaler&#32;=&#32;SPI_BAUDRATEPRESCALER_2;
+<anchor xml:id="_main_8c_source_1l00317"/>00317 &#32;&#32;<link linkend="_main_8c_1ab9da65f935e805137e2eb4e18c5ab224">hspi2</link>.Init.FirstBit&#32;=&#32;SPI_FIRSTBIT_MSB;
+<anchor xml:id="_main_8c_source_1l00318"/>00318 &#32;&#32;<link linkend="_main_8c_1ab9da65f935e805137e2eb4e18c5ab224">hspi2</link>.Init.TIMode&#32;=&#32;SPI_TIMODE_DISABLE;
+<anchor xml:id="_main_8c_source_1l00319"/>00319 &#32;&#32;<link linkend="_main_8c_1ab9da65f935e805137e2eb4e18c5ab224">hspi2</link>.Init.CRCCalculation&#32;=&#32;SPI_CRCCALCULATION_DISABLE;
+<anchor xml:id="_main_8c_source_1l00320"/>00320 &#32;&#32;<link linkend="_main_8c_1ab9da65f935e805137e2eb4e18c5ab224">hspi2</link>.Init.CRCPolynomial&#32;=&#32;10;
+<anchor xml:id="_main_8c_source_1l00321"/>00321 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(HAL_SPI_Init(&amp;<link linkend="_main_8c_1ab9da65f935e805137e2eb4e18c5ab224">hspi2</link>)&#32;!=&#32;HAL_OK)
+<anchor xml:id="_main_8c_source_1l00322"/>00322 &#32;&#32;{
+<anchor xml:id="_main_8c_source_1l00323"/>00323 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a1730ffe1e560465665eb47d9264826f9">Error_Handler</link>();
+<anchor xml:id="_main_8c_source_1l00324"/>00324 &#32;&#32;}
+<anchor xml:id="_main_8c_source_1l00325"/>00325 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;SPI2_Init&#32;2&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00326"/>00326 
+<anchor xml:id="_main_8c_source_1l00327"/>00327 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;SPI2_Init&#32;2&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00328"/>00328 
+<anchor xml:id="_main_8c_source_1l00329"/>00329 }
+<anchor xml:id="_main_8c_source_1l00330"/>00330 
+<anchor xml:id="_main_8c_source_1l00336"/><link linkend="_main_8c_1a1d1beb7da60021ee1adbca294f28ba88">00336</link> <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8c_1a1d1beb7da60021ee1adbca294f28ba88">MX_TIM1_Init</link>(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="_main_8c_source_1l00337"/>00337 {
+<anchor xml:id="_main_8c_source_1l00338"/>00338 
+<anchor xml:id="_main_8c_source_1l00339"/>00339 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;TIM1_Init&#32;0&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00340"/>00340 
+<anchor xml:id="_main_8c_source_1l00341"/>00341 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;TIM1_Init&#32;0&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00342"/>00342 
+<anchor xml:id="_main_8c_source_1l00343"/>00343 &#32;&#32;TIM_ClockConfigTypeDef&#32;sClockSourceConfig&#32;=&#32;{0};
+<anchor xml:id="_main_8c_source_1l00344"/>00344 &#32;&#32;TIM_MasterConfigTypeDef&#32;sMasterConfig&#32;=&#32;{0};
+<anchor xml:id="_main_8c_source_1l00345"/>00345 
+<anchor xml:id="_main_8c_source_1l00346"/>00346 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;TIM1_Init&#32;1&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00347"/>00347 
+<anchor xml:id="_main_8c_source_1l00348"/>00348 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;TIM1_Init&#32;1&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00349"/>00349 &#32;&#32;<link linkend="_main_8c_1a25fc663547539bc49fecc0011bd76ab5">htim1</link>.Instance&#32;=&#32;TIM1;
+<anchor xml:id="_main_8c_source_1l00350"/>00350 &#32;&#32;<link linkend="_main_8c_1a25fc663547539bc49fecc0011bd76ab5">htim1</link>.Init.Prescaler&#32;=&#32;71;
+<anchor xml:id="_main_8c_source_1l00351"/>00351 &#32;&#32;<link linkend="_main_8c_1a25fc663547539bc49fecc0011bd76ab5">htim1</link>.Init.CounterMode&#32;=&#32;TIM_COUNTERMODE_UP;
+<anchor xml:id="_main_8c_source_1l00352"/>00352 &#32;&#32;<link linkend="_main_8c_1a25fc663547539bc49fecc0011bd76ab5">htim1</link>.Init.Period&#32;=&#32;65535;
+<anchor xml:id="_main_8c_source_1l00353"/>00353 &#32;&#32;<link linkend="_main_8c_1a25fc663547539bc49fecc0011bd76ab5">htim1</link>.Init.ClockDivision&#32;=&#32;TIM_CLOCKDIVISION_DIV1;
+<anchor xml:id="_main_8c_source_1l00354"/>00354 &#32;&#32;<link linkend="_main_8c_1a25fc663547539bc49fecc0011bd76ab5">htim1</link>.Init.RepetitionCounter&#32;=&#32;0;
+<anchor xml:id="_main_8c_source_1l00355"/>00355 &#32;&#32;<link linkend="_main_8c_1a25fc663547539bc49fecc0011bd76ab5">htim1</link>.Init.AutoReloadPreload&#32;=&#32;TIM_AUTORELOAD_PRELOAD_DISABLE;
+<anchor xml:id="_main_8c_source_1l00356"/>00356 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(HAL_TIM_Base_Init(&amp;<link linkend="_main_8c_1a25fc663547539bc49fecc0011bd76ab5">htim1</link>)&#32;!=&#32;HAL_OK)
+<anchor xml:id="_main_8c_source_1l00357"/>00357 &#32;&#32;{
+<anchor xml:id="_main_8c_source_1l00358"/>00358 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a1730ffe1e560465665eb47d9264826f9">Error_Handler</link>();
+<anchor xml:id="_main_8c_source_1l00359"/>00359 &#32;&#32;}
+<anchor xml:id="_main_8c_source_1l00360"/>00360 &#32;&#32;sClockSourceConfig.ClockSource&#32;=&#32;TIM_CLOCKSOURCE_INTERNAL;
+<anchor xml:id="_main_8c_source_1l00361"/>00361 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(HAL_TIM_ConfigClockSource(&amp;<link linkend="_main_8c_1a25fc663547539bc49fecc0011bd76ab5">htim1</link>,&#32;&amp;sClockSourceConfig)&#32;!=&#32;HAL_OK)
+<anchor xml:id="_main_8c_source_1l00362"/>00362 &#32;&#32;{
+<anchor xml:id="_main_8c_source_1l00363"/>00363 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a1730ffe1e560465665eb47d9264826f9">Error_Handler</link>();
+<anchor xml:id="_main_8c_source_1l00364"/>00364 &#32;&#32;}
+<anchor xml:id="_main_8c_source_1l00365"/>00365 &#32;&#32;sMasterConfig.MasterOutputTrigger&#32;=&#32;TIM_TRGO_RESET;
+<anchor xml:id="_main_8c_source_1l00366"/>00366 &#32;&#32;sMasterConfig.MasterSlaveMode&#32;=&#32;TIM_MASTERSLAVEMODE_DISABLE;
+<anchor xml:id="_main_8c_source_1l00367"/>00367 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(HAL_TIMEx_MasterConfigSynchronization(&amp;<link linkend="_main_8c_1a25fc663547539bc49fecc0011bd76ab5">htim1</link>,&#32;&amp;sMasterConfig)&#32;!=&#32;HAL_OK)
+<anchor xml:id="_main_8c_source_1l00368"/>00368 &#32;&#32;{
+<anchor xml:id="_main_8c_source_1l00369"/>00369 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a1730ffe1e560465665eb47d9264826f9">Error_Handler</link>();
+<anchor xml:id="_main_8c_source_1l00370"/>00370 &#32;&#32;}
+<anchor xml:id="_main_8c_source_1l00371"/>00371 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;TIM1_Init&#32;2&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00372"/>00372 
+<anchor xml:id="_main_8c_source_1l00373"/>00373 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;TIM1_Init&#32;2&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00374"/>00374 
+<anchor xml:id="_main_8c_source_1l00375"/>00375 }
+<anchor xml:id="_main_8c_source_1l00376"/>00376 
+<anchor xml:id="_main_8c_source_1l00382"/><link linkend="_main_8c_1ae89fdd15729ad41a66911190fcbab23a">00382</link> <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8c_1ae89fdd15729ad41a66911190fcbab23a">MX_GPIO_Init</link>(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="_main_8c_source_1l00383"/>00383 {
+<anchor xml:id="_main_8c_source_1l00384"/>00384 &#32;&#32;GPIO_InitTypeDef&#32;GPIO_InitStruct&#32;=&#32;{0};
+<anchor xml:id="_main_8c_source_1l00385"/>00385 
+<anchor xml:id="_main_8c_source_1l00386"/>00386 &#32;&#32;<emphasis role="comment">/*&#32;GPIO&#32;Ports&#32;Clock&#32;Enable&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00387"/>00387 &#32;&#32;__HAL_RCC_GPIOD_CLK_ENABLE();
+<anchor xml:id="_main_8c_source_1l00388"/>00388 &#32;&#32;__HAL_RCC_GPIOA_CLK_ENABLE();
+<anchor xml:id="_main_8c_source_1l00389"/>00389 &#32;&#32;__HAL_RCC_GPIOB_CLK_ENABLE();
+<anchor xml:id="_main_8c_source_1l00390"/>00390 
+<anchor xml:id="_main_8c_source_1l00391"/>00391 &#32;&#32;<emphasis role="comment">/*Configure&#32;GPIO&#32;pin&#32;Output&#32;Level&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00392"/>00392 &#32;&#32;HAL_GPIO_WritePin(GPIOA,&#32;GPIO_PIN_8,&#32;GPIO_PIN_RESET);
+<anchor xml:id="_main_8c_source_1l00393"/>00393 
+<anchor xml:id="_main_8c_source_1l00394"/>00394 &#32;&#32;<emphasis role="comment">/*Configure&#32;GPIO&#32;pin&#32;Output&#32;Level&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00395"/>00395 &#32;&#32;HAL_GPIO_WritePin(GPIOB,&#32;GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5,&#32;GPIO_PIN_RESET);
+<anchor xml:id="_main_8c_source_1l00396"/>00396 
+<anchor xml:id="_main_8c_source_1l00397"/>00397 &#32;&#32;<emphasis role="comment">/*Configure&#32;GPIO&#32;pins&#32;:&#32;PA0&#32;PA1&#32;PA2&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00398"/>00398 &#32;&#32;GPIO_InitStruct.Pin&#32;=&#32;GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2;
+<anchor xml:id="_main_8c_source_1l00399"/>00399 &#32;&#32;GPIO_InitStruct.Mode&#32;=&#32;GPIO_MODE_IT_FALLING;
+<anchor xml:id="_main_8c_source_1l00400"/>00400 &#32;&#32;GPIO_InitStruct.Pull&#32;=&#32;GPIO_PULLUP;
+<anchor xml:id="_main_8c_source_1l00401"/>00401 &#32;&#32;HAL_GPIO_Init(GPIOA,&#32;&amp;GPIO_InitStruct);
+<anchor xml:id="_main_8c_source_1l00402"/>00402 
+<anchor xml:id="_main_8c_source_1l00403"/>00403 &#32;&#32;<emphasis role="comment">/*Configure&#32;GPIO&#32;pin&#32;:&#32;PA8&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00404"/>00404 &#32;&#32;GPIO_InitStruct.Pin&#32;=&#32;GPIO_PIN_8;
+<anchor xml:id="_main_8c_source_1l00405"/>00405 &#32;&#32;GPIO_InitStruct.Mode&#32;=&#32;GPIO_MODE_OUTPUT_PP;
+<anchor xml:id="_main_8c_source_1l00406"/>00406 &#32;&#32;GPIO_InitStruct.Pull&#32;=&#32;GPIO_NOPULL;
+<anchor xml:id="_main_8c_source_1l00407"/>00407 &#32;&#32;GPIO_InitStruct.Speed&#32;=&#32;GPIO_SPEED_FREQ_LOW;
+<anchor xml:id="_main_8c_source_1l00408"/>00408 &#32;&#32;HAL_GPIO_Init(GPIOA,&#32;&amp;GPIO_InitStruct);
+<anchor xml:id="_main_8c_source_1l00409"/>00409 
+<anchor xml:id="_main_8c_source_1l00410"/>00410 &#32;&#32;<emphasis role="comment">/*Configure&#32;GPIO&#32;pins&#32;:&#32;PB3&#32;PB4&#32;PB5&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00411"/>00411 &#32;&#32;GPIO_InitStruct.Pin&#32;=&#32;GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5;
+<anchor xml:id="_main_8c_source_1l00412"/>00412 &#32;&#32;GPIO_InitStruct.Mode&#32;=&#32;GPIO_MODE_OUTPUT_PP;
+<anchor xml:id="_main_8c_source_1l00413"/>00413 &#32;&#32;GPIO_InitStruct.Pull&#32;=&#32;GPIO_NOPULL;
+<anchor xml:id="_main_8c_source_1l00414"/>00414 &#32;&#32;GPIO_InitStruct.Speed&#32;=&#32;GPIO_SPEED_FREQ_LOW;
+<anchor xml:id="_main_8c_source_1l00415"/>00415 &#32;&#32;HAL_GPIO_Init(GPIOB,&#32;&amp;GPIO_InitStruct);
+<anchor xml:id="_main_8c_source_1l00416"/>00416 
+<anchor xml:id="_main_8c_source_1l00417"/>00417 &#32;&#32;<emphasis role="comment">/*Configure&#32;GPIO&#32;pin&#32;:&#32;PB9&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00418"/>00418 &#32;&#32;GPIO_InitStruct.Pin&#32;=&#32;GPIO_PIN_9;
+<anchor xml:id="_main_8c_source_1l00419"/>00419 &#32;&#32;GPIO_InitStruct.Mode&#32;=&#32;GPIO_MODE_INPUT;
+<anchor xml:id="_main_8c_source_1l00420"/>00420 &#32;&#32;GPIO_InitStruct.Pull&#32;=&#32;GPIO_NOPULL;
+<anchor xml:id="_main_8c_source_1l00421"/>00421 &#32;&#32;HAL_GPIO_Init(GPIOB,&#32;&amp;GPIO_InitStruct);
+<anchor xml:id="_main_8c_source_1l00422"/>00422 
+<anchor xml:id="_main_8c_source_1l00423"/>00423 &#32;&#32;<emphasis role="comment">/*&#32;EXTI&#32;interrupt&#32;init*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00424"/>00424 &#32;&#32;HAL_NVIC_SetPriority(EXTI0_IRQn,&#32;0,&#32;0);
+<anchor xml:id="_main_8c_source_1l00425"/>00425 &#32;&#32;HAL_NVIC_EnableIRQ(EXTI0_IRQn);
+<anchor xml:id="_main_8c_source_1l00426"/>00426 
+<anchor xml:id="_main_8c_source_1l00427"/>00427 &#32;&#32;HAL_NVIC_SetPriority(EXTI1_IRQn,&#32;0,&#32;0);
+<anchor xml:id="_main_8c_source_1l00428"/>00428 &#32;&#32;HAL_NVIC_EnableIRQ(EXTI1_IRQn);
+<anchor xml:id="_main_8c_source_1l00429"/>00429 
+<anchor xml:id="_main_8c_source_1l00430"/>00430 &#32;&#32;HAL_NVIC_SetPriority(EXTI2_IRQn,&#32;0,&#32;0);
+<anchor xml:id="_main_8c_source_1l00431"/>00431 &#32;&#32;HAL_NVIC_EnableIRQ(EXTI2_IRQn);
+<anchor xml:id="_main_8c_source_1l00432"/>00432 
+<anchor xml:id="_main_8c_source_1l00433"/>00433 }
+<anchor xml:id="_main_8c_source_1l00434"/>00434 
+<anchor xml:id="_main_8c_source_1l00435"/>00435 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;4&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00436"/>00436 
+<anchor xml:id="_main_8c_source_1l00437"/>00437 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;4&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00438"/>00438 
+<anchor xml:id="_main_8c_source_1l00443"/><link linkend="_main_8h_1a1730ffe1e560465665eb47d9264826f9">00443</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8c_1a1730ffe1e560465665eb47d9264826f9">Error_Handler</link>(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="_main_8c_source_1l00444"/>00444 {
+<anchor xml:id="_main_8c_source_1l00445"/>00445 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;Error_Handler_Debug&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00446"/>00446 &#32;&#32;<emphasis role="comment">/*&#32;User&#32;can&#32;add&#32;his&#32;own&#32;implementation&#32;to&#32;report&#32;the&#32;HAL&#32;error&#32;return&#32;state&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00447"/>00447 &#32;&#32;__disable_irq();
+<anchor xml:id="_main_8c_source_1l00448"/>00448 &#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(1)
+<anchor xml:id="_main_8c_source_1l00449"/>00449 &#32;&#32;{
+<anchor xml:id="_main_8c_source_1l00450"/>00450 &#32;&#32;}
+<anchor xml:id="_main_8c_source_1l00451"/>00451 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;Error_Handler_Debug&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00452"/>00452 }
+<anchor xml:id="_main_8c_source_1l00453"/>00453 
+<anchor xml:id="_main_8c_source_1l00454"/>00454 <emphasis role="preprocessor">#ifdef&#32;&#32;USE_FULL_ASSERT</emphasis>
+<anchor xml:id="_main_8c_source_1l00462"/>00462 <emphasis role="keywordtype">void</emphasis>&#32;assert_failed(uint8_t&#32;*file,&#32;uint32_t&#32;line)
+<anchor xml:id="_main_8c_source_1l00463"/>00463 {
+<anchor xml:id="_main_8c_source_1l00464"/>00464 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;6&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00465"/>00465 &#32;&#32;<emphasis role="comment">/*&#32;User&#32;can&#32;add&#32;his&#32;own&#32;implementation&#32;to&#32;report&#32;the&#32;file&#32;name&#32;and&#32;line&#32;number,</emphasis>
+<anchor xml:id="_main_8c_source_1l00466"/>00466 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;ex:&#32;printf(&quot;Wrong&#32;parameters&#32;value:&#32;file&#32;%s&#32;on&#32;line&#32;%d\r\n&quot;,&#32;file,&#32;line)&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00467"/>00467 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;6&#32;*/</emphasis>
+<anchor xml:id="_main_8c_source_1l00468"/>00468 }
+<anchor xml:id="_main_8c_source_1l00469"/>00469 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;USE_FULL_ASSERT&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+</programlisting></section>

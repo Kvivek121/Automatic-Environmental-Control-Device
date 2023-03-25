@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_stm32f1xx__hal__msp_8c_source" xml:lang="en-US">
+<title>stm32f1xx_hal_msp.c</title>
+<indexterm><primary>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Src/stm32f1xx_hal_msp.c</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00001"/>00001 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;Header&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00019"/>00019 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;Header&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00020"/>00020 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00021"/>00021 <emphasis role="comment">/*&#32;Includes&#32;------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00022"/>00022 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_main_8h">main.h</link>&quot;</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00023"/>00023 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;Includes&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00024"/>00024 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00025"/>00025 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;Includes&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00026"/>00026 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00027"/>00027 <emphasis role="comment">/*&#32;Private&#32;typedef&#32;-----------------------------------------------------------*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00028"/>00028 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;TD&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00029"/>00029 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00030"/>00030 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;TD&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00031"/>00031 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00032"/>00032 <emphasis role="comment">/*&#32;Private&#32;define&#32;------------------------------------------------------------*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00033"/>00033 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;Define&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00034"/>00034 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00035"/>00035 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;Define&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00036"/>00036 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00037"/>00037 <emphasis role="comment">/*&#32;Private&#32;macro&#32;-------------------------------------------------------------*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00038"/>00038 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;Macro&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00039"/>00039 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00040"/>00040 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;Macro&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00041"/>00041 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00042"/>00042 <emphasis role="comment">/*&#32;Private&#32;variables&#32;---------------------------------------------------------*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00043"/>00043 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;PV&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00044"/>00044 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00045"/>00045 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;PV&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00046"/>00046 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00047"/>00047 <emphasis role="comment">/*&#32;Private&#32;function&#32;prototypes&#32;-----------------------------------------------*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00048"/>00048 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;PFP&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00049"/>00049 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00050"/>00050 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;PFP&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00051"/>00051 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00052"/>00052 <emphasis role="comment">/*&#32;External&#32;functions&#32;--------------------------------------------------------*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00053"/>00053 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;ExternalFunctions&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00054"/>00054 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00055"/>00055 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;ExternalFunctions&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00056"/>00056 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00057"/>00057 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;0&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00058"/>00058 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00059"/>00059 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;0&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00063"/><link linkend="_stm32f1xx__hal__msp_8c_1ae4fb8e66865c87d0ebab74a726a6891f">00063</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_stm32f1xx__hal__msp_8c_1ae4fb8e66865c87d0ebab74a726a6891f">HAL_MspInit</link>(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00064"/>00064 {
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00065"/>00065 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;MspInit&#32;0&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00066"/>00066 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00067"/>00067 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;MspInit&#32;0&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00068"/>00068 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00069"/>00069 &#32;&#32;__HAL_RCC_AFIO_CLK_ENABLE();
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00070"/>00070 &#32;&#32;__HAL_RCC_PWR_CLK_ENABLE();
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00071"/>00071 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00072"/>00072 &#32;&#32;<emphasis role="comment">/*&#32;System&#32;interrupt&#32;init*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00073"/>00073 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00076"/>00076 &#32;&#32;__HAL_AFIO_REMAP_SWJ_NOJTAG();
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00077"/>00077 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00078"/>00078 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;MspInit&#32;1&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00079"/>00079 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00080"/>00080 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;MspInit&#32;1&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00081"/>00081 }
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00082"/>00082 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00089"/><link linkend="_stm32f1xx__hal__msp_8c_1abe01a202c27b23fc150aa66af3130073">00089</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_stm32f1xx__hal__msp_8c_1abe01a202c27b23fc150aa66af3130073">HAL_I2C_MspInit</link>(I2C_HandleTypeDef*&#32;hi2c)
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00090"/>00090 {
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00091"/>00091 &#32;&#32;GPIO_InitTypeDef&#32;GPIO_InitStruct&#32;=&#32;{0};
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00092"/>00092 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(hi2c-&gt;Instance==I2C1)
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00093"/>00093 &#32;&#32;{
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00094"/>00094 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;I2C1_MspInit&#32;0&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00095"/>00095 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00096"/>00096 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;I2C1_MspInit&#32;0&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00097"/>00097 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00098"/>00098 &#32;&#32;&#32;&#32;__HAL_RCC_GPIOB_CLK_ENABLE();
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00103"/>00103 &#32;&#32;&#32;&#32;GPIO_InitStruct.Pin&#32;=&#32;GPIO_PIN_6|GPIO_PIN_7;
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00104"/>00104 &#32;&#32;&#32;&#32;GPIO_InitStruct.Mode&#32;=&#32;GPIO_MODE_AF_OD;
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00105"/>00105 &#32;&#32;&#32;&#32;GPIO_InitStruct.Speed&#32;=&#32;GPIO_SPEED_FREQ_HIGH;
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00106"/>00106 &#32;&#32;&#32;&#32;HAL_GPIO_Init(GPIOB,&#32;&amp;GPIO_InitStruct);
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00107"/>00107 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00108"/>00108 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Peripheral&#32;clock&#32;enable&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00109"/>00109 &#32;&#32;&#32;&#32;__HAL_RCC_I2C1_CLK_ENABLE();
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00110"/>00110 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;I2C1_MspInit&#32;1&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00111"/>00111 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00112"/>00112 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;I2C1_MspInit&#32;1&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00113"/>00113 &#32;&#32;}
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00114"/>00114 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00115"/>00115 }
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00116"/>00116 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00123"/><link linkend="_stm32f1xx__hal__msp_8c_1a2ec8d9b09854c732e2feed549278f048">00123</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_stm32f1xx__hal__msp_8c_1a2ec8d9b09854c732e2feed549278f048">HAL_I2C_MspDeInit</link>(I2C_HandleTypeDef*&#32;hi2c)
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00124"/>00124 {
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00125"/>00125 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(hi2c-&gt;Instance==I2C1)
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00126"/>00126 &#32;&#32;{
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00127"/>00127 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;I2C1_MspDeInit&#32;0&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00128"/>00128 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00129"/>00129 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;I2C1_MspDeInit&#32;0&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00130"/>00130 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Peripheral&#32;clock&#32;disable&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00131"/>00131 &#32;&#32;&#32;&#32;__HAL_RCC_I2C1_CLK_DISABLE();
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00132"/>00132 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00137"/>00137 &#32;&#32;&#32;&#32;HAL_GPIO_DeInit(GPIOB,&#32;GPIO_PIN_6);
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00138"/>00138 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00139"/>00139 &#32;&#32;&#32;&#32;HAL_GPIO_DeInit(GPIOB,&#32;GPIO_PIN_7);
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00140"/>00140 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00141"/>00141 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;I2C1_MspDeInit&#32;1&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00142"/>00142 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00143"/>00143 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;I2C1_MspDeInit&#32;1&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00144"/>00144 &#32;&#32;}
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00145"/>00145 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00146"/>00146 }
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00147"/>00147 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00154"/><link linkend="_stm32f1xx__hal__msp_8c_1a17f583be14b22caffa6c4e56dcd035ef">00154</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_stm32f1xx__hal__msp_8c_1a17f583be14b22caffa6c4e56dcd035ef">HAL_SPI_MspInit</link>(SPI_HandleTypeDef*&#32;hspi)
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00155"/>00155 {
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00156"/>00156 &#32;&#32;GPIO_InitTypeDef&#32;GPIO_InitStruct&#32;=&#32;{0};
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00157"/>00157 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(hspi-&gt;Instance==SPI2)
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00158"/>00158 &#32;&#32;{
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00159"/>00159 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;SPI2_MspInit&#32;0&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00160"/>00160 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00161"/>00161 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;SPI2_MspInit&#32;0&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00162"/>00162 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Peripheral&#32;clock&#32;enable&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00163"/>00163 &#32;&#32;&#32;&#32;__HAL_RCC_SPI2_CLK_ENABLE();
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00164"/>00164 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00165"/>00165 &#32;&#32;&#32;&#32;__HAL_RCC_GPIOB_CLK_ENABLE();
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00171"/>00171 &#32;&#32;&#32;&#32;GPIO_InitStruct.Pin&#32;=&#32;GPIO_PIN_13|GPIO_PIN_15;
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00172"/>00172 &#32;&#32;&#32;&#32;GPIO_InitStruct.Mode&#32;=&#32;GPIO_MODE_AF_PP;
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00173"/>00173 &#32;&#32;&#32;&#32;GPIO_InitStruct.Speed&#32;=&#32;GPIO_SPEED_FREQ_HIGH;
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00174"/>00174 &#32;&#32;&#32;&#32;HAL_GPIO_Init(GPIOB,&#32;&amp;GPIO_InitStruct);
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00175"/>00175 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00176"/>00176 &#32;&#32;&#32;&#32;GPIO_InitStruct.Pin&#32;=&#32;GPIO_PIN_14;
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00177"/>00177 &#32;&#32;&#32;&#32;GPIO_InitStruct.Mode&#32;=&#32;GPIO_MODE_INPUT;
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00178"/>00178 &#32;&#32;&#32;&#32;GPIO_InitStruct.Pull&#32;=&#32;GPIO_NOPULL;
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00179"/>00179 &#32;&#32;&#32;&#32;HAL_GPIO_Init(GPIOB,&#32;&amp;GPIO_InitStruct);
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00180"/>00180 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00181"/>00181 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;SPI2_MspInit&#32;1&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00182"/>00182 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00183"/>00183 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;SPI2_MspInit&#32;1&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00184"/>00184 &#32;&#32;}
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00185"/>00185 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00186"/>00186 }
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00187"/>00187 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00194"/><link linkend="_stm32f1xx__hal__msp_8c_1abadc4d4974af1afd943e8d13589068e1">00194</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_stm32f1xx__hal__msp_8c_1abadc4d4974af1afd943e8d13589068e1">HAL_SPI_MspDeInit</link>(SPI_HandleTypeDef*&#32;hspi)
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00195"/>00195 {
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00196"/>00196 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(hspi-&gt;Instance==SPI2)
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00197"/>00197 &#32;&#32;{
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00198"/>00198 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;SPI2_MspDeInit&#32;0&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00199"/>00199 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00200"/>00200 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;SPI2_MspDeInit&#32;0&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00201"/>00201 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Peripheral&#32;clock&#32;disable&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00202"/>00202 &#32;&#32;&#32;&#32;__HAL_RCC_SPI2_CLK_DISABLE();
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00203"/>00203 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00209"/>00209 &#32;&#32;&#32;&#32;HAL_GPIO_DeInit(GPIOB,&#32;GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15);
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00210"/>00210 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00211"/>00211 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;SPI2_MspDeInit&#32;1&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00212"/>00212 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00213"/>00213 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;SPI2_MspDeInit&#32;1&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00214"/>00214 &#32;&#32;}
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00215"/>00215 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00216"/>00216 }
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00217"/>00217 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00224"/><link linkend="_stm32f1xx__hal__msp_8c_1abb25ade2f7e3f7aae167bd52270c2b86">00224</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_stm32f1xx__hal__msp_8c_1abb25ade2f7e3f7aae167bd52270c2b86">HAL_TIM_Base_MspInit</link>(TIM_HandleTypeDef*&#32;htim_base)
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00225"/>00225 {
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00226"/>00226 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(htim_base-&gt;Instance==TIM1)
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00227"/>00227 &#32;&#32;{
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00228"/>00228 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;TIM1_MspInit&#32;0&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00229"/>00229 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00230"/>00230 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;TIM1_MspInit&#32;0&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00231"/>00231 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Peripheral&#32;clock&#32;enable&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00232"/>00232 &#32;&#32;&#32;&#32;__HAL_RCC_TIM1_CLK_ENABLE();
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00233"/>00233 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;TIM1_MspInit&#32;1&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00234"/>00234 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00235"/>00235 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;TIM1_MspInit&#32;1&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00236"/>00236 &#32;&#32;}
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00237"/>00237 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00238"/>00238 }
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00239"/>00239 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00246"/><link linkend="_stm32f1xx__hal__msp_8c_1a555b8a2d3c7a07341f8cb1255318fa2b">00246</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_stm32f1xx__hal__msp_8c_1a555b8a2d3c7a07341f8cb1255318fa2b">HAL_TIM_Base_MspDeInit</link>(TIM_HandleTypeDef*&#32;htim_base)
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00247"/>00247 {
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00248"/>00248 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(htim_base-&gt;Instance==TIM1)
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00249"/>00249 &#32;&#32;{
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00250"/>00250 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;TIM1_MspDeInit&#32;0&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00251"/>00251 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00252"/>00252 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;TIM1_MspDeInit&#32;0&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00253"/>00253 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Peripheral&#32;clock&#32;disable&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00254"/>00254 &#32;&#32;&#32;&#32;__HAL_RCC_TIM1_CLK_DISABLE();
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00255"/>00255 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;TIM1_MspDeInit&#32;1&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00256"/>00256 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00257"/>00257 &#32;&#32;<emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;TIM1_MspDeInit&#32;1&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00258"/>00258 &#32;&#32;}
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00259"/>00259 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00260"/>00260 }
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00261"/>00261 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00262"/>00262 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;1&#32;*/</emphasis>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00263"/>00263 
+<anchor xml:id="_stm32f1xx__hal__msp_8c_source_1l00264"/>00264 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;1&#32;*/</emphasis>
+</programlisting></section>

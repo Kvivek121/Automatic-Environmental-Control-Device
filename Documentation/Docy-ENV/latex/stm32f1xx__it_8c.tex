@@ -1,0 +1,323 @@
+\hypertarget{stm32f1xx__it_8c}{}\doxysection{C\+:/\+Users/acer/\+STM32\+Cube\+IDE/workspace\+\_\+1.10.2/\+Final\+\_\+\+Selec\+\_\+v3/\+Core/\+Src/stm32f1xx\+\_\+it.c File Reference}
+\label{stm32f1xx__it_8c}\index{C:/Users/acer/STM32CubeIDE/workspace\_1.10.2/Final\_Selec\_v3/Core/Src/stm32f1xx\_it.c@{C:/Users/acer/STM32CubeIDE/workspace\_1.10.2/Final\_Selec\_v3/Core/Src/stm32f1xx\_it.c}}
+
+
+Interrupt Service Routines.  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stm32f1xx\+\_\+it.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{stm32f1xx__it_8c_a6ad7a5e3ee69cb6db6a6b9111ba898bc}{NMI\+\_\+\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em This function handles Non maskable interrupt. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stm32f1xx__it_8c_a2bffc10d5bd4106753b7c30e86903bea}{Hard\+Fault\+\_\+\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em This function handles Hard fault interrupt. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stm32f1xx__it_8c_a3150f74512510287a942624aa9b44cc5}{Mem\+Manage\+\_\+\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em This function handles Memory management fault. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stm32f1xx__it_8c_a850cefb17a977292ae5eb4cafa9976c3}{Bus\+Fault\+\_\+\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em This function handles Prefetch fault, memory access fault. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stm32f1xx__it_8c_a1d98923de2ed6b7309b66f9ba2971647}{Usage\+Fault\+\_\+\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em This function handles Undefined instruction or illegal state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stm32f1xx__it_8c_a3e5ddb3df0d62f2dc357e64a3f04a6ce}{SVC\+\_\+\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em This function handles System service call via SWI instruction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stm32f1xx__it_8c_adbdfb05858cc36fc520974df37ec3cb0}{Debug\+Mon\+\_\+\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em This function handles Debug monitor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stm32f1xx__it_8c_a6303e1f258cbdc1f970ce579cc015623}{Pend\+SV\+\_\+\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em This function handles Pendable request for system service. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stm32f1xx__it_8c_ab5e09814056d617c521549e542639b7e}{Sys\+Tick\+\_\+\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em This function handles System tick timer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stm32f1xx__it_8c_a17e9789a29a87d2df54f12b94dd1a0b6}{EXTI0\+\_\+\+IRQHandler}} (void)
+\begin{DoxyCompactList}\small\item\em This function handles EXTI line0 interrupt. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stm32f1xx__it_8c_a49cfdd46eb8d0ef3e1987514aa9343dc}{EXTI1\+\_\+\+IRQHandler}} (void)
+\begin{DoxyCompactList}\small\item\em This function handles EXTI line1 interrupt. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stm32f1xx__it_8c_ab5a1d9e9c8ef50e0cb9ddb5745a20a14}{EXTI2\+\_\+\+IRQHandler}} (void)
+\begin{DoxyCompactList}\small\item\em This function handles EXTI line2 interrupt. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{stm32f1xx__it_8c_ad43c3812e6d13e0518d9f8b8f463ffcf}{count}}
+\item 
+int \mbox{\hyperlink{stm32f1xx__it_8c_a60b91f7a9f04c1e36e4f1f1a01d04120}{time\+\_\+elapsed}}
+\item 
+int \mbox{\hyperlink{stm32f1xx__it_8c_a05ee8379339c0537489aa726a1470baa}{pos\+\_\+button}}
+\item 
+int \mbox{\hyperlink{stm32f1xx__it_8c_af2c7b98b730fc48b17a480a26550b297}{neg\+\_\+button}}
+\item 
+volatile int \mbox{\hyperlink{stm32f1xx__it_8c_a234ac5d88f28f16f8469163f16805e99}{menu\+\_\+button}}
+\item 
+int \mbox{\hyperlink{stm32f1xx__it_8c_a97f7bee51ed6087f5637a31cc8a3da46}{view\+\_\+count}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{stm32f1xx__it_8c_a41c1d4abd29e897fdc5bf652c8dbd260}{previous\+Millis}} = 0
+\item 
+uint32\+\_\+t \mbox{\hyperlink{stm32f1xx__it_8c_a925fe9258b8f192060c4a955a8e23b0d}{current\+Millis}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interrupt Service Routines. 
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+Copyright (c) 2023 STMicroelectronics. All rights reserved.
+
+This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-\/\+IS. 
+
+Definition in file \mbox{\hyperlink{stm32f1xx__it_8c_source}{stm32f1xx\+\_\+it.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{stm32f1xx__it_8c_a850cefb17a977292ae5eb4cafa9976c3}\label{stm32f1xx__it_8c_a850cefb17a977292ae5eb4cafa9976c3}} 
+\index{stm32f1xx\_it.c@{stm32f1xx\_it.c}!BusFault\_Handler@{BusFault\_Handler}}
+\index{BusFault\_Handler@{BusFault\_Handler}!stm32f1xx\_it.c@{stm32f1xx\_it.c}}
+\doxysubsubsection{\texorpdfstring{BusFault\_Handler()}{BusFault\_Handler()}}
+{\footnotesize\ttfamily void Bus\+Fault\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function handles Prefetch fault, memory access fault. 
+
+
+
+Definition at line \mbox{\hyperlink{stm32f1xx__it_8c_source_l00122}{122}} of file \mbox{\hyperlink{stm32f1xx__it_8c_source}{stm32f1xx\+\_\+it.\+c}}.
+
+\mbox{\Hypertarget{stm32f1xx__it_8c_adbdfb05858cc36fc520974df37ec3cb0}\label{stm32f1xx__it_8c_adbdfb05858cc36fc520974df37ec3cb0}} 
+\index{stm32f1xx\_it.c@{stm32f1xx\_it.c}!DebugMon\_Handler@{DebugMon\_Handler}}
+\index{DebugMon\_Handler@{DebugMon\_Handler}!stm32f1xx\_it.c@{stm32f1xx\_it.c}}
+\doxysubsubsection{\texorpdfstring{DebugMon\_Handler()}{DebugMon\_Handler()}}
+{\footnotesize\ttfamily void Debug\+Mon\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function handles Debug monitor. 
+
+
+
+Definition at line \mbox{\hyperlink{stm32f1xx__it_8c_source_l00165}{165}} of file \mbox{\hyperlink{stm32f1xx__it_8c_source}{stm32f1xx\+\_\+it.\+c}}.
+
+\mbox{\Hypertarget{stm32f1xx__it_8c_a17e9789a29a87d2df54f12b94dd1a0b6}\label{stm32f1xx__it_8c_a17e9789a29a87d2df54f12b94dd1a0b6}} 
+\index{stm32f1xx\_it.c@{stm32f1xx\_it.c}!EXTI0\_IRQHandler@{EXTI0\_IRQHandler}}
+\index{EXTI0\_IRQHandler@{EXTI0\_IRQHandler}!stm32f1xx\_it.c@{stm32f1xx\_it.c}}
+\doxysubsubsection{\texorpdfstring{EXTI0\_IRQHandler()}{EXTI0\_IRQHandler()}}
+{\footnotesize\ttfamily void EXTI0\+\_\+\+IRQHandler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function handles EXTI line0 interrupt. 
+
+
+
+Definition at line \mbox{\hyperlink{stm32f1xx__it_8c_source_l00212}{212}} of file \mbox{\hyperlink{stm32f1xx__it_8c_source}{stm32f1xx\+\_\+it.\+c}}.
+
+\mbox{\Hypertarget{stm32f1xx__it_8c_a49cfdd46eb8d0ef3e1987514aa9343dc}\label{stm32f1xx__it_8c_a49cfdd46eb8d0ef3e1987514aa9343dc}} 
+\index{stm32f1xx\_it.c@{stm32f1xx\_it.c}!EXTI1\_IRQHandler@{EXTI1\_IRQHandler}}
+\index{EXTI1\_IRQHandler@{EXTI1\_IRQHandler}!stm32f1xx\_it.c@{stm32f1xx\_it.c}}
+\doxysubsubsection{\texorpdfstring{EXTI1\_IRQHandler()}{EXTI1\_IRQHandler()}}
+{\footnotesize\ttfamily void EXTI1\+\_\+\+IRQHandler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function handles EXTI line1 interrupt. 
+
+
+
+Definition at line \mbox{\hyperlink{stm32f1xx__it_8c_source_l00234}{234}} of file \mbox{\hyperlink{stm32f1xx__it_8c_source}{stm32f1xx\+\_\+it.\+c}}.
+
+\mbox{\Hypertarget{stm32f1xx__it_8c_ab5a1d9e9c8ef50e0cb9ddb5745a20a14}\label{stm32f1xx__it_8c_ab5a1d9e9c8ef50e0cb9ddb5745a20a14}} 
+\index{stm32f1xx\_it.c@{stm32f1xx\_it.c}!EXTI2\_IRQHandler@{EXTI2\_IRQHandler}}
+\index{EXTI2\_IRQHandler@{EXTI2\_IRQHandler}!stm32f1xx\_it.c@{stm32f1xx\_it.c}}
+\doxysubsubsection{\texorpdfstring{EXTI2\_IRQHandler()}{EXTI2\_IRQHandler()}}
+{\footnotesize\ttfamily void EXTI2\+\_\+\+IRQHandler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function handles EXTI line2 interrupt. 
+
+
+
+Definition at line \mbox{\hyperlink{stm32f1xx__it_8c_source_l00254}{254}} of file \mbox{\hyperlink{stm32f1xx__it_8c_source}{stm32f1xx\+\_\+it.\+c}}.
+
+\mbox{\Hypertarget{stm32f1xx__it_8c_a2bffc10d5bd4106753b7c30e86903bea}\label{stm32f1xx__it_8c_a2bffc10d5bd4106753b7c30e86903bea}} 
+\index{stm32f1xx\_it.c@{stm32f1xx\_it.c}!HardFault\_Handler@{HardFault\_Handler}}
+\index{HardFault\_Handler@{HardFault\_Handler}!stm32f1xx\_it.c@{stm32f1xx\_it.c}}
+\doxysubsubsection{\texorpdfstring{HardFault\_Handler()}{HardFault\_Handler()}}
+{\footnotesize\ttfamily void Hard\+Fault\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function handles Hard fault interrupt. 
+
+
+
+Definition at line \mbox{\hyperlink{stm32f1xx__it_8c_source_l00092}{92}} of file \mbox{\hyperlink{stm32f1xx__it_8c_source}{stm32f1xx\+\_\+it.\+c}}.
+
+\mbox{\Hypertarget{stm32f1xx__it_8c_a3150f74512510287a942624aa9b44cc5}\label{stm32f1xx__it_8c_a3150f74512510287a942624aa9b44cc5}} 
+\index{stm32f1xx\_it.c@{stm32f1xx\_it.c}!MemManage\_Handler@{MemManage\_Handler}}
+\index{MemManage\_Handler@{MemManage\_Handler}!stm32f1xx\_it.c@{stm32f1xx\_it.c}}
+\doxysubsubsection{\texorpdfstring{MemManage\_Handler()}{MemManage\_Handler()}}
+{\footnotesize\ttfamily void Mem\+Manage\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function handles Memory management fault. 
+
+
+
+Definition at line \mbox{\hyperlink{stm32f1xx__it_8c_source_l00107}{107}} of file \mbox{\hyperlink{stm32f1xx__it_8c_source}{stm32f1xx\+\_\+it.\+c}}.
+
+\mbox{\Hypertarget{stm32f1xx__it_8c_a6ad7a5e3ee69cb6db6a6b9111ba898bc}\label{stm32f1xx__it_8c_a6ad7a5e3ee69cb6db6a6b9111ba898bc}} 
+\index{stm32f1xx\_it.c@{stm32f1xx\_it.c}!NMI\_Handler@{NMI\_Handler}}
+\index{NMI\_Handler@{NMI\_Handler}!stm32f1xx\_it.c@{stm32f1xx\_it.c}}
+\doxysubsubsection{\texorpdfstring{NMI\_Handler()}{NMI\_Handler()}}
+{\footnotesize\ttfamily void NMI\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function handles Non maskable interrupt. 
+
+
+
+Definition at line \mbox{\hyperlink{stm32f1xx__it_8c_source_l00077}{77}} of file \mbox{\hyperlink{stm32f1xx__it_8c_source}{stm32f1xx\+\_\+it.\+c}}.
+
+\mbox{\Hypertarget{stm32f1xx__it_8c_a6303e1f258cbdc1f970ce579cc015623}\label{stm32f1xx__it_8c_a6303e1f258cbdc1f970ce579cc015623}} 
+\index{stm32f1xx\_it.c@{stm32f1xx\_it.c}!PendSV\_Handler@{PendSV\_Handler}}
+\index{PendSV\_Handler@{PendSV\_Handler}!stm32f1xx\_it.c@{stm32f1xx\_it.c}}
+\doxysubsubsection{\texorpdfstring{PendSV\_Handler()}{PendSV\_Handler()}}
+{\footnotesize\ttfamily void Pend\+SV\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function handles Pendable request for system service. 
+
+
+
+Definition at line \mbox{\hyperlink{stm32f1xx__it_8c_source_l00178}{178}} of file \mbox{\hyperlink{stm32f1xx__it_8c_source}{stm32f1xx\+\_\+it.\+c}}.
+
+\mbox{\Hypertarget{stm32f1xx__it_8c_a3e5ddb3df0d62f2dc357e64a3f04a6ce}\label{stm32f1xx__it_8c_a3e5ddb3df0d62f2dc357e64a3f04a6ce}} 
+\index{stm32f1xx\_it.c@{stm32f1xx\_it.c}!SVC\_Handler@{SVC\_Handler}}
+\index{SVC\_Handler@{SVC\_Handler}!stm32f1xx\_it.c@{stm32f1xx\_it.c}}
+\doxysubsubsection{\texorpdfstring{SVC\_Handler()}{SVC\_Handler()}}
+{\footnotesize\ttfamily void SVC\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function handles System service call via SWI instruction. 
+
+
+
+Definition at line \mbox{\hyperlink{stm32f1xx__it_8c_source_l00152}{152}} of file \mbox{\hyperlink{stm32f1xx__it_8c_source}{stm32f1xx\+\_\+it.\+c}}.
+
+\mbox{\Hypertarget{stm32f1xx__it_8c_ab5e09814056d617c521549e542639b7e}\label{stm32f1xx__it_8c_ab5e09814056d617c521549e542639b7e}} 
+\index{stm32f1xx\_it.c@{stm32f1xx\_it.c}!SysTick\_Handler@{SysTick\_Handler}}
+\index{SysTick\_Handler@{SysTick\_Handler}!stm32f1xx\_it.c@{stm32f1xx\_it.c}}
+\doxysubsubsection{\texorpdfstring{SysTick\_Handler()}{SysTick\_Handler()}}
+{\footnotesize\ttfamily void Sys\+Tick\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function handles System tick timer. 
+
+
+
+Definition at line \mbox{\hyperlink{stm32f1xx__it_8c_source_l00191}{191}} of file \mbox{\hyperlink{stm32f1xx__it_8c_source}{stm32f1xx\+\_\+it.\+c}}.
+
+\mbox{\Hypertarget{stm32f1xx__it_8c_a1d98923de2ed6b7309b66f9ba2971647}\label{stm32f1xx__it_8c_a1d98923de2ed6b7309b66f9ba2971647}} 
+\index{stm32f1xx\_it.c@{stm32f1xx\_it.c}!UsageFault\_Handler@{UsageFault\_Handler}}
+\index{UsageFault\_Handler@{UsageFault\_Handler}!stm32f1xx\_it.c@{stm32f1xx\_it.c}}
+\doxysubsubsection{\texorpdfstring{UsageFault\_Handler()}{UsageFault\_Handler()}}
+{\footnotesize\ttfamily void Usage\+Fault\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function handles Undefined instruction or illegal state. 
+
+
+
+Definition at line \mbox{\hyperlink{stm32f1xx__it_8c_source_l00137}{137}} of file \mbox{\hyperlink{stm32f1xx__it_8c_source}{stm32f1xx\+\_\+it.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{stm32f1xx__it_8c_ad43c3812e6d13e0518d9f8b8f463ffcf}\label{stm32f1xx__it_8c_ad43c3812e6d13e0518d9f8b8f463ffcf}} 
+\index{stm32f1xx\_it.c@{stm32f1xx\_it.c}!count@{count}}
+\index{count@{count}!stm32f1xx\_it.c@{stm32f1xx\_it.c}}
+\doxysubsubsection{\texorpdfstring{count}{count}}
+{\footnotesize\ttfamily int count\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{_m_e_n_u_8c_source_l00012}{12}} of file \mbox{\hyperlink{_m_e_n_u_8c_source}{MENU.\+c}}.
+
+\mbox{\Hypertarget{stm32f1xx__it_8c_a925fe9258b8f192060c4a955a8e23b0d}\label{stm32f1xx__it_8c_a925fe9258b8f192060c4a955a8e23b0d}} 
+\index{stm32f1xx\_it.c@{stm32f1xx\_it.c}!currentMillis@{currentMillis}}
+\index{currentMillis@{currentMillis}!stm32f1xx\_it.c@{stm32f1xx\_it.c}}
+\doxysubsubsection{\texorpdfstring{currentMillis}{currentMillis}}
+{\footnotesize\ttfamily uint32\+\_\+t current\+Millis = 0}
+
+
+
+Definition at line \mbox{\hyperlink{stm32f1xx__it_8c_source_l00052}{52}} of file \mbox{\hyperlink{stm32f1xx__it_8c_source}{stm32f1xx\+\_\+it.\+c}}.
+
+\mbox{\Hypertarget{stm32f1xx__it_8c_a234ac5d88f28f16f8469163f16805e99}\label{stm32f1xx__it_8c_a234ac5d88f28f16f8469163f16805e99}} 
+\index{stm32f1xx\_it.c@{stm32f1xx\_it.c}!menu\_button@{menu\_button}}
+\index{menu\_button@{menu\_button}!stm32f1xx\_it.c@{stm32f1xx\_it.c}}
+\doxysubsubsection{\texorpdfstring{menu\_button}{menu\_button}}
+{\footnotesize\ttfamily volatile int menu\+\_\+button\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{_m_e_n_u_8c_source_l00016}{16}} of file \mbox{\hyperlink{_m_e_n_u_8c_source}{MENU.\+c}}.
+
+\mbox{\Hypertarget{stm32f1xx__it_8c_af2c7b98b730fc48b17a480a26550b297}\label{stm32f1xx__it_8c_af2c7b98b730fc48b17a480a26550b297}} 
+\index{stm32f1xx\_it.c@{stm32f1xx\_it.c}!neg\_button@{neg\_button}}
+\index{neg\_button@{neg\_button}!stm32f1xx\_it.c@{stm32f1xx\_it.c}}
+\doxysubsubsection{\texorpdfstring{neg\_button}{neg\_button}}
+{\footnotesize\ttfamily int neg\+\_\+button\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{_m_e_n_u_8c_source_l00015}{15}} of file \mbox{\hyperlink{_m_e_n_u_8c_source}{MENU.\+c}}.
+
+\mbox{\Hypertarget{stm32f1xx__it_8c_a05ee8379339c0537489aa726a1470baa}\label{stm32f1xx__it_8c_a05ee8379339c0537489aa726a1470baa}} 
+\index{stm32f1xx\_it.c@{stm32f1xx\_it.c}!pos\_button@{pos\_button}}
+\index{pos\_button@{pos\_button}!stm32f1xx\_it.c@{stm32f1xx\_it.c}}
+\doxysubsubsection{\texorpdfstring{pos\_button}{pos\_button}}
+{\footnotesize\ttfamily int pos\+\_\+button\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{_m_e_n_u_8c_source_l00014}{14}} of file \mbox{\hyperlink{_m_e_n_u_8c_source}{MENU.\+c}}.
+
+\mbox{\Hypertarget{stm32f1xx__it_8c_a41c1d4abd29e897fdc5bf652c8dbd260}\label{stm32f1xx__it_8c_a41c1d4abd29e897fdc5bf652c8dbd260}} 
+\index{stm32f1xx\_it.c@{stm32f1xx\_it.c}!previousMillis@{previousMillis}}
+\index{previousMillis@{previousMillis}!stm32f1xx\_it.c@{stm32f1xx\_it.c}}
+\doxysubsubsection{\texorpdfstring{previousMillis}{previousMillis}}
+{\footnotesize\ttfamily uint32\+\_\+t previous\+Millis = 0}
+
+
+
+Definition at line \mbox{\hyperlink{stm32f1xx__it_8c_source_l00051}{51}} of file \mbox{\hyperlink{stm32f1xx__it_8c_source}{stm32f1xx\+\_\+it.\+c}}.
+
+\mbox{\Hypertarget{stm32f1xx__it_8c_a60b91f7a9f04c1e36e4f1f1a01d04120}\label{stm32f1xx__it_8c_a60b91f7a9f04c1e36e4f1f1a01d04120}} 
+\index{stm32f1xx\_it.c@{stm32f1xx\_it.c}!time\_elapsed@{time\_elapsed}}
+\index{time\_elapsed@{time\_elapsed}!stm32f1xx\_it.c@{stm32f1xx\_it.c}}
+\doxysubsubsection{\texorpdfstring{time\_elapsed}{time\_elapsed}}
+{\footnotesize\ttfamily int time\+\_\+elapsed\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{_m_e_n_u_8c_source_l00013}{13}} of file \mbox{\hyperlink{_m_e_n_u_8c_source}{MENU.\+c}}.
+
+\mbox{\Hypertarget{stm32f1xx__it_8c_a97f7bee51ed6087f5637a31cc8a3da46}\label{stm32f1xx__it_8c_a97f7bee51ed6087f5637a31cc8a3da46}} 
+\index{stm32f1xx\_it.c@{stm32f1xx\_it.c}!view\_count@{view\_count}}
+\index{view\_count@{view\_count}!stm32f1xx\_it.c@{stm32f1xx\_it.c}}
+\doxysubsubsection{\texorpdfstring{view\_count}{view\_count}}
+{\footnotesize\ttfamily int view\+\_\+count\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{_m_e_n_u_8c_source_l00018}{18}} of file \mbox{\hyperlink{_m_e_n_u_8c_source}{MENU.\+c}}.
+

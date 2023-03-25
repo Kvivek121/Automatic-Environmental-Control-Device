@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_e4bb686314e5f4230fe0d0ab5baa7f5d" xml:lang="en-US">
+<title>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Inc Directory Reference</title>
+<indexterm><primary>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Inc Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="__b_m_p280_8h">BMP280.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__d_h_t11_8h">DHT11.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_liquidcrystal__i2c_8h">liquidcrystal_i2c.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_main_8h">main.h</link></para>
+
+<para>: Header for <link linkend="_main_8c">main.c</link> file. This file contains the common defines of the application. </para>
+</listitem>
+            <listitem><para>file <link linkend="__m_e_n_u_8h">MENU.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_stm32f1xx__hal__conf_8h">stm32f1xx_hal_conf.h</link></para>
+
+<para>HAL configuration file. </para>
+</listitem>
+            <listitem><para>file <link linkend="_stm32f1xx__it_8h">stm32f1xx_it.h</link></para>
+
+<para>This file contains the headers of the interrupt handlers. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

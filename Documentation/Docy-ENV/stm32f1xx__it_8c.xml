@@ -1,0 +1,293 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_stm32f1xx__it_8c" xml:lang="en-US">
+<title>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Src/stm32f1xx_it.c File Reference</title>
+<indexterm><primary>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Src/stm32f1xx_it.c</primary></indexterm>
+<para>
+
+<para>Interrupt Service Routines. </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &quot;main.h&quot;<?linebreak?>#include &quot;stm32f1xx_it.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8c_1a6ad7a5e3ee69cb6db6a6b9111ba898bc">NMI_Handler</link> (void)</para>
+
+<para>This function handles Non maskable interrupt. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8c_1a2bffc10d5bd4106753b7c30e86903bea">HardFault_Handler</link> (void)</para>
+
+<para>This function handles Hard fault interrupt. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8c_1a3150f74512510287a942624aa9b44cc5">MemManage_Handler</link> (void)</para>
+
+<para>This function handles Memory management fault. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8c_1a850cefb17a977292ae5eb4cafa9976c3">BusFault_Handler</link> (void)</para>
+
+<para>This function handles Prefetch fault, memory access fault. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8c_1a1d98923de2ed6b7309b66f9ba2971647">UsageFault_Handler</link> (void)</para>
+
+<para>This function handles Undefined instruction or illegal state. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8c_1a3e5ddb3df0d62f2dc357e64a3f04a6ce">SVC_Handler</link> (void)</para>
+
+<para>This function handles System service call via SWI instruction. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8c_1adbdfb05858cc36fc520974df37ec3cb0">DebugMon_Handler</link> (void)</para>
+
+<para>This function handles Debug monitor. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8c_1a6303e1f258cbdc1f970ce579cc015623">PendSV_Handler</link> (void)</para>
+
+<para>This function handles Pendable request for system service. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8c_1ab5e09814056d617c521549e542639b7e">SysTick_Handler</link> (void)</para>
+
+<para>This function handles System tick timer. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8c_1a17e9789a29a87d2df54f12b94dd1a0b6">EXTI0_IRQHandler</link> (void)</para>
+
+<para>This function handles EXTI line0 interrupt. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8c_1a49cfdd46eb8d0ef3e1987514aa9343dc">EXTI1_IRQHandler</link> (void)</para>
+
+<para>This function handles EXTI line1 interrupt. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8c_1ab5a1d9e9c8ef50e0cb9ddb5745a20a14">EXTI2_IRQHandler</link> (void)</para>
+
+<para>This function handles EXTI line2 interrupt. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_stm32f1xx__it_8c_1ad43c3812e6d13e0518d9f8b8f463ffcf">count</link></para>
+</listitem>
+            <listitem><para>int <link linkend="_stm32f1xx__it_8c_1a60b91f7a9f04c1e36e4f1f1a01d04120">time_elapsed</link></para>
+</listitem>
+            <listitem><para>int <link linkend="_stm32f1xx__it_8c_1a05ee8379339c0537489aa726a1470baa">pos_button</link></para>
+</listitem>
+            <listitem><para>int <link linkend="_stm32f1xx__it_8c_1af2c7b98b730fc48b17a480a26550b297">neg_button</link></para>
+</listitem>
+            <listitem><para>volatile int <link linkend="_stm32f1xx__it_8c_1a234ac5d88f28f16f8469163f16805e99">menu_button</link></para>
+</listitem>
+            <listitem><para>int <link linkend="_stm32f1xx__it_8c_1a97f7bee51ed6087f5637a31cc8a3da46">view_count</link></para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_stm32f1xx__it_8c_1a41c1d4abd29e897fdc5bf652c8dbd260">previousMillis</link> = 0</para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_stm32f1xx__it_8c_1a925fe9258b8f192060c4a955a8e23b0d">currentMillis</link> = 0</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Interrupt Service Routines. </para>
+
+<para><caution><title>Attention</title>
+
+<para></para>
+</caution>
+Copyright (c) 2023 STMicroelectronics. All rights reserved.</para>
+
+<para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS. </para>
+<para>
+Definition in file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_stm32f1xx__it_8c_1a850cefb17a977292ae5eb4cafa9976c3"/><section>
+    <title>BusFault_Handler()</title>
+<indexterm><primary>BusFault_Handler</primary><secondary>stm32f1xx_it.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.c</primary><secondary>BusFault_Handler</secondary></indexterm>
+<para><computeroutput>void BusFault_Handler (void )</computeroutput></para><para>
+
+<para>This function handles Prefetch fault, memory access fault. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00122">122</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8c_1adbdfb05858cc36fc520974df37ec3cb0"/><section>
+    <title>DebugMon_Handler()</title>
+<indexterm><primary>DebugMon_Handler</primary><secondary>stm32f1xx_it.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.c</primary><secondary>DebugMon_Handler</secondary></indexterm>
+<para><computeroutput>void DebugMon_Handler (void )</computeroutput></para><para>
+
+<para>This function handles Debug monitor. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00165">165</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8c_1a17e9789a29a87d2df54f12b94dd1a0b6"/><section>
+    <title>EXTI0_IRQHandler()</title>
+<indexterm><primary>EXTI0_IRQHandler</primary><secondary>stm32f1xx_it.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.c</primary><secondary>EXTI0_IRQHandler</secondary></indexterm>
+<para><computeroutput>void EXTI0_IRQHandler (void )</computeroutput></para><para>
+
+<para>This function handles EXTI line0 interrupt. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00212">212</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8c_1a49cfdd46eb8d0ef3e1987514aa9343dc"/><section>
+    <title>EXTI1_IRQHandler()</title>
+<indexterm><primary>EXTI1_IRQHandler</primary><secondary>stm32f1xx_it.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.c</primary><secondary>EXTI1_IRQHandler</secondary></indexterm>
+<para><computeroutput>void EXTI1_IRQHandler (void )</computeroutput></para><para>
+
+<para>This function handles EXTI line1 interrupt. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00234">234</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8c_1ab5a1d9e9c8ef50e0cb9ddb5745a20a14"/><section>
+    <title>EXTI2_IRQHandler()</title>
+<indexterm><primary>EXTI2_IRQHandler</primary><secondary>stm32f1xx_it.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.c</primary><secondary>EXTI2_IRQHandler</secondary></indexterm>
+<para><computeroutput>void EXTI2_IRQHandler (void )</computeroutput></para><para>
+
+<para>This function handles EXTI line2 interrupt. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00254">254</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8c_1a2bffc10d5bd4106753b7c30e86903bea"/><section>
+    <title>HardFault_Handler()</title>
+<indexterm><primary>HardFault_Handler</primary><secondary>stm32f1xx_it.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.c</primary><secondary>HardFault_Handler</secondary></indexterm>
+<para><computeroutput>void HardFault_Handler (void )</computeroutput></para><para>
+
+<para>This function handles Hard fault interrupt. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00092">92</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8c_1a3150f74512510287a942624aa9b44cc5"/><section>
+    <title>MemManage_Handler()</title>
+<indexterm><primary>MemManage_Handler</primary><secondary>stm32f1xx_it.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.c</primary><secondary>MemManage_Handler</secondary></indexterm>
+<para><computeroutput>void MemManage_Handler (void )</computeroutput></para><para>
+
+<para>This function handles Memory management fault. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00107">107</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8c_1a6ad7a5e3ee69cb6db6a6b9111ba898bc"/><section>
+    <title>NMI_Handler()</title>
+<indexterm><primary>NMI_Handler</primary><secondary>stm32f1xx_it.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.c</primary><secondary>NMI_Handler</secondary></indexterm>
+<para><computeroutput>void NMI_Handler (void )</computeroutput></para><para>
+
+<para>This function handles Non maskable interrupt. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00077">77</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8c_1a6303e1f258cbdc1f970ce579cc015623"/><section>
+    <title>PendSV_Handler()</title>
+<indexterm><primary>PendSV_Handler</primary><secondary>stm32f1xx_it.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.c</primary><secondary>PendSV_Handler</secondary></indexterm>
+<para><computeroutput>void PendSV_Handler (void )</computeroutput></para><para>
+
+<para>This function handles Pendable request for system service. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00178">178</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8c_1a3e5ddb3df0d62f2dc357e64a3f04a6ce"/><section>
+    <title>SVC_Handler()</title>
+<indexterm><primary>SVC_Handler</primary><secondary>stm32f1xx_it.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.c</primary><secondary>SVC_Handler</secondary></indexterm>
+<para><computeroutput>void SVC_Handler (void )</computeroutput></para><para>
+
+<para>This function handles System service call via SWI instruction. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00152">152</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8c_1ab5e09814056d617c521549e542639b7e"/><section>
+    <title>SysTick_Handler()</title>
+<indexterm><primary>SysTick_Handler</primary><secondary>stm32f1xx_it.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.c</primary><secondary>SysTick_Handler</secondary></indexterm>
+<para><computeroutput>void SysTick_Handler (void )</computeroutput></para><para>
+
+<para>This function handles System tick timer. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00191">191</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8c_1a1d98923de2ed6b7309b66f9ba2971647"/><section>
+    <title>UsageFault_Handler()</title>
+<indexterm><primary>UsageFault_Handler</primary><secondary>stm32f1xx_it.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.c</primary><secondary>UsageFault_Handler</secondary></indexterm>
+<para><computeroutput>void UsageFault_Handler (void )</computeroutput></para><para>
+
+<para>This function handles Undefined instruction or illegal state. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00137">137</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_stm32f1xx__it_8c_1ad43c3812e6d13e0518d9f8b8f463ffcf"/><section>
+    <title>count</title>
+<indexterm><primary>count</primary><secondary>stm32f1xx_it.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.c</primary><secondary>count</secondary></indexterm>
+<para><computeroutput>int count<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__m_e_n_u_8c_source_1l00012">12</link> of file <link linkend="__m_e_n_u_8c_source">MENU.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8c_1a925fe9258b8f192060c4a955a8e23b0d"/><section>
+    <title>currentMillis</title>
+<indexterm><primary>currentMillis</primary><secondary>stm32f1xx_it.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.c</primary><secondary>currentMillis</secondary></indexterm>
+<para><computeroutput>uint32_t currentMillis = 0</computeroutput></para><para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00052">52</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8c_1a234ac5d88f28f16f8469163f16805e99"/><section>
+    <title>menu_button</title>
+<indexterm><primary>menu_button</primary><secondary>stm32f1xx_it.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.c</primary><secondary>menu_button</secondary></indexterm>
+<para><computeroutput>volatile int menu_button<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__m_e_n_u_8c_source_1l00016">16</link> of file <link linkend="__m_e_n_u_8c_source">MENU.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8c_1af2c7b98b730fc48b17a480a26550b297"/><section>
+    <title>neg_button</title>
+<indexterm><primary>neg_button</primary><secondary>stm32f1xx_it.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.c</primary><secondary>neg_button</secondary></indexterm>
+<para><computeroutput>int neg_button<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__m_e_n_u_8c_source_1l00015">15</link> of file <link linkend="__m_e_n_u_8c_source">MENU.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8c_1a05ee8379339c0537489aa726a1470baa"/><section>
+    <title>pos_button</title>
+<indexterm><primary>pos_button</primary><secondary>stm32f1xx_it.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.c</primary><secondary>pos_button</secondary></indexterm>
+<para><computeroutput>int pos_button<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__m_e_n_u_8c_source_1l00014">14</link> of file <link linkend="__m_e_n_u_8c_source">MENU.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8c_1a41c1d4abd29e897fdc5bf652c8dbd260"/><section>
+    <title>previousMillis</title>
+<indexterm><primary>previousMillis</primary><secondary>stm32f1xx_it.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.c</primary><secondary>previousMillis</secondary></indexterm>
+<para><computeroutput>uint32_t previousMillis = 0</computeroutput></para><para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00051">51</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8c_1a60b91f7a9f04c1e36e4f1f1a01d04120"/><section>
+    <title>time_elapsed</title>
+<indexterm><primary>time_elapsed</primary><secondary>stm32f1xx_it.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.c</primary><secondary>time_elapsed</secondary></indexterm>
+<para><computeroutput>int time_elapsed<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__m_e_n_u_8c_source_1l00013">13</link> of file <link linkend="__m_e_n_u_8c_source">MENU.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8c_1a97f7bee51ed6087f5637a31cc8a3da46"/><section>
+    <title>view_count</title>
+<indexterm><primary>view_count</primary><secondary>stm32f1xx_it.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.c</primary><secondary>view_count</secondary></indexterm>
+<para><computeroutput>int view_count<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__m_e_n_u_8c_source_1l00018">18</link> of file <link linkend="__m_e_n_u_8c_source">MENU.c</link>.</para>
+</section>
+</section>
+</section>

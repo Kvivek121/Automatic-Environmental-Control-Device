@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<book xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_index" xml:lang="en-US">
+    <info>
+    <title>Automatic Environment Control Device</title>
+    </info>
+<chapter>
+    <title>Module Documentation</title>
+    <xi:include href="group___c_m_s_i_s.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="group__stm32f1xx__system.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="group___s_t_m32_f1xx___system___private___includes.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="group___s_t_m32_f1xx___system___private___types_definitions.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="group___s_t_m32_f1xx___system___private___defines.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="group___s_t_m32_f1xx___system___private___macros.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="group___s_t_m32_f1xx___system___private___variables.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="group___s_t_m32_f1xx___system___private___function_prototypes.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="group___s_t_m32_f1xx___system___private___functions.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</chapter>
+<chapter>
+    <title>Data Structure Documentation</title>
+    <xi:include href="struct_d_h_t11__value.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structreading.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</chapter>
+<chapter>
+    <title>File Documentation</title>
+    <xi:include href="_b_m_p280_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_b_m_p280_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_d_h_t11_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_d_h_t11_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="liquidcrystal__i2c_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="liquidcrystal__i2c_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="main_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="main_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_m_e_n_u_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_m_e_n_u_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="stm32f1xx__hal__conf_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="stm32f1xx__hal__conf_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="stm32f1xx__it_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="stm32f1xx__it_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_b_m_p280_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_b_m_p280_8c_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_d_h_t11_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_d_h_t11_8c_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="liquidcrystal__i2c_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="liquidcrystal__i2c_8c_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="main_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="main_8c_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_m_e_n_u_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_m_e_n_u_8c_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="stm32f1xx__hal__msp_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="stm32f1xx__hal__msp_8c_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="stm32f1xx__it_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="stm32f1xx__it_8c_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="syscalls_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="syscalls_8c_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="sysmem_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="sysmem_8c_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="system__stm32f1xx_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="system__stm32f1xx_8c_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</chapter>
+<index/>
+</book>

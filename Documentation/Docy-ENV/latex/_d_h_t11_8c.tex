@@ -1,0 +1,246 @@
+\hypertarget{_d_h_t11_8c}{}\doxysection{C\+:/\+Users/acer/\+STM32\+Cube\+IDE/workspace\+\_\+1.10.2/\+Final\+\_\+\+Selec\+\_\+v3/\+Core/\+Src/\+DHT11.c File Reference}
+\label{_d_h_t11_8c}\index{C:/Users/acer/STM32CubeIDE/workspace\_1.10.2/Final\_Selec\_v3/Core/Src/DHT11.c@{C:/Users/acer/STM32CubeIDE/workspace\_1.10.2/Final\_Selec\_v3/Core/Src/DHT11.c}}
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stdio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}DHT11.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}liquidcrystal\+\_\+i2c.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_d_h_t11_8c_a42071dc0f568b5e965502014a4d215c3}{delay}} (uint16\+\_\+t delay)
+\item 
+void \mbox{\hyperlink{_d_h_t11_8c_aef1aec2157382676edb25c22e4b7ecef}{Set\+\_\+\+Pin\+\_\+\+Output}} (GPIO\+\_\+\+Type\+Def $\ast$GPIOx, uint16\+\_\+t GPIO\+\_\+\+Pin)
+\item 
+void \mbox{\hyperlink{_d_h_t11_8c_a3b8cee858a35581caf1bcb14ce5cb367}{Set\+\_\+\+Pin\+\_\+\+Input}} (GPIO\+\_\+\+Type\+Def $\ast$GPIOx, uint16\+\_\+t GPIO\+\_\+\+Pin)
+\item 
+void \mbox{\hyperlink{_d_h_t11_8c_ad22d2fc6f1c044bfca99e8f38c419d78}{DHT11\+\_\+\+Start}} (void)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_d_h_t11_8c_a4abe1bb0e528279d5b260a9d44bc7ffb}{DHT11\+\_\+\+Check\+\_\+\+Response}} (void)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_d_h_t11_8c_aaf1ec7026bcc0784c685b79753955ff4}{DHT11\+\_\+\+Read}} (void)
+\item 
+\mbox{\hyperlink{_d_h_t11_8h_ac88e11ffa065f4c53d75428a5809220a}{DHT11\+\_\+read\+\_\+value}} \mbox{\hyperlink{_d_h_t11_8c_a90da1df4ae78a755072b7c76cf4dabfd}{DHT11\+\_\+\+Print\+\_\+\+Value}} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+TIM\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{_d_h_t11_8c_a25fc663547539bc49fecc0011bd76ab5}{htim1}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_d_h_t11_8c_ad9a2a1c5f490104dc717f5a48b3b8a27}{Rh\+\_\+byte1}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_d_h_t11_8c_a2dbbbd8e0fc90796f6389fc31ef811ad}{Rh\+\_\+byte2}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_d_h_t11_8c_a8b0074c25d30592e460b56b9f87d1ba9}{Temp\+\_\+byte1}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_d_h_t11_8c_a5544d12933412c17ee41513fa46cac02}{Temp\+\_\+byte2}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_d_h_t11_8c_a4622f107cd73d99fbf4ca91205f3acca}{SUM}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_d_h_t11_8c_aa3731a0173b9bbde97d8a3cba6d13531}{RH}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_d_h_t11_8c_aab2ce7d9ba3bab5ef3b090c61e1eca6b}{TEMP}}
+\item 
+float \mbox{\hyperlink{_d_h_t11_8c_afa66fac91ab948980be979b768e67c5a}{Temperature}} = 0
+\item 
+float \mbox{\hyperlink{_d_h_t11_8c_afe6173f00c89e1ccfe06abd8502ff19f}{Humidity}} = 0
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_d_h_t11_8c_a653c5750f288e99e638bbd607fb885dc}{Presence}} = 0
+\item 
+\mbox{\hyperlink{_d_h_t11_8h_ac88e11ffa065f4c53d75428a5809220a}{DHT11\+\_\+read\+\_\+value}} \mbox{\hyperlink{_d_h_t11_8c_a9673b9ee577f4ba82aea307a23e7c6f1}{DHT11\+\_\+read\+\_\+value1}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_d_h_t11_8c_a42071dc0f568b5e965502014a4d215c3}\label{_d_h_t11_8c_a42071dc0f568b5e965502014a4d215c3}} 
+\index{DHT11.c@{DHT11.c}!delay@{delay}}
+\index{delay@{delay}!DHT11.c@{DHT11.c}}
+\doxysubsubsection{\texorpdfstring{delay()}{delay()}}
+{\footnotesize\ttfamily void delay (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{delay }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_d_h_t11_8c_source_l00022}{22}} of file \mbox{\hyperlink{_d_h_t11_8c_source}{DHT11.\+c}}.
+
+\mbox{\Hypertarget{_d_h_t11_8c_a4abe1bb0e528279d5b260a9d44bc7ffb}\label{_d_h_t11_8c_a4abe1bb0e528279d5b260a9d44bc7ffb}} 
+\index{DHT11.c@{DHT11.c}!DHT11\_Check\_Response@{DHT11\_Check\_Response}}
+\index{DHT11\_Check\_Response@{DHT11\_Check\_Response}!DHT11.c@{DHT11.c}}
+\doxysubsubsection{\texorpdfstring{DHT11\_Check\_Response()}{DHT11\_Check\_Response()}}
+{\footnotesize\ttfamily uint8\+\_\+t DHT11\+\_\+\+Check\+\_\+\+Response (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_d_h_t11_8c_source_l00058}{58}} of file \mbox{\hyperlink{_d_h_t11_8c_source}{DHT11.\+c}}.
+
+\mbox{\Hypertarget{_d_h_t11_8c_a90da1df4ae78a755072b7c76cf4dabfd}\label{_d_h_t11_8c_a90da1df4ae78a755072b7c76cf4dabfd}} 
+\index{DHT11.c@{DHT11.c}!DHT11\_Print\_Value@{DHT11\_Print\_Value}}
+\index{DHT11\_Print\_Value@{DHT11\_Print\_Value}!DHT11.c@{DHT11.c}}
+\doxysubsubsection{\texorpdfstring{DHT11\_Print\_Value()}{DHT11\_Print\_Value()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_d_h_t11_8h_ac88e11ffa065f4c53d75428a5809220a}{DHT11\+\_\+read\+\_\+value}} DHT11\+\_\+\+Print\+\_\+\+Value (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_d_h_t11_8c_source_l00090}{90}} of file \mbox{\hyperlink{_d_h_t11_8c_source}{DHT11.\+c}}.
+
+\mbox{\Hypertarget{_d_h_t11_8c_aaf1ec7026bcc0784c685b79753955ff4}\label{_d_h_t11_8c_aaf1ec7026bcc0784c685b79753955ff4}} 
+\index{DHT11.c@{DHT11.c}!DHT11\_Read@{DHT11\_Read}}
+\index{DHT11\_Read@{DHT11\_Read}!DHT11.c@{DHT11.c}}
+\doxysubsubsection{\texorpdfstring{DHT11\_Read()}{DHT11\_Read()}}
+{\footnotesize\ttfamily uint8\+\_\+t DHT11\+\_\+\+Read (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_d_h_t11_8c_source_l00073}{73}} of file \mbox{\hyperlink{_d_h_t11_8c_source}{DHT11.\+c}}.
+
+\mbox{\Hypertarget{_d_h_t11_8c_ad22d2fc6f1c044bfca99e8f38c419d78}\label{_d_h_t11_8c_ad22d2fc6f1c044bfca99e8f38c419d78}} 
+\index{DHT11.c@{DHT11.c}!DHT11\_Start@{DHT11\_Start}}
+\index{DHT11\_Start@{DHT11\_Start}!DHT11.c@{DHT11.c}}
+\doxysubsubsection{\texorpdfstring{DHT11\_Start()}{DHT11\_Start()}}
+{\footnotesize\ttfamily void DHT11\+\_\+\+Start (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_d_h_t11_8c_source_l00048}{48}} of file \mbox{\hyperlink{_d_h_t11_8c_source}{DHT11.\+c}}.
+
+\mbox{\Hypertarget{_d_h_t11_8c_a3b8cee858a35581caf1bcb14ce5cb367}\label{_d_h_t11_8c_a3b8cee858a35581caf1bcb14ce5cb367}} 
+\index{DHT11.c@{DHT11.c}!Set\_Pin\_Input@{Set\_Pin\_Input}}
+\index{Set\_Pin\_Input@{Set\_Pin\_Input}!DHT11.c@{DHT11.c}}
+\doxysubsubsection{\texorpdfstring{Set\_Pin\_Input()}{Set\_Pin\_Input()}}
+{\footnotesize\ttfamily void Set\+\_\+\+Pin\+\_\+\+Input (\begin{DoxyParamCaption}\item[{GPIO\+\_\+\+Type\+Def $\ast$}]{GPIOx,  }\item[{uint16\+\_\+t}]{GPIO\+\_\+\+Pin }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_d_h_t11_8c_source_l00038}{38}} of file \mbox{\hyperlink{_d_h_t11_8c_source}{DHT11.\+c}}.
+
+\mbox{\Hypertarget{_d_h_t11_8c_aef1aec2157382676edb25c22e4b7ecef}\label{_d_h_t11_8c_aef1aec2157382676edb25c22e4b7ecef}} 
+\index{DHT11.c@{DHT11.c}!Set\_Pin\_Output@{Set\_Pin\_Output}}
+\index{Set\_Pin\_Output@{Set\_Pin\_Output}!DHT11.c@{DHT11.c}}
+\doxysubsubsection{\texorpdfstring{Set\_Pin\_Output()}{Set\_Pin\_Output()}}
+{\footnotesize\ttfamily void Set\+\_\+\+Pin\+\_\+\+Output (\begin{DoxyParamCaption}\item[{GPIO\+\_\+\+Type\+Def $\ast$}]{GPIOx,  }\item[{uint16\+\_\+t}]{GPIO\+\_\+\+Pin }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_d_h_t11_8c_source_l00029}{29}} of file \mbox{\hyperlink{_d_h_t11_8c_source}{DHT11.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_d_h_t11_8c_a9673b9ee577f4ba82aea307a23e7c6f1}\label{_d_h_t11_8c_a9673b9ee577f4ba82aea307a23e7c6f1}} 
+\index{DHT11.c@{DHT11.c}!DHT11\_read\_value1@{DHT11\_read\_value1}}
+\index{DHT11\_read\_value1@{DHT11\_read\_value1}!DHT11.c@{DHT11.c}}
+\doxysubsubsection{\texorpdfstring{DHT11\_read\_value1}{DHT11\_read\_value1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_d_h_t11_8h_ac88e11ffa065f4c53d75428a5809220a}{DHT11\+\_\+read\+\_\+value}} DHT11\+\_\+read\+\_\+value1}
+
+
+
+Definition at line \mbox{\hyperlink{_d_h_t11_8c_source_l00020}{20}} of file \mbox{\hyperlink{_d_h_t11_8c_source}{DHT11.\+c}}.
+
+\mbox{\Hypertarget{_d_h_t11_8c_a25fc663547539bc49fecc0011bd76ab5}\label{_d_h_t11_8c_a25fc663547539bc49fecc0011bd76ab5}} 
+\index{DHT11.c@{DHT11.c}!htim1@{htim1}}
+\index{htim1@{htim1}!DHT11.c@{DHT11.c}}
+\doxysubsubsection{\texorpdfstring{htim1}{htim1}}
+{\footnotesize\ttfamily TIM\+\_\+\+Handle\+Type\+Def htim1\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00051}{51}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\mbox{\Hypertarget{_d_h_t11_8c_afe6173f00c89e1ccfe06abd8502ff19f}\label{_d_h_t11_8c_afe6173f00c89e1ccfe06abd8502ff19f}} 
+\index{DHT11.c@{DHT11.c}!Humidity@{Humidity}}
+\index{Humidity@{Humidity}!DHT11.c@{DHT11.c}}
+\doxysubsubsection{\texorpdfstring{Humidity}{Humidity}}
+{\footnotesize\ttfamily float Humidity = 0}
+
+
+
+Definition at line \mbox{\hyperlink{_d_h_t11_8c_source_l00018}{18}} of file \mbox{\hyperlink{_d_h_t11_8c_source}{DHT11.\+c}}.
+
+\mbox{\Hypertarget{_d_h_t11_8c_a653c5750f288e99e638bbd607fb885dc}\label{_d_h_t11_8c_a653c5750f288e99e638bbd607fb885dc}} 
+\index{DHT11.c@{DHT11.c}!Presence@{Presence}}
+\index{Presence@{Presence}!DHT11.c@{DHT11.c}}
+\doxysubsubsection{\texorpdfstring{Presence}{Presence}}
+{\footnotesize\ttfamily uint8\+\_\+t Presence = 0}
+
+
+
+Definition at line \mbox{\hyperlink{_d_h_t11_8c_source_l00019}{19}} of file \mbox{\hyperlink{_d_h_t11_8c_source}{DHT11.\+c}}.
+
+\mbox{\Hypertarget{_d_h_t11_8c_aa3731a0173b9bbde97d8a3cba6d13531}\label{_d_h_t11_8c_aa3731a0173b9bbde97d8a3cba6d13531}} 
+\index{DHT11.c@{DHT11.c}!RH@{RH}}
+\index{RH@{RH}!DHT11.c@{DHT11.c}}
+\doxysubsubsection{\texorpdfstring{RH}{RH}}
+{\footnotesize\ttfamily uint16\+\_\+t RH}
+
+
+
+Definition at line \mbox{\hyperlink{_d_h_t11_8c_source_l00015}{15}} of file \mbox{\hyperlink{_d_h_t11_8c_source}{DHT11.\+c}}.
+
+\mbox{\Hypertarget{_d_h_t11_8c_ad9a2a1c5f490104dc717f5a48b3b8a27}\label{_d_h_t11_8c_ad9a2a1c5f490104dc717f5a48b3b8a27}} 
+\index{DHT11.c@{DHT11.c}!Rh\_byte1@{Rh\_byte1}}
+\index{Rh\_byte1@{Rh\_byte1}!DHT11.c@{DHT11.c}}
+\doxysubsubsection{\texorpdfstring{Rh\_byte1}{Rh\_byte1}}
+{\footnotesize\ttfamily uint8\+\_\+t Rh\+\_\+byte1}
+
+
+
+Definition at line \mbox{\hyperlink{_d_h_t11_8c_source_l00014}{14}} of file \mbox{\hyperlink{_d_h_t11_8c_source}{DHT11.\+c}}.
+
+\mbox{\Hypertarget{_d_h_t11_8c_a2dbbbd8e0fc90796f6389fc31ef811ad}\label{_d_h_t11_8c_a2dbbbd8e0fc90796f6389fc31ef811ad}} 
+\index{DHT11.c@{DHT11.c}!Rh\_byte2@{Rh\_byte2}}
+\index{Rh\_byte2@{Rh\_byte2}!DHT11.c@{DHT11.c}}
+\doxysubsubsection{\texorpdfstring{Rh\_byte2}{Rh\_byte2}}
+{\footnotesize\ttfamily uint8\+\_\+t Rh\+\_\+byte2}
+
+
+
+Definition at line \mbox{\hyperlink{_d_h_t11_8c_source_l00014}{14}} of file \mbox{\hyperlink{_d_h_t11_8c_source}{DHT11.\+c}}.
+
+\mbox{\Hypertarget{_d_h_t11_8c_a4622f107cd73d99fbf4ca91205f3acca}\label{_d_h_t11_8c_a4622f107cd73d99fbf4ca91205f3acca}} 
+\index{DHT11.c@{DHT11.c}!SUM@{SUM}}
+\index{SUM@{SUM}!DHT11.c@{DHT11.c}}
+\doxysubsubsection{\texorpdfstring{SUM}{SUM}}
+{\footnotesize\ttfamily uint16\+\_\+t SUM}
+
+
+
+Definition at line \mbox{\hyperlink{_d_h_t11_8c_source_l00015}{15}} of file \mbox{\hyperlink{_d_h_t11_8c_source}{DHT11.\+c}}.
+
+\mbox{\Hypertarget{_d_h_t11_8c_aab2ce7d9ba3bab5ef3b090c61e1eca6b}\label{_d_h_t11_8c_aab2ce7d9ba3bab5ef3b090c61e1eca6b}} 
+\index{DHT11.c@{DHT11.c}!TEMP@{TEMP}}
+\index{TEMP@{TEMP}!DHT11.c@{DHT11.c}}
+\doxysubsubsection{\texorpdfstring{TEMP}{TEMP}}
+{\footnotesize\ttfamily uint16\+\_\+t TEMP}
+
+
+
+Definition at line \mbox{\hyperlink{_d_h_t11_8c_source_l00015}{15}} of file \mbox{\hyperlink{_d_h_t11_8c_source}{DHT11.\+c}}.
+
+\mbox{\Hypertarget{_d_h_t11_8c_a8b0074c25d30592e460b56b9f87d1ba9}\label{_d_h_t11_8c_a8b0074c25d30592e460b56b9f87d1ba9}} 
+\index{DHT11.c@{DHT11.c}!Temp\_byte1@{Temp\_byte1}}
+\index{Temp\_byte1@{Temp\_byte1}!DHT11.c@{DHT11.c}}
+\doxysubsubsection{\texorpdfstring{Temp\_byte1}{Temp\_byte1}}
+{\footnotesize\ttfamily uint8\+\_\+t Temp\+\_\+byte1}
+
+
+
+Definition at line \mbox{\hyperlink{_d_h_t11_8c_source_l00014}{14}} of file \mbox{\hyperlink{_d_h_t11_8c_source}{DHT11.\+c}}.
+
+\mbox{\Hypertarget{_d_h_t11_8c_a5544d12933412c17ee41513fa46cac02}\label{_d_h_t11_8c_a5544d12933412c17ee41513fa46cac02}} 
+\index{DHT11.c@{DHT11.c}!Temp\_byte2@{Temp\_byte2}}
+\index{Temp\_byte2@{Temp\_byte2}!DHT11.c@{DHT11.c}}
+\doxysubsubsection{\texorpdfstring{Temp\_byte2}{Temp\_byte2}}
+{\footnotesize\ttfamily uint8\+\_\+t Temp\+\_\+byte2}
+
+
+
+Definition at line \mbox{\hyperlink{_d_h_t11_8c_source_l00014}{14}} of file \mbox{\hyperlink{_d_h_t11_8c_source}{DHT11.\+c}}.
+
+\mbox{\Hypertarget{_d_h_t11_8c_afa66fac91ab948980be979b768e67c5a}\label{_d_h_t11_8c_afa66fac91ab948980be979b768e67c5a}} 
+\index{DHT11.c@{DHT11.c}!Temperature@{Temperature}}
+\index{Temperature@{Temperature}!DHT11.c@{DHT11.c}}
+\doxysubsubsection{\texorpdfstring{Temperature}{Temperature}}
+{\footnotesize\ttfamily float Temperature = 0}
+
+
+
+Definition at line \mbox{\hyperlink{_d_h_t11_8c_source_l00017}{17}} of file \mbox{\hyperlink{_d_h_t11_8c_source}{DHT11.\+c}}.
+

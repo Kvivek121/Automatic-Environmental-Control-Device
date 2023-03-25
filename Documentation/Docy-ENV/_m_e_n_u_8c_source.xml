@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__m_e_n_u_8c_source" xml:lang="en-US">
+<title>MENU.c</title>
+<indexterm><primary>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Src/MENU.c</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__m_e_n_u_8c_source_1l00001"/>00001 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="__m_e_n_u_8c_source_1l00002"/>00002 <emphasis role="comment">&#32;*&#32;MENU.c</emphasis>
+<anchor xml:id="__m_e_n_u_8c_source_1l00003"/>00003 <emphasis role="comment">&#32;*</emphasis>
+<anchor xml:id="__m_e_n_u_8c_source_1l00004"/>00004 <emphasis role="comment">&#32;*&#32;&#32;Created&#32;on:&#32;Feb&#32;21,&#32;2023</emphasis>
+<anchor xml:id="__m_e_n_u_8c_source_1l00005"/>00005 <emphasis role="comment">&#32;*&#32;&#32;&#32;&#32;&#32;&#32;Author:&#32;acer</emphasis>
+<anchor xml:id="__m_e_n_u_8c_source_1l00006"/>00006 <emphasis role="comment">&#32;*/</emphasis>
+<anchor xml:id="__m_e_n_u_8c_source_1l00007"/>00007 
+<anchor xml:id="__m_e_n_u_8c_source_1l00008"/>00008 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_liquidcrystal__i2c_8h">liquidcrystal_i2c.h</link>&quot;</emphasis>
+<anchor xml:id="__m_e_n_u_8c_source_1l00009"/>00009 <emphasis role="preprocessor">#include&#32;&quot;stdio.h&quot;</emphasis>
+<anchor xml:id="__m_e_n_u_8c_source_1l00010"/>00010 
+<anchor xml:id="__m_e_n_u_8c_source_1l00011"/><link linkend="__m_e_n_u_8c_1a3d1e8ccda4e6f5cc34f8a6184b75a4a7">00011</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__m_e_n_u_8c_1a0356cc3c38d5913ed46e2a3c1eb3c499">temp_threshold</link>=30,<link linkend="__m_e_n_u_8c_1a3d1e8ccda4e6f5cc34f8a6184b75a4a7">humi_threshold</link>=50,<link linkend="__m_e_n_u_8c_1a4f1e395aea1fba2dbbb40dd45d9df939">press_threshold</link>=2000;
+<anchor xml:id="__m_e_n_u_8c_source_1l00012"/><link linkend="__m_e_n_u_8h_1ad43c3812e6d13e0518d9f8b8f463ffcf">00012</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__m_e_n_u_8c_1ad43c3812e6d13e0518d9f8b8f463ffcf">count</link>=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00013"/><link linkend="__m_e_n_u_8h_1a60b91f7a9f04c1e36e4f1f1a01d04120">00013</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__m_e_n_u_8c_1a60b91f7a9f04c1e36e4f1f1a01d04120">time_elapsed</link>=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00014"/><link linkend="__m_e_n_u_8h_1ae20b057392172760910dcd983669d5a2">00014</link> <emphasis role="keyword">volatile</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__m_e_n_u_8c_1ae20b057392172760910dcd983669d5a2">pos_button</link>&#32;=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00015"/><link linkend="__m_e_n_u_8h_1a51b2f20e7cec7af8b4b73737d1fedb06">00015</link> <emphasis role="keyword">volatile</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__m_e_n_u_8c_1a51b2f20e7cec7af8b4b73737d1fedb06">neg_button</link>=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00016"/><link linkend="__m_e_n_u_8h_1a234ac5d88f28f16f8469163f16805e99">00016</link> <emphasis role="keyword">volatile</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__m_e_n_u_8c_1a234ac5d88f28f16f8469163f16805e99">menu_button</link>=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00017"/><link linkend="__m_e_n_u_8h_1a88fd7127474308c6efa6886573ce3192">00017</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__m_e_n_u_8c_1a88fd7127474308c6efa6886573ce3192">Welcom_count</link>=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00018"/><link linkend="__m_e_n_u_8c_1a97f7bee51ed6087f5637a31cc8a3da46">00018</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__m_e_n_u_8c_1a97f7bee51ed6087f5637a31cc8a3da46">view_count</link>=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00019"/>00019 
+<anchor xml:id="__m_e_n_u_8c_source_1l00020"/>00020 <emphasis role="comment">/****************************************************************************************************************/</emphasis>
+<anchor xml:id="__m_e_n_u_8c_source_1l00021"/>00021 <emphasis role="comment">/************************************************Interrupt&#32;Button&#32;Code&#32;******************************************/</emphasis>
+<anchor xml:id="__m_e_n_u_8c_source_1l00022"/><link linkend="__m_e_n_u_8h_1afdf1ca9e7afc3e7ec41b47fea4b3d80d">00022</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__m_e_n_u_8c_1afdf1ca9e7afc3e7ec41b47fea4b3d80d">Menu</link>()
+<anchor xml:id="__m_e_n_u_8c_source_1l00023"/>00023 {
+<anchor xml:id="__m_e_n_u_8c_source_1l00024"/>00024 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;buf1[10];
+<anchor xml:id="__m_e_n_u_8c_source_1l00025"/>00025 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>(<link linkend="__m_e_n_u_8c_1a234ac5d88f28f16f8469163f16805e99">menu_button</link>&gt;0)
+<anchor xml:id="__m_e_n_u_8c_source_1l00026"/>00026 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__m_e_n_u_8c_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="__m_e_n_u_8c_1a88fd7127474308c6efa6886573ce3192">Welcom_count</link>==0)
+<anchor xml:id="__m_e_n_u_8c_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__m_e_n_u_8c_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1abe31ef769fa9a1941c6d5e51fc63b3fd">HD44780_Clear</link>();
+<anchor xml:id="__m_e_n_u_8c_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1a8ad667447dffc6a0833d8e54c7853ac8">HD44780_SetCursor</link>(1,0);
+<anchor xml:id="__m_e_n_u_8c_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1af313a9f7b2c955a408d6045a00f65aea">HD44780_PrintStr</link>(<emphasis role="stringliteral">&quot;THRESHOLD&#32;MENU&quot;</emphasis>);
+<anchor xml:id="__m_e_n_u_8c_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;HAL_Delay(1000);
+<anchor xml:id="__m_e_n_u_8c_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1a88fd7127474308c6efa6886573ce3192">Welcom_count</link>++;
+<anchor xml:id="__m_e_n_u_8c_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_e_n_u_8c_source_1l00035"/>00035 
+<anchor xml:id="__m_e_n_u_8c_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="__m_e_n_u_8c_1ad43c3812e6d13e0518d9f8b8f463ffcf">count</link>==1)
+<anchor xml:id="__m_e_n_u_8c_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__m_e_n_u_8c_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="__m_e_n_u_8c_1a97f7bee51ed6087f5637a31cc8a3da46">view_count</link>==0)
+<anchor xml:id="__m_e_n_u_8c_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__m_e_n_u_8c_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1abe31ef769fa9a1941c6d5e51fc63b3fd">HD44780_Clear</link>();
+<anchor xml:id="__m_e_n_u_8c_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1a8ad667447dffc6a0833d8e54c7853ac8">HD44780_SetCursor</link>(2,0);
+<anchor xml:id="__m_e_n_u_8c_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1af313a9f7b2c955a408d6045a00f65aea">HD44780_PrintStr</link>(<emphasis role="stringliteral">&quot;Temperature&quot;</emphasis>);
+<anchor xml:id="__m_e_n_u_8c_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1a97f7bee51ed6087f5637a31cc8a3da46">view_count</link>++;
+<anchor xml:id="__m_e_n_u_8c_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_e_n_u_8c_source_1l00045"/>00045 
+<anchor xml:id="__m_e_n_u_8c_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="__m_e_n_u_8c_1ae20b057392172760910dcd983669d5a2">pos_button</link>==1&#32;)
+<anchor xml:id="__m_e_n_u_8c_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__m_e_n_u_8c_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1a60b91f7a9f04c1e36e4f1f1a01d04120">time_elapsed</link>=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1a0356cc3c38d5913ed46e2a3c1eb3c499">temp_threshold</link>++;
+<anchor xml:id="__m_e_n_u_8c_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1ae20b057392172760910dcd983669d5a2">pos_button</link>=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;to&#32;print&#32;updated&#32;Threshold&#32;Value</emphasis>
+<anchor xml:id="__m_e_n_u_8c_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sprintf(buf1,&#32;<emphasis role="stringliteral">&quot;%d&quot;</emphasis>,&#32;<link linkend="__m_e_n_u_8c_1a0356cc3c38d5913ed46e2a3c1eb3c499">temp_threshold</link>);
+<anchor xml:id="__m_e_n_u_8c_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1a8ad667447dffc6a0833d8e54c7853ac8">HD44780_SetCursor</link>(5,1);
+<anchor xml:id="__m_e_n_u_8c_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1af313a9f7b2c955a408d6045a00f65aea">HD44780_PrintStr</link>(buf1);
+<anchor xml:id="__m_e_n_u_8c_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_e_n_u_8c_source_1l00056"/>00056 
+<anchor xml:id="__m_e_n_u_8c_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="__m_e_n_u_8c_1a51b2f20e7cec7af8b4b73737d1fedb06">neg_button</link>==1)
+<anchor xml:id="__m_e_n_u_8c_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__m_e_n_u_8c_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1a60b91f7a9f04c1e36e4f1f1a01d04120">time_elapsed</link>=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1a0356cc3c38d5913ed46e2a3c1eb3c499">temp_threshold</link>--;
+<anchor xml:id="__m_e_n_u_8c_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1a51b2f20e7cec7af8b4b73737d1fedb06">neg_button</link>=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;to&#32;print&#32;updated&#32;Threshold&#32;Value</emphasis>
+<anchor xml:id="__m_e_n_u_8c_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sprintf(buf1,&#32;<emphasis role="stringliteral">&quot;%d&quot;</emphasis>,&#32;<link linkend="__m_e_n_u_8c_1a0356cc3c38d5913ed46e2a3c1eb3c499">temp_threshold</link>);
+<anchor xml:id="__m_e_n_u_8c_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1a8ad667447dffc6a0833d8e54c7853ac8">HD44780_SetCursor</link>(5,1);
+<anchor xml:id="__m_e_n_u_8c_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1af313a9f7b2c955a408d6045a00f65aea">HD44780_PrintStr</link>(buf1);
+<anchor xml:id="__m_e_n_u_8c_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_e_n_u_8c_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_e_n_u_8c_source_1l00068"/>00068 
+<anchor xml:id="__m_e_n_u_8c_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="__m_e_n_u_8c_1ad43c3812e6d13e0518d9f8b8f463ffcf">count</link>==2)
+<anchor xml:id="__m_e_n_u_8c_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__m_e_n_u_8c_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="__m_e_n_u_8c_1a97f7bee51ed6087f5637a31cc8a3da46">view_count</link>==0)
+<anchor xml:id="__m_e_n_u_8c_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__m_e_n_u_8c_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1abe31ef769fa9a1941c6d5e51fc63b3fd">HD44780_Clear</link>();
+<anchor xml:id="__m_e_n_u_8c_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1a8ad667447dffc6a0833d8e54c7853ac8">HD44780_SetCursor</link>(2,0);
+<anchor xml:id="__m_e_n_u_8c_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1af313a9f7b2c955a408d6045a00f65aea">HD44780_PrintStr</link>(<emphasis role="stringliteral">&quot;Humidity&quot;</emphasis>);
+<anchor xml:id="__m_e_n_u_8c_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1a97f7bee51ed6087f5637a31cc8a3da46">view_count</link>++;
+<anchor xml:id="__m_e_n_u_8c_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_e_n_u_8c_source_1l00078"/>00078 
+<anchor xml:id="__m_e_n_u_8c_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="__m_e_n_u_8c_1ae20b057392172760910dcd983669d5a2">pos_button</link>==1)
+<anchor xml:id="__m_e_n_u_8c_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__m_e_n_u_8c_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1a60b91f7a9f04c1e36e4f1f1a01d04120">time_elapsed</link>=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1a3d1e8ccda4e6f5cc34f8a6184b75a4a7">humi_threshold</link>++;
+<anchor xml:id="__m_e_n_u_8c_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1ae20b057392172760910dcd983669d5a2">pos_button</link>=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;to&#32;print&#32;updated&#32;Threshold&#32;Value</emphasis>
+<anchor xml:id="__m_e_n_u_8c_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sprintf(buf1,&#32;<emphasis role="stringliteral">&quot;%d&quot;</emphasis>,&#32;<link linkend="__m_e_n_u_8c_1a3d1e8ccda4e6f5cc34f8a6184b75a4a7">humi_threshold</link>);
+<anchor xml:id="__m_e_n_u_8c_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1a8ad667447dffc6a0833d8e54c7853ac8">HD44780_SetCursor</link>(5,1);
+<anchor xml:id="__m_e_n_u_8c_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1af313a9f7b2c955a408d6045a00f65aea">HD44780_PrintStr</link>(buf1);
+<anchor xml:id="__m_e_n_u_8c_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_e_n_u_8c_source_1l00089"/>00089 
+<anchor xml:id="__m_e_n_u_8c_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="__m_e_n_u_8c_1a51b2f20e7cec7af8b4b73737d1fedb06">neg_button</link>==1)
+<anchor xml:id="__m_e_n_u_8c_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__m_e_n_u_8c_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1a60b91f7a9f04c1e36e4f1f1a01d04120">time_elapsed</link>=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1a3d1e8ccda4e6f5cc34f8a6184b75a4a7">humi_threshold</link>--;
+<anchor xml:id="__m_e_n_u_8c_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1a51b2f20e7cec7af8b4b73737d1fedb06">neg_button</link>=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;to&#32;print&#32;updated&#32;Threshold&#32;Value</emphasis>
+<anchor xml:id="__m_e_n_u_8c_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sprintf(buf1,&#32;<emphasis role="stringliteral">&quot;%d&quot;</emphasis>,&#32;<link linkend="__m_e_n_u_8c_1a3d1e8ccda4e6f5cc34f8a6184b75a4a7">humi_threshold</link>);
+<anchor xml:id="__m_e_n_u_8c_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1a8ad667447dffc6a0833d8e54c7853ac8">HD44780_SetCursor</link>(5,1);
+<anchor xml:id="__m_e_n_u_8c_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1af313a9f7b2c955a408d6045a00f65aea">HD44780_PrintStr</link>(buf1);
+<anchor xml:id="__m_e_n_u_8c_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_e_n_u_8c_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_e_n_u_8c_source_1l00101"/>00101 
+<anchor xml:id="__m_e_n_u_8c_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="__m_e_n_u_8c_1ad43c3812e6d13e0518d9f8b8f463ffcf">count</link>==3)
+<anchor xml:id="__m_e_n_u_8c_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__m_e_n_u_8c_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="__m_e_n_u_8c_1a97f7bee51ed6087f5637a31cc8a3da46">view_count</link>==0)
+<anchor xml:id="__m_e_n_u_8c_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__m_e_n_u_8c_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1abe31ef769fa9a1941c6d5e51fc63b3fd">HD44780_Clear</link>();
+<anchor xml:id="__m_e_n_u_8c_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1a8ad667447dffc6a0833d8e54c7853ac8">HD44780_SetCursor</link>(2,0);
+<anchor xml:id="__m_e_n_u_8c_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1af313a9f7b2c955a408d6045a00f65aea">HD44780_PrintStr</link>(<emphasis role="stringliteral">&quot;Pressure&quot;</emphasis>);
+<anchor xml:id="__m_e_n_u_8c_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1a97f7bee51ed6087f5637a31cc8a3da46">view_count</link>++;
+<anchor xml:id="__m_e_n_u_8c_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_e_n_u_8c_source_1l00111"/>00111 
+<anchor xml:id="__m_e_n_u_8c_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="__m_e_n_u_8c_1ae20b057392172760910dcd983669d5a2">pos_button</link>==1)
+<anchor xml:id="__m_e_n_u_8c_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__m_e_n_u_8c_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1a60b91f7a9f04c1e36e4f1f1a01d04120">time_elapsed</link>=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1a4f1e395aea1fba2dbbb40dd45d9df939">press_threshold</link>++;
+<anchor xml:id="__m_e_n_u_8c_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1ae20b057392172760910dcd983669d5a2">pos_button</link>=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;to&#32;print&#32;updated&#32;Threshold&#32;Value</emphasis>
+<anchor xml:id="__m_e_n_u_8c_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sprintf(buf1,&#32;<emphasis role="stringliteral">&quot;%d&quot;</emphasis>,&#32;<link linkend="__m_e_n_u_8c_1a4f1e395aea1fba2dbbb40dd45d9df939">press_threshold</link>);
+<anchor xml:id="__m_e_n_u_8c_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1a8ad667447dffc6a0833d8e54c7853ac8">HD44780_SetCursor</link>(5,1);
+<anchor xml:id="__m_e_n_u_8c_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1af313a9f7b2c955a408d6045a00f65aea">HD44780_PrintStr</link>(buf1);
+<anchor xml:id="__m_e_n_u_8c_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_e_n_u_8c_source_1l00122"/>00122 
+<anchor xml:id="__m_e_n_u_8c_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="__m_e_n_u_8c_1a51b2f20e7cec7af8b4b73737d1fedb06">neg_button</link>==1)
+<anchor xml:id="__m_e_n_u_8c_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__m_e_n_u_8c_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1a60b91f7a9f04c1e36e4f1f1a01d04120">time_elapsed</link>=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1a4f1e395aea1fba2dbbb40dd45d9df939">press_threshold</link>--;
+<anchor xml:id="__m_e_n_u_8c_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1a51b2f20e7cec7af8b4b73737d1fedb06">neg_button</link>=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;to&#32;print&#32;updated&#32;Threshold&#32;Value</emphasis>
+<anchor xml:id="__m_e_n_u_8c_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sprintf(buf1,&#32;<emphasis role="stringliteral">&quot;%d&quot;</emphasis>,&#32;<link linkend="__m_e_n_u_8c_1a4f1e395aea1fba2dbbb40dd45d9df939">press_threshold</link>);
+<anchor xml:id="__m_e_n_u_8c_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1a8ad667447dffc6a0833d8e54c7853ac8">HD44780_SetCursor</link>(5,1);
+<anchor xml:id="__m_e_n_u_8c_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_liquidcrystal__i2c_8h_1af313a9f7b2c955a408d6045a00f65aea">HD44780_PrintStr</link>(buf1);
+<anchor xml:id="__m_e_n_u_8c_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_e_n_u_8c_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_e_n_u_8c_source_1l00134"/>00134 
+<anchor xml:id="__m_e_n_u_8c_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="__m_e_n_u_8c_1ad43c3812e6d13e0518d9f8b8f463ffcf">count</link>&gt;=5)
+<anchor xml:id="__m_e_n_u_8c_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__m_e_n_u_8c_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1ad43c3812e6d13e0518d9f8b8f463ffcf">count</link>=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1a234ac5d88f28f16f8469163f16805e99">menu_button</link>=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1a88fd7127474308c6efa6886573ce3192">Welcom_count</link>=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__m_e_n_u_8c_1a97f7bee51ed6087f5637a31cc8a3da46">view_count</link>=0;
+<anchor xml:id="__m_e_n_u_8c_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_e_n_u_8c_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*if&#32;(time_elapsed&#32;&gt;&#32;10)</emphasis>
+<anchor xml:id="__m_e_n_u_8c_source_1l00143"/>00143 <emphasis role="comment">&#32;&#32;&#32;&#32;{</emphasis>
+<anchor xml:id="__m_e_n_u_8c_source_1l00144"/>00144 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;count=0;</emphasis>
+<anchor xml:id="__m_e_n_u_8c_source_1l00145"/>00145 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;menu_button=0;</emphasis>
+<anchor xml:id="__m_e_n_u_8c_source_1l00146"/>00146 <emphasis role="comment">&#32;&#32;&#32;&#32;}*/</emphasis>
+<anchor xml:id="__m_e_n_u_8c_source_1l00147"/>00147 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__m_e_n_u_8c_source_1l00148"/>00148 }
+</programlisting></section>

@@ -1,0 +1,396 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_stm32f1xx__hal__msp_8c" xml:lang="en-US">
+<title>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Src/stm32f1xx_hal_msp.c File Reference</title>
+<indexterm><primary>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Src/stm32f1xx_hal_msp.c</primary></indexterm>
+<para>
+
+<para>This file provides code for the MSP Initialization and de-Initialization codes. </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &quot;main.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_stm32f1xx__hal__msp_8c_1ae4fb8e66865c87d0ebab74a726a6891f">HAL_MspInit</link> (void)</para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__hal__msp_8c_1abe01a202c27b23fc150aa66af3130073">HAL_I2C_MspInit</link> (I2C_HandleTypeDef *hi2c)</para>
+
+<para>I2C MSP Initialization This function configures the hardware resources used in this example. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__hal__msp_8c_1a2ec8d9b09854c732e2feed549278f048">HAL_I2C_MspDeInit</link> (I2C_HandleTypeDef *hi2c)</para>
+
+<para>I2C MSP De-Initialization This function freeze the hardware resources used in this example. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__hal__msp_8c_1a17f583be14b22caffa6c4e56dcd035ef">HAL_SPI_MspInit</link> (SPI_HandleTypeDef *hspi)</para>
+
+<para>SPI MSP Initialization This function configures the hardware resources used in this example. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__hal__msp_8c_1abadc4d4974af1afd943e8d13589068e1">HAL_SPI_MspDeInit</link> (SPI_HandleTypeDef *hspi)</para>
+
+<para>SPI MSP De-Initialization This function freeze the hardware resources used in this example. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__hal__msp_8c_1abb25ade2f7e3f7aae167bd52270c2b86">HAL_TIM_Base_MspInit</link> (TIM_HandleTypeDef *htim_base)</para>
+
+<para>TIM_Base MSP Initialization This function configures the hardware resources used in this example. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__hal__msp_8c_1a555b8a2d3c7a07341f8cb1255318fa2b">HAL_TIM_Base_MspDeInit</link> (TIM_HandleTypeDef *htim_base)</para>
+
+<para>TIM_Base MSP De-Initialization This function freeze the hardware resources used in this example. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>This file provides code for the MSP Initialization and de-Initialization codes. </para>
+
+<para><caution><title>Attention</title>
+
+<para></para>
+</caution>
+Copyright (c) 2023 STMicroelectronics. All rights reserved.</para>
+
+<para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS. </para>
+<para>
+Definition in file <link linkend="_stm32f1xx__hal__msp_8c_source">stm32f1xx_hal_msp.c</link>.</para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_1a2ec8d9b09854c732e2feed549278f048"/><section>
+    <title>HAL_I2C_MspDeInit()</title>
+<indexterm><primary>HAL_I2C_MspDeInit</primary><secondary>stm32f1xx_hal_msp.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_hal_msp.c</primary><secondary>HAL_I2C_MspDeInit</secondary></indexterm>
+<para><computeroutput>void HAL_I2C_MspDeInit (I2C_HandleTypeDef * hi2c)</computeroutput></para><para>
+
+<para>I2C MSP De-Initialization This function freeze the hardware resources used in this example. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>hi2c</entry><entry>
+<para>I2C handle pointer </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                
+                <formalpara>
+                    <title>
+Return values</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>None</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+
+<para>I2C1 GPIO Configuration PB6 ---&#8212;&gt; I2C1_SCL PB7 ---&#8212;&gt; I2C1_SDA</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__hal__msp_8c_source_1l00123">123</link> of file <link linkend="_stm32f1xx__hal__msp_8c_source">stm32f1xx_hal_msp.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_1abe01a202c27b23fc150aa66af3130073"/><section>
+    <title>HAL_I2C_MspInit()</title>
+<indexterm><primary>HAL_I2C_MspInit</primary><secondary>stm32f1xx_hal_msp.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_hal_msp.c</primary><secondary>HAL_I2C_MspInit</secondary></indexterm>
+<para><computeroutput>void HAL_I2C_MspInit (I2C_HandleTypeDef * hi2c)</computeroutput></para><para>
+
+<para>I2C MSP Initialization This function configures the hardware resources used in this example. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>hi2c</entry><entry>
+<para>I2C handle pointer </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                
+                <formalpara>
+                    <title>
+Return values</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>None</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+
+<para>I2C1 GPIO Configuration PB6 ---&#8212;&gt; I2C1_SCL PB7 ---&#8212;&gt; I2C1_SDA</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__hal__msp_8c_source_1l00089">89</link> of file <link linkend="_stm32f1xx__hal__msp_8c_source">stm32f1xx_hal_msp.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_1ae4fb8e66865c87d0ebab74a726a6891f"/><section>
+    <title>HAL_MspInit()</title>
+<indexterm><primary>HAL_MspInit</primary><secondary>stm32f1xx_hal_msp.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_hal_msp.c</primary><secondary>HAL_MspInit</secondary></indexterm>
+<para><computeroutput>void HAL_MspInit (void )</computeroutput></para>
+<para>Initializes the Global MSP. </para>
+
+<para>NOJTAG: JTAG-DP Disabled and SW-DP Enabled</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__hal__msp_8c_source_1l00063">63</link> of file <link linkend="_stm32f1xx__hal__msp_8c_source">stm32f1xx_hal_msp.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_1abadc4d4974af1afd943e8d13589068e1"/><section>
+    <title>HAL_SPI_MspDeInit()</title>
+<indexterm><primary>HAL_SPI_MspDeInit</primary><secondary>stm32f1xx_hal_msp.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_hal_msp.c</primary><secondary>HAL_SPI_MspDeInit</secondary></indexterm>
+<para><computeroutput>void HAL_SPI_MspDeInit (SPI_HandleTypeDef * hspi)</computeroutput></para><para>
+
+<para>SPI MSP De-Initialization This function freeze the hardware resources used in this example. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>hspi</entry><entry>
+<para>SPI handle pointer </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                
+                <formalpara>
+                    <title>
+Return values</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>None</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+
+<para>SPI2 GPIO Configuration PB13 ---&#8212;&gt; SPI2_SCK PB14 ---&#8212;&gt; SPI2_MISO PB15 ---&#8212;&gt; SPI2_MOSI</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__hal__msp_8c_source_1l00194">194</link> of file <link linkend="_stm32f1xx__hal__msp_8c_source">stm32f1xx_hal_msp.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_1a17f583be14b22caffa6c4e56dcd035ef"/><section>
+    <title>HAL_SPI_MspInit()</title>
+<indexterm><primary>HAL_SPI_MspInit</primary><secondary>stm32f1xx_hal_msp.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_hal_msp.c</primary><secondary>HAL_SPI_MspInit</secondary></indexterm>
+<para><computeroutput>void HAL_SPI_MspInit (SPI_HandleTypeDef * hspi)</computeroutput></para><para>
+
+<para>SPI MSP Initialization This function configures the hardware resources used in this example. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>hspi</entry><entry>
+<para>SPI handle pointer </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                
+                <formalpara>
+                    <title>
+Return values</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>None</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+
+<para>SPI2 GPIO Configuration PB13 ---&#8212;&gt; SPI2_SCK PB14 ---&#8212;&gt; SPI2_MISO PB15 ---&#8212;&gt; SPI2_MOSI</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__hal__msp_8c_source_1l00154">154</link> of file <link linkend="_stm32f1xx__hal__msp_8c_source">stm32f1xx_hal_msp.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_1a555b8a2d3c7a07341f8cb1255318fa2b"/><section>
+    <title>HAL_TIM_Base_MspDeInit()</title>
+<indexterm><primary>HAL_TIM_Base_MspDeInit</primary><secondary>stm32f1xx_hal_msp.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_hal_msp.c</primary><secondary>HAL_TIM_Base_MspDeInit</secondary></indexterm>
+<para><computeroutput>void HAL_TIM_Base_MspDeInit (TIM_HandleTypeDef * htim_base)</computeroutput></para><para>
+
+<para>TIM_Base MSP De-Initialization This function freeze the hardware resources used in this example. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>htim_base</entry><entry>
+<para>TIM_Base handle pointer </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                
+                <formalpara>
+                    <title>
+Return values</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>None</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_stm32f1xx__hal__msp_8c_source_1l00246">246</link> of file <link linkend="_stm32f1xx__hal__msp_8c_source">stm32f1xx_hal_msp.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__hal__msp_8c_1abb25ade2f7e3f7aae167bd52270c2b86"/><section>
+    <title>HAL_TIM_Base_MspInit()</title>
+<indexterm><primary>HAL_TIM_Base_MspInit</primary><secondary>stm32f1xx_hal_msp.c</secondary></indexterm>
+<indexterm><primary>stm32f1xx_hal_msp.c</primary><secondary>HAL_TIM_Base_MspInit</secondary></indexterm>
+<para><computeroutput>void HAL_TIM_Base_MspInit (TIM_HandleTypeDef * htim_base)</computeroutput></para><para>
+
+<para>TIM_Base MSP Initialization This function configures the hardware resources used in this example. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>htim_base</entry><entry>
+<para>TIM_Base handle pointer </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                
+                <formalpara>
+                    <title>
+Return values</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>None</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_stm32f1xx__hal__msp_8c_source_1l00224">224</link> of file <link linkend="_stm32f1xx__hal__msp_8c_source">stm32f1xx_hal_msp.c</link>.</para>
+</section>
+</section>
+</section>

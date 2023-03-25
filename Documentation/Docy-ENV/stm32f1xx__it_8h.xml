@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_stm32f1xx__it_8h" xml:lang="en-US">
+<title>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Inc/stm32f1xx_it.h File Reference</title>
+<indexterm><primary>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Inc/stm32f1xx_it.h</primary></indexterm>
+<para>
+
+<para>This file contains the headers of the interrupt handlers. </para>
+ 
+</para>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8h_1a6ad7a5e3ee69cb6db6a6b9111ba898bc">NMI_Handler</link> (void)</para>
+
+<para>This function handles Non maskable interrupt. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8h_1a2bffc10d5bd4106753b7c30e86903bea">HardFault_Handler</link> (void)</para>
+
+<para>This function handles Hard fault interrupt. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8h_1a3150f74512510287a942624aa9b44cc5">MemManage_Handler</link> (void)</para>
+
+<para>This function handles Memory management fault. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8h_1a850cefb17a977292ae5eb4cafa9976c3">BusFault_Handler</link> (void)</para>
+
+<para>This function handles Prefetch fault, memory access fault. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8h_1a1d98923de2ed6b7309b66f9ba2971647">UsageFault_Handler</link> (void)</para>
+
+<para>This function handles Undefined instruction or illegal state. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8h_1a3e5ddb3df0d62f2dc357e64a3f04a6ce">SVC_Handler</link> (void)</para>
+
+<para>This function handles System service call via SWI instruction. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8h_1adbdfb05858cc36fc520974df37ec3cb0">DebugMon_Handler</link> (void)</para>
+
+<para>This function handles Debug monitor. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8h_1a6303e1f258cbdc1f970ce579cc015623">PendSV_Handler</link> (void)</para>
+
+<para>This function handles Pendable request for system service. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8h_1ab5e09814056d617c521549e542639b7e">SysTick_Handler</link> (void)</para>
+
+<para>This function handles System tick timer. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8h_1a17e9789a29a87d2df54f12b94dd1a0b6">EXTI0_IRQHandler</link> (void)</para>
+
+<para>This function handles EXTI line0 interrupt. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8h_1a49cfdd46eb8d0ef3e1987514aa9343dc">EXTI1_IRQHandler</link> (void)</para>
+
+<para>This function handles EXTI line1 interrupt. </para>
+</listitem>
+            <listitem><para>void <link linkend="_stm32f1xx__it_8h_1ab5a1d9e9c8ef50e0cb9ddb5745a20a14">EXTI2_IRQHandler</link> (void)</para>
+
+<para>This function handles EXTI line2 interrupt. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>This file contains the headers of the interrupt handlers. </para>
+
+<para><caution><title>Attention</title>
+
+<para></para>
+</caution>
+Copyright (c) 2023 STMicroelectronics. All rights reserved.</para>
+
+<para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS. </para>
+<para>
+Definition in file <link linkend="_stm32f1xx__it_8h_source">stm32f1xx_it.h</link>.</para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_stm32f1xx__it_8h_1a850cefb17a977292ae5eb4cafa9976c3"/><section>
+    <title>BusFault_Handler()</title>
+<indexterm><primary>BusFault_Handler</primary><secondary>stm32f1xx_it.h</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.h</primary><secondary>BusFault_Handler</secondary></indexterm>
+<para><computeroutput>void BusFault_Handler (void )</computeroutput></para><para>
+
+<para>This function handles Prefetch fault, memory access fault. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00122">122</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8h_1adbdfb05858cc36fc520974df37ec3cb0"/><section>
+    <title>DebugMon_Handler()</title>
+<indexterm><primary>DebugMon_Handler</primary><secondary>stm32f1xx_it.h</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.h</primary><secondary>DebugMon_Handler</secondary></indexterm>
+<para><computeroutput>void DebugMon_Handler (void )</computeroutput></para><para>
+
+<para>This function handles Debug monitor. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00165">165</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8h_1a17e9789a29a87d2df54f12b94dd1a0b6"/><section>
+    <title>EXTI0_IRQHandler()</title>
+<indexterm><primary>EXTI0_IRQHandler</primary><secondary>stm32f1xx_it.h</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.h</primary><secondary>EXTI0_IRQHandler</secondary></indexterm>
+<para><computeroutput>void EXTI0_IRQHandler (void )</computeroutput></para><para>
+
+<para>This function handles EXTI line0 interrupt. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00212">212</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8h_1a49cfdd46eb8d0ef3e1987514aa9343dc"/><section>
+    <title>EXTI1_IRQHandler()</title>
+<indexterm><primary>EXTI1_IRQHandler</primary><secondary>stm32f1xx_it.h</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.h</primary><secondary>EXTI1_IRQHandler</secondary></indexterm>
+<para><computeroutput>void EXTI1_IRQHandler (void )</computeroutput></para><para>
+
+<para>This function handles EXTI line1 interrupt. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00234">234</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8h_1ab5a1d9e9c8ef50e0cb9ddb5745a20a14"/><section>
+    <title>EXTI2_IRQHandler()</title>
+<indexterm><primary>EXTI2_IRQHandler</primary><secondary>stm32f1xx_it.h</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.h</primary><secondary>EXTI2_IRQHandler</secondary></indexterm>
+<para><computeroutput>void EXTI2_IRQHandler (void )</computeroutput></para><para>
+
+<para>This function handles EXTI line2 interrupt. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00254">254</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8h_1a2bffc10d5bd4106753b7c30e86903bea"/><section>
+    <title>HardFault_Handler()</title>
+<indexterm><primary>HardFault_Handler</primary><secondary>stm32f1xx_it.h</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.h</primary><secondary>HardFault_Handler</secondary></indexterm>
+<para><computeroutput>void HardFault_Handler (void )</computeroutput></para><para>
+
+<para>This function handles Hard fault interrupt. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00092">92</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8h_1a3150f74512510287a942624aa9b44cc5"/><section>
+    <title>MemManage_Handler()</title>
+<indexterm><primary>MemManage_Handler</primary><secondary>stm32f1xx_it.h</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.h</primary><secondary>MemManage_Handler</secondary></indexterm>
+<para><computeroutput>void MemManage_Handler (void )</computeroutput></para><para>
+
+<para>This function handles Memory management fault. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00107">107</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8h_1a6ad7a5e3ee69cb6db6a6b9111ba898bc"/><section>
+    <title>NMI_Handler()</title>
+<indexterm><primary>NMI_Handler</primary><secondary>stm32f1xx_it.h</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.h</primary><secondary>NMI_Handler</secondary></indexterm>
+<para><computeroutput>void NMI_Handler (void )</computeroutput></para><para>
+
+<para>This function handles Non maskable interrupt. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00077">77</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8h_1a6303e1f258cbdc1f970ce579cc015623"/><section>
+    <title>PendSV_Handler()</title>
+<indexterm><primary>PendSV_Handler</primary><secondary>stm32f1xx_it.h</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.h</primary><secondary>PendSV_Handler</secondary></indexterm>
+<para><computeroutput>void PendSV_Handler (void )</computeroutput></para><para>
+
+<para>This function handles Pendable request for system service. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00178">178</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8h_1a3e5ddb3df0d62f2dc357e64a3f04a6ce"/><section>
+    <title>SVC_Handler()</title>
+<indexterm><primary>SVC_Handler</primary><secondary>stm32f1xx_it.h</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.h</primary><secondary>SVC_Handler</secondary></indexterm>
+<para><computeroutput>void SVC_Handler (void )</computeroutput></para><para>
+
+<para>This function handles System service call via SWI instruction. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00152">152</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8h_1ab5e09814056d617c521549e542639b7e"/><section>
+    <title>SysTick_Handler()</title>
+<indexterm><primary>SysTick_Handler</primary><secondary>stm32f1xx_it.h</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.h</primary><secondary>SysTick_Handler</secondary></indexterm>
+<para><computeroutput>void SysTick_Handler (void )</computeroutput></para><para>
+
+<para>This function handles System tick timer. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00191">191</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+<anchor xml:id="_stm32f1xx__it_8h_1a1d98923de2ed6b7309b66f9ba2971647"/><section>
+    <title>UsageFault_Handler()</title>
+<indexterm><primary>UsageFault_Handler</primary><secondary>stm32f1xx_it.h</secondary></indexterm>
+<indexterm><primary>stm32f1xx_it.h</primary><secondary>UsageFault_Handler</secondary></indexterm>
+<para><computeroutput>void UsageFault_Handler (void )</computeroutput></para><para>
+
+<para>This function handles Undefined instruction or illegal state. </para>
+</para>
+<para>
+Definition at line <link linkend="_stm32f1xx__it_8c_source_1l00137">137</link> of file <link linkend="_stm32f1xx__it_8c_source">stm32f1xx_it.c</link>.</para>
+</section>
+</section>
+</section>

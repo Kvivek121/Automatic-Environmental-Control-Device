@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_liquidcrystal__i2c_8h_source" xml:lang="en-US">
+<title>liquidcrystal_i2c.h</title>
+<indexterm><primary>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Inc/liquidcrystal_i2c.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_liquidcrystal__i2c_8h_source_1l00001"/>00001 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00002"/>00002 <emphasis role="comment">&#32;*&#32;liquidcrystal_i2c.h</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00003"/>00003 <emphasis role="comment">&#32;*</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00004"/>00004 <emphasis role="comment">&#32;*&#32;&#32;Created&#32;on:&#32;Jan&#32;16,&#32;2023</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00005"/>00005 <emphasis role="comment">&#32;*&#32;&#32;&#32;&#32;&#32;&#32;Author:&#32;acer</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00006"/>00006 <emphasis role="comment">&#32;*/</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00007"/>00007 
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00008"/>00008 <emphasis role="preprocessor">#ifndef&#32;INC_LIQUIDCRYSTAL_I2C_H_</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00009"/>00009 <emphasis role="preprocessor">#define&#32;INC_LIQUIDCRYSTAL_I2C_H_</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00010"/>00010 
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00011"/>00011 <emphasis role="preprocessor">#include&#32;&quot;stm32f1xx_hal.h&quot;</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00012"/>00012 
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00013"/>00013 <emphasis role="comment">/*&#32;Command&#32;*/</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00014"/><link linkend="_liquidcrystal__i2c_8h_1acc3509bc0442b41e2b816555de473ed2">00014</link> <emphasis role="preprocessor">#define&#32;LCD_CLEARDISPLAY&#32;0x01</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00015"/><link linkend="_liquidcrystal__i2c_8h_1a154c86a887633d0f6d9988e4dbb1f419">00015</link> <emphasis role="preprocessor">#define&#32;LCD_RETURNHOME&#32;0x02</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00016"/><link linkend="_liquidcrystal__i2c_8h_1a5597e1d5819ea2f0734ad4313abf6703">00016</link> <emphasis role="preprocessor">#define&#32;LCD_ENTRYMODESET&#32;0x04</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00017"/><link linkend="_liquidcrystal__i2c_8h_1adfb8b2b8b8a08d7313504d7a4f89d99f">00017</link> <emphasis role="preprocessor">#define&#32;LCD_DISPLAYCONTROL&#32;0x08</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00018"/><link linkend="_liquidcrystal__i2c_8h_1a61f16a2b7550e4700f7898a7587c5594">00018</link> <emphasis role="preprocessor">#define&#32;LCD_CURSORSHIFT&#32;0x10</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00019"/><link linkend="_liquidcrystal__i2c_8h_1aaef882ae70d1f485cd132815d9716111">00019</link> <emphasis role="preprocessor">#define&#32;LCD_FUNCTIONSET&#32;0x20</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00020"/><link linkend="_liquidcrystal__i2c_8h_1aae6ea856879c11dee58493184582a52f">00020</link> <emphasis role="preprocessor">#define&#32;LCD_SETCGRAMADDR&#32;0x40</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00021"/><link linkend="_liquidcrystal__i2c_8h_1a15008b832807a208d9d88c74e6751ebf">00021</link> <emphasis role="preprocessor">#define&#32;LCD_SETDDRAMADDR&#32;0x80</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00022"/>00022 
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00023"/>00023 <emphasis role="comment">/*&#32;Entry&#32;Mode&#32;*/</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00024"/><link linkend="_liquidcrystal__i2c_8h_1a43c26ba2e66880fac95ef640b56873ad">00024</link> <emphasis role="preprocessor">#define&#32;LCD_ENTRYRIGHT&#32;0x00</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00025"/><link linkend="_liquidcrystal__i2c_8h_1ae7c6309fce6200bd7526d090a4a84dd0">00025</link> <emphasis role="preprocessor">#define&#32;LCD_ENTRYLEFT&#32;0x02</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00026"/><link linkend="_liquidcrystal__i2c_8h_1aa2cf1d0f4a319e53c009cffe1184466c">00026</link> <emphasis role="preprocessor">#define&#32;LCD_ENTRYSHIFTINCREMENT&#32;0x01</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00027"/><link linkend="_liquidcrystal__i2c_8h_1a049ee97e98d04788c1da9a55590fbe42">00027</link> <emphasis role="preprocessor">#define&#32;LCD_ENTRYSHIFTDECREMENT&#32;0x00</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00028"/>00028 
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00029"/>00029 <emphasis role="comment">/*&#32;Display&#32;On/Off&#32;*/</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00030"/><link linkend="_liquidcrystal__i2c_8h_1a76236ae8317b34bbc98ea56bc0a2639c">00030</link> <emphasis role="preprocessor">#define&#32;LCD_DISPLAYON&#32;0x04</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00031"/><link linkend="_liquidcrystal__i2c_8h_1a257ebe775cac7140cf82aa40d8ce545a">00031</link> <emphasis role="preprocessor">#define&#32;LCD_DISPLAYOFF&#32;0x00</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00032"/><link linkend="_liquidcrystal__i2c_8h_1ab67f0adccde68de88eee0513fdfc4574">00032</link> <emphasis role="preprocessor">#define&#32;LCD_CURSORON&#32;0x02</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00033"/><link linkend="_liquidcrystal__i2c_8h_1a32b194a3adaa0a0bb69acee2e6a754fa">00033</link> <emphasis role="preprocessor">#define&#32;LCD_CURSOROFF&#32;0x00</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00034"/><link linkend="_liquidcrystal__i2c_8h_1ac3b19d4e6553b9bbf18a23387e439206">00034</link> <emphasis role="preprocessor">#define&#32;LCD_BLINKON&#32;0x01</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00035"/><link linkend="_liquidcrystal__i2c_8h_1a4b28243034cec656b0ed490ba6979752">00035</link> <emphasis role="preprocessor">#define&#32;LCD_BLINKOFF&#32;0x00</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00036"/>00036 
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00037"/>00037 <emphasis role="comment">/*&#32;Cursor&#32;Shift&#32;*/</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00038"/><link linkend="_liquidcrystal__i2c_8h_1ab2f7b67abfac33f610acfd5d7a971f40">00038</link> <emphasis role="preprocessor">#define&#32;LCD_DISPLAYMOVE&#32;0x08</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00039"/><link linkend="_liquidcrystal__i2c_8h_1ac21f0302ac4136775877d5f4759e4f74">00039</link> <emphasis role="preprocessor">#define&#32;LCD_CURSORMOVE&#32;0x00</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00040"/><link linkend="_liquidcrystal__i2c_8h_1acf5999180233790bb2c9902efde58f7f">00040</link> <emphasis role="preprocessor">#define&#32;LCD_MOVERIGHT&#32;0x04</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00041"/><link linkend="_liquidcrystal__i2c_8h_1aafb86adb0dfca1e65d65b2cd1946a009">00041</link> <emphasis role="preprocessor">#define&#32;LCD_MOVELEFT&#32;0x00</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00042"/>00042 
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00043"/>00043 <emphasis role="comment">/*&#32;Function&#32;Set&#32;*/</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00044"/><link linkend="_liquidcrystal__i2c_8h_1a59a57ca857dae5d89eb5f2a38c4ac6f0">00044</link> <emphasis role="preprocessor">#define&#32;LCD_8BITMODE&#32;0x10</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00045"/><link linkend="_liquidcrystal__i2c_8h_1ab8c35d355d2372090c7a347e961c9224">00045</link> <emphasis role="preprocessor">#define&#32;LCD_4BITMODE&#32;0x00</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00046"/><link linkend="_liquidcrystal__i2c_8h_1a7987e93538df2819583ba43b81ddbb25">00046</link> <emphasis role="preprocessor">#define&#32;LCD_2LINE&#32;0x08</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00047"/><link linkend="_liquidcrystal__i2c_8h_1a8c85cf88d8af66a47c42249d81c94641">00047</link> <emphasis role="preprocessor">#define&#32;LCD_1LINE&#32;0x00</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00048"/><link linkend="_liquidcrystal__i2c_8h_1abb3210156d88d3fe18c9352eb161fe42">00048</link> <emphasis role="preprocessor">#define&#32;LCD_5x10DOTS&#32;0x04</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00049"/><link linkend="_liquidcrystal__i2c_8h_1a9ef57e724c1b846dae0f531aff6fb464">00049</link> <emphasis role="preprocessor">#define&#32;LCD_5x8DOTS&#32;0x00</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00050"/>00050 
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00051"/>00051 <emphasis role="comment">/*&#32;Backlight&#32;*/</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00052"/><link linkend="_liquidcrystal__i2c_8h_1ac059d24dfe9c1e1f7c07cb7869a1833b">00052</link> <emphasis role="preprocessor">#define&#32;LCD_BACKLIGHT&#32;0x08</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00053"/><link linkend="_liquidcrystal__i2c_8h_1a65fa786d6e31fe8b1aa51784a9736581">00053</link> <emphasis role="preprocessor">#define&#32;LCD_NOBACKLIGHT&#32;0x00</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00054"/>00054 
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00055"/>00055 <emphasis role="comment">/*&#32;Enable&#32;Bit&#32;*/</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00056"/><link linkend="_liquidcrystal__i2c_8h_1a514ad415fb6125ba296793df7d1a468a">00056</link> <emphasis role="preprocessor">#define&#32;ENABLE&#32;0x04</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00057"/>00057 
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00058"/>00058 <emphasis role="comment">/*&#32;Read&#32;Write&#32;Bit&#32;*/</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00059"/><link linkend="_liquidcrystal__i2c_8h_1afc4ded33ac0ca43defcce639e965748a">00059</link> <emphasis role="preprocessor">#define&#32;RW&#32;0x0</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00060"/>00060 
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00061"/>00061 <emphasis role="comment">/*&#32;Register&#32;Select&#32;Bit&#32;*/</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00062"/><link linkend="_liquidcrystal__i2c_8h_1af8903d8eea3868940c60af887473b152">00062</link> <emphasis role="preprocessor">#define&#32;RS&#32;0x01</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00063"/>00063 
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00064"/>00064 <emphasis role="comment">/*&#32;Device&#32;I2C&#32;Address&#32;*/</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00065"/><link linkend="_liquidcrystal__i2c_8h_1aff0f2d52596a7a0b104ef88aa1eccd2b">00065</link> <emphasis role="preprocessor">#define&#32;DEVICE_ADDR&#32;&#32;&#32;(0x27&#32;&lt;&lt;&#32;1)&#32;</emphasis><emphasis role="comment">//&#32;0x4E</emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00066"/>00066 
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00067"/>00067 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_liquidcrystal__i2c_8h_1a97d4f7a1f8a23938955ba343380f13d1">HD44780_Init</link>(uint8_t&#32;rows);
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00068"/>00068 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_liquidcrystal__i2c_8h_1abe31ef769fa9a1941c6d5e51fc63b3fd">HD44780_Clear</link>();
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00069"/>00069 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_liquidcrystal__i2c_8h_1a0e2a70008b6b991562badef8f2bcc4f5">HD44780_Home</link>();
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00070"/><link linkend="_liquidcrystal__i2c_8h_1a3565eda1be2bc265616dbf39c3d4ba65">00070</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_liquidcrystal__i2c_8h_1a3565eda1be2bc265616dbf39c3d4ba65">HD44780_NoDisplay</link>();
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00071"/>00071 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_liquidcrystal__i2c_8h_1acff5f142b39d9be81e16307b924d7143">HD44780_Display</link>();
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00072"/>00072 
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00073"/>00073 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_liquidcrystal__i2c_8h_1a8ad667447dffc6a0833d8e54c7853ac8">HD44780_SetCursor</link>(uint8_t,&#32;uint8_t);
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00074"/>00074 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_liquidcrystal__i2c_8h_1aeb020d5cc7985ee54c28f0d3fbc9f99b">HD44780_CreateSpecialChar</link>(uint8_t&#32;location,&#32;uint8_t&#32;charmap[]);
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00075"/>00075 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_liquidcrystal__i2c_8h_1af313a9f7b2c955a408d6045a00f65aea">HD44780_PrintStr</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>[]);
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00076"/>00076 
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00077"/>00077 
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00078"/>00078 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;INC_LIQUIDCRYSTAL_I2C_H_&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+<anchor xml:id="_liquidcrystal__i2c_8h_source_1l00079"/>00079 
+</programlisting></section>

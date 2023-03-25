@@ -1,0 +1,115 @@
+\hypertarget{_d_h_t11_8c_source}{}\doxysection{DHT11.\+c}
+\label{_d_h_t11_8c_source}\index{C:/Users/acer/STM32CubeIDE/workspace\_1.10.2/Final\_Selec\_v3/Core/Src/DHT11.c@{C:/Users/acer/STM32CubeIDE/workspace\_1.10.2/Final\_Selec\_v3/Core/Src/DHT11.c}}
+\mbox{\hyperlink{_d_h_t11_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00002}00002\ \textcolor{comment}{\ *\ DHT11.c}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00004}00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Feb\ 15,\ 2023}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00005}00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ acer}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00006}00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{main_8h}{main.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}stdio.h"{}}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_h_t11_8h}{DHT11.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{liquidcrystal__i2c_8h}{liquidcrystal\_i2c.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00012}00012\ \textcolor{keyword}{extern}\ TIM\_HandleTypeDef\ \mbox{\hyperlink{_d_h_t11_8c_a25fc663547539bc49fecc0011bd76ab5}{htim1}};}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00014}\mbox{\hyperlink{_d_h_t11_8h_ad9a2a1c5f490104dc717f5a48b3b8a27}{00014}}\ uint8\_t\ \mbox{\hyperlink{_d_h_t11_8c_ad9a2a1c5f490104dc717f5a48b3b8a27}{Rh\_byte1}},\ \mbox{\hyperlink{_d_h_t11_8c_a2dbbbd8e0fc90796f6389fc31ef811ad}{Rh\_byte2}},\ \mbox{\hyperlink{_d_h_t11_8c_a8b0074c25d30592e460b56b9f87d1ba9}{Temp\_byte1}},\ \mbox{\hyperlink{_d_h_t11_8c_a5544d12933412c17ee41513fa46cac02}{Temp\_byte2}};}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00015}\mbox{\hyperlink{_d_h_t11_8c_aa3731a0173b9bbde97d8a3cba6d13531}{00015}}\ uint16\_t\ \mbox{\hyperlink{_d_h_t11_8c_a4622f107cd73d99fbf4ca91205f3acca}{SUM}},\ \mbox{\hyperlink{_d_h_t11_8c_aa3731a0173b9bbde97d8a3cba6d13531}{RH}},\ \mbox{\hyperlink{_d_h_t11_8c_aab2ce7d9ba3bab5ef3b090c61e1eca6b}{TEMP}};}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00017}\mbox{\hyperlink{_d_h_t11_8c_afa66fac91ab948980be979b768e67c5a}{00017}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{_d_h_t11_8c_afa66fac91ab948980be979b768e67c5a}{Temperature}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00018}\mbox{\hyperlink{_d_h_t11_8c_afe6173f00c89e1ccfe06abd8502ff19f}{00018}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{_d_h_t11_8c_afe6173f00c89e1ccfe06abd8502ff19f}{Humidity}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00019}\mbox{\hyperlink{_d_h_t11_8c_a653c5750f288e99e638bbd607fb885dc}{00019}}\ uint8\_t\ \mbox{\hyperlink{_d_h_t11_8c_a653c5750f288e99e638bbd607fb885dc}{Presence}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00020}\mbox{\hyperlink{_d_h_t11_8c_a9673b9ee577f4ba82aea307a23e7c6f1}{00020}}\ \mbox{\hyperlink{struct_d_h_t11__value}{DHT11\_read\_value}}\ \mbox{\hyperlink{_d_h_t11_8c_a9673b9ee577f4ba82aea307a23e7c6f1}{DHT11\_read\_value1}};}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00022}\mbox{\hyperlink{_d_h_t11_8h_acc64d813f9394380d679d8088391e83b}{00022}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_d_h_t11_8c_a42071dc0f568b5e965502014a4d215c3}{delay}}\ (uint16\_t\ \mbox{\hyperlink{_d_h_t11_8c_a42071dc0f568b5e965502014a4d215c3}{delay}})}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00023}00023\ \{}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00024}00024\ \ \ \_\_HAL\_TIM\_SET\_COUNTER(\&\mbox{\hyperlink{_d_h_t11_8c_a25fc663547539bc49fecc0011bd76ab5}{htim1}},\ 0);}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00025}00025\ \ \ \textcolor{keywordflow}{while}\ (\_\_HAL\_TIM\_GET\_COUNTER(\&\mbox{\hyperlink{_d_h_t11_8c_a25fc663547539bc49fecc0011bd76ab5}{htim1}})\ <\ \mbox{\hyperlink{_d_h_t11_8c_a42071dc0f568b5e965502014a4d215c3}{delay}});}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00026}00026\ \}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00028}00028\ \textcolor{comment}{/***********************************GPIO\ configuration\ function*********************************/}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00029}\mbox{\hyperlink{_d_h_t11_8h_aef1aec2157382676edb25c22e4b7ecef}{00029}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_d_h_t11_8c_aef1aec2157382676edb25c22e4b7ecef}{Set\_Pin\_Output}}\ (GPIO\_TypeDef\ *GPIOx,\ uint16\_t\ GPIO\_Pin)}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00030}00030\ \{}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00031}00031\ \ \ \ \ GPIO\_InitTypeDef\ GPIO\_InitStruct\ =\ \{0\};}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00032}00032\ \ \ \ \ GPIO\_InitStruct.Pin\ =\ GPIO\_Pin;}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00033}00033\ \ \ \ \ GPIO\_InitStruct.Mode\ =\ GPIO\_MODE\_OUTPUT\_PP;}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00034}00034\ \ \ \ \ GPIO\_InitStruct.Speed\ =\ GPIO\_SPEED\_FREQ\_LOW;}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00035}00035\ \ \ \ \ HAL\_GPIO\_Init(GPIOx,\ \&GPIO\_InitStruct);}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00036}00036\ \}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00038}\mbox{\hyperlink{_d_h_t11_8h_a3b8cee858a35581caf1bcb14ce5cb367}{00038}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_d_h_t11_8c_a3b8cee858a35581caf1bcb14ce5cb367}{Set\_Pin\_Input}}\ (GPIO\_TypeDef\ *GPIOx,\ uint16\_t\ GPIO\_Pin)}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00039}00039\ \{}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00040}00040\ \ \ \ \ GPIO\_InitTypeDef\ GPIO\_InitStruct\ =\ \{0\};}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00041}00041\ \ \ \ \ GPIO\_InitStruct.Pin\ =\ GPIO\_Pin;}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00042}00042\ \ \ \ \ GPIO\_InitStruct.Mode\ =\ GPIO\_MODE\_INPUT;}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00043}00043\ \ \ \ \ GPIO\_InitStruct.Pull\ =\ GPIO\_PULLUP;}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00044}00044\ \ \ \ \ HAL\_GPIO\_Init(GPIOx,\ \&GPIO\_InitStruct);}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00045}00045\ \}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00047}00047\ \textcolor{comment}{/***********************************DHT11\ function*********************************/}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00048}\mbox{\hyperlink{_d_h_t11_8h_ad22d2fc6f1c044bfca99e8f38c419d78}{00048}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_d_h_t11_8c_ad22d2fc6f1c044bfca99e8f38c419d78}{DHT11\_Start}}\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00049}00049\ \{}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00050}00050\ \ \ \ \ \mbox{\hyperlink{_d_h_t11_8c_aef1aec2157382676edb25c22e4b7ecef}{Set\_Pin\_Output}}\ (\mbox{\hyperlink{_d_h_t11_8h_aebeb55e992ef02dd2d39a225e276585e}{DHT11\_PORT}},\ \mbox{\hyperlink{_d_h_t11_8h_a79111e78831efb8ac76fa8123357475e}{DHT11\_PIN}});\ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ the\ pin\ as\ output}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00051}00051\ \ \ \ \ HAL\_GPIO\_WritePin\ (\mbox{\hyperlink{_d_h_t11_8h_aebeb55e992ef02dd2d39a225e276585e}{DHT11\_PORT}},\ \mbox{\hyperlink{_d_h_t11_8h_a79111e78831efb8ac76fa8123357475e}{DHT11\_PIN}},\ 0);\ \ \ \textcolor{comment}{//\ pull\ the\ pin\ low}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00052}00052\ \ \ \ \ \mbox{\hyperlink{_d_h_t11_8c_a42071dc0f568b5e965502014a4d215c3}{delay}}\ (18000);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wait\ for\ 18ms}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00053}00053\ \ \ \ \ HAL\_GPIO\_WritePin\ (\mbox{\hyperlink{_d_h_t11_8h_aebeb55e992ef02dd2d39a225e276585e}{DHT11\_PORT}},\ \mbox{\hyperlink{_d_h_t11_8h_a79111e78831efb8ac76fa8123357475e}{DHT11\_PIN}},\ 1);\ \ \ \textcolor{comment}{//\ pull\ the\ pin\ high}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00054}00054\ \ \ \ \ \mbox{\hyperlink{_d_h_t11_8c_a42071dc0f568b5e965502014a4d215c3}{delay}}\ (20);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wait\ for\ 20us}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00055}00055\ \ \ \ \ \mbox{\hyperlink{_d_h_t11_8c_a3b8cee858a35581caf1bcb14ce5cb367}{Set\_Pin\_Input}}(\mbox{\hyperlink{_d_h_t11_8h_aebeb55e992ef02dd2d39a225e276585e}{DHT11\_PORT}},\ \mbox{\hyperlink{_d_h_t11_8h_a79111e78831efb8ac76fa8123357475e}{DHT11\_PIN}});\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ as\ input}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00056}00056\ \}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00058}\mbox{\hyperlink{_d_h_t11_8h_a4abe1bb0e528279d5b260a9d44bc7ffb}{00058}}\ uint8\_t\ \mbox{\hyperlink{_d_h_t11_8c_a4abe1bb0e528279d5b260a9d44bc7ffb}{DHT11\_Check\_Response}}\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00059}00059\ \{}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00060}00060\ \ \ \ \ uint8\_t\ Response\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00061}00061\ \ \ \ \ \mbox{\hyperlink{_d_h_t11_8c_a42071dc0f568b5e965502014a4d215c3}{delay}}\ (40);}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00062}00062\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(HAL\_GPIO\_ReadPin\ (\mbox{\hyperlink{_d_h_t11_8h_aebeb55e992ef02dd2d39a225e276585e}{DHT11\_PORT}},\ \mbox{\hyperlink{_d_h_t11_8h_a79111e78831efb8ac76fa8123357475e}{DHT11\_PIN}})))}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00063}00063\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00064}00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_d_h_t11_8c_a42071dc0f568b5e965502014a4d215c3}{delay}}\ (80);}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((HAL\_GPIO\_ReadPin(\mbox{\hyperlink{_d_h_t11_8h_aebeb55e992ef02dd2d39a225e276585e}{DHT11\_PORT}},\ \mbox{\hyperlink{_d_h_t11_8h_a79111e78831efb8ac76fa8123357475e}{DHT11\_PIN}})))\ Response\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ Response\ =\ -\/1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 255}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{while}\ ((HAL\_GPIO\_ReadPin\ (\mbox{\hyperlink{_d_h_t11_8h_aebeb55e992ef02dd2d39a225e276585e}{DHT11\_PORT}},\ \mbox{\hyperlink{_d_h_t11_8h_a79111e78831efb8ac76fa8123357475e}{DHT11\_PIN}})));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wait\ for\ the\ pin\ to\ go\ low}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{return}\ Response;}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00071}00071\ \}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00073}\mbox{\hyperlink{_d_h_t11_8h_aaf1ec7026bcc0784c685b79753955ff4}{00073}}\ uint8\_t\ \mbox{\hyperlink{_d_h_t11_8c_aaf1ec7026bcc0784c685b79753955ff4}{DHT11\_Read}}\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00074}00074\ \{}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00075}00075\ \ \ \ \ uint8\_t\ i,j;}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{for}\ (j=0;j<8;j++)}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00077}00077\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!(HAL\_GPIO\_ReadPin\ (\mbox{\hyperlink{_d_h_t11_8h_aebeb55e992ef02dd2d39a225e276585e}{DHT11\_PORT}},\ \mbox{\hyperlink{_d_h_t11_8h_a79111e78831efb8ac76fa8123357475e}{DHT11\_PIN}})));\ \ \ \ \ \textcolor{comment}{//\ wait\ for\ the\ pin\ to\ go\ high}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00079}00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_d_h_t11_8c_a42071dc0f568b5e965502014a4d215c3}{delay}}\ (40);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wait\ for\ 40\ us}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(HAL\_GPIO\_ReadPin\ (\mbox{\hyperlink{_d_h_t11_8h_aebeb55e992ef02dd2d39a225e276585e}{DHT11\_PORT}},\ \mbox{\hyperlink{_d_h_t11_8h_a79111e78831efb8ac76fa8123357475e}{DHT11\_PIN}})))\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ pin\ is\ low}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00081}00081\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ i\&=\ \string~(1<<(7-\/j));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ write\ 0}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00083}00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ i|=\ (1<<(7-\/j));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ pin\ is\ high,\ write\ 1}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ ((HAL\_GPIO\_ReadPin\ (\mbox{\hyperlink{_d_h_t11_8h_aebeb55e992ef02dd2d39a225e276585e}{DHT11\_PORT}},\ \mbox{\hyperlink{_d_h_t11_8h_a79111e78831efb8ac76fa8123357475e}{DHT11\_PIN}})));\ \ \ \ \ \ \textcolor{comment}{//\ wait\ for\ the\ pin\ to\ go\ low}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00086}00086\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00087}00087\ \ \ \ \ \textcolor{keywordflow}{return}\ i;}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00088}00088\ \}}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00090}\mbox{\hyperlink{_d_h_t11_8h_a90da1df4ae78a755072b7c76cf4dabfd}{00090}}\ \mbox{\hyperlink{struct_d_h_t11__value}{DHT11\_read\_value}}\ \mbox{\hyperlink{_d_h_t11_8c_a90da1df4ae78a755072b7c76cf4dabfd}{DHT11\_Print\_Value}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00091}00091\ \{}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00092}00092\ \ \ \ \ \mbox{\hyperlink{_d_h_t11_8c_ad22d2fc6f1c044bfca99e8f38c419d78}{DHT11\_Start}}();}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00093}00093\ \ \ \ \ \mbox{\hyperlink{_d_h_t11_8c_a653c5750f288e99e638bbd607fb885dc}{Presence}}\ =\ \mbox{\hyperlink{_d_h_t11_8c_a4abe1bb0e528279d5b260a9d44bc7ffb}{DHT11\_Check\_Response}}();}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00094}00094\ \ \ \ \ \mbox{\hyperlink{_d_h_t11_8c_ad9a2a1c5f490104dc717f5a48b3b8a27}{Rh\_byte1}}\ =\ \mbox{\hyperlink{_d_h_t11_8c_aaf1ec7026bcc0784c685b79753955ff4}{DHT11\_Read}}\ ();}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00095}00095\ \ \ \ \ \mbox{\hyperlink{_d_h_t11_8c_a2dbbbd8e0fc90796f6389fc31ef811ad}{Rh\_byte2}}\ =\ \mbox{\hyperlink{_d_h_t11_8c_aaf1ec7026bcc0784c685b79753955ff4}{DHT11\_Read}}\ ();}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00096}00096\ \ \ \ \ \mbox{\hyperlink{_d_h_t11_8c_a8b0074c25d30592e460b56b9f87d1ba9}{Temp\_byte1}}\ =\ \mbox{\hyperlink{_d_h_t11_8c_aaf1ec7026bcc0784c685b79753955ff4}{DHT11\_Read}}\ ();}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00097}00097\ \ \ \ \ \mbox{\hyperlink{_d_h_t11_8c_a5544d12933412c17ee41513fa46cac02}{Temp\_byte2}}\ =\ \mbox{\hyperlink{_d_h_t11_8c_aaf1ec7026bcc0784c685b79753955ff4}{DHT11\_Read}}\ ();}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00098}00098\ \ \ \ \ \mbox{\hyperlink{_d_h_t11_8c_a4622f107cd73d99fbf4ca91205f3acca}{SUM}}\ =\ \mbox{\hyperlink{_d_h_t11_8c_aaf1ec7026bcc0784c685b79753955ff4}{DHT11\_Read}}();}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00099}00099\ \ \ \ \ \mbox{\hyperlink{_d_h_t11_8c_aab2ce7d9ba3bab5ef3b090c61e1eca6b}{TEMP}}\ =\ \mbox{\hyperlink{_d_h_t11_8c_a8b0074c25d30592e460b56b9f87d1ba9}{Temp\_byte1}};}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00100}00100\ \ \ \ \ \mbox{\hyperlink{_d_h_t11_8c_aa3731a0173b9bbde97d8a3cba6d13531}{RH}}\ =\ \mbox{\hyperlink{_d_h_t11_8c_ad9a2a1c5f490104dc717f5a48b3b8a27}{Rh\_byte1}};}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00102}00102\ \ \ \ \ \mbox{\hyperlink{_d_h_t11_8c_afa66fac91ab948980be979b768e67c5a}{Temperature}}\ =\ (float)\ \mbox{\hyperlink{_d_h_t11_8c_aab2ce7d9ba3bab5ef3b090c61e1eca6b}{TEMP}};}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00103}00103\ \ \ \ \ \mbox{\hyperlink{_d_h_t11_8c_afe6173f00c89e1ccfe06abd8502ff19f}{Humidity}}\ =\ (float)\ \mbox{\hyperlink{_d_h_t11_8c_aa3731a0173b9bbde97d8a3cba6d13531}{RH}};}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00105}00105\ \ \ \ \ \mbox{\hyperlink{_d_h_t11_8c_a9673b9ee577f4ba82aea307a23e7c6f1}{DHT11\_read\_value1}}.\mbox{\hyperlink{struct_d_h_t11__value_ad2449d51a59211ef30d054412b336493}{DHT11\_temp}}=\mbox{\hyperlink{_d_h_t11_8c_afa66fac91ab948980be979b768e67c5a}{Temperature}};}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00106}00106\ \ \ \ \ \mbox{\hyperlink{_d_h_t11_8c_a9673b9ee577f4ba82aea307a23e7c6f1}{DHT11\_read\_value1}}.\mbox{\hyperlink{struct_d_h_t11__value_a0486eb63d63d9b22a636b5acf3a4b289}{DHT11\_humi}}=\mbox{\hyperlink{_d_h_t11_8c_afe6173f00c89e1ccfe06abd8502ff19f}{Humidity}};}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00108}00108\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_d_h_t11_8c_a9673b9ee577f4ba82aea307a23e7c6f1}{DHT11\_read\_value1}};}
+\DoxyCodeLine{\Hypertarget{_d_h_t11_8c_source_l00109}00109\ \}}
+
+\end{DoxyCode}

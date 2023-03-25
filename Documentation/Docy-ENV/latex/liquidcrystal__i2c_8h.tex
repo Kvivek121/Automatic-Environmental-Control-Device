@@ -1,0 +1,515 @@
+\hypertarget{liquidcrystal__i2c_8h}{}\doxysection{C\+:/\+Users/acer/\+STM32\+Cube\+IDE/workspace\+\_\+1.10.2/\+Final\+\_\+\+Selec\+\_\+v3/\+Core/\+Inc/liquidcrystal\+\_\+i2c.h File Reference}
+\label{liquidcrystal__i2c_8h}\index{C:/Users/acer/STM32CubeIDE/workspace\_1.10.2/Final\_Selec\_v3/Core/Inc/liquidcrystal\_i2c.h@{C:/Users/acer/STM32CubeIDE/workspace\_1.10.2/Final\_Selec\_v3/Core/Inc/liquidcrystal\_i2c.h}}
+{\ttfamily \#include \char`\"{}stm32f1xx\+\_\+hal.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_acc3509bc0442b41e2b816555de473ed2}{LCD\+\_\+\+CLEARDISPLAY}}~0x01
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_a154c86a887633d0f6d9988e4dbb1f419}{LCD\+\_\+\+RETURNHOME}}~0x02
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_a5597e1d5819ea2f0734ad4313abf6703}{LCD\+\_\+\+ENTRYMODESET}}~0x04
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_adfb8b2b8b8a08d7313504d7a4f89d99f}{LCD\+\_\+\+DISPLAYCONTROL}}~0x08
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_a61f16a2b7550e4700f7898a7587c5594}{LCD\+\_\+\+CURSORSHIFT}}~0x10
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_aaef882ae70d1f485cd132815d9716111}{LCD\+\_\+\+FUNCTIONSET}}~0x20
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_aae6ea856879c11dee58493184582a52f}{LCD\+\_\+\+SETCGRAMADDR}}~0x40
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_a15008b832807a208d9d88c74e6751ebf}{LCD\+\_\+\+SETDDRAMADDR}}~0x80
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_a43c26ba2e66880fac95ef640b56873ad}{LCD\+\_\+\+ENTRYRIGHT}}~0x00
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_ae7c6309fce6200bd7526d090a4a84dd0}{LCD\+\_\+\+ENTRYLEFT}}~0x02
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_aa2cf1d0f4a319e53c009cffe1184466c}{LCD\+\_\+\+ENTRYSHIFTINCREMENT}}~0x01
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_a049ee97e98d04788c1da9a55590fbe42}{LCD\+\_\+\+ENTRYSHIFTDECREMENT}}~0x00
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_a76236ae8317b34bbc98ea56bc0a2639c}{LCD\+\_\+\+DISPLAYON}}~0x04
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_a257ebe775cac7140cf82aa40d8ce545a}{LCD\+\_\+\+DISPLAYOFF}}~0x00
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_ab67f0adccde68de88eee0513fdfc4574}{LCD\+\_\+\+CURSORON}}~0x02
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_a32b194a3adaa0a0bb69acee2e6a754fa}{LCD\+\_\+\+CURSOROFF}}~0x00
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_ac3b19d4e6553b9bbf18a23387e439206}{LCD\+\_\+\+BLINKON}}~0x01
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_a4b28243034cec656b0ed490ba6979752}{LCD\+\_\+\+BLINKOFF}}~0x00
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_ab2f7b67abfac33f610acfd5d7a971f40}{LCD\+\_\+\+DISPLAYMOVE}}~0x08
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_ac21f0302ac4136775877d5f4759e4f74}{LCD\+\_\+\+CURSORMOVE}}~0x00
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_acf5999180233790bb2c9902efde58f7f}{LCD\+\_\+\+MOVERIGHT}}~0x04
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_aafb86adb0dfca1e65d65b2cd1946a009}{LCD\+\_\+\+MOVELEFT}}~0x00
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_a59a57ca857dae5d89eb5f2a38c4ac6f0}{LCD\+\_\+8\+BITMODE}}~0x10
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_ab8c35d355d2372090c7a347e961c9224}{LCD\+\_\+4\+BITMODE}}~0x00
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_a7987e93538df2819583ba43b81ddbb25}{LCD\+\_\+2\+LINE}}~0x08
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_a8c85cf88d8af66a47c42249d81c94641}{LCD\+\_\+1\+LINE}}~0x00
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_abb3210156d88d3fe18c9352eb161fe42}{LCD\+\_\+5x10\+DOTS}}~0x04
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_a9ef57e724c1b846dae0f531aff6fb464}{LCD\+\_\+5x8\+DOTS}}~0x00
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_ac059d24dfe9c1e1f7c07cb7869a1833b}{LCD\+\_\+\+BACKLIGHT}}~0x08
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_a65fa786d6e31fe8b1aa51784a9736581}{LCD\+\_\+\+NOBACKLIGHT}}~0x00
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_a514ad415fb6125ba296793df7d1a468a}{ENABLE}}~0x04
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_afc4ded33ac0ca43defcce639e965748a}{RW}}~0x0
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_af8903d8eea3868940c60af887473b152}{RS}}~0x01
+\item 
+\#define \mbox{\hyperlink{liquidcrystal__i2c_8h_aff0f2d52596a7a0b104ef88aa1eccd2b}{DEVICE\+\_\+\+ADDR}}~(0x27 $<$$<$ 1)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{liquidcrystal__i2c_8h_a97d4f7a1f8a23938955ba343380f13d1}{HD44780\+\_\+\+Init}} (uint8\+\_\+t rows)
+\item 
+void \mbox{\hyperlink{liquidcrystal__i2c_8h_abe31ef769fa9a1941c6d5e51fc63b3fd}{HD44780\+\_\+\+Clear}} ()
+\item 
+void \mbox{\hyperlink{liquidcrystal__i2c_8h_a0e2a70008b6b991562badef8f2bcc4f5}{HD44780\+\_\+\+Home}} ()
+\item 
+void \mbox{\hyperlink{liquidcrystal__i2c_8h_a3565eda1be2bc265616dbf39c3d4ba65}{HD44780\+\_\+\+No\+Display}} ()
+\item 
+void \mbox{\hyperlink{liquidcrystal__i2c_8h_acff5f142b39d9be81e16307b924d7143}{HD44780\+\_\+\+Display}} ()
+\item 
+void \mbox{\hyperlink{liquidcrystal__i2c_8h_a8ad667447dffc6a0833d8e54c7853ac8}{HD44780\+\_\+\+Set\+Cursor}} (uint8\+\_\+t, uint8\+\_\+t)
+\item 
+void \mbox{\hyperlink{liquidcrystal__i2c_8h_aeb020d5cc7985ee54c28f0d3fbc9f99b}{HD44780\+\_\+\+Create\+Special\+Char}} (uint8\+\_\+t location, uint8\+\_\+t charmap\mbox{[}$\,$\mbox{]})
+\item 
+void \mbox{\hyperlink{liquidcrystal__i2c_8h_af313a9f7b2c955a408d6045a00f65aea}{HD44780\+\_\+\+Print\+Str}} (const char\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_aff0f2d52596a7a0b104ef88aa1eccd2b}\label{liquidcrystal__i2c_8h_aff0f2d52596a7a0b104ef88aa1eccd2b}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!DEVICE\_ADDR@{DEVICE\_ADDR}}
+\index{DEVICE\_ADDR@{DEVICE\_ADDR}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{DEVICE\_ADDR}{DEVICE\_ADDR}}
+{\footnotesize\ttfamily \#define DEVICE\+\_\+\+ADDR~(0x27 $<$$<$ 1)}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00065}{65}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_a514ad415fb6125ba296793df7d1a468a}\label{liquidcrystal__i2c_8h_a514ad415fb6125ba296793df7d1a468a}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!ENABLE@{ENABLE}}
+\index{ENABLE@{ENABLE}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{ENABLE}{ENABLE}}
+{\footnotesize\ttfamily \#define ENABLE~0x04}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00056}{56}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_a8c85cf88d8af66a47c42249d81c94641}\label{liquidcrystal__i2c_8h_a8c85cf88d8af66a47c42249d81c94641}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_1LINE@{LCD\_1LINE}}
+\index{LCD\_1LINE@{LCD\_1LINE}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_1LINE}{LCD\_1LINE}}
+{\footnotesize\ttfamily \#define LCD\+\_\+1\+LINE~0x00}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00047}{47}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_a7987e93538df2819583ba43b81ddbb25}\label{liquidcrystal__i2c_8h_a7987e93538df2819583ba43b81ddbb25}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_2LINE@{LCD\_2LINE}}
+\index{LCD\_2LINE@{LCD\_2LINE}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_2LINE}{LCD\_2LINE}}
+{\footnotesize\ttfamily \#define LCD\+\_\+2\+LINE~0x08}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00046}{46}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_ab8c35d355d2372090c7a347e961c9224}\label{liquidcrystal__i2c_8h_ab8c35d355d2372090c7a347e961c9224}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_4BITMODE@{LCD\_4BITMODE}}
+\index{LCD\_4BITMODE@{LCD\_4BITMODE}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_4BITMODE}{LCD\_4BITMODE}}
+{\footnotesize\ttfamily \#define LCD\+\_\+4\+BITMODE~0x00}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00045}{45}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_abb3210156d88d3fe18c9352eb161fe42}\label{liquidcrystal__i2c_8h_abb3210156d88d3fe18c9352eb161fe42}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_5x10DOTS@{LCD\_5x10DOTS}}
+\index{LCD\_5x10DOTS@{LCD\_5x10DOTS}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_5x10DOTS}{LCD\_5x10DOTS}}
+{\footnotesize\ttfamily \#define LCD\+\_\+5x10\+DOTS~0x04}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00048}{48}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_a9ef57e724c1b846dae0f531aff6fb464}\label{liquidcrystal__i2c_8h_a9ef57e724c1b846dae0f531aff6fb464}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_5x8DOTS@{LCD\_5x8DOTS}}
+\index{LCD\_5x8DOTS@{LCD\_5x8DOTS}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_5x8DOTS}{LCD\_5x8DOTS}}
+{\footnotesize\ttfamily \#define LCD\+\_\+5x8\+DOTS~0x00}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00049}{49}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_a59a57ca857dae5d89eb5f2a38c4ac6f0}\label{liquidcrystal__i2c_8h_a59a57ca857dae5d89eb5f2a38c4ac6f0}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_8BITMODE@{LCD\_8BITMODE}}
+\index{LCD\_8BITMODE@{LCD\_8BITMODE}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_8BITMODE}{LCD\_8BITMODE}}
+{\footnotesize\ttfamily \#define LCD\+\_\+8\+BITMODE~0x10}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00044}{44}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_ac059d24dfe9c1e1f7c07cb7869a1833b}\label{liquidcrystal__i2c_8h_ac059d24dfe9c1e1f7c07cb7869a1833b}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_BACKLIGHT@{LCD\_BACKLIGHT}}
+\index{LCD\_BACKLIGHT@{LCD\_BACKLIGHT}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_BACKLIGHT}{LCD\_BACKLIGHT}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+BACKLIGHT~0x08}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00052}{52}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_a4b28243034cec656b0ed490ba6979752}\label{liquidcrystal__i2c_8h_a4b28243034cec656b0ed490ba6979752}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_BLINKOFF@{LCD\_BLINKOFF}}
+\index{LCD\_BLINKOFF@{LCD\_BLINKOFF}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_BLINKOFF}{LCD\_BLINKOFF}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+BLINKOFF~0x00}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00035}{35}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_ac3b19d4e6553b9bbf18a23387e439206}\label{liquidcrystal__i2c_8h_ac3b19d4e6553b9bbf18a23387e439206}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_BLINKON@{LCD\_BLINKON}}
+\index{LCD\_BLINKON@{LCD\_BLINKON}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_BLINKON}{LCD\_BLINKON}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+BLINKON~0x01}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00034}{34}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_acc3509bc0442b41e2b816555de473ed2}\label{liquidcrystal__i2c_8h_acc3509bc0442b41e2b816555de473ed2}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_CLEARDISPLAY@{LCD\_CLEARDISPLAY}}
+\index{LCD\_CLEARDISPLAY@{LCD\_CLEARDISPLAY}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_CLEARDISPLAY}{LCD\_CLEARDISPLAY}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+CLEARDISPLAY~0x01}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00014}{14}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_ac21f0302ac4136775877d5f4759e4f74}\label{liquidcrystal__i2c_8h_ac21f0302ac4136775877d5f4759e4f74}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_CURSORMOVE@{LCD\_CURSORMOVE}}
+\index{LCD\_CURSORMOVE@{LCD\_CURSORMOVE}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_CURSORMOVE}{LCD\_CURSORMOVE}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+CURSORMOVE~0x00}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00039}{39}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_a32b194a3adaa0a0bb69acee2e6a754fa}\label{liquidcrystal__i2c_8h_a32b194a3adaa0a0bb69acee2e6a754fa}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_CURSOROFF@{LCD\_CURSOROFF}}
+\index{LCD\_CURSOROFF@{LCD\_CURSOROFF}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_CURSOROFF}{LCD\_CURSOROFF}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+CURSOROFF~0x00}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00033}{33}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_ab67f0adccde68de88eee0513fdfc4574}\label{liquidcrystal__i2c_8h_ab67f0adccde68de88eee0513fdfc4574}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_CURSORON@{LCD\_CURSORON}}
+\index{LCD\_CURSORON@{LCD\_CURSORON}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_CURSORON}{LCD\_CURSORON}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+CURSORON~0x02}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00032}{32}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_a61f16a2b7550e4700f7898a7587c5594}\label{liquidcrystal__i2c_8h_a61f16a2b7550e4700f7898a7587c5594}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_CURSORSHIFT@{LCD\_CURSORSHIFT}}
+\index{LCD\_CURSORSHIFT@{LCD\_CURSORSHIFT}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_CURSORSHIFT}{LCD\_CURSORSHIFT}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+CURSORSHIFT~0x10}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00018}{18}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_adfb8b2b8b8a08d7313504d7a4f89d99f}\label{liquidcrystal__i2c_8h_adfb8b2b8b8a08d7313504d7a4f89d99f}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_DISPLAYCONTROL@{LCD\_DISPLAYCONTROL}}
+\index{LCD\_DISPLAYCONTROL@{LCD\_DISPLAYCONTROL}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_DISPLAYCONTROL}{LCD\_DISPLAYCONTROL}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+DISPLAYCONTROL~0x08}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00017}{17}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_ab2f7b67abfac33f610acfd5d7a971f40}\label{liquidcrystal__i2c_8h_ab2f7b67abfac33f610acfd5d7a971f40}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_DISPLAYMOVE@{LCD\_DISPLAYMOVE}}
+\index{LCD\_DISPLAYMOVE@{LCD\_DISPLAYMOVE}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_DISPLAYMOVE}{LCD\_DISPLAYMOVE}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+DISPLAYMOVE~0x08}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00038}{38}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_a257ebe775cac7140cf82aa40d8ce545a}\label{liquidcrystal__i2c_8h_a257ebe775cac7140cf82aa40d8ce545a}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_DISPLAYOFF@{LCD\_DISPLAYOFF}}
+\index{LCD\_DISPLAYOFF@{LCD\_DISPLAYOFF}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_DISPLAYOFF}{LCD\_DISPLAYOFF}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+DISPLAYOFF~0x00}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00031}{31}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_a76236ae8317b34bbc98ea56bc0a2639c}\label{liquidcrystal__i2c_8h_a76236ae8317b34bbc98ea56bc0a2639c}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_DISPLAYON@{LCD\_DISPLAYON}}
+\index{LCD\_DISPLAYON@{LCD\_DISPLAYON}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_DISPLAYON}{LCD\_DISPLAYON}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+DISPLAYON~0x04}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00030}{30}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_ae7c6309fce6200bd7526d090a4a84dd0}\label{liquidcrystal__i2c_8h_ae7c6309fce6200bd7526d090a4a84dd0}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_ENTRYLEFT@{LCD\_ENTRYLEFT}}
+\index{LCD\_ENTRYLEFT@{LCD\_ENTRYLEFT}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_ENTRYLEFT}{LCD\_ENTRYLEFT}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+ENTRYLEFT~0x02}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00025}{25}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_a5597e1d5819ea2f0734ad4313abf6703}\label{liquidcrystal__i2c_8h_a5597e1d5819ea2f0734ad4313abf6703}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_ENTRYMODESET@{LCD\_ENTRYMODESET}}
+\index{LCD\_ENTRYMODESET@{LCD\_ENTRYMODESET}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_ENTRYMODESET}{LCD\_ENTRYMODESET}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+ENTRYMODESET~0x04}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00016}{16}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_a43c26ba2e66880fac95ef640b56873ad}\label{liquidcrystal__i2c_8h_a43c26ba2e66880fac95ef640b56873ad}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_ENTRYRIGHT@{LCD\_ENTRYRIGHT}}
+\index{LCD\_ENTRYRIGHT@{LCD\_ENTRYRIGHT}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_ENTRYRIGHT}{LCD\_ENTRYRIGHT}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+ENTRYRIGHT~0x00}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00024}{24}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_a049ee97e98d04788c1da9a55590fbe42}\label{liquidcrystal__i2c_8h_a049ee97e98d04788c1da9a55590fbe42}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_ENTRYSHIFTDECREMENT@{LCD\_ENTRYSHIFTDECREMENT}}
+\index{LCD\_ENTRYSHIFTDECREMENT@{LCD\_ENTRYSHIFTDECREMENT}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_ENTRYSHIFTDECREMENT}{LCD\_ENTRYSHIFTDECREMENT}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+ENTRYSHIFTDECREMENT~0x00}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00027}{27}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_aa2cf1d0f4a319e53c009cffe1184466c}\label{liquidcrystal__i2c_8h_aa2cf1d0f4a319e53c009cffe1184466c}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_ENTRYSHIFTINCREMENT@{LCD\_ENTRYSHIFTINCREMENT}}
+\index{LCD\_ENTRYSHIFTINCREMENT@{LCD\_ENTRYSHIFTINCREMENT}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_ENTRYSHIFTINCREMENT}{LCD\_ENTRYSHIFTINCREMENT}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+ENTRYSHIFTINCREMENT~0x01}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00026}{26}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_aaef882ae70d1f485cd132815d9716111}\label{liquidcrystal__i2c_8h_aaef882ae70d1f485cd132815d9716111}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_FUNCTIONSET@{LCD\_FUNCTIONSET}}
+\index{LCD\_FUNCTIONSET@{LCD\_FUNCTIONSET}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_FUNCTIONSET}{LCD\_FUNCTIONSET}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+FUNCTIONSET~0x20}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00019}{19}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_aafb86adb0dfca1e65d65b2cd1946a009}\label{liquidcrystal__i2c_8h_aafb86adb0dfca1e65d65b2cd1946a009}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_MOVELEFT@{LCD\_MOVELEFT}}
+\index{LCD\_MOVELEFT@{LCD\_MOVELEFT}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_MOVELEFT}{LCD\_MOVELEFT}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+MOVELEFT~0x00}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00041}{41}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_acf5999180233790bb2c9902efde58f7f}\label{liquidcrystal__i2c_8h_acf5999180233790bb2c9902efde58f7f}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_MOVERIGHT@{LCD\_MOVERIGHT}}
+\index{LCD\_MOVERIGHT@{LCD\_MOVERIGHT}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_MOVERIGHT}{LCD\_MOVERIGHT}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+MOVERIGHT~0x04}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00040}{40}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_a65fa786d6e31fe8b1aa51784a9736581}\label{liquidcrystal__i2c_8h_a65fa786d6e31fe8b1aa51784a9736581}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_NOBACKLIGHT@{LCD\_NOBACKLIGHT}}
+\index{LCD\_NOBACKLIGHT@{LCD\_NOBACKLIGHT}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_NOBACKLIGHT}{LCD\_NOBACKLIGHT}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+NOBACKLIGHT~0x00}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00053}{53}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_a154c86a887633d0f6d9988e4dbb1f419}\label{liquidcrystal__i2c_8h_a154c86a887633d0f6d9988e4dbb1f419}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_RETURNHOME@{LCD\_RETURNHOME}}
+\index{LCD\_RETURNHOME@{LCD\_RETURNHOME}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_RETURNHOME}{LCD\_RETURNHOME}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+RETURNHOME~0x02}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00015}{15}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_aae6ea856879c11dee58493184582a52f}\label{liquidcrystal__i2c_8h_aae6ea856879c11dee58493184582a52f}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_SETCGRAMADDR@{LCD\_SETCGRAMADDR}}
+\index{LCD\_SETCGRAMADDR@{LCD\_SETCGRAMADDR}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_SETCGRAMADDR}{LCD\_SETCGRAMADDR}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+SETCGRAMADDR~0x40}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00020}{20}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_a15008b832807a208d9d88c74e6751ebf}\label{liquidcrystal__i2c_8h_a15008b832807a208d9d88c74e6751ebf}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!LCD\_SETDDRAMADDR@{LCD\_SETDDRAMADDR}}
+\index{LCD\_SETDDRAMADDR@{LCD\_SETDDRAMADDR}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_SETDDRAMADDR}{LCD\_SETDDRAMADDR}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+SETDDRAMADDR~0x80}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00021}{21}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_af8903d8eea3868940c60af887473b152}\label{liquidcrystal__i2c_8h_af8903d8eea3868940c60af887473b152}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!RS@{RS}}
+\index{RS@{RS}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{RS}{RS}}
+{\footnotesize\ttfamily \#define RS~0x01}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00062}{62}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_afc4ded33ac0ca43defcce639e965748a}\label{liquidcrystal__i2c_8h_afc4ded33ac0ca43defcce639e965748a}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!RW@{RW}}
+\index{RW@{RW}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{RW}{RW}}
+{\footnotesize\ttfamily \#define RW~0x0}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8h_source_l00059}{59}} of file \mbox{\hyperlink{liquidcrystal__i2c_8h_source}{liquidcrystal\+\_\+i2c.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_abe31ef769fa9a1941c6d5e51fc63b3fd}\label{liquidcrystal__i2c_8h_abe31ef769fa9a1941c6d5e51fc63b3fd}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!HD44780\_Clear@{HD44780\_Clear}}
+\index{HD44780\_Clear@{HD44780\_Clear}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{HD44780\_Clear()}{HD44780\_Clear()}}
+{\footnotesize\ttfamily void HD44780\+\_\+\+Clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00104}{104}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_aeb020d5cc7985ee54c28f0d3fbc9f99b}\label{liquidcrystal__i2c_8h_aeb020d5cc7985ee54c28f0d3fbc9f99b}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!HD44780\_CreateSpecialChar@{HD44780\_CreateSpecialChar}}
+\index{HD44780\_CreateSpecialChar@{HD44780\_CreateSpecialChar}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{HD44780\_CreateSpecialChar()}{HD44780\_CreateSpecialChar()}}
+{\footnotesize\ttfamily void HD44780\+\_\+\+Create\+Special\+Char (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{location,  }\item[{uint8\+\_\+t}]{charmap\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00134}{134}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_acff5f142b39d9be81e16307b924d7143}\label{liquidcrystal__i2c_8h_acff5f142b39d9be81e16307b924d7143}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!HD44780\_Display@{HD44780\_Display}}
+\index{HD44780\_Display@{HD44780\_Display}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{HD44780\_Display()}{HD44780\_Display()}}
+{\footnotesize\ttfamily void HD44780\+\_\+\+Display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00128}{128}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_a0e2a70008b6b991562badef8f2bcc4f5}\label{liquidcrystal__i2c_8h_a0e2a70008b6b991562badef8f2bcc4f5}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!HD44780\_Home@{HD44780\_Home}}
+\index{HD44780\_Home@{HD44780\_Home}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{HD44780\_Home()}{HD44780\_Home()}}
+{\footnotesize\ttfamily void HD44780\+\_\+\+Home (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00110}{110}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_a97d4f7a1f8a23938955ba343380f13d1}\label{liquidcrystal__i2c_8h_a97d4f7a1f8a23938955ba343380f13d1}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!HD44780\_Init@{HD44780\_Init}}
+\index{HD44780\_Init@{HD44780\_Init}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{HD44780\_Init()}{HD44780\_Init()}}
+{\footnotesize\ttfamily void HD44780\+\_\+\+Init (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{rows }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00049}{49}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_a3565eda1be2bc265616dbf39c3d4ba65}\label{liquidcrystal__i2c_8h_a3565eda1be2bc265616dbf39c3d4ba65}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!HD44780\_NoDisplay@{HD44780\_NoDisplay}}
+\index{HD44780\_NoDisplay@{HD44780\_NoDisplay}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{HD44780\_NoDisplay()}{HD44780\_NoDisplay()}}
+{\footnotesize\ttfamily void HD44780\+\_\+\+No\+Display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_af313a9f7b2c955a408d6045a00f65aea}\label{liquidcrystal__i2c_8h_af313a9f7b2c955a408d6045a00f65aea}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!HD44780\_PrintStr@{HD44780\_PrintStr}}
+\index{HD44780\_PrintStr@{HD44780\_PrintStr}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{HD44780\_PrintStr()}{HD44780\_PrintStr()}}
+{\footnotesize\ttfamily void HD44780\+\_\+\+Print\+Str (\begin{DoxyParamCaption}\item[{const char}]{c\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00144}{144}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8h_a8ad667447dffc6a0833d8e54c7853ac8}\label{liquidcrystal__i2c_8h_a8ad667447dffc6a0833d8e54c7853ac8}} 
+\index{liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}!HD44780\_SetCursor@{HD44780\_SetCursor}}
+\index{HD44780\_SetCursor@{HD44780\_SetCursor}!liquidcrystal\_i2c.h@{liquidcrystal\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{HD44780\_SetCursor()}{HD44780\_SetCursor()}}
+{\footnotesize\ttfamily void HD44780\+\_\+\+Set\+Cursor (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{col,  }\item[{uint8\+\_\+t}]{row }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00116}{116}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+

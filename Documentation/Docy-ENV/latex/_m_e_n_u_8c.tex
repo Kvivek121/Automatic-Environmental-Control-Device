@@ -1,0 +1,148 @@
+\hypertarget{_m_e_n_u_8c}{}\doxysection{C\+:/\+Users/acer/\+STM32\+Cube\+IDE/workspace\+\_\+1.10.2/\+Final\+\_\+\+Selec\+\_\+v3/\+Core/\+Src/\+MENU.c File Reference}
+\label{_m_e_n_u_8c}\index{C:/Users/acer/STM32CubeIDE/workspace\_1.10.2/Final\_Selec\_v3/Core/Src/MENU.c@{C:/Users/acer/STM32CubeIDE/workspace\_1.10.2/Final\_Selec\_v3/Core/Src/MENU.c}}
+{\ttfamily \#include \char`\"{}liquidcrystal\+\_\+i2c.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stdio.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_m_e_n_u_8c_afdf1ca9e7afc3e7ec41b47fea4b3d80d}{Menu}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{_m_e_n_u_8c_a0356cc3c38d5913ed46e2a3c1eb3c499}{temp\+\_\+threshold}} =30
+\item 
+int \mbox{\hyperlink{_m_e_n_u_8c_a3d1e8ccda4e6f5cc34f8a6184b75a4a7}{humi\+\_\+threshold}} =50
+\item 
+int \mbox{\hyperlink{_m_e_n_u_8c_a4f1e395aea1fba2dbbb40dd45d9df939}{press\+\_\+threshold}} =2000
+\item 
+int \mbox{\hyperlink{_m_e_n_u_8c_ad43c3812e6d13e0518d9f8b8f463ffcf}{count}} =0
+\item 
+int \mbox{\hyperlink{_m_e_n_u_8c_a60b91f7a9f04c1e36e4f1f1a01d04120}{time\+\_\+elapsed}} =0
+\item 
+volatile int \mbox{\hyperlink{_m_e_n_u_8c_ae20b057392172760910dcd983669d5a2}{pos\+\_\+button}} =0
+\item 
+volatile int \mbox{\hyperlink{_m_e_n_u_8c_a51b2f20e7cec7af8b4b73737d1fedb06}{neg\+\_\+button}} =0
+\item 
+volatile int \mbox{\hyperlink{_m_e_n_u_8c_a234ac5d88f28f16f8469163f16805e99}{menu\+\_\+button}} =0
+\item 
+int \mbox{\hyperlink{_m_e_n_u_8c_a88fd7127474308c6efa6886573ce3192}{Welcom\+\_\+count}} =0
+\item 
+int \mbox{\hyperlink{_m_e_n_u_8c_a97f7bee51ed6087f5637a31cc8a3da46}{view\+\_\+count}} =0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_m_e_n_u_8c_afdf1ca9e7afc3e7ec41b47fea4b3d80d}\label{_m_e_n_u_8c_afdf1ca9e7afc3e7ec41b47fea4b3d80d}} 
+\index{MENU.c@{MENU.c}!Menu@{Menu}}
+\index{Menu@{Menu}!MENU.c@{MENU.c}}
+\doxysubsubsection{\texorpdfstring{Menu()}{Menu()}}
+{\footnotesize\ttfamily void Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_m_e_n_u_8c_source_l00022}{22}} of file \mbox{\hyperlink{_m_e_n_u_8c_source}{MENU.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_m_e_n_u_8c_ad43c3812e6d13e0518d9f8b8f463ffcf}\label{_m_e_n_u_8c_ad43c3812e6d13e0518d9f8b8f463ffcf}} 
+\index{MENU.c@{MENU.c}!count@{count}}
+\index{count@{count}!MENU.c@{MENU.c}}
+\doxysubsubsection{\texorpdfstring{count}{count}}
+{\footnotesize\ttfamily int count =0}
+
+
+
+Definition at line \mbox{\hyperlink{_m_e_n_u_8c_source_l00012}{12}} of file \mbox{\hyperlink{_m_e_n_u_8c_source}{MENU.\+c}}.
+
+\mbox{\Hypertarget{_m_e_n_u_8c_a3d1e8ccda4e6f5cc34f8a6184b75a4a7}\label{_m_e_n_u_8c_a3d1e8ccda4e6f5cc34f8a6184b75a4a7}} 
+\index{MENU.c@{MENU.c}!humi\_threshold@{humi\_threshold}}
+\index{humi\_threshold@{humi\_threshold}!MENU.c@{MENU.c}}
+\doxysubsubsection{\texorpdfstring{humi\_threshold}{humi\_threshold}}
+{\footnotesize\ttfamily int humi\+\_\+threshold =50}
+
+
+
+Definition at line \mbox{\hyperlink{_m_e_n_u_8c_source_l00011}{11}} of file \mbox{\hyperlink{_m_e_n_u_8c_source}{MENU.\+c}}.
+
+\mbox{\Hypertarget{_m_e_n_u_8c_a234ac5d88f28f16f8469163f16805e99}\label{_m_e_n_u_8c_a234ac5d88f28f16f8469163f16805e99}} 
+\index{MENU.c@{MENU.c}!menu\_button@{menu\_button}}
+\index{menu\_button@{menu\_button}!MENU.c@{MENU.c}}
+\doxysubsubsection{\texorpdfstring{menu\_button}{menu\_button}}
+{\footnotesize\ttfamily volatile int menu\+\_\+button =0}
+
+
+
+Definition at line \mbox{\hyperlink{_m_e_n_u_8c_source_l00016}{16}} of file \mbox{\hyperlink{_m_e_n_u_8c_source}{MENU.\+c}}.
+
+\mbox{\Hypertarget{_m_e_n_u_8c_a51b2f20e7cec7af8b4b73737d1fedb06}\label{_m_e_n_u_8c_a51b2f20e7cec7af8b4b73737d1fedb06}} 
+\index{MENU.c@{MENU.c}!neg\_button@{neg\_button}}
+\index{neg\_button@{neg\_button}!MENU.c@{MENU.c}}
+\doxysubsubsection{\texorpdfstring{neg\_button}{neg\_button}}
+{\footnotesize\ttfamily volatile int neg\+\_\+button =0}
+
+
+
+Definition at line \mbox{\hyperlink{_m_e_n_u_8c_source_l00015}{15}} of file \mbox{\hyperlink{_m_e_n_u_8c_source}{MENU.\+c}}.
+
+\mbox{\Hypertarget{_m_e_n_u_8c_ae20b057392172760910dcd983669d5a2}\label{_m_e_n_u_8c_ae20b057392172760910dcd983669d5a2}} 
+\index{MENU.c@{MENU.c}!pos\_button@{pos\_button}}
+\index{pos\_button@{pos\_button}!MENU.c@{MENU.c}}
+\doxysubsubsection{\texorpdfstring{pos\_button}{pos\_button}}
+{\footnotesize\ttfamily volatile int pos\+\_\+button =0}
+
+
+
+Definition at line \mbox{\hyperlink{_m_e_n_u_8c_source_l00014}{14}} of file \mbox{\hyperlink{_m_e_n_u_8c_source}{MENU.\+c}}.
+
+\mbox{\Hypertarget{_m_e_n_u_8c_a4f1e395aea1fba2dbbb40dd45d9df939}\label{_m_e_n_u_8c_a4f1e395aea1fba2dbbb40dd45d9df939}} 
+\index{MENU.c@{MENU.c}!press\_threshold@{press\_threshold}}
+\index{press\_threshold@{press\_threshold}!MENU.c@{MENU.c}}
+\doxysubsubsection{\texorpdfstring{press\_threshold}{press\_threshold}}
+{\footnotesize\ttfamily int press\+\_\+threshold =2000}
+
+
+
+Definition at line \mbox{\hyperlink{_m_e_n_u_8c_source_l00011}{11}} of file \mbox{\hyperlink{_m_e_n_u_8c_source}{MENU.\+c}}.
+
+\mbox{\Hypertarget{_m_e_n_u_8c_a0356cc3c38d5913ed46e2a3c1eb3c499}\label{_m_e_n_u_8c_a0356cc3c38d5913ed46e2a3c1eb3c499}} 
+\index{MENU.c@{MENU.c}!temp\_threshold@{temp\_threshold}}
+\index{temp\_threshold@{temp\_threshold}!MENU.c@{MENU.c}}
+\doxysubsubsection{\texorpdfstring{temp\_threshold}{temp\_threshold}}
+{\footnotesize\ttfamily int temp\+\_\+threshold =30}
+
+
+
+Definition at line \mbox{\hyperlink{_m_e_n_u_8c_source_l00011}{11}} of file \mbox{\hyperlink{_m_e_n_u_8c_source}{MENU.\+c}}.
+
+\mbox{\Hypertarget{_m_e_n_u_8c_a60b91f7a9f04c1e36e4f1f1a01d04120}\label{_m_e_n_u_8c_a60b91f7a9f04c1e36e4f1f1a01d04120}} 
+\index{MENU.c@{MENU.c}!time\_elapsed@{time\_elapsed}}
+\index{time\_elapsed@{time\_elapsed}!MENU.c@{MENU.c}}
+\doxysubsubsection{\texorpdfstring{time\_elapsed}{time\_elapsed}}
+{\footnotesize\ttfamily int time\+\_\+elapsed =0}
+
+
+
+Definition at line \mbox{\hyperlink{_m_e_n_u_8c_source_l00013}{13}} of file \mbox{\hyperlink{_m_e_n_u_8c_source}{MENU.\+c}}.
+
+\mbox{\Hypertarget{_m_e_n_u_8c_a97f7bee51ed6087f5637a31cc8a3da46}\label{_m_e_n_u_8c_a97f7bee51ed6087f5637a31cc8a3da46}} 
+\index{MENU.c@{MENU.c}!view\_count@{view\_count}}
+\index{view\_count@{view\_count}!MENU.c@{MENU.c}}
+\doxysubsubsection{\texorpdfstring{view\_count}{view\_count}}
+{\footnotesize\ttfamily int view\+\_\+count =0}
+
+
+
+Definition at line \mbox{\hyperlink{_m_e_n_u_8c_source_l00018}{18}} of file \mbox{\hyperlink{_m_e_n_u_8c_source}{MENU.\+c}}.
+
+\mbox{\Hypertarget{_m_e_n_u_8c_a88fd7127474308c6efa6886573ce3192}\label{_m_e_n_u_8c_a88fd7127474308c6efa6886573ce3192}} 
+\index{MENU.c@{MENU.c}!Welcom\_count@{Welcom\_count}}
+\index{Welcom\_count@{Welcom\_count}!MENU.c@{MENU.c}}
+\doxysubsubsection{\texorpdfstring{Welcom\_count}{Welcom\_count}}
+{\footnotesize\ttfamily int Welcom\+\_\+count =0}
+
+
+
+Definition at line \mbox{\hyperlink{_m_e_n_u_8c_source_l00017}{17}} of file \mbox{\hyperlink{_m_e_n_u_8c_source}{MENU.\+c}}.
+

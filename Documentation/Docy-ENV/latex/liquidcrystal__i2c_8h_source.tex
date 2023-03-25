@@ -1,0 +1,85 @@
+\hypertarget{liquidcrystal__i2c_8h_source}{}\doxysection{liquidcrystal\+\_\+i2c.\+h}
+\label{liquidcrystal__i2c_8h_source}\index{C:/Users/acer/STM32CubeIDE/workspace\_1.10.2/Final\_Selec\_v3/Core/Inc/liquidcrystal\_i2c.h@{C:/Users/acer/STM32CubeIDE/workspace\_1.10.2/Final\_Selec\_v3/Core/Inc/liquidcrystal\_i2c.h}}
+\mbox{\hyperlink{liquidcrystal__i2c_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00002}00002\ \textcolor{comment}{\ *\ liquidcrystal\_i2c.h}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00004}00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Jan\ 16,\ 2023}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00005}00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ acer}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00006}00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00008}00008\ \textcolor{preprocessor}{\#ifndef\ INC\_LIQUIDCRYSTAL\_I2C\_H\_}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00009}00009\ \textcolor{preprocessor}{\#define\ INC\_LIQUIDCRYSTAL\_I2C\_H\_}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}stm32f1xx\_hal.h"{}}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00013}00013\ \textcolor{comment}{/*\ Command\ */}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00014}\mbox{\hyperlink{liquidcrystal__i2c_8h_acc3509bc0442b41e2b816555de473ed2}{00014}}\ \textcolor{preprocessor}{\#define\ LCD\_CLEARDISPLAY\ 0x01}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00015}\mbox{\hyperlink{liquidcrystal__i2c_8h_a154c86a887633d0f6d9988e4dbb1f419}{00015}}\ \textcolor{preprocessor}{\#define\ LCD\_RETURNHOME\ 0x02}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00016}\mbox{\hyperlink{liquidcrystal__i2c_8h_a5597e1d5819ea2f0734ad4313abf6703}{00016}}\ \textcolor{preprocessor}{\#define\ LCD\_ENTRYMODESET\ 0x04}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00017}\mbox{\hyperlink{liquidcrystal__i2c_8h_adfb8b2b8b8a08d7313504d7a4f89d99f}{00017}}\ \textcolor{preprocessor}{\#define\ LCD\_DISPLAYCONTROL\ 0x08}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00018}\mbox{\hyperlink{liquidcrystal__i2c_8h_a61f16a2b7550e4700f7898a7587c5594}{00018}}\ \textcolor{preprocessor}{\#define\ LCD\_CURSORSHIFT\ 0x10}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00019}\mbox{\hyperlink{liquidcrystal__i2c_8h_aaef882ae70d1f485cd132815d9716111}{00019}}\ \textcolor{preprocessor}{\#define\ LCD\_FUNCTIONSET\ 0x20}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00020}\mbox{\hyperlink{liquidcrystal__i2c_8h_aae6ea856879c11dee58493184582a52f}{00020}}\ \textcolor{preprocessor}{\#define\ LCD\_SETCGRAMADDR\ 0x40}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00021}\mbox{\hyperlink{liquidcrystal__i2c_8h_a15008b832807a208d9d88c74e6751ebf}{00021}}\ \textcolor{preprocessor}{\#define\ LCD\_SETDDRAMADDR\ 0x80}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00023}00023\ \textcolor{comment}{/*\ Entry\ Mode\ */}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00024}\mbox{\hyperlink{liquidcrystal__i2c_8h_a43c26ba2e66880fac95ef640b56873ad}{00024}}\ \textcolor{preprocessor}{\#define\ LCD\_ENTRYRIGHT\ 0x00}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00025}\mbox{\hyperlink{liquidcrystal__i2c_8h_ae7c6309fce6200bd7526d090a4a84dd0}{00025}}\ \textcolor{preprocessor}{\#define\ LCD\_ENTRYLEFT\ 0x02}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00026}\mbox{\hyperlink{liquidcrystal__i2c_8h_aa2cf1d0f4a319e53c009cffe1184466c}{00026}}\ \textcolor{preprocessor}{\#define\ LCD\_ENTRYSHIFTINCREMENT\ 0x01}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00027}\mbox{\hyperlink{liquidcrystal__i2c_8h_a049ee97e98d04788c1da9a55590fbe42}{00027}}\ \textcolor{preprocessor}{\#define\ LCD\_ENTRYSHIFTDECREMENT\ 0x00}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00029}00029\ \textcolor{comment}{/*\ Display\ On/Off\ */}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00030}\mbox{\hyperlink{liquidcrystal__i2c_8h_a76236ae8317b34bbc98ea56bc0a2639c}{00030}}\ \textcolor{preprocessor}{\#define\ LCD\_DISPLAYON\ 0x04}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00031}\mbox{\hyperlink{liquidcrystal__i2c_8h_a257ebe775cac7140cf82aa40d8ce545a}{00031}}\ \textcolor{preprocessor}{\#define\ LCD\_DISPLAYOFF\ 0x00}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00032}\mbox{\hyperlink{liquidcrystal__i2c_8h_ab67f0adccde68de88eee0513fdfc4574}{00032}}\ \textcolor{preprocessor}{\#define\ LCD\_CURSORON\ 0x02}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00033}\mbox{\hyperlink{liquidcrystal__i2c_8h_a32b194a3adaa0a0bb69acee2e6a754fa}{00033}}\ \textcolor{preprocessor}{\#define\ LCD\_CURSOROFF\ 0x00}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00034}\mbox{\hyperlink{liquidcrystal__i2c_8h_ac3b19d4e6553b9bbf18a23387e439206}{00034}}\ \textcolor{preprocessor}{\#define\ LCD\_BLINKON\ 0x01}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00035}\mbox{\hyperlink{liquidcrystal__i2c_8h_a4b28243034cec656b0ed490ba6979752}{00035}}\ \textcolor{preprocessor}{\#define\ LCD\_BLINKOFF\ 0x00}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00037}00037\ \textcolor{comment}{/*\ Cursor\ Shift\ */}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00038}\mbox{\hyperlink{liquidcrystal__i2c_8h_ab2f7b67abfac33f610acfd5d7a971f40}{00038}}\ \textcolor{preprocessor}{\#define\ LCD\_DISPLAYMOVE\ 0x08}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00039}\mbox{\hyperlink{liquidcrystal__i2c_8h_ac21f0302ac4136775877d5f4759e4f74}{00039}}\ \textcolor{preprocessor}{\#define\ LCD\_CURSORMOVE\ 0x00}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00040}\mbox{\hyperlink{liquidcrystal__i2c_8h_acf5999180233790bb2c9902efde58f7f}{00040}}\ \textcolor{preprocessor}{\#define\ LCD\_MOVERIGHT\ 0x04}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00041}\mbox{\hyperlink{liquidcrystal__i2c_8h_aafb86adb0dfca1e65d65b2cd1946a009}{00041}}\ \textcolor{preprocessor}{\#define\ LCD\_MOVELEFT\ 0x00}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00043}00043\ \textcolor{comment}{/*\ Function\ Set\ */}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00044}\mbox{\hyperlink{liquidcrystal__i2c_8h_a59a57ca857dae5d89eb5f2a38c4ac6f0}{00044}}\ \textcolor{preprocessor}{\#define\ LCD\_8BITMODE\ 0x10}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00045}\mbox{\hyperlink{liquidcrystal__i2c_8h_ab8c35d355d2372090c7a347e961c9224}{00045}}\ \textcolor{preprocessor}{\#define\ LCD\_4BITMODE\ 0x00}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00046}\mbox{\hyperlink{liquidcrystal__i2c_8h_a7987e93538df2819583ba43b81ddbb25}{00046}}\ \textcolor{preprocessor}{\#define\ LCD\_2LINE\ 0x08}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00047}\mbox{\hyperlink{liquidcrystal__i2c_8h_a8c85cf88d8af66a47c42249d81c94641}{00047}}\ \textcolor{preprocessor}{\#define\ LCD\_1LINE\ 0x00}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00048}\mbox{\hyperlink{liquidcrystal__i2c_8h_abb3210156d88d3fe18c9352eb161fe42}{00048}}\ \textcolor{preprocessor}{\#define\ LCD\_5x10DOTS\ 0x04}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00049}\mbox{\hyperlink{liquidcrystal__i2c_8h_a9ef57e724c1b846dae0f531aff6fb464}{00049}}\ \textcolor{preprocessor}{\#define\ LCD\_5x8DOTS\ 0x00}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00051}00051\ \textcolor{comment}{/*\ Backlight\ */}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00052}\mbox{\hyperlink{liquidcrystal__i2c_8h_ac059d24dfe9c1e1f7c07cb7869a1833b}{00052}}\ \textcolor{preprocessor}{\#define\ LCD\_BACKLIGHT\ 0x08}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00053}\mbox{\hyperlink{liquidcrystal__i2c_8h_a65fa786d6e31fe8b1aa51784a9736581}{00053}}\ \textcolor{preprocessor}{\#define\ LCD\_NOBACKLIGHT\ 0x00}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00055}00055\ \textcolor{comment}{/*\ Enable\ Bit\ */}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00056}\mbox{\hyperlink{liquidcrystal__i2c_8h_a514ad415fb6125ba296793df7d1a468a}{00056}}\ \textcolor{preprocessor}{\#define\ ENABLE\ 0x04}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00058}00058\ \textcolor{comment}{/*\ Read\ Write\ Bit\ */}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00059}\mbox{\hyperlink{liquidcrystal__i2c_8h_afc4ded33ac0ca43defcce639e965748a}{00059}}\ \textcolor{preprocessor}{\#define\ RW\ 0x0}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00061}00061\ \textcolor{comment}{/*\ Register\ Select\ Bit\ */}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00062}\mbox{\hyperlink{liquidcrystal__i2c_8h_af8903d8eea3868940c60af887473b152}{00062}}\ \textcolor{preprocessor}{\#define\ RS\ 0x01}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00064}00064\ \textcolor{comment}{/*\ Device\ I2C\ Address\ */}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00065}\mbox{\hyperlink{liquidcrystal__i2c_8h_aff0f2d52596a7a0b104ef88aa1eccd2b}{00065}}\ \textcolor{preprocessor}{\#define\ DEVICE\_ADDR\ \ \ (0x27\ <<\ 1)\ }\textcolor{comment}{//\ 0x4E}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00067}00067\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{liquidcrystal__i2c_8h_a97d4f7a1f8a23938955ba343380f13d1}{HD44780\_Init}}(uint8\_t\ rows);}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00068}00068\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{liquidcrystal__i2c_8h_abe31ef769fa9a1941c6d5e51fc63b3fd}{HD44780\_Clear}}();}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00069}00069\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{liquidcrystal__i2c_8h_a0e2a70008b6b991562badef8f2bcc4f5}{HD44780\_Home}}();}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00070}\mbox{\hyperlink{liquidcrystal__i2c_8h_a3565eda1be2bc265616dbf39c3d4ba65}{00070}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{liquidcrystal__i2c_8h_a3565eda1be2bc265616dbf39c3d4ba65}{HD44780\_NoDisplay}}();}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00071}00071\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{liquidcrystal__i2c_8h_acff5f142b39d9be81e16307b924d7143}{HD44780\_Display}}();}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00073}00073\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{liquidcrystal__i2c_8h_a8ad667447dffc6a0833d8e54c7853ac8}{HD44780\_SetCursor}}(uint8\_t,\ uint8\_t);}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00074}00074\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{liquidcrystal__i2c_8h_aeb020d5cc7985ee54c28f0d3fbc9f99b}{HD44780\_CreateSpecialChar}}(uint8\_t\ location,\ uint8\_t\ charmap[]);}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00075}00075\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{liquidcrystal__i2c_8h_af313a9f7b2c955a408d6045a00f65aea}{HD44780\_PrintStr}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}[]);}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00078}00078\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ INC\_LIQUIDCRYSTAL\_I2C\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{liquidcrystal__i2c_8h_source_l00079}00079\ }
+
+\end{DoxyCode}

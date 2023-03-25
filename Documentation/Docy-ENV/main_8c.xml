@@ -1,0 +1,429 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_main_8c" xml:lang="en-US">
+<title>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Src/main.c File Reference</title>
+<indexterm><primary>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Src/main.c</primary></indexterm>
+<para>
+
+<para>: Main program body </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &quot;main.h&quot;<?linebreak?>#include &quot;stdio.h&quot;<?linebreak?>#include &quot;MENU.h&quot;<?linebreak?>#include &quot;DHT11.h&quot;<?linebreak?>#include &quot;BMP280.h&quot;<?linebreak?>#include &quot;liquidcrystal_i2c.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_main_8c_1a70af21c671abfcc773614a9a4f63d920">SystemClock_Config</link> (void)</para>
+
+<para>System Clock Configuration. </para>
+</listitem>
+            <listitem><para>static void <link linkend="_main_8c_1ae89fdd15729ad41a66911190fcbab23a">MX_GPIO_Init</link> (void)</para>
+
+<para>GPIO Initialization Function. </para>
+</listitem>
+            <listitem><para>static void <link linkend="_main_8c_1a4230d11f81d0b16e112f1cc3f40cb42f">MX_I2C1_Init</link> (void)</para>
+
+<para>I2C1 Initialization Function. </para>
+</listitem>
+            <listitem><para>static void <link linkend="_main_8c_1ade0c8abfcfc1615647bfdd244bd1ee00">MX_SPI2_Init</link> (void)</para>
+
+<para>SPI2 Initialization Function. </para>
+</listitem>
+            <listitem><para>static void <link linkend="_main_8c_1a1d1beb7da60021ee1adbca294f28ba88">MX_TIM1_Init</link> (void)</para>
+
+<para>TIM1 Initialization Function. </para>
+</listitem>
+            <listitem><para>int <link linkend="_main_8c_1a840291bc02cba5474a4cb46a9b9566fe">main</link> (void)</para>
+
+<para>The application entry point. </para>
+</listitem>
+            <listitem><para>void <link linkend="_main_8c_1a1730ffe1e560465665eb47d9264826f9">Error_Handler</link> (void)</para>
+
+<para>This function is executed in case of error occurrence. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>I2C_HandleTypeDef <link linkend="_main_8c_1af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</link></para>
+</listitem>
+            <listitem><para>SPI_HandleTypeDef <link linkend="_main_8c_1ab9da65f935e805137e2eb4e18c5ab224">hspi2</link></para>
+</listitem>
+            <listitem><para>TIM_HandleTypeDef <link linkend="_main_8c_1a25fc663547539bc49fecc0011bd76ab5">htim1</link></para>
+</listitem>
+            <listitem><para>int <link linkend="_main_8c_1ad43c3812e6d13e0518d9f8b8f463ffcf">count</link></para>
+</listitem>
+            <listitem><para>volatile int <link linkend="_main_8c_1a234ac5d88f28f16f8469163f16805e99">menu_button</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>: Main program body </para>
+
+<para><caution><title>Attention</title>
+
+<para></para>
+</caution>
+Copyright (c) 2023 STMicroelectronics. All rights reserved.</para>
+
+<para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS. </para>
+<para>
+Definition in file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_main_8c_1a1730ffe1e560465665eb47d9264826f9"/><section>
+    <title>Error_Handler()</title>
+<indexterm><primary>Error_Handler</primary><secondary>main.c</secondary></indexterm>
+<indexterm><primary>main.c</primary><secondary>Error_Handler</secondary></indexterm>
+<para><computeroutput>void Error_Handler (void )</computeroutput></para><para>
+
+<para>This function is executed in case of error occurrence. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Return values</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>None</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_main_8c_source_1l00443">443</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+<anchor xml:id="_main_8c_1a840291bc02cba5474a4cb46a9b9566fe"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>main.c</secondary></indexterm>
+<indexterm><primary>main.c</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main (void )</computeroutput></para><para>
+
+<para>The application entry point. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Return values</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>int</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_main_8c_source_1l00077">77</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+<anchor xml:id="_main_8c_1ae89fdd15729ad41a66911190fcbab23a"/><section>
+    <title>MX_GPIO_Init()</title>
+<indexterm><primary>MX_GPIO_Init</primary><secondary>main.c</secondary></indexterm>
+<indexterm><primary>main.c</primary><secondary>MX_GPIO_Init</secondary></indexterm>
+<para><computeroutput>static void MX_GPIO_Init (void )<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>GPIO Initialization Function. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>None</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                
+                <formalpara>
+                    <title>
+Return values</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>None</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_main_8c_source_1l00382">382</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+<anchor xml:id="_main_8c_1a4230d11f81d0b16e112f1cc3f40cb42f"/><section>
+    <title>MX_I2C1_Init()</title>
+<indexterm><primary>MX_I2C1_Init</primary><secondary>main.c</secondary></indexterm>
+<indexterm><primary>main.c</primary><secondary>MX_I2C1_Init</secondary></indexterm>
+<para><computeroutput>static void MX_I2C1_Init (void )<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>I2C1 Initialization Function. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>None</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                
+                <formalpara>
+                    <title>
+Return values</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>None</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_main_8c_source_1l00264">264</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+<anchor xml:id="_main_8c_1ade0c8abfcfc1615647bfdd244bd1ee00"/><section>
+    <title>MX_SPI2_Init()</title>
+<indexterm><primary>MX_SPI2_Init</primary><secondary>main.c</secondary></indexterm>
+<indexterm><primary>main.c</primary><secondary>MX_SPI2_Init</secondary></indexterm>
+<para><computeroutput>static void MX_SPI2_Init (void )<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>SPI2 Initialization Function. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>None</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                
+                <formalpara>
+                    <title>
+Return values</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>None</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_main_8c_source_1l00298">298</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+<anchor xml:id="_main_8c_1a1d1beb7da60021ee1adbca294f28ba88"/><section>
+    <title>MX_TIM1_Init()</title>
+<indexterm><primary>MX_TIM1_Init</primary><secondary>main.c</secondary></indexterm>
+<indexterm><primary>main.c</primary><secondary>MX_TIM1_Init</secondary></indexterm>
+<para><computeroutput>static void MX_TIM1_Init (void )<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>TIM1 Initialization Function. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>None</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                
+                <formalpara>
+                    <title>
+Return values</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>None</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_main_8c_source_1l00336">336</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+<anchor xml:id="_main_8c_1a70af21c671abfcc773614a9a4f63d920"/><section>
+    <title>SystemClock_Config()</title>
+<indexterm><primary>SystemClock_Config</primary><secondary>main.c</secondary></indexterm>
+<indexterm><primary>main.c</primary><secondary>SystemClock_Config</secondary></indexterm>
+<para><computeroutput>void SystemClock_Config (void )</computeroutput></para><para>
+
+<para>System Clock Configuration. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Return values</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>None</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+
+<para>Initializes the RCC Oscillators according to the specified parameters in the RCC_OscInitTypeDef structure.</para>
+
+<para>Initializes the CPU, AHB and APB buses clocks</para>
+<para>
+Definition at line <link linkend="_main_8c_source_1l00224">224</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_main_8c_1ad43c3812e6d13e0518d9f8b8f463ffcf"/><section>
+    <title>count</title>
+<indexterm><primary>count</primary><secondary>main.c</secondary></indexterm>
+<indexterm><primary>main.c</primary><secondary>count</secondary></indexterm>
+<para><computeroutput>int count<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__m_e_n_u_8c_source_1l00012">12</link> of file <link linkend="__m_e_n_u_8c_source">MENU.c</link>.</para>
+</section>
+<anchor xml:id="_main_8c_1af7b2c26e44dadaaa798a5c3d82914ba7"/><section>
+    <title>hi2c1</title>
+<indexterm><primary>hi2c1</primary><secondary>main.c</secondary></indexterm>
+<indexterm><primary>main.c</primary><secondary>hi2c1</secondary></indexterm>
+<para><computeroutput>I2C_HandleTypeDef hi2c1</computeroutput></para><para>
+Definition at line <link linkend="_main_8c_source_1l00047">47</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+<anchor xml:id="_main_8c_1ab9da65f935e805137e2eb4e18c5ab224"/><section>
+    <title>hspi2</title>
+<indexterm><primary>hspi2</primary><secondary>main.c</secondary></indexterm>
+<indexterm><primary>main.c</primary><secondary>hspi2</secondary></indexterm>
+<para><computeroutput>SPI_HandleTypeDef hspi2</computeroutput></para><para>
+Definition at line <link linkend="_main_8c_source_1l00049">49</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+<anchor xml:id="_main_8c_1a25fc663547539bc49fecc0011bd76ab5"/><section>
+    <title>htim1</title>
+<indexterm><primary>htim1</primary><secondary>main.c</secondary></indexterm>
+<indexterm><primary>main.c</primary><secondary>htim1</secondary></indexterm>
+<para><computeroutput>TIM_HandleTypeDef htim1</computeroutput></para><para>
+Definition at line <link linkend="_main_8c_source_1l00051">51</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+<anchor xml:id="_main_8c_1a234ac5d88f28f16f8469163f16805e99"/><section>
+    <title>menu_button</title>
+<indexterm><primary>menu_button</primary><secondary>main.c</secondary></indexterm>
+<indexterm><primary>main.c</primary><secondary>menu_button</secondary></indexterm>
+<para><computeroutput>volatile int menu_button<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__m_e_n_u_8c_source_1l00016">16</link> of file <link linkend="__m_e_n_u_8c_source">MENU.c</link>.</para>
+</section>
+</section>
+</section>

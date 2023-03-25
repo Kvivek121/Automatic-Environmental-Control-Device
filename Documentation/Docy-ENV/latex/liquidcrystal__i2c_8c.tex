@@ -1,0 +1,320 @@
+\hypertarget{liquidcrystal__i2c_8c}{}\doxysection{C\+:/\+Users/acer/\+STM32\+Cube\+IDE/workspace\+\_\+1.10.2/\+Final\+\_\+\+Selec\+\_\+v3/\+Core/\+Src/liquidcrystal\+\_\+i2c.c File Reference}
+\label{liquidcrystal__i2c_8c}\index{C:/Users/acer/STM32CubeIDE/workspace\_1.10.2/Final\_Selec\_v3/Core/Src/liquidcrystal\_i2c.c@{C:/Users/acer/STM32CubeIDE/workspace\_1.10.2/Final\_Selec\_v3/Core/Src/liquidcrystal\_i2c.c}}
+{\ttfamily \#include \char`\"{}liquidcrystal\+\_\+i2c.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stdio.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{liquidcrystal__i2c_8c_a91bee4670712c8170bad56bcb9e674cb}{Send\+Command}} (uint8\+\_\+t)
+\item 
+static void \mbox{\hyperlink{liquidcrystal__i2c_8c_a0c7d3765d4e552f9e9ac0158072b4e3d}{Send\+Char}} (uint8\+\_\+t)
+\item 
+static void \mbox{\hyperlink{liquidcrystal__i2c_8c_a0b9a98e3d1f8e1607a233dae8054967e}{Send}} (uint8\+\_\+t, uint8\+\_\+t)
+\item 
+static void \mbox{\hyperlink{liquidcrystal__i2c_8c_a29d12b27356d6e59ded506a361c7914e}{Write4\+Bits}} (uint8\+\_\+t)
+\item 
+static void \mbox{\hyperlink{liquidcrystal__i2c_8c_af9ef4df56836f166bde157a0fc9d3f44}{Expander\+Write}} (uint8\+\_\+t)
+\item 
+static void \mbox{\hyperlink{liquidcrystal__i2c_8c_a51ceff037e8ee2986612154944835665}{Pulse\+Enable}} (uint8\+\_\+t)
+\item 
+static void \mbox{\hyperlink{liquidcrystal__i2c_8c_ab44ba9fe04754905ee42289b88381b14}{Delay\+Init}} (void)
+\item 
+static void \mbox{\hyperlink{liquidcrystal__i2c_8c_ac02f4d7df4ab9c5a0813d3446ef1872d}{Delay\+US}} (uint32\+\_\+t)
+\item 
+void \mbox{\hyperlink{liquidcrystal__i2c_8c_a97d4f7a1f8a23938955ba343380f13d1}{HD44780\+\_\+\+Init}} (uint8\+\_\+t rows)
+\item 
+void \mbox{\hyperlink{liquidcrystal__i2c_8c_abe31ef769fa9a1941c6d5e51fc63b3fd}{HD44780\+\_\+\+Clear}} ()
+\item 
+void \mbox{\hyperlink{liquidcrystal__i2c_8c_a0e2a70008b6b991562badef8f2bcc4f5}{HD44780\+\_\+\+Home}} ()
+\item 
+void \mbox{\hyperlink{liquidcrystal__i2c_8c_a539dfd78c4614defb8e50249b855d193}{HD44780\+\_\+\+Set\+Cursor}} (uint8\+\_\+t col, uint8\+\_\+t row)
+\item 
+void \mbox{\hyperlink{liquidcrystal__i2c_8c_acff5f142b39d9be81e16307b924d7143}{HD44780\+\_\+\+Display}} ()
+\item 
+void \mbox{\hyperlink{liquidcrystal__i2c_8c_aeb020d5cc7985ee54c28f0d3fbc9f99b}{HD44780\+\_\+\+Create\+Special\+Char}} (uint8\+\_\+t location, uint8\+\_\+t charmap\mbox{[}$\,$\mbox{]})
+\item 
+void \mbox{\hyperlink{liquidcrystal__i2c_8c_a7a9b443808c73ec3ee633762a5fcd454}{HD44780\+\_\+\+Print\+Str}} (const char c\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+I2\+C\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{liquidcrystal__i2c_8c_af7b2c26e44dadaaa798a5c3d82914ba7}{hi2c1}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{liquidcrystal__i2c_8c_ac5ee31d2518cd9b8936d8b69d4938c09}{dp\+Function}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{liquidcrystal__i2c_8c_a99b44d4e6dea8b547ee824b3ec90a44f}{dp\+Control}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{liquidcrystal__i2c_8c_a5992ca55a2763f066446894eb2177f1d}{dp\+Mode}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{liquidcrystal__i2c_8c_ad954245ca59635459b3368eba1d28f54}{dp\+Rows}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{liquidcrystal__i2c_8c_ac1c0ae2f596ae15916fb039fbb0c24ea}{dp\+Backlight}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{liquidcrystal__i2c_8c_acfe7a7926addcac0db8ef202a00e5cbe}{special1}} \mbox{[}8\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{liquidcrystal__i2c_8c_a07edfb9508b377544a55fdb615e8e4ab}{special2}} \mbox{[}8\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_ab44ba9fe04754905ee42289b88381b14}\label{liquidcrystal__i2c_8c_ab44ba9fe04754905ee42289b88381b14}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!DelayInit@{DelayInit}}
+\index{DelayInit@{DelayInit}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{DelayInit()}{DelayInit()}}
+{\footnotesize\ttfamily static void Delay\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00189}{189}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_ac02f4d7df4ab9c5a0813d3446ef1872d}\label{liquidcrystal__i2c_8c_ac02f4d7df4ab9c5a0813d3446ef1872d}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!DelayUS@{DelayUS}}
+\index{DelayUS@{DelayUS}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{DelayUS()}{DelayUS()}}
+{\footnotesize\ttfamily static void Delay\+US (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{us }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00205}{205}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_af9ef4df56836f166bde157a0fc9d3f44}\label{liquidcrystal__i2c_8c_af9ef4df56836f166bde157a0fc9d3f44}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!ExpanderWrite@{ExpanderWrite}}
+\index{ExpanderWrite@{ExpanderWrite}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{ExpanderWrite()}{ExpanderWrite()}}
+{\footnotesize\ttfamily static void Expander\+Write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{\+\_\+data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00174}{174}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_abe31ef769fa9a1941c6d5e51fc63b3fd}\label{liquidcrystal__i2c_8c_abe31ef769fa9a1941c6d5e51fc63b3fd}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!HD44780\_Clear@{HD44780\_Clear}}
+\index{HD44780\_Clear@{HD44780\_Clear}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{HD44780\_Clear()}{HD44780\_Clear()}}
+{\footnotesize\ttfamily void HD44780\+\_\+\+Clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00104}{104}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_aeb020d5cc7985ee54c28f0d3fbc9f99b}\label{liquidcrystal__i2c_8c_aeb020d5cc7985ee54c28f0d3fbc9f99b}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!HD44780\_CreateSpecialChar@{HD44780\_CreateSpecialChar}}
+\index{HD44780\_CreateSpecialChar@{HD44780\_CreateSpecialChar}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{HD44780\_CreateSpecialChar()}{HD44780\_CreateSpecialChar()}}
+{\footnotesize\ttfamily void HD44780\+\_\+\+Create\+Special\+Char (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{location,  }\item[{uint8\+\_\+t}]{charmap\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00134}{134}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_acff5f142b39d9be81e16307b924d7143}\label{liquidcrystal__i2c_8c_acff5f142b39d9be81e16307b924d7143}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!HD44780\_Display@{HD44780\_Display}}
+\index{HD44780\_Display@{HD44780\_Display}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{HD44780\_Display()}{HD44780\_Display()}}
+{\footnotesize\ttfamily void HD44780\+\_\+\+Display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00128}{128}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_a0e2a70008b6b991562badef8f2bcc4f5}\label{liquidcrystal__i2c_8c_a0e2a70008b6b991562badef8f2bcc4f5}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!HD44780\_Home@{HD44780\_Home}}
+\index{HD44780\_Home@{HD44780\_Home}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{HD44780\_Home()}{HD44780\_Home()}}
+{\footnotesize\ttfamily void HD44780\+\_\+\+Home (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00110}{110}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_a97d4f7a1f8a23938955ba343380f13d1}\label{liquidcrystal__i2c_8c_a97d4f7a1f8a23938955ba343380f13d1}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!HD44780\_Init@{HD44780\_Init}}
+\index{HD44780\_Init@{HD44780\_Init}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{HD44780\_Init()}{HD44780\_Init()}}
+{\footnotesize\ttfamily void HD44780\+\_\+\+Init (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{rows }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00049}{49}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_a7a9b443808c73ec3ee633762a5fcd454}\label{liquidcrystal__i2c_8c_a7a9b443808c73ec3ee633762a5fcd454}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!HD44780\_PrintStr@{HD44780\_PrintStr}}
+\index{HD44780\_PrintStr@{HD44780\_PrintStr}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{HD44780\_PrintStr()}{HD44780\_PrintStr()}}
+{\footnotesize\ttfamily void HD44780\+\_\+\+Print\+Str (\begin{DoxyParamCaption}\item[{const char}]{c\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00144}{144}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_a539dfd78c4614defb8e50249b855d193}\label{liquidcrystal__i2c_8c_a539dfd78c4614defb8e50249b855d193}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!HD44780\_SetCursor@{HD44780\_SetCursor}}
+\index{HD44780\_SetCursor@{HD44780\_SetCursor}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{HD44780\_SetCursor()}{HD44780\_SetCursor()}}
+{\footnotesize\ttfamily void HD44780\+\_\+\+Set\+Cursor (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{col,  }\item[{uint8\+\_\+t}]{row }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00116}{116}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_a51ceff037e8ee2986612154944835665}\label{liquidcrystal__i2c_8c_a51ceff037e8ee2986612154944835665}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!PulseEnable@{PulseEnable}}
+\index{PulseEnable@{PulseEnable}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{PulseEnable()}{PulseEnable()}}
+{\footnotesize\ttfamily static void Pulse\+Enable (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{\+\_\+data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00180}{180}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_a0b9a98e3d1f8e1607a233dae8054967e}\label{liquidcrystal__i2c_8c_a0b9a98e3d1f8e1607a233dae8054967e}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!Send@{Send}}
+\index{Send@{Send}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{Send()}{Send()}}
+{\footnotesize\ttfamily static void Send (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{value,  }\item[{uint8\+\_\+t}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00160}{160}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_a0c7d3765d4e552f9e9ac0158072b4e3d}\label{liquidcrystal__i2c_8c_a0c7d3765d4e552f9e9ac0158072b4e3d}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!SendChar@{SendChar}}
+\index{SendChar@{SendChar}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{SendChar()}{SendChar()}}
+{\footnotesize\ttfamily static void Send\+Char (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00155}{155}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_a91bee4670712c8170bad56bcb9e674cb}\label{liquidcrystal__i2c_8c_a91bee4670712c8170bad56bcb9e674cb}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!SendCommand@{SendCommand}}
+\index{SendCommand@{SendCommand}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{SendCommand()}{SendCommand()}}
+{\footnotesize\ttfamily static void Send\+Command (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{cmd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00150}{150}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_a29d12b27356d6e59ded506a361c7914e}\label{liquidcrystal__i2c_8c_a29d12b27356d6e59ded506a361c7914e}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!Write4Bits@{Write4Bits}}
+\index{Write4Bits@{Write4Bits}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{Write4Bits()}{Write4Bits()}}
+{\footnotesize\ttfamily static void Write4\+Bits (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00168}{168}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_ac1c0ae2f596ae15916fb039fbb0c24ea}\label{liquidcrystal__i2c_8c_ac1c0ae2f596ae15916fb039fbb0c24ea}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!dpBacklight@{dpBacklight}}
+\index{dpBacklight@{dpBacklight}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{dpBacklight}{dpBacklight}}
+{\footnotesize\ttfamily uint8\+\_\+t dp\+Backlight}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00016}{16}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_a99b44d4e6dea8b547ee824b3ec90a44f}\label{liquidcrystal__i2c_8c_a99b44d4e6dea8b547ee824b3ec90a44f}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!dpControl@{dpControl}}
+\index{dpControl@{dpControl}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{dpControl}{dpControl}}
+{\footnotesize\ttfamily uint8\+\_\+t dp\+Control}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00013}{13}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_ac5ee31d2518cd9b8936d8b69d4938c09}\label{liquidcrystal__i2c_8c_ac5ee31d2518cd9b8936d8b69d4938c09}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!dpFunction@{dpFunction}}
+\index{dpFunction@{dpFunction}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{dpFunction}{dpFunction}}
+{\footnotesize\ttfamily uint8\+\_\+t dp\+Function}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00012}{12}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_a5992ca55a2763f066446894eb2177f1d}\label{liquidcrystal__i2c_8c_a5992ca55a2763f066446894eb2177f1d}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!dpMode@{dpMode}}
+\index{dpMode@{dpMode}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{dpMode}{dpMode}}
+{\footnotesize\ttfamily uint8\+\_\+t dp\+Mode}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00014}{14}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_ad954245ca59635459b3368eba1d28f54}\label{liquidcrystal__i2c_8c_ad954245ca59635459b3368eba1d28f54}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!dpRows@{dpRows}}
+\index{dpRows@{dpRows}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{dpRows}{dpRows}}
+{\footnotesize\ttfamily uint8\+\_\+t dp\+Rows}
+
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00015}{15}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_af7b2c26e44dadaaa798a5c3d82914ba7}\label{liquidcrystal__i2c_8c_af7b2c26e44dadaaa798a5c3d82914ba7}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!hi2c1@{hi2c1}}
+\index{hi2c1@{hi2c1}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{hi2c1}{hi2c1}}
+{\footnotesize\ttfamily I2\+C\+\_\+\+Handle\+Type\+Def hi2c1\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00047}{47}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_acfe7a7926addcac0db8ef202a00e5cbe}\label{liquidcrystal__i2c_8c_acfe7a7926addcac0db8ef202a00e5cbe}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!special1@{special1}}
+\index{special1@{special1}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{special1}{special1}}
+{\footnotesize\ttfamily uint8\+\_\+t special1\mbox{[}8\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0b00000,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0b11001,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0b11011,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0b00110,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0b01100,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0b11011,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0b10011,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0b00000}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00027}{27}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+
+\mbox{\Hypertarget{liquidcrystal__i2c_8c_a07edfb9508b377544a55fdb615e8e4ab}\label{liquidcrystal__i2c_8c_a07edfb9508b377544a55fdb615e8e4ab}} 
+\index{liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}!special2@{special2}}
+\index{special2@{special2}!liquidcrystal\_i2c.c@{liquidcrystal\_i2c.c}}
+\doxysubsubsection{\texorpdfstring{special2}{special2}}
+{\footnotesize\ttfamily uint8\+\_\+t special2\mbox{[}8\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0b11000,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0b11000,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0b00110,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0b01001,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0b01000,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0b01001,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0b00110,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0b00000}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{liquidcrystal__i2c_8c_source_l00038}{38}} of file \mbox{\hyperlink{liquidcrystal__i2c_8c_source}{liquidcrystal\+\_\+i2c.\+c}}.
+

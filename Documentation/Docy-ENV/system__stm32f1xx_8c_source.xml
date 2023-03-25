@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_system__stm32f1xx_8c_source" xml:lang="en-US">
+<title>system_stm32f1xx.c</title>
+<indexterm><primary>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Src/system_stm32f1xx.c</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_system__stm32f1xx_8c_source_1l00001"/>00001 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00059"/>00059 <emphasis role="preprocessor">#include&#32;&quot;stm32f1xx.h&quot;</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00060"/>00060 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00077"/>00077 <emphasis role="preprocessor">#if&#32;!defined&#32;&#32;(HSE_VALUE)&#32;</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00078"/>00078 <emphasis role="preprocessor">&#32;&#32;#define&#32;HSE_VALUE&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;8000000U&#32;</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00080"/>00080 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;HSE_VALUE&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00081"/>00081 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00082"/>00082 <emphasis role="preprocessor">#if&#32;!defined&#32;&#32;(HSI_VALUE)</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00083"/>00083 <emphasis role="preprocessor">&#32;&#32;#define&#32;HSI_VALUE&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;8000000U&#32;</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00085"/>00085 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;HSI_VALUE&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00086"/>00086 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00088"/>00088 <emphasis role="preprocessor">#if&#32;defined(STM32F100xE)&#32;||&#32;defined(STM32F101xE)&#32;||&#32;defined(STM32F101xG)&#32;||&#32;defined(STM32F103xE)&#32;||&#32;defined(STM32F103xG)</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00089"/>00089 <emphasis role="comment">/*&#32;#define&#32;DATA_IN_ExtSRAM&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00090"/>00090 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;STM32F100xE&#32;||&#32;STM32F101xE&#32;||&#32;STM32F101xG&#32;||&#32;STM32F103xE&#32;||&#32;STM32F103xG&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00091"/>00091 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00092"/>00092 <emphasis role="comment">/*&#32;Note:&#32;Following&#32;vector&#32;table&#32;addresses&#32;must&#32;be&#32;defined&#32;in&#32;line&#32;with&#32;linker</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00093"/>00093 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;configuration.&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00097"/>00097 <emphasis role="comment">/*&#32;#define&#32;USER_VECT_TAB_ADDRESS&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00098"/>00098 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00099"/>00099 <emphasis role="preprocessor">#if&#32;defined(USER_VECT_TAB_ADDRESS)</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00102"/>00102 <emphasis role="comment">/*&#32;#define&#32;VECT_TAB_SRAM&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00103"/>00103 <emphasis role="preprocessor">#if&#32;defined(VECT_TAB_SRAM)</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00104"/>00104 <emphasis role="preprocessor">#define&#32;VECT_TAB_BASE_ADDRESS&#32;&#32;&#32;SRAM_BASE&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00106"/>00106 <emphasis role="preprocessor">#define&#32;VECT_TAB_OFFSET&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x00000000U&#32;&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00108"/>00108 <emphasis role="preprocessor">#else</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00109"/>00109 <emphasis role="preprocessor">#define&#32;VECT_TAB_BASE_ADDRESS&#32;&#32;&#32;FLASH_BASE&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00111"/>00111 <emphasis role="preprocessor">#define&#32;VECT_TAB_OFFSET&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x00000000U&#32;&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00113"/>00113 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;VECT_TAB_SRAM&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00114"/>00114 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;USER_VECT_TAB_ADDRESS&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00115"/>00115 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00116"/>00116 <emphasis role="comment">/******************************************************************************/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00117"/>00117 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00134"/>00134 &#32;&#32;<emphasis role="comment">/*&#32;This&#32;variable&#32;is&#32;updated&#32;in&#32;three&#32;ways:</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00135"/>00135 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;1)&#32;by&#32;calling&#32;CMSIS&#32;function&#32;SystemCoreClockUpdate()</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00136"/>00136 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;2)&#32;by&#32;calling&#32;HAL&#32;API&#32;function&#32;HAL_RCC_GetHCLKFreq()</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00137"/>00137 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;3)&#32;each&#32;time&#32;HAL_RCC_ClockConfig()&#32;is&#32;called&#32;to&#32;configure&#32;the&#32;system&#32;clock&#32;frequency&#32;</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00138"/>00138 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Note:&#32;If&#32;you&#32;use&#32;this&#32;function&#32;to&#32;configure&#32;the&#32;system&#32;clock;&#32;then&#32;there</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00139"/>00139 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;is&#32;no&#32;need&#32;to&#32;call&#32;the&#32;2&#32;first&#32;functions&#32;listed&#32;above,&#32;since&#32;SystemCoreClock</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00140"/>00140 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;variable&#32;is&#32;updated&#32;automatically.</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00141"/>00141 <emphasis role="comment">&#32;&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00142"/><link linkend="_group___s_t_m32_f1xx___system___private___variables_1gaa3cd3e43291e81e795d642b79b6088e6">00142</link> uint32_t&#32;<link linkend="_group___s_t_m32_f1xx___system___private___variables_1gaa3cd3e43291e81e795d642b79b6088e6">SystemCoreClock</link>&#32;=&#32;16000000;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00143"/><link linkend="_group___s_t_m32_f1xx___system___private___variables_1ga53cb26d01524d9560f98101a2c597c40">00143</link> <emphasis role="keyword">const</emphasis>&#32;uint8_t&#32;<link linkend="_group___s_t_m32_f1xx___system___private___variables_1ga53cb26d01524d9560f98101a2c597c40">AHBPrescTable</link>[16U]&#32;=&#32;{0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;1,&#32;2,&#32;3,&#32;4,&#32;6,&#32;7,&#32;8,&#32;9};
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00144"/><link linkend="_group___s_t_m32_f1xx___system___private___variables_1gaa93c123312c9273c0928a79f1203f759">00144</link> <emphasis role="keyword">const</emphasis>&#32;uint8_t&#32;<link linkend="_group___s_t_m32_f1xx___system___private___variables_1gaa93c123312c9273c0928a79f1203f759">APBPrescTable</link>[8U]&#32;=&#32;&#32;{0,&#32;0,&#32;0,&#32;0,&#32;1,&#32;2,&#32;3,&#32;4};
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00145"/>00145 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00154"/>00154 <emphasis role="preprocessor">#if&#32;defined(STM32F100xE)&#32;||&#32;defined(STM32F101xE)&#32;||&#32;defined(STM32F101xG)&#32;||&#32;defined(STM32F103xE)&#32;||&#32;defined(STM32F103xG)</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00155"/>00155 <emphasis role="preprocessor">#ifdef&#32;DATA_IN_ExtSRAM</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00156"/>00156 &#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SystemInit_ExtMemCtl(<emphasis role="keywordtype">void</emphasis>);&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00157"/>00157 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;DATA_IN_ExtSRAM&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00158"/>00158 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;STM32F100xE&#32;||&#32;STM32F101xE&#32;||&#32;STM32F101xG&#32;||&#32;STM32F103xE&#32;||&#32;STM32F103xG&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00159"/>00159 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00176"/><link linkend="_group___s_t_m32_f1xx___system___private___functions_1ga93f514700ccf00d08dbdcff7f1224eb2">00176</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___s_t_m32_f1xx___system___private___functions_1ga93f514700ccf00d08dbdcff7f1224eb2">SystemInit</link>&#32;(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00177"/>00177 {
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00178"/>00178 <emphasis role="preprocessor">#if&#32;defined(STM32F100xE)&#32;||&#32;defined(STM32F101xE)&#32;||&#32;defined(STM32F101xG)&#32;||&#32;defined(STM32F103xE)&#32;||&#32;defined(STM32F103xG)</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00179"/>00179 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;DATA_IN_ExtSRAM</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00180"/>00180 &#32;&#32;&#32;&#32;SystemInit_ExtMemCtl();&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00181"/>00181 <emphasis role="preprocessor">&#32;&#32;#endif&#32;</emphasis><emphasis role="comment">/*&#32;DATA_IN_ExtSRAM&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00182"/>00182 <emphasis role="preprocessor">#endif&#32;</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00183"/>00183 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00184"/>00184 &#32;&#32;<emphasis role="comment">/*&#32;Configure&#32;the&#32;Vector&#32;Table&#32;location&#32;-------------------------------------*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00185"/>00185 <emphasis role="preprocessor">#if&#32;defined(USER_VECT_TAB_ADDRESS)</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00186"/>00186 &#32;&#32;SCB-&gt;VTOR&#32;=&#32;VECT_TAB_BASE_ADDRESS&#32;|&#32;VECT_TAB_OFFSET;&#32;<emphasis role="comment">/*&#32;Vector&#32;Table&#32;Relocation&#32;in&#32;Internal&#32;SRAM.&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00187"/>00187 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;USER_VECT_TAB_ADDRESS&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00188"/>00188 }
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00189"/>00189 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00225"/><link linkend="_group___s_t_m32_f1xx___system___private___functions_1gae0c36a9591fe6e9c45ecb21a794f0f0f">00225</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___s_t_m32_f1xx___system___private___functions_1gae0c36a9591fe6e9c45ecb21a794f0f0f">SystemCoreClockUpdate</link>&#32;(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00226"/>00226 {
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00227"/>00227 &#32;&#32;uint32_t&#32;tmp&#32;=&#32;0U,&#32;pllmull&#32;=&#32;0U,&#32;pllsource&#32;=&#32;0U;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00228"/>00228 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00229"/>00229 <emphasis role="preprocessor">#if&#32;defined(STM32F105xC)&#32;||&#32;defined(STM32F107xC)</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00230"/>00230 &#32;&#32;uint32_t&#32;prediv1source&#32;=&#32;0U,&#32;prediv1factor&#32;=&#32;0U,&#32;prediv2factor&#32;=&#32;0U,&#32;pll2mull&#32;=&#32;0U;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00231"/>00231 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;STM32F105xC&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00232"/>00232 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00233"/>00233 <emphasis role="preprocessor">#if&#32;defined(STM32F100xB)&#32;||&#32;defined(STM32F100xE)</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00234"/>00234 &#32;&#32;uint32_t&#32;prediv1factor&#32;=&#32;0U;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00235"/>00235 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;STM32F100xB&#32;or&#32;STM32F100xE&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00236"/>00236 &#32;&#32;&#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00237"/>00237 &#32;&#32;<emphasis role="comment">/*&#32;Get&#32;SYSCLK&#32;source&#32;-------------------------------------------------------*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00238"/>00238 &#32;&#32;tmp&#32;=&#32;RCC-&gt;CFGR&#32;&amp;&#32;RCC_CFGR_SWS;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00239"/>00239 &#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00240"/>00240 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>&#32;(tmp)
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00241"/>00241 &#32;&#32;{
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00242"/>00242 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;0x00U:&#32;&#32;<emphasis role="comment">/*&#32;HSI&#32;used&#32;as&#32;system&#32;clock&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00243"/>00243 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___s_t_m32_f1xx___system___private___variables_1gaa3cd3e43291e81e795d642b79b6088e6">SystemCoreClock</link>&#32;=&#32;<link linkend="_group___s_t_m32_f1xx___system___private___defines_1gaaa8c76e274d0f6dd2cefb5d0b17fbc37">HSI_VALUE</link>;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00244"/>00244 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00245"/>00245 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;0x04U:&#32;&#32;<emphasis role="comment">/*&#32;HSE&#32;used&#32;as&#32;system&#32;clock&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00246"/>00246 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___s_t_m32_f1xx___system___private___variables_1gaa3cd3e43291e81e795d642b79b6088e6">SystemCoreClock</link>&#32;=&#32;<link linkend="_group___s_t_m32_f1xx___system___private___defines_1gaeafcff4f57440c60e64812dddd13e7cb">HSE_VALUE</link>;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00247"/>00247 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00248"/>00248 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;0x08U:&#32;&#32;<emphasis role="comment">/*&#32;PLL&#32;used&#32;as&#32;system&#32;clock&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00249"/>00249 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00250"/>00250 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Get&#32;PLL&#32;clock&#32;source&#32;and&#32;multiplication&#32;factor&#32;----------------------*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00251"/>00251 &#32;&#32;&#32;&#32;&#32;&#32;pllmull&#32;=&#32;RCC-&gt;CFGR&#32;&amp;&#32;RCC_CFGR_PLLMULL;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00252"/>00252 &#32;&#32;&#32;&#32;&#32;&#32;pllsource&#32;=&#32;RCC-&gt;CFGR&#32;&amp;&#32;RCC_CFGR_PLLSRC;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00253"/>00253 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00254"/>00254 <emphasis role="preprocessor">#if&#32;!defined(STM32F105xC)&#32;&amp;&amp;&#32;!defined(STM32F107xC)&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00255"/>00255 &#32;&#32;&#32;&#32;&#32;&#32;pllmull&#32;=&#32;(&#32;pllmull&#32;&gt;&gt;&#32;18U)&#32;+&#32;2U;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00256"/>00256 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00257"/>00257 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(pllsource&#32;==&#32;0x00U)
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00258"/>00258 &#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00259"/>00259 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;HSI&#32;oscillator&#32;clock&#32;divided&#32;by&#32;2&#32;selected&#32;as&#32;PLL&#32;clock&#32;entry&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00260"/>00260 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___s_t_m32_f1xx___system___private___variables_1gaa3cd3e43291e81e795d642b79b6088e6">SystemCoreClock</link>&#32;=&#32;(<link linkend="_group___s_t_m32_f1xx___system___private___defines_1gaaa8c76e274d0f6dd2cefb5d0b17fbc37">HSI_VALUE</link>&#32;&gt;&gt;&#32;1U)&#32;*&#32;pllmull;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00261"/>00261 &#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00262"/>00262 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00263"/>00263 &#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00264"/>00264 <emphasis role="preprocessor">&#32;#if&#32;defined(STM32F100xB)&#32;||&#32;defined(STM32F100xE)</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00265"/>00265 &#32;&#32;&#32;&#32;&#32;&#32;&#32;prediv1factor&#32;=&#32;(RCC-&gt;CFGR2&#32;&amp;&#32;RCC_CFGR2_PREDIV1)&#32;+&#32;1U;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00266"/>00266 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;HSE&#32;oscillator&#32;clock&#32;selected&#32;as&#32;PREDIV1&#32;clock&#32;entry&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00267"/>00267 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___s_t_m32_f1xx___system___private___variables_1gaa3cd3e43291e81e795d642b79b6088e6">SystemCoreClock</link>&#32;=&#32;(<link linkend="_group___s_t_m32_f1xx___system___private___defines_1gaeafcff4f57440c60e64812dddd13e7cb">HSE_VALUE</link>&#32;/&#32;prediv1factor)&#32;*&#32;pllmull;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00268"/>00268 <emphasis role="preprocessor">&#32;#else</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00269"/>00269 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;HSE&#32;selected&#32;as&#32;PLL&#32;clock&#32;entry&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00270"/>00270 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((RCC-&gt;CFGR&#32;&amp;&#32;RCC_CFGR_PLLXTPRE)&#32;!=&#32;(uint32_t)RESET)
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00271"/>00271 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{<emphasis role="comment">/*&#32;HSE&#32;oscillator&#32;clock&#32;divided&#32;by&#32;2&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00272"/>00272 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___s_t_m32_f1xx___system___private___variables_1gaa3cd3e43291e81e795d642b79b6088e6">SystemCoreClock</link>&#32;=&#32;(<link linkend="_group___s_t_m32_f1xx___system___private___defines_1gaeafcff4f57440c60e64812dddd13e7cb">HSE_VALUE</link>&#32;&gt;&gt;&#32;1U)&#32;*&#32;pllmull;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00273"/>00273 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00274"/>00274 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00275"/>00275 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00276"/>00276 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___s_t_m32_f1xx___system___private___variables_1gaa3cd3e43291e81e795d642b79b6088e6">SystemCoreClock</link>&#32;=&#32;<link linkend="_group___s_t_m32_f1xx___system___private___defines_1gaeafcff4f57440c60e64812dddd13e7cb">HSE_VALUE</link>&#32;*&#32;pllmull;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00277"/>00277 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00278"/>00278 <emphasis role="preprocessor">&#32;#endif</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00279"/>00279 &#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00280"/>00280 <emphasis role="preprocessor">#else</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00281"/>00281 &#32;&#32;&#32;&#32;&#32;&#32;pllmull&#32;=&#32;pllmull&#32;&gt;&gt;&#32;18U;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00282"/>00282 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00283"/>00283 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(pllmull&#32;!=&#32;0x0DU)
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00284"/>00284 &#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00285"/>00285 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pllmull&#32;+=&#32;2U;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00286"/>00286 &#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00287"/>00287 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00288"/>00288 &#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="comment">/*&#32;PLL&#32;multiplication&#32;factor&#32;=&#32;PLL&#32;input&#32;clock&#32;*&#32;6.5&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00289"/>00289 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pllmull&#32;=&#32;13U&#32;/&#32;2U;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00290"/>00290 &#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00291"/>00291 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00292"/>00292 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(pllsource&#32;==&#32;0x00U)
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00293"/>00293 &#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00294"/>00294 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;HSI&#32;oscillator&#32;clock&#32;divided&#32;by&#32;2&#32;selected&#32;as&#32;PLL&#32;clock&#32;entry&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00295"/>00295 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___s_t_m32_f1xx___system___private___variables_1gaa3cd3e43291e81e795d642b79b6088e6">SystemCoreClock</link>&#32;=&#32;(<link linkend="_group___s_t_m32_f1xx___system___private___defines_1gaaa8c76e274d0f6dd2cefb5d0b17fbc37">HSI_VALUE</link>&#32;&gt;&gt;&#32;1U)&#32;*&#32;pllmull;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00296"/>00296 &#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00297"/>00297 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00298"/>00298 &#32;&#32;&#32;&#32;&#32;&#32;{<emphasis role="comment">/*&#32;PREDIV1&#32;selected&#32;as&#32;PLL&#32;clock&#32;entry&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00299"/>00299 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00300"/>00300 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Get&#32;PREDIV1&#32;clock&#32;source&#32;and&#32;division&#32;factor&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00301"/>00301 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;prediv1source&#32;=&#32;RCC-&gt;CFGR2&#32;&amp;&#32;RCC_CFGR2_PREDIV1SRC;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00302"/>00302 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;prediv1factor&#32;=&#32;(RCC-&gt;CFGR2&#32;&amp;&#32;RCC_CFGR2_PREDIV1)&#32;+&#32;1U;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00303"/>00303 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00304"/>00304 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(prediv1source&#32;==&#32;0U)
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00305"/>00305 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00306"/>00306 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;HSE&#32;oscillator&#32;clock&#32;selected&#32;as&#32;PREDIV1&#32;clock&#32;entry&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00307"/>00307 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___s_t_m32_f1xx___system___private___variables_1gaa3cd3e43291e81e795d642b79b6088e6">SystemCoreClock</link>&#32;=&#32;(<link linkend="_group___s_t_m32_f1xx___system___private___defines_1gaeafcff4f57440c60e64812dddd13e7cb">HSE_VALUE</link>&#32;/&#32;prediv1factor)&#32;*&#32;pllmull;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00308"/>00308 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00309"/>00309 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00310"/>00310 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{<emphasis role="comment">/*&#32;PLL2&#32;clock&#32;selected&#32;as&#32;PREDIV1&#32;clock&#32;entry&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00311"/>00311 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00312"/>00312 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Get&#32;PREDIV2&#32;division&#32;factor&#32;and&#32;PLL2&#32;multiplication&#32;factor&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00313"/>00313 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;prediv2factor&#32;=&#32;((RCC-&gt;CFGR2&#32;&amp;&#32;RCC_CFGR2_PREDIV2)&#32;&gt;&gt;&#32;4U)&#32;+&#32;1U;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00314"/>00314 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pll2mull&#32;=&#32;((RCC-&gt;CFGR2&#32;&amp;&#32;RCC_CFGR2_PLL2MUL)&#32;&gt;&gt;&#32;8U)&#32;+&#32;2U;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00315"/>00315 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___s_t_m32_f1xx___system___private___variables_1gaa3cd3e43291e81e795d642b79b6088e6">SystemCoreClock</link>&#32;=&#32;(((<link linkend="_group___s_t_m32_f1xx___system___private___defines_1gaeafcff4f57440c60e64812dddd13e7cb">HSE_VALUE</link>&#32;/&#32;prediv2factor)&#32;*&#32;pll2mull)&#32;/&#32;prediv1factor)&#32;*&#32;pllmull;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00316"/>00316 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00317"/>00317 &#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00318"/>00318 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;STM32F105xC&#32;*/</emphasis><emphasis role="preprocessor">&#32;</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00319"/>00319 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00320"/>00320 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00321"/>00321 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">default</emphasis>:
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00322"/>00322 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___s_t_m32_f1xx___system___private___variables_1gaa3cd3e43291e81e795d642b79b6088e6">SystemCoreClock</link>&#32;=&#32;<link linkend="_group___s_t_m32_f1xx___system___private___defines_1gaaa8c76e274d0f6dd2cefb5d0b17fbc37">HSI_VALUE</link>;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00323"/>00323 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00324"/>00324 &#32;&#32;}
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00325"/>00325 &#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00326"/>00326 &#32;&#32;<emphasis role="comment">/*&#32;Compute&#32;HCLK&#32;clock&#32;frequency&#32;----------------*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00327"/>00327 &#32;&#32;<emphasis role="comment">/*&#32;Get&#32;HCLK&#32;prescaler&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00328"/>00328 &#32;&#32;tmp&#32;=&#32;<link linkend="_group___s_t_m32_f1xx___system___private___variables_1ga53cb26d01524d9560f98101a2c597c40">AHBPrescTable</link>[((RCC-&gt;CFGR&#32;&amp;&#32;RCC_CFGR_HPRE)&#32;&gt;&gt;&#32;4U)];
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00329"/>00329 &#32;&#32;<emphasis role="comment">/*&#32;HCLK&#32;clock&#32;frequency&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00330"/>00330 &#32;&#32;<link linkend="_group___s_t_m32_f1xx___system___private___variables_1gaa3cd3e43291e81e795d642b79b6088e6">SystemCoreClock</link>&#32;&gt;&gt;=&#32;tmp;&#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00331"/>00331 }
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00332"/>00332 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00333"/>00333 <emphasis role="preprocessor">#if&#32;defined(STM32F100xE)&#32;||&#32;defined(STM32F101xE)&#32;||&#32;defined(STM32F101xG)&#32;||&#32;defined(STM32F103xE)&#32;||&#32;defined(STM32F103xG)</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00340"/>00340 <emphasis role="preprocessor">#ifdef&#32;DATA_IN_ExtSRAM</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00350"/>00350 <emphasis role="keywordtype">void</emphasis>&#32;SystemInit_ExtMemCtl(<emphasis role="keywordtype">void</emphasis>)&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00351"/>00351 {
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00352"/>00352 &#32;&#32;__IO&#32;uint32_t&#32;tmpreg;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00356"/>00356 &#32;&#32;<emphasis role="comment">/*&#32;Enable&#32;FSMC&#32;clock&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00357"/>00357 &#32;&#32;RCC-&gt;AHBENR&#32;=&#32;0x00000114U;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00358"/>00358 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00359"/>00359 &#32;&#32;<emphasis role="comment">/*&#32;Delay&#32;after&#32;an&#32;RCC&#32;peripheral&#32;clock&#32;enabling&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00360"/>00360 &#32;&#32;tmpreg&#32;=&#32;READ_BIT(RCC-&gt;AHBENR,&#32;RCC_AHBENR_FSMCEN);
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00361"/>00361 &#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00362"/>00362 &#32;&#32;<emphasis role="comment">/*&#32;Enable&#32;GPIOD,&#32;GPIOE,&#32;GPIOF&#32;and&#32;GPIOG&#32;clocks&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00363"/>00363 &#32;&#32;RCC-&gt;APB2ENR&#32;=&#32;0x000001E0U;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00364"/>00364 &#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00365"/>00365 &#32;&#32;<emphasis role="comment">/*&#32;Delay&#32;after&#32;an&#32;RCC&#32;peripheral&#32;clock&#32;enabling&#32;*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00366"/>00366 &#32;&#32;tmpreg&#32;=&#32;READ_BIT(RCC-&gt;APB2ENR,&#32;RCC_APB2ENR_IOPDEN);
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00367"/>00367 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00368"/>00368 &#32;&#32;(void)(tmpreg);
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00369"/>00369 &#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00370"/>00370 <emphasis role="comment">/*&#32;---------------&#32;&#32;SRAM&#32;Data&#32;lines,&#32;NOE&#32;and&#32;NWE&#32;configuration&#32;---------------*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00371"/>00371 <emphasis role="comment">/*----------------&#32;&#32;SRAM&#32;Address&#32;lines&#32;configuration&#32;-------------------------*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00372"/>00372 <emphasis role="comment">/*----------------&#32;&#32;NOE&#32;and&#32;NWE&#32;configuration&#32;--------------------------------*/</emphasis>&#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00373"/>00373 <emphasis role="comment">/*----------------&#32;&#32;NE3&#32;configuration&#32;----------------------------------------*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00374"/>00374 <emphasis role="comment">/*----------------&#32;&#32;NBL0,&#32;NBL1&#32;configuration&#32;---------------------------------*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00375"/>00375 &#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00376"/>00376 &#32;&#32;GPIOD-&gt;CRL&#32;=&#32;0x44BB44BBU;&#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00377"/>00377 &#32;&#32;GPIOD-&gt;CRH&#32;=&#32;0xBBBBBBBBU;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00378"/>00378 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00379"/>00379 &#32;&#32;GPIOE-&gt;CRL&#32;=&#32;0xB44444BBU;&#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00380"/>00380 &#32;&#32;GPIOE-&gt;CRH&#32;=&#32;0xBBBBBBBBU;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00381"/>00381 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00382"/>00382 &#32;&#32;GPIOF-&gt;CRL&#32;=&#32;0x44BBBBBBU;&#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00383"/>00383 &#32;&#32;GPIOF-&gt;CRH&#32;=&#32;0xBBBB4444U;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00384"/>00384 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00385"/>00385 &#32;&#32;GPIOG-&gt;CRL&#32;=&#32;0x44BBBBBBU;&#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00386"/>00386 &#32;&#32;GPIOG-&gt;CRH&#32;=&#32;0x444B4B44U;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00387"/>00387 &#32;&#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00388"/>00388 <emphasis role="comment">/*----------------&#32;&#32;FSMC&#32;Configuration&#32;---------------------------------------*/</emphasis>&#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00389"/>00389 <emphasis role="comment">/*----------------&#32;&#32;Enable&#32;FSMC&#32;Bank1_SRAM&#32;Bank&#32;------------------------------*/</emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00390"/>00390 &#32;&#32;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00391"/>00391 &#32;&#32;FSMC_Bank1-&gt;BTCR[4U]&#32;=&#32;0x00001091U;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00392"/>00392 &#32;&#32;FSMC_Bank1-&gt;BTCR[5U]&#32;=&#32;0x00110212U;
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00393"/>00393 }
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00394"/>00394 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;DATA_IN_ExtSRAM&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00395"/>00395 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;STM32F100xE&#32;||&#32;STM32F101xE&#32;||&#32;STM32F101xG&#32;||&#32;STM32F103xE&#32;||&#32;STM32F103xG&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00396"/>00396 
+<anchor xml:id="_system__stm32f1xx_8c_source_1l00408"/>00408 <emphasis role="comment">/************************&#32;(C)&#32;COPYRIGHT&#32;STMicroelectronics&#32;*****END&#32;OF&#32;FILE****/</emphasis>
+</programlisting></section>

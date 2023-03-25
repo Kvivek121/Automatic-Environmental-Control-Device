@@ -1,0 +1,9 @@
+../Core/Src/BMP280.c:12:9:readRegister	24	static
+../Core/Src/BMP280.c:21:6:writeRegister	16	static
+../Core/Src/BMP280.c:29:6:readMBRegister	24	static
+../Core/Src/BMP280.c:40:9:spiReadWrite	32	static
+../Core/Src/BMP280.c:48:6:BMP280_get_calib_values	32	static
+../Core/Src/BMP280.c:68:6:BMP280_init	8	static
+../Core/Src/BMP280.c:76:16:BMP280_measure	56	static
+../Core/Src/BMP280.c:115:9:compensate_temperature	24	static
+../Core/Src/BMP280.c:124:10:compensate_pressure	376	static

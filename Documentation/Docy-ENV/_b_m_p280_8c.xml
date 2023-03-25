@@ -1,0 +1,282 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__b_m_p280_8c" xml:lang="en-US">
+<title>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Src/BMP280.c File Reference</title>
+<indexterm><primary>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Src/BMP280.c</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;BMP280.h&quot;<?linebreak?>#include &quot;liquidcrystal_i2c.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>uint8_t <link linkend="__b_m_p280_8c_1a7577a12a887998c60b62dcc8fdd9dbbf">readRegister</link> (uint8_t address)</para>
+</listitem>
+            <listitem><para>void <link linkend="__b_m_p280_8c_1a03d1b94ea3a07a44504a0385a1914e12">writeRegister</link> (uint8_t address, uint8_t value)</para>
+</listitem>
+            <listitem><para>void <link linkend="__b_m_p280_8c_1afda0d94a266ff3e0e81213e20b8b58a9">readMBRegister</link> (uint8_t address, uint8_t *values, uint8_t length)</para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="__b_m_p280_8c_1aef20ed38fe5d55700f0ccdbd5b77ba71">spiReadWrite</link> (uint8_t tx_message)</para>
+</listitem>
+            <listitem><para>void <link linkend="__b_m_p280_8c_1a8562fa0fe64fc13f61e08c29eba2e495">BMP280_get_calib_values</link> (void)</para>
+</listitem>
+            <listitem><para>void <link linkend="__b_m_p280_8c_1ae3168b9163675628a89fc1e422de4b5e">BMP280_init</link> ()</para>
+</listitem>
+            <listitem><para>struct <link linkend="_structreading">reading</link> <link linkend="__b_m_p280_8c_1a631a6834a2390b88c16a10f843c43d65">BMP280_measure</link> ()</para>
+</listitem>
+            <listitem><para>int32_t <link linkend="__b_m_p280_8c_1a551bba6dee710a9094921214413fce8d">compensate_temperature</link> (int32_t uncomp_temp)</para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="__b_m_p280_8c_1af6079c6b3e672b3589085c593c297240">compensate_pressure</link> (int32_t uncomp_pres)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>signed long <link linkend="__b_m_p280_8c_1a3d72ff2b32266596ae3baaf4fa6f2f50">temperature_raw</link></para>
+</listitem>
+            <listitem><para>signed long <link linkend="__b_m_p280_8c_1a2a9d5ec8e55acc2432d0878308de4bc7">pressure_raw</link></para>
+</listitem>
+            <listitem><para>unsigned short <link linkend="__b_m_p280_8c_1a9a07537928655a6f90cbb127e77aabc8">dig_T1</link></para>
+</listitem>
+            <listitem><para>unsigned short <link linkend="__b_m_p280_8c_1a5c6fd14e092d5b1b3db9133918d6c88c">dig_P1</link></para>
+</listitem>
+            <listitem><para>signed short <link linkend="__b_m_p280_8c_1af657fd5581a3713d4325c6cf6619798e">dig_T2</link></para>
+</listitem>
+            <listitem><para>signed short <link linkend="__b_m_p280_8c_1a5b4a37c3483f9b66e3c9320c76bd191d">dig_T3</link></para>
+</listitem>
+            <listitem><para>signed short <link linkend="__b_m_p280_8c_1a6d7667e0986d0409dfdaa31d5f4ab05e">dig_P2</link></para>
+</listitem>
+            <listitem><para>signed short <link linkend="__b_m_p280_8c_1a4778d0f9f9c5c231c472e6f9cc34bff7">dig_P3</link></para>
+</listitem>
+            <listitem><para>signed short <link linkend="__b_m_p280_8c_1a60ff58d4f1f442387729c7f9a1942d63">dig_P4</link></para>
+</listitem>
+            <listitem><para>signed short <link linkend="__b_m_p280_8c_1aab5995336960b6917304bca095d1f896">dig_P5</link></para>
+</listitem>
+            <listitem><para>signed short <link linkend="__b_m_p280_8c_1ab40e5774b084a648dae55c161de91f66">dig_P6</link></para>
+</listitem>
+            <listitem><para>signed short <link linkend="__b_m_p280_8c_1aeae4c61fa98974140b9694edd4799883">dig_P7</link></para>
+</listitem>
+            <listitem><para>signed short <link linkend="__b_m_p280_8c_1af39515ecaa77e6b01544388fc7d44cfe">dig_P8</link></para>
+</listitem>
+            <listitem><para>signed short <link linkend="__b_m_p280_8c_1ae808932e571d157081b847f311cec555">dig_P9</link></para>
+</listitem>
+            <listitem><para>float <link linkend="__b_m_p280_8c_1afc1d28cfbce795d6ea954ebe725241f5">temperature</link></para>
+</listitem>
+            <listitem><para>float <link linkend="__b_m_p280_8c_1ac870e1249bab4a2a68cc4126761d24ef">pressure</link></para>
+</listitem>
+            <listitem><para>float <link linkend="__b_m_p280_8c_1a0e13a4b4ae0cefdac2a413284239caa6">altitude</link></para>
+</listitem>
+            <listitem><para>float <link linkend="__b_m_p280_8c_1a98fc2874cec8addec2e0468bc677303c">init_height</link></para>
+</listitem>
+            <listitem><para>float <link linkend="__b_m_p280_8c_1a5189133f9791964cfb7f6cee8a9ce27b">p_reference</link> = 95500</para>
+</listitem>
+            <listitem><para>int32_t <link linkend="__b_m_p280_8c_1ac1f0d71206317758c70cd96314b6fc02">t_fine</link> = 0</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="__b_m_p280_8c_1a8562fa0fe64fc13f61e08c29eba2e495"/><section>
+    <title>BMP280_get_calib_values()</title>
+<indexterm><primary>BMP280_get_calib_values</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>BMP280_get_calib_values</secondary></indexterm>
+<para><computeroutput>void BMP280_get_calib_values (void )</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00048">48</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1ae3168b9163675628a89fc1e422de4b5e"/><section>
+    <title>BMP280_init()</title>
+<indexterm><primary>BMP280_init</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>BMP280_init</secondary></indexterm>
+<para><computeroutput>void BMP280_init ( )</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00068">68</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1a631a6834a2390b88c16a10f843c43d65"/><section>
+    <title>BMP280_measure()</title>
+<indexterm><primary>BMP280_measure</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>BMP280_measure</secondary></indexterm>
+<para><computeroutput>struct <link linkend="_structreading">reading</link> BMP280_measure ( )</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00076">76</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1af6079c6b3e672b3589085c593c297240"/><section>
+    <title>compensate_pressure()</title>
+<indexterm><primary>compensate_pressure</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>compensate_pressure</secondary></indexterm>
+<para><computeroutput>uint32_t compensate_pressure (int32_t uncomp_pres)</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00124">124</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1a551bba6dee710a9094921214413fce8d"/><section>
+    <title>compensate_temperature()</title>
+<indexterm><primary>compensate_temperature</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>compensate_temperature</secondary></indexterm>
+<para><computeroutput>int32_t compensate_temperature (int32_t uncomp_temp)</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00115">115</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1afda0d94a266ff3e0e81213e20b8b58a9"/><section>
+    <title>readMBRegister()</title>
+<indexterm><primary>readMBRegister</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>readMBRegister</secondary></indexterm>
+<para><computeroutput>void readMBRegister (uint8_t address, uint8_t * values, uint8_t length)</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00029">29</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1a7577a12a887998c60b62dcc8fdd9dbbf"/><section>
+    <title>readRegister()</title>
+<indexterm><primary>readRegister</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>readRegister</secondary></indexterm>
+<para><computeroutput>uint8_t readRegister (uint8_t address)</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00012">12</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1aef20ed38fe5d55700f0ccdbd5b77ba71"/><section>
+    <title>spiReadWrite()</title>
+<indexterm><primary>spiReadWrite</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>spiReadWrite</secondary></indexterm>
+<para><computeroutput>uint8_t spiReadWrite (uint8_t tx_message)</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00040">40</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1a03d1b94ea3a07a44504a0385a1914e12"/><section>
+    <title>writeRegister()</title>
+<indexterm><primary>writeRegister</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>writeRegister</secondary></indexterm>
+<para><computeroutput>void writeRegister (uint8_t address, uint8_t value)</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00021">21</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="__b_m_p280_8c_1a0e13a4b4ae0cefdac2a413284239caa6"/><section>
+    <title>altitude</title>
+<indexterm><primary>altitude</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>altitude</secondary></indexterm>
+<para><computeroutput>float altitude</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00007">7</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1a5c6fd14e092d5b1b3db9133918d6c88c"/><section>
+    <title>dig_P1</title>
+<indexterm><primary>dig_P1</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>dig_P1</secondary></indexterm>
+<para><computeroutput>unsigned short dig_P1</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00005">5</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1a6d7667e0986d0409dfdaa31d5f4ab05e"/><section>
+    <title>dig_P2</title>
+<indexterm><primary>dig_P2</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>dig_P2</secondary></indexterm>
+<para><computeroutput>signed short dig_P2</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00006">6</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1a4778d0f9f9c5c231c472e6f9cc34bff7"/><section>
+    <title>dig_P3</title>
+<indexterm><primary>dig_P3</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>dig_P3</secondary></indexterm>
+<para><computeroutput>signed short dig_P3</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00006">6</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1a60ff58d4f1f442387729c7f9a1942d63"/><section>
+    <title>dig_P4</title>
+<indexterm><primary>dig_P4</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>dig_P4</secondary></indexterm>
+<para><computeroutput>signed short dig_P4</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00006">6</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1aab5995336960b6917304bca095d1f896"/><section>
+    <title>dig_P5</title>
+<indexterm><primary>dig_P5</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>dig_P5</secondary></indexterm>
+<para><computeroutput>signed short dig_P5</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00006">6</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1ab40e5774b084a648dae55c161de91f66"/><section>
+    <title>dig_P6</title>
+<indexterm><primary>dig_P6</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>dig_P6</secondary></indexterm>
+<para><computeroutput>signed short dig_P6</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00006">6</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1aeae4c61fa98974140b9694edd4799883"/><section>
+    <title>dig_P7</title>
+<indexterm><primary>dig_P7</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>dig_P7</secondary></indexterm>
+<para><computeroutput>signed short dig_P7</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00006">6</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1af39515ecaa77e6b01544388fc7d44cfe"/><section>
+    <title>dig_P8</title>
+<indexterm><primary>dig_P8</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>dig_P8</secondary></indexterm>
+<para><computeroutput>signed short dig_P8</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00006">6</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1ae808932e571d157081b847f311cec555"/><section>
+    <title>dig_P9</title>
+<indexterm><primary>dig_P9</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>dig_P9</secondary></indexterm>
+<para><computeroutput>signed short dig_P9</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00006">6</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1a9a07537928655a6f90cbb127e77aabc8"/><section>
+    <title>dig_T1</title>
+<indexterm><primary>dig_T1</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>dig_T1</secondary></indexterm>
+<para><computeroutput>unsigned short dig_T1</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00005">5</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1af657fd5581a3713d4325c6cf6619798e"/><section>
+    <title>dig_T2</title>
+<indexterm><primary>dig_T2</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>dig_T2</secondary></indexterm>
+<para><computeroutput>signed short dig_T2</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00006">6</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1a5b4a37c3483f9b66e3c9320c76bd191d"/><section>
+    <title>dig_T3</title>
+<indexterm><primary>dig_T3</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>dig_T3</secondary></indexterm>
+<para><computeroutput>signed short dig_T3</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00006">6</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1a98fc2874cec8addec2e0468bc677303c"/><section>
+    <title>init_height</title>
+<indexterm><primary>init_height</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>init_height</secondary></indexterm>
+<para><computeroutput>float init_height</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00007">7</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1a5189133f9791964cfb7f6cee8a9ce27b"/><section>
+    <title>p_reference</title>
+<indexterm><primary>p_reference</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>p_reference</secondary></indexterm>
+<para><computeroutput>float p_reference = 95500</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00009">9</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1ac870e1249bab4a2a68cc4126761d24ef"/><section>
+    <title>pressure</title>
+<indexterm><primary>pressure</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>pressure</secondary></indexterm>
+<para><computeroutput>float pressure</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00007">7</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1a2a9d5ec8e55acc2432d0878308de4bc7"/><section>
+    <title>pressure_raw</title>
+<indexterm><primary>pressure_raw</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>pressure_raw</secondary></indexterm>
+<para><computeroutput>signed long pressure_raw</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00004">4</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1ac1f0d71206317758c70cd96314b6fc02"/><section>
+    <title>t_fine</title>
+<indexterm><primary>t_fine</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>t_fine</secondary></indexterm>
+<para><computeroutput>int32_t t_fine = 0</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00010">10</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1afc1d28cfbce795d6ea954ebe725241f5"/><section>
+    <title>temperature</title>
+<indexterm><primary>temperature</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>temperature</secondary></indexterm>
+<para><computeroutput>float temperature</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00007">7</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8c_1a3d72ff2b32266596ae3baaf4fa6f2f50"/><section>
+    <title>temperature_raw</title>
+<indexterm><primary>temperature_raw</primary><secondary>BMP280.c</secondary></indexterm>
+<indexterm><primary>BMP280.c</primary><secondary>temperature_raw</secondary></indexterm>
+<para><computeroutput>signed long temperature_raw</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00004">4</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+</section>
+</section>

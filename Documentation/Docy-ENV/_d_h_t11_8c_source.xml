@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_h_t11_8c_source" xml:lang="en-US">
+<title>DHT11.c</title>
+<indexterm><primary>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Src/DHT11.c</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_h_t11_8c_source_1l00001"/>00001 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00002"/>00002 <emphasis role="comment">&#32;*&#32;DHT11.c</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00003"/>00003 <emphasis role="comment">&#32;*</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00004"/>00004 <emphasis role="comment">&#32;*&#32;&#32;Created&#32;on:&#32;Feb&#32;15,&#32;2023</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00005"/>00005 <emphasis role="comment">&#32;*&#32;&#32;&#32;&#32;&#32;&#32;Author:&#32;acer</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00006"/>00006 <emphasis role="comment">&#32;*/</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00007"/>00007 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_main_8h">main.h</link>&quot;</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00008"/>00008 <emphasis role="preprocessor">#include&#32;&quot;stdio.h&quot;</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00009"/>00009 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_h_t11_8h">DHT11.h</link>&quot;</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00010"/>00010 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_liquidcrystal__i2c_8h">liquidcrystal_i2c.h</link>&quot;</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00011"/>00011 
+<anchor xml:id="__d_h_t11_8c_source_1l00012"/>00012 <emphasis role="keyword">extern</emphasis>&#32;TIM_HandleTypeDef&#32;<link linkend="__d_h_t11_8c_1a25fc663547539bc49fecc0011bd76ab5">htim1</link>;
+<anchor xml:id="__d_h_t11_8c_source_1l00013"/>00013 
+<anchor xml:id="__d_h_t11_8c_source_1l00014"/><link linkend="__d_h_t11_8h_1ad9a2a1c5f490104dc717f5a48b3b8a27">00014</link> uint8_t&#32;<link linkend="__d_h_t11_8c_1ad9a2a1c5f490104dc717f5a48b3b8a27">Rh_byte1</link>,&#32;<link linkend="__d_h_t11_8c_1a2dbbbd8e0fc90796f6389fc31ef811ad">Rh_byte2</link>,&#32;<link linkend="__d_h_t11_8c_1a8b0074c25d30592e460b56b9f87d1ba9">Temp_byte1</link>,&#32;<link linkend="__d_h_t11_8c_1a5544d12933412c17ee41513fa46cac02">Temp_byte2</link>;
+<anchor xml:id="__d_h_t11_8c_source_1l00015"/><link linkend="__d_h_t11_8c_1aa3731a0173b9bbde97d8a3cba6d13531">00015</link> uint16_t&#32;<link linkend="__d_h_t11_8c_1a4622f107cd73d99fbf4ca91205f3acca">SUM</link>,&#32;<link linkend="__d_h_t11_8c_1aa3731a0173b9bbde97d8a3cba6d13531">RH</link>,&#32;<link linkend="__d_h_t11_8c_1aab2ce7d9ba3bab5ef3b090c61e1eca6b">TEMP</link>;
+<anchor xml:id="__d_h_t11_8c_source_1l00016"/>00016 
+<anchor xml:id="__d_h_t11_8c_source_1l00017"/><link linkend="__d_h_t11_8c_1afa66fac91ab948980be979b768e67c5a">00017</link> <emphasis role="keywordtype">float</emphasis>&#32;<link linkend="__d_h_t11_8c_1afa66fac91ab948980be979b768e67c5a">Temperature</link>&#32;=&#32;0;
+<anchor xml:id="__d_h_t11_8c_source_1l00018"/><link linkend="__d_h_t11_8c_1afe6173f00c89e1ccfe06abd8502ff19f">00018</link> <emphasis role="keywordtype">float</emphasis>&#32;<link linkend="__d_h_t11_8c_1afe6173f00c89e1ccfe06abd8502ff19f">Humidity</link>&#32;=&#32;0;
+<anchor xml:id="__d_h_t11_8c_source_1l00019"/><link linkend="__d_h_t11_8c_1a653c5750f288e99e638bbd607fb885dc">00019</link> uint8_t&#32;<link linkend="__d_h_t11_8c_1a653c5750f288e99e638bbd607fb885dc">Presence</link>&#32;=&#32;0;
+<anchor xml:id="__d_h_t11_8c_source_1l00020"/><link linkend="__d_h_t11_8c_1a9673b9ee577f4ba82aea307a23e7c6f1">00020</link> <link linkend="_struct_d_h_t11__value">DHT11_read_value</link>&#32;<link linkend="__d_h_t11_8c_1a9673b9ee577f4ba82aea307a23e7c6f1">DHT11_read_value1</link>;
+<anchor xml:id="__d_h_t11_8c_source_1l00021"/>00021 
+<anchor xml:id="__d_h_t11_8c_source_1l00022"/><link linkend="__d_h_t11_8h_1acc64d813f9394380d679d8088391e83b">00022</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__d_h_t11_8c_1a42071dc0f568b5e965502014a4d215c3">delay</link>&#32;(uint16_t&#32;<link linkend="__d_h_t11_8c_1a42071dc0f568b5e965502014a4d215c3">delay</link>)
+<anchor xml:id="__d_h_t11_8c_source_1l00023"/>00023 {
+<anchor xml:id="__d_h_t11_8c_source_1l00024"/>00024 &#32;&#32;__HAL_TIM_SET_COUNTER(&amp;<link linkend="__d_h_t11_8c_1a25fc663547539bc49fecc0011bd76ab5">htim1</link>,&#32;0);
+<anchor xml:id="__d_h_t11_8c_source_1l00025"/>00025 &#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(__HAL_TIM_GET_COUNTER(&amp;<link linkend="__d_h_t11_8c_1a25fc663547539bc49fecc0011bd76ab5">htim1</link>)&#32;&lt;&#32;<link linkend="__d_h_t11_8c_1a42071dc0f568b5e965502014a4d215c3">delay</link>);
+<anchor xml:id="__d_h_t11_8c_source_1l00026"/>00026 }
+<anchor xml:id="__d_h_t11_8c_source_1l00027"/>00027 
+<anchor xml:id="__d_h_t11_8c_source_1l00028"/>00028 <emphasis role="comment">/***********************************GPIO&#32;configuration&#32;function*********************************/</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00029"/><link linkend="__d_h_t11_8h_1aef1aec2157382676edb25c22e4b7ecef">00029</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__d_h_t11_8c_1aef1aec2157382676edb25c22e4b7ecef">Set_Pin_Output</link>&#32;(GPIO_TypeDef&#32;*GPIOx,&#32;uint16_t&#32;GPIO_Pin)
+<anchor xml:id="__d_h_t11_8c_source_1l00030"/>00030 {
+<anchor xml:id="__d_h_t11_8c_source_1l00031"/>00031 &#32;&#32;&#32;&#32;GPIO_InitTypeDef&#32;GPIO_InitStruct&#32;=&#32;{0};
+<anchor xml:id="__d_h_t11_8c_source_1l00032"/>00032 &#32;&#32;&#32;&#32;GPIO_InitStruct.Pin&#32;=&#32;GPIO_Pin;
+<anchor xml:id="__d_h_t11_8c_source_1l00033"/>00033 &#32;&#32;&#32;&#32;GPIO_InitStruct.Mode&#32;=&#32;GPIO_MODE_OUTPUT_PP;
+<anchor xml:id="__d_h_t11_8c_source_1l00034"/>00034 &#32;&#32;&#32;&#32;GPIO_InitStruct.Speed&#32;=&#32;GPIO_SPEED_FREQ_LOW;
+<anchor xml:id="__d_h_t11_8c_source_1l00035"/>00035 &#32;&#32;&#32;&#32;HAL_GPIO_Init(GPIOx,&#32;&amp;GPIO_InitStruct);
+<anchor xml:id="__d_h_t11_8c_source_1l00036"/>00036 }
+<anchor xml:id="__d_h_t11_8c_source_1l00037"/>00037 
+<anchor xml:id="__d_h_t11_8c_source_1l00038"/><link linkend="__d_h_t11_8h_1a3b8cee858a35581caf1bcb14ce5cb367">00038</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__d_h_t11_8c_1a3b8cee858a35581caf1bcb14ce5cb367">Set_Pin_Input</link>&#32;(GPIO_TypeDef&#32;*GPIOx,&#32;uint16_t&#32;GPIO_Pin)
+<anchor xml:id="__d_h_t11_8c_source_1l00039"/>00039 {
+<anchor xml:id="__d_h_t11_8c_source_1l00040"/>00040 &#32;&#32;&#32;&#32;GPIO_InitTypeDef&#32;GPIO_InitStruct&#32;=&#32;{0};
+<anchor xml:id="__d_h_t11_8c_source_1l00041"/>00041 &#32;&#32;&#32;&#32;GPIO_InitStruct.Pin&#32;=&#32;GPIO_Pin;
+<anchor xml:id="__d_h_t11_8c_source_1l00042"/>00042 &#32;&#32;&#32;&#32;GPIO_InitStruct.Mode&#32;=&#32;GPIO_MODE_INPUT;
+<anchor xml:id="__d_h_t11_8c_source_1l00043"/>00043 &#32;&#32;&#32;&#32;GPIO_InitStruct.Pull&#32;=&#32;GPIO_PULLUP;
+<anchor xml:id="__d_h_t11_8c_source_1l00044"/>00044 &#32;&#32;&#32;&#32;HAL_GPIO_Init(GPIOx,&#32;&amp;GPIO_InitStruct);
+<anchor xml:id="__d_h_t11_8c_source_1l00045"/>00045 }
+<anchor xml:id="__d_h_t11_8c_source_1l00046"/>00046 
+<anchor xml:id="__d_h_t11_8c_source_1l00047"/>00047 <emphasis role="comment">/***********************************DHT11&#32;function*********************************/</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00048"/><link linkend="__d_h_t11_8h_1ad22d2fc6f1c044bfca99e8f38c419d78">00048</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__d_h_t11_8c_1ad22d2fc6f1c044bfca99e8f38c419d78">DHT11_Start</link>&#32;(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="__d_h_t11_8c_source_1l00049"/>00049 {
+<anchor xml:id="__d_h_t11_8c_source_1l00050"/>00050 &#32;&#32;&#32;&#32;<link linkend="__d_h_t11_8c_1aef1aec2157382676edb25c22e4b7ecef">Set_Pin_Output</link>&#32;(<link linkend="__d_h_t11_8h_1aebeb55e992ef02dd2d39a225e276585e">DHT11_PORT</link>,&#32;<link linkend="__d_h_t11_8h_1a79111e78831efb8ac76fa8123357475e">DHT11_PIN</link>);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set&#32;the&#32;pin&#32;as&#32;output</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00051"/>00051 &#32;&#32;&#32;&#32;HAL_GPIO_WritePin&#32;(<link linkend="__d_h_t11_8h_1aebeb55e992ef02dd2d39a225e276585e">DHT11_PORT</link>,&#32;<link linkend="__d_h_t11_8h_1a79111e78831efb8ac76fa8123357475e">DHT11_PIN</link>,&#32;0);&#32;&#32;&#32;<emphasis role="comment">//&#32;pull&#32;the&#32;pin&#32;low</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00052"/>00052 &#32;&#32;&#32;&#32;<link linkend="__d_h_t11_8c_1a42071dc0f568b5e965502014a4d215c3">delay</link>&#32;(18000);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;wait&#32;for&#32;18ms</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00053"/>00053 &#32;&#32;&#32;&#32;HAL_GPIO_WritePin&#32;(<link linkend="__d_h_t11_8h_1aebeb55e992ef02dd2d39a225e276585e">DHT11_PORT</link>,&#32;<link linkend="__d_h_t11_8h_1a79111e78831efb8ac76fa8123357475e">DHT11_PIN</link>,&#32;1);&#32;&#32;&#32;<emphasis role="comment">//&#32;pull&#32;the&#32;pin&#32;high</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00054"/>00054 &#32;&#32;&#32;&#32;<link linkend="__d_h_t11_8c_1a42071dc0f568b5e965502014a4d215c3">delay</link>&#32;(20);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;wait&#32;for&#32;20us</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00055"/>00055 &#32;&#32;&#32;&#32;<link linkend="__d_h_t11_8c_1a3b8cee858a35581caf1bcb14ce5cb367">Set_Pin_Input</link>(<link linkend="__d_h_t11_8h_1aebeb55e992ef02dd2d39a225e276585e">DHT11_PORT</link>,&#32;<link linkend="__d_h_t11_8h_1a79111e78831efb8ac76fa8123357475e">DHT11_PIN</link>);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set&#32;as&#32;input</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00056"/>00056 }
+<anchor xml:id="__d_h_t11_8c_source_1l00057"/>00057 
+<anchor xml:id="__d_h_t11_8c_source_1l00058"/><link linkend="__d_h_t11_8h_1a4abe1bb0e528279d5b260a9d44bc7ffb">00058</link> uint8_t&#32;<link linkend="__d_h_t11_8c_1a4abe1bb0e528279d5b260a9d44bc7ffb">DHT11_Check_Response</link>&#32;(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="__d_h_t11_8c_source_1l00059"/>00059 {
+<anchor xml:id="__d_h_t11_8c_source_1l00060"/>00060 &#32;&#32;&#32;&#32;uint8_t&#32;Response&#32;=&#32;0;
+<anchor xml:id="__d_h_t11_8c_source_1l00061"/>00061 &#32;&#32;&#32;&#32;<link linkend="__d_h_t11_8c_1a42071dc0f568b5e965502014a4d215c3">delay</link>&#32;(40);
+<anchor xml:id="__d_h_t11_8c_source_1l00062"/>00062 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!(HAL_GPIO_ReadPin&#32;(<link linkend="__d_h_t11_8h_1aebeb55e992ef02dd2d39a225e276585e">DHT11_PORT</link>,&#32;<link linkend="__d_h_t11_8h_1a79111e78831efb8ac76fa8123357475e">DHT11_PIN</link>)))
+<anchor xml:id="__d_h_t11_8c_source_1l00063"/>00063 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_h_t11_8c_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__d_h_t11_8c_1a42071dc0f568b5e965502014a4d215c3">delay</link>&#32;(80);
+<anchor xml:id="__d_h_t11_8c_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((HAL_GPIO_ReadPin(<link linkend="__d_h_t11_8h_1aebeb55e992ef02dd2d39a225e276585e">DHT11_PORT</link>,&#32;<link linkend="__d_h_t11_8h_1a79111e78831efb8ac76fa8123357475e">DHT11_PIN</link>)))&#32;Response&#32;=&#32;1;
+<anchor xml:id="__d_h_t11_8c_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;Response&#32;=&#32;-1;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;255</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00067"/>00067 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_h_t11_8c_source_1l00068"/>00068 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;((HAL_GPIO_ReadPin&#32;(<link linkend="__d_h_t11_8h_1aebeb55e992ef02dd2d39a225e276585e">DHT11_PORT</link>,&#32;<link linkend="__d_h_t11_8h_1a79111e78831efb8ac76fa8123357475e">DHT11_PIN</link>)));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;wait&#32;for&#32;the&#32;pin&#32;to&#32;go&#32;low</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00069"/>00069 
+<anchor xml:id="__d_h_t11_8c_source_1l00070"/>00070 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;Response;
+<anchor xml:id="__d_h_t11_8c_source_1l00071"/>00071 }
+<anchor xml:id="__d_h_t11_8c_source_1l00072"/>00072 
+<anchor xml:id="__d_h_t11_8c_source_1l00073"/><link linkend="__d_h_t11_8h_1aaf1ec7026bcc0784c685b79753955ff4">00073</link> uint8_t&#32;<link linkend="__d_h_t11_8c_1aaf1ec7026bcc0784c685b79753955ff4">DHT11_Read</link>&#32;(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="__d_h_t11_8c_source_1l00074"/>00074 {
+<anchor xml:id="__d_h_t11_8c_source_1l00075"/>00075 &#32;&#32;&#32;&#32;uint8_t&#32;i,j;
+<anchor xml:id="__d_h_t11_8c_source_1l00076"/>00076 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(j=0;j&lt;8;j++)
+<anchor xml:id="__d_h_t11_8c_source_1l00077"/>00077 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_h_t11_8c_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(!(HAL_GPIO_ReadPin&#32;(<link linkend="__d_h_t11_8h_1aebeb55e992ef02dd2d39a225e276585e">DHT11_PORT</link>,&#32;<link linkend="__d_h_t11_8h_1a79111e78831efb8ac76fa8123357475e">DHT11_PIN</link>)));&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;wait&#32;for&#32;the&#32;pin&#32;to&#32;go&#32;high</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__d_h_t11_8c_1a42071dc0f568b5e965502014a4d215c3">delay</link>&#32;(40);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;wait&#32;for&#32;40&#32;us</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!(HAL_GPIO_ReadPin&#32;(<link linkend="__d_h_t11_8h_1aebeb55e992ef02dd2d39a225e276585e">DHT11_PORT</link>,&#32;<link linkend="__d_h_t11_8h_1a79111e78831efb8ac76fa8123357475e">DHT11_PIN</link>)))&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;if&#32;the&#32;pin&#32;is&#32;low</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_h_t11_8c_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;i&amp;=&#32;~(1&lt;&lt;(7-j));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;write&#32;0</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_h_t11_8c_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;i|=&#32;(1&lt;&lt;(7-j));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;if&#32;the&#32;pin&#32;is&#32;high,&#32;write&#32;1</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;((HAL_GPIO_ReadPin&#32;(<link linkend="__d_h_t11_8h_1aebeb55e992ef02dd2d39a225e276585e">DHT11_PORT</link>,&#32;<link linkend="__d_h_t11_8h_1a79111e78831efb8ac76fa8123357475e">DHT11_PIN</link>)));&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;wait&#32;for&#32;the&#32;pin&#32;to&#32;go&#32;low</emphasis>
+<anchor xml:id="__d_h_t11_8c_source_1l00086"/>00086 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_h_t11_8c_source_1l00087"/>00087 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;i;
+<anchor xml:id="__d_h_t11_8c_source_1l00088"/>00088 }
+<anchor xml:id="__d_h_t11_8c_source_1l00089"/>00089 
+<anchor xml:id="__d_h_t11_8c_source_1l00090"/><link linkend="__d_h_t11_8h_1a90da1df4ae78a755072b7c76cf4dabfd">00090</link> <link linkend="_struct_d_h_t11__value">DHT11_read_value</link>&#32;<link linkend="__d_h_t11_8c_1a90da1df4ae78a755072b7c76cf4dabfd">DHT11_Print_Value</link>(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="__d_h_t11_8c_source_1l00091"/>00091 {
+<anchor xml:id="__d_h_t11_8c_source_1l00092"/>00092 &#32;&#32;&#32;&#32;<link linkend="__d_h_t11_8c_1ad22d2fc6f1c044bfca99e8f38c419d78">DHT11_Start</link>();
+<anchor xml:id="__d_h_t11_8c_source_1l00093"/>00093 &#32;&#32;&#32;&#32;<link linkend="__d_h_t11_8c_1a653c5750f288e99e638bbd607fb885dc">Presence</link>&#32;=&#32;<link linkend="__d_h_t11_8c_1a4abe1bb0e528279d5b260a9d44bc7ffb">DHT11_Check_Response</link>();
+<anchor xml:id="__d_h_t11_8c_source_1l00094"/>00094 &#32;&#32;&#32;&#32;<link linkend="__d_h_t11_8c_1ad9a2a1c5f490104dc717f5a48b3b8a27">Rh_byte1</link>&#32;=&#32;<link linkend="__d_h_t11_8c_1aaf1ec7026bcc0784c685b79753955ff4">DHT11_Read</link>&#32;();
+<anchor xml:id="__d_h_t11_8c_source_1l00095"/>00095 &#32;&#32;&#32;&#32;<link linkend="__d_h_t11_8c_1a2dbbbd8e0fc90796f6389fc31ef811ad">Rh_byte2</link>&#32;=&#32;<link linkend="__d_h_t11_8c_1aaf1ec7026bcc0784c685b79753955ff4">DHT11_Read</link>&#32;();
+<anchor xml:id="__d_h_t11_8c_source_1l00096"/>00096 &#32;&#32;&#32;&#32;<link linkend="__d_h_t11_8c_1a8b0074c25d30592e460b56b9f87d1ba9">Temp_byte1</link>&#32;=&#32;<link linkend="__d_h_t11_8c_1aaf1ec7026bcc0784c685b79753955ff4">DHT11_Read</link>&#32;();
+<anchor xml:id="__d_h_t11_8c_source_1l00097"/>00097 &#32;&#32;&#32;&#32;<link linkend="__d_h_t11_8c_1a5544d12933412c17ee41513fa46cac02">Temp_byte2</link>&#32;=&#32;<link linkend="__d_h_t11_8c_1aaf1ec7026bcc0784c685b79753955ff4">DHT11_Read</link>&#32;();
+<anchor xml:id="__d_h_t11_8c_source_1l00098"/>00098 &#32;&#32;&#32;&#32;<link linkend="__d_h_t11_8c_1a4622f107cd73d99fbf4ca91205f3acca">SUM</link>&#32;=&#32;<link linkend="__d_h_t11_8c_1aaf1ec7026bcc0784c685b79753955ff4">DHT11_Read</link>();
+<anchor xml:id="__d_h_t11_8c_source_1l00099"/>00099 &#32;&#32;&#32;&#32;<link linkend="__d_h_t11_8c_1aab2ce7d9ba3bab5ef3b090c61e1eca6b">TEMP</link>&#32;=&#32;<link linkend="__d_h_t11_8c_1a8b0074c25d30592e460b56b9f87d1ba9">Temp_byte1</link>;
+<anchor xml:id="__d_h_t11_8c_source_1l00100"/>00100 &#32;&#32;&#32;&#32;<link linkend="__d_h_t11_8c_1aa3731a0173b9bbde97d8a3cba6d13531">RH</link>&#32;=&#32;<link linkend="__d_h_t11_8c_1ad9a2a1c5f490104dc717f5a48b3b8a27">Rh_byte1</link>;
+<anchor xml:id="__d_h_t11_8c_source_1l00101"/>00101 
+<anchor xml:id="__d_h_t11_8c_source_1l00102"/>00102 &#32;&#32;&#32;&#32;<link linkend="__d_h_t11_8c_1afa66fac91ab948980be979b768e67c5a">Temperature</link>&#32;=&#32;(float)&#32;<link linkend="__d_h_t11_8c_1aab2ce7d9ba3bab5ef3b090c61e1eca6b">TEMP</link>;
+<anchor xml:id="__d_h_t11_8c_source_1l00103"/>00103 &#32;&#32;&#32;&#32;<link linkend="__d_h_t11_8c_1afe6173f00c89e1ccfe06abd8502ff19f">Humidity</link>&#32;=&#32;(float)&#32;<link linkend="__d_h_t11_8c_1aa3731a0173b9bbde97d8a3cba6d13531">RH</link>;
+<anchor xml:id="__d_h_t11_8c_source_1l00104"/>00104 
+<anchor xml:id="__d_h_t11_8c_source_1l00105"/>00105 &#32;&#32;&#32;&#32;<link linkend="__d_h_t11_8c_1a9673b9ee577f4ba82aea307a23e7c6f1">DHT11_read_value1</link>.<link linkend="_struct_d_h_t11__value_1ad2449d51a59211ef30d054412b336493">DHT11_temp</link>=<link linkend="__d_h_t11_8c_1afa66fac91ab948980be979b768e67c5a">Temperature</link>;
+<anchor xml:id="__d_h_t11_8c_source_1l00106"/>00106 &#32;&#32;&#32;&#32;<link linkend="__d_h_t11_8c_1a9673b9ee577f4ba82aea307a23e7c6f1">DHT11_read_value1</link>.<link linkend="_struct_d_h_t11__value_1a0486eb63d63d9b22a636b5acf3a4b289">DHT11_humi</link>=<link linkend="__d_h_t11_8c_1afe6173f00c89e1ccfe06abd8502ff19f">Humidity</link>;
+<anchor xml:id="__d_h_t11_8c_source_1l00107"/>00107 
+<anchor xml:id="__d_h_t11_8c_source_1l00108"/>00108 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__d_h_t11_8c_1a9673b9ee577f4ba82aea307a23e7c6f1">DHT11_read_value1</link>;
+<anchor xml:id="__d_h_t11_8c_source_1l00109"/>00109 }
+</programlisting></section>

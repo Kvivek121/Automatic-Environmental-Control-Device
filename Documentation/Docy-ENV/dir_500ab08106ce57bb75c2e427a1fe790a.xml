@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_500ab08106ce57bb75c2e427a1fe790a" xml:lang="en-US">
+<title>C:/Users/acer Directory Reference</title>
+<indexterm><primary>C:/Users/acer Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Directories    </title>
+        <itemizedlist>
+            <listitem><para>directory <link linkend="_dir_88ec88262a5f4d54d2a3c040e57cbc1f">STM32CubeIDE</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

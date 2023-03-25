@@ -1,0 +1,618 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__b_m_p280_8h" xml:lang="en-US">
+<title>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Inc/BMP280.h File Reference</title>
+<indexterm><primary>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Inc/BMP280.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;math.h&gt;<?linebreak?>#include &quot;stm32f1xx_hal.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Data Structures    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structreading">reading</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1abeda31bc76842cc25517406c5f8d6d97">BMP280_dev_address</link>&#160;&#160;&#160;0xEE</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1ad3f8d007f531e2b572aae8baaaa6d604">BMP280_SPI_MASK_WRITE</link>&#160;&#160;&#160;0b01111111</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1a68622050abfca784a2080b6edc8fc1e0">BMP280_REG_CALIB</link>&#160;&#160;&#160;0x88</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1a06f8ce3e8566066c7ee1eb0a1cf61f95">BMP280_REG_DATA</link>&#160;&#160;&#160;0xF7</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1a1c2fe9e77de887acb214a0ec998cf132">F4_osrs_t_skipped</link>&#160;&#160;&#160;0b00000000</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1aafd95acd0d839509554624b096d02cad">F4_osrs_t_oversampling1</link>&#160;&#160;&#160;0b00100000</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1a22f7af28c7033cb81adf6e74dca4384b">F4_osrs_t_oversampling2</link>&#160;&#160;&#160;0b01000000</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1aeef52101040bf5f815ba8e74f1b3ddef">F4_osrs_t_oversampling4</link>&#160;&#160;&#160;0b01100000</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1ad271cd95047b7316e6754c74a242aec9">F4_osrs_t_oversampling8</link>&#160;&#160;&#160;0b10000000</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1a6c568977369d86d82ec89a5b183d15f4">F4_osrs_t_oversampling16</link>&#160;&#160;&#160;0b10100000</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1af3d6d068374698d1ac0f46c6c1aafe1e">F4_osrs_p_skipped</link>&#160;&#160;&#160;0b00000000</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1a72c70691e524c73a22ec19693ce79e8b">F4_osrs_p_oversampling1</link>&#160;&#160;&#160;0b00000100</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1ac2e4afb9dce42e846ced63f5a83e6ca9">F4_osrs_p_oversampling2</link>&#160;&#160;&#160;0b00001000</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1ae8ce789cd99b1123a9d2ff70e0543f23">F4_osrs_p_oversampling4</link>&#160;&#160;&#160;0b00001100</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1a948cc0bc656acf4ac097ce398c9ff19f">F4_osrs_p_oversampling8</link>&#160;&#160;&#160;0b00010000</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1acf74e269fa9558d3c8df2c5160d76f9b">F4_osrs_p_oversampling16</link>&#160;&#160;&#160;0b00010100</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1a97ef5239d6403179325c4038b0329237">F4_mode_sleep</link>&#160;&#160;&#160;0b00000000</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1a25531106c8ed0ecc25c507482b851241">F4_mode_forced</link>&#160;&#160;&#160;0b00000001</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1ab765e6e54ff1a74da64517c5d0919816">F4_mode_normal</link>&#160;&#160;&#160;0b00000011</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1a23a062e43f35e294d8ee40c0f6654eed">F5_t_sb_500us</link>&#160;&#160;&#160;0b00000000</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1a9b8b7b5c9c824f448aa2ebac48f629ba">F5_t_sb_62500us</link>&#160;&#160;&#160;0b00100000</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1aa2a3e4ede1980d813a5f9c61271dfe27">F5_t_sb_125ms</link>&#160;&#160;&#160;0b01000000</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1a7982e0a3ee0d161c6d311f79689e27a5">F5_t_sb_250ms</link>&#160;&#160;&#160;0b01100000</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1a52e24bbdc967e70f18ab59d71ac47776">F5_t_sb_500ms</link>&#160;&#160;&#160;0b10000000</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1ac04a34fbec15330c27753e0c501f7f4b">F5_t_sb_1sec</link>&#160;&#160;&#160;0b10100000</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1a4fedad55f563989f3d0213591b50655c">F5_t_sb_2sec</link>&#160;&#160;&#160;0b11000000</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1a7f677e3ab7909c2a6f6edcf523bf3109">F5_t_sb_4sec</link>&#160;&#160;&#160;0b11100000</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1a6051141d336af6e2f2c16a11a12dae6d">F5_filter_1</link>&#160;&#160;&#160;0b00000000</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1a53a427482ce47b07e7f79bee45b6aba3">F5_filter_2</link>&#160;&#160;&#160;0b00000010</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1a7bb727709b04a72cc2516e1b08d3f3bb">F5_filter_5</link>&#160;&#160;&#160;0b00000100</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1aa5a9e8e5dd7caebccaf73d078a3a9bab">F5_filter_11</link>&#160;&#160;&#160;0b00000110</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1a60aade3034d51b2f3ede56653bdf5aaa">F5_filter_22</link>&#160;&#160;&#160;0b00001010</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1a28cf656bb6105b5bbe4e6b86c4685da4">F5_spi4w_en</link>&#160;&#160;&#160;0b00000000</para>
+</listitem>
+            <listitem><para>#define <link linkend="__b_m_p280_8h_1a17e8283cb51d7608ee6524cc30081a7b">F5_spi3w_en</link>&#160;&#160;&#160;0b00000001</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>typedef struct <link linkend="_structreading">reading</link> <link linkend="__b_m_p280_8h_1afeec80b9216e454120e4da1b094bad3d">read_value</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>uint8_t <link linkend="__b_m_p280_8h_1aef20ed38fe5d55700f0ccdbd5b77ba71">spiReadWrite</link> (uint8_t tx_message)</para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="__b_m_p280_8h_1a7577a12a887998c60b62dcc8fdd9dbbf">readRegister</link> (uint8_t address)</para>
+</listitem>
+            <listitem><para>void <link linkend="__b_m_p280_8h_1a03d1b94ea3a07a44504a0385a1914e12">writeRegister</link> (uint8_t address, uint8_t value)</para>
+</listitem>
+            <listitem><para>void <link linkend="__b_m_p280_8h_1afda0d94a266ff3e0e81213e20b8b58a9">readMBRegister</link> (uint8_t address, uint8_t *values, uint8_t length)</para>
+</listitem>
+            <listitem><para>struct <link linkend="_structreading">reading</link> <link linkend="__b_m_p280_8h_1a631a6834a2390b88c16a10f843c43d65">BMP280_measure</link> ()</para>
+</listitem>
+            <listitem><para>int32_t <link linkend="__b_m_p280_8h_1a551bba6dee710a9094921214413fce8d">compensate_temperature</link> (int32_t uncomp_temp)</para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="__b_m_p280_8h_1af6079c6b3e672b3589085c593c297240">compensate_pressure</link> (int32_t uncomp_pres)</para>
+</listitem>
+            <listitem><para>void <link linkend="__b_m_p280_8h_1acb159e980500707f4b78480997970b88">BMP280_get_calib_values</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="__b_m_p280_8h_1ae3168b9163675628a89fc1e422de4b5e">BMP280_init</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>I2C_HandleTypeDef <link linkend="__b_m_p280_8h_1af7b2c26e44dadaaa798a5c3d82914ba7">hi2c1</link></para>
+</listitem>
+            <listitem><para>SPI_HandleTypeDef <link linkend="__b_m_p280_8h_1ab9da65f935e805137e2eb4e18c5ab224">hspi2</link></para>
+</listitem>
+            <listitem><para>signed long <link linkend="__b_m_p280_8h_1a3d72ff2b32266596ae3baaf4fa6f2f50">temperature_raw</link></para>
+</listitem>
+            <listitem><para>signed long <link linkend="__b_m_p280_8h_1a2a9d5ec8e55acc2432d0878308de4bc7">pressure_raw</link></para>
+</listitem>
+            <listitem><para>unsigned short <link linkend="__b_m_p280_8h_1a9a07537928655a6f90cbb127e77aabc8">dig_T1</link></para>
+</listitem>
+            <listitem><para>unsigned short <link linkend="__b_m_p280_8h_1a5c6fd14e092d5b1b3db9133918d6c88c">dig_P1</link></para>
+</listitem>
+            <listitem><para>signed short <link linkend="__b_m_p280_8h_1af657fd5581a3713d4325c6cf6619798e">dig_T2</link></para>
+</listitem>
+            <listitem><para>signed short <link linkend="__b_m_p280_8h_1a5b4a37c3483f9b66e3c9320c76bd191d">dig_T3</link></para>
+</listitem>
+            <listitem><para>signed short <link linkend="__b_m_p280_8h_1a6d7667e0986d0409dfdaa31d5f4ab05e">dig_P2</link></para>
+</listitem>
+            <listitem><para>signed short <link linkend="__b_m_p280_8h_1a4778d0f9f9c5c231c472e6f9cc34bff7">dig_P3</link></para>
+</listitem>
+            <listitem><para>signed short <link linkend="__b_m_p280_8h_1a60ff58d4f1f442387729c7f9a1942d63">dig_P4</link></para>
+</listitem>
+            <listitem><para>signed short <link linkend="__b_m_p280_8h_1aab5995336960b6917304bca095d1f896">dig_P5</link></para>
+</listitem>
+            <listitem><para>signed short <link linkend="__b_m_p280_8h_1ab40e5774b084a648dae55c161de91f66">dig_P6</link></para>
+</listitem>
+            <listitem><para>signed short <link linkend="__b_m_p280_8h_1aeae4c61fa98974140b9694edd4799883">dig_P7</link></para>
+</listitem>
+            <listitem><para>signed short <link linkend="__b_m_p280_8h_1af39515ecaa77e6b01544388fc7d44cfe">dig_P8</link></para>
+</listitem>
+            <listitem><para>signed short <link linkend="__b_m_p280_8h_1ae808932e571d157081b847f311cec555">dig_P9</link></para>
+</listitem>
+            <listitem><para>float <link linkend="__b_m_p280_8h_1afc1d28cfbce795d6ea954ebe725241f5">temperature</link></para>
+</listitem>
+            <listitem><para>float <link linkend="__b_m_p280_8h_1ac870e1249bab4a2a68cc4126761d24ef">pressure</link></para>
+</listitem>
+            <listitem><para>float <link linkend="__b_m_p280_8h_1a0e13a4b4ae0cefdac2a413284239caa6">altitude</link></para>
+</listitem>
+            <listitem><para>float <link linkend="__b_m_p280_8h_1a98fc2874cec8addec2e0468bc677303c">init_height</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="__b_m_p280_8h_1abeda31bc76842cc25517406c5f8d6d97"/><section>
+    <title>BMP280_dev_address</title>
+<indexterm><primary>BMP280_dev_address</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>BMP280_dev_address</secondary></indexterm>
+<para><computeroutput>#define BMP280_dev_address&#160;&#160;&#160;0xEE</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00007">7</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a68622050abfca784a2080b6edc8fc1e0"/><section>
+    <title>BMP280_REG_CALIB</title>
+<indexterm><primary>BMP280_REG_CALIB</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>BMP280_REG_CALIB</secondary></indexterm>
+<para><computeroutput>#define BMP280_REG_CALIB&#160;&#160;&#160;0x88</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00011">11</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a06f8ce3e8566066c7ee1eb0a1cf61f95"/><section>
+    <title>BMP280_REG_DATA</title>
+<indexterm><primary>BMP280_REG_DATA</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>BMP280_REG_DATA</secondary></indexterm>
+<para><computeroutput>#define BMP280_REG_DATA&#160;&#160;&#160;0xF7</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00012">12</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1ad3f8d007f531e2b572aae8baaaa6d604"/><section>
+    <title>BMP280_SPI_MASK_WRITE</title>
+<indexterm><primary>BMP280_SPI_MASK_WRITE</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>BMP280_SPI_MASK_WRITE</secondary></indexterm>
+<para><computeroutput>#define BMP280_SPI_MASK_WRITE&#160;&#160;&#160;0b01111111</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00009">9</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a25531106c8ed0ecc25c507482b851241"/><section>
+    <title>F4_mode_forced</title>
+<indexterm><primary>F4_mode_forced</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F4_mode_forced</secondary></indexterm>
+<para><computeroutput>#define F4_mode_forced&#160;&#160;&#160;0b00000001</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00030">30</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1ab765e6e54ff1a74da64517c5d0919816"/><section>
+    <title>F4_mode_normal</title>
+<indexterm><primary>F4_mode_normal</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F4_mode_normal</secondary></indexterm>
+<para><computeroutput>#define F4_mode_normal&#160;&#160;&#160;0b00000011</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00031">31</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a97ef5239d6403179325c4038b0329237"/><section>
+    <title>F4_mode_sleep</title>
+<indexterm><primary>F4_mode_sleep</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F4_mode_sleep</secondary></indexterm>
+<para><computeroutput>#define F4_mode_sleep&#160;&#160;&#160;0b00000000</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00029">29</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a72c70691e524c73a22ec19693ce79e8b"/><section>
+    <title>F4_osrs_p_oversampling1</title>
+<indexterm><primary>F4_osrs_p_oversampling1</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F4_osrs_p_oversampling1</secondary></indexterm>
+<para><computeroutput>#define F4_osrs_p_oversampling1&#160;&#160;&#160;0b00000100</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00023">23</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1acf74e269fa9558d3c8df2c5160d76f9b"/><section>
+    <title>F4_osrs_p_oversampling16</title>
+<indexterm><primary>F4_osrs_p_oversampling16</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F4_osrs_p_oversampling16</secondary></indexterm>
+<para><computeroutput>#define F4_osrs_p_oversampling16&#160;&#160;&#160;0b00010100</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00027">27</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1ac2e4afb9dce42e846ced63f5a83e6ca9"/><section>
+    <title>F4_osrs_p_oversampling2</title>
+<indexterm><primary>F4_osrs_p_oversampling2</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F4_osrs_p_oversampling2</secondary></indexterm>
+<para><computeroutput>#define F4_osrs_p_oversampling2&#160;&#160;&#160;0b00001000</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00024">24</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1ae8ce789cd99b1123a9d2ff70e0543f23"/><section>
+    <title>F4_osrs_p_oversampling4</title>
+<indexterm><primary>F4_osrs_p_oversampling4</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F4_osrs_p_oversampling4</secondary></indexterm>
+<para><computeroutput>#define F4_osrs_p_oversampling4&#160;&#160;&#160;0b00001100</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00025">25</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a948cc0bc656acf4ac097ce398c9ff19f"/><section>
+    <title>F4_osrs_p_oversampling8</title>
+<indexterm><primary>F4_osrs_p_oversampling8</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F4_osrs_p_oversampling8</secondary></indexterm>
+<para><computeroutput>#define F4_osrs_p_oversampling8&#160;&#160;&#160;0b00010000</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00026">26</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1af3d6d068374698d1ac0f46c6c1aafe1e"/><section>
+    <title>F4_osrs_p_skipped</title>
+<indexterm><primary>F4_osrs_p_skipped</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F4_osrs_p_skipped</secondary></indexterm>
+<para><computeroutput>#define F4_osrs_p_skipped&#160;&#160;&#160;0b00000000</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00022">22</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1aafd95acd0d839509554624b096d02cad"/><section>
+    <title>F4_osrs_t_oversampling1</title>
+<indexterm><primary>F4_osrs_t_oversampling1</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F4_osrs_t_oversampling1</secondary></indexterm>
+<para><computeroutput>#define F4_osrs_t_oversampling1&#160;&#160;&#160;0b00100000</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00016">16</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a6c568977369d86d82ec89a5b183d15f4"/><section>
+    <title>F4_osrs_t_oversampling16</title>
+<indexterm><primary>F4_osrs_t_oversampling16</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F4_osrs_t_oversampling16</secondary></indexterm>
+<para><computeroutput>#define F4_osrs_t_oversampling16&#160;&#160;&#160;0b10100000</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00020">20</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a22f7af28c7033cb81adf6e74dca4384b"/><section>
+    <title>F4_osrs_t_oversampling2</title>
+<indexterm><primary>F4_osrs_t_oversampling2</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F4_osrs_t_oversampling2</secondary></indexterm>
+<para><computeroutput>#define F4_osrs_t_oversampling2&#160;&#160;&#160;0b01000000</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00017">17</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1aeef52101040bf5f815ba8e74f1b3ddef"/><section>
+    <title>F4_osrs_t_oversampling4</title>
+<indexterm><primary>F4_osrs_t_oversampling4</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F4_osrs_t_oversampling4</secondary></indexterm>
+<para><computeroutput>#define F4_osrs_t_oversampling4&#160;&#160;&#160;0b01100000</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00018">18</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1ad271cd95047b7316e6754c74a242aec9"/><section>
+    <title>F4_osrs_t_oversampling8</title>
+<indexterm><primary>F4_osrs_t_oversampling8</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F4_osrs_t_oversampling8</secondary></indexterm>
+<para><computeroutput>#define F4_osrs_t_oversampling8&#160;&#160;&#160;0b10000000</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00019">19</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a1c2fe9e77de887acb214a0ec998cf132"/><section>
+    <title>F4_osrs_t_skipped</title>
+<indexterm><primary>F4_osrs_t_skipped</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F4_osrs_t_skipped</secondary></indexterm>
+<para><computeroutput>#define F4_osrs_t_skipped&#160;&#160;&#160;0b00000000</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00015">15</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a6051141d336af6e2f2c16a11a12dae6d"/><section>
+    <title>F5_filter_1</title>
+<indexterm><primary>F5_filter_1</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F5_filter_1</secondary></indexterm>
+<para><computeroutput>#define F5_filter_1&#160;&#160;&#160;0b00000000</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00043">43</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1aa5a9e8e5dd7caebccaf73d078a3a9bab"/><section>
+    <title>F5_filter_11</title>
+<indexterm><primary>F5_filter_11</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F5_filter_11</secondary></indexterm>
+<para><computeroutput>#define F5_filter_11&#160;&#160;&#160;0b00000110</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00046">46</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a53a427482ce47b07e7f79bee45b6aba3"/><section>
+    <title>F5_filter_2</title>
+<indexterm><primary>F5_filter_2</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F5_filter_2</secondary></indexterm>
+<para><computeroutput>#define F5_filter_2&#160;&#160;&#160;0b00000010</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00044">44</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a60aade3034d51b2f3ede56653bdf5aaa"/><section>
+    <title>F5_filter_22</title>
+<indexterm><primary>F5_filter_22</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F5_filter_22</secondary></indexterm>
+<para><computeroutput>#define F5_filter_22&#160;&#160;&#160;0b00001010</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00047">47</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a7bb727709b04a72cc2516e1b08d3f3bb"/><section>
+    <title>F5_filter_5</title>
+<indexterm><primary>F5_filter_5</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F5_filter_5</secondary></indexterm>
+<para><computeroutput>#define F5_filter_5&#160;&#160;&#160;0b00000100</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00045">45</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a17e8283cb51d7608ee6524cc30081a7b"/><section>
+    <title>F5_spi3w_en</title>
+<indexterm><primary>F5_spi3w_en</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F5_spi3w_en</secondary></indexterm>
+<para><computeroutput>#define F5_spi3w_en&#160;&#160;&#160;0b00000001</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00050">50</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a28cf656bb6105b5bbe4e6b86c4685da4"/><section>
+    <title>F5_spi4w_en</title>
+<indexterm><primary>F5_spi4w_en</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F5_spi4w_en</secondary></indexterm>
+<para><computeroutput>#define F5_spi4w_en&#160;&#160;&#160;0b00000000</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00049">49</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1aa2a3e4ede1980d813a5f9c61271dfe27"/><section>
+    <title>F5_t_sb_125ms</title>
+<indexterm><primary>F5_t_sb_125ms</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F5_t_sb_125ms</secondary></indexterm>
+<para><computeroutput>#define F5_t_sb_125ms&#160;&#160;&#160;0b01000000</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00036">36</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1ac04a34fbec15330c27753e0c501f7f4b"/><section>
+    <title>F5_t_sb_1sec</title>
+<indexterm><primary>F5_t_sb_1sec</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F5_t_sb_1sec</secondary></indexterm>
+<para><computeroutput>#define F5_t_sb_1sec&#160;&#160;&#160;0b10100000</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00039">39</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a7982e0a3ee0d161c6d311f79689e27a5"/><section>
+    <title>F5_t_sb_250ms</title>
+<indexterm><primary>F5_t_sb_250ms</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F5_t_sb_250ms</secondary></indexterm>
+<para><computeroutput>#define F5_t_sb_250ms&#160;&#160;&#160;0b01100000</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00037">37</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a4fedad55f563989f3d0213591b50655c"/><section>
+    <title>F5_t_sb_2sec</title>
+<indexterm><primary>F5_t_sb_2sec</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F5_t_sb_2sec</secondary></indexterm>
+<para><computeroutput>#define F5_t_sb_2sec&#160;&#160;&#160;0b11000000</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00040">40</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a7f677e3ab7909c2a6f6edcf523bf3109"/><section>
+    <title>F5_t_sb_4sec</title>
+<indexterm><primary>F5_t_sb_4sec</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F5_t_sb_4sec</secondary></indexterm>
+<para><computeroutput>#define F5_t_sb_4sec&#160;&#160;&#160;0b11100000</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00041">41</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a52e24bbdc967e70f18ab59d71ac47776"/><section>
+    <title>F5_t_sb_500ms</title>
+<indexterm><primary>F5_t_sb_500ms</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F5_t_sb_500ms</secondary></indexterm>
+<para><computeroutput>#define F5_t_sb_500ms&#160;&#160;&#160;0b10000000</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00038">38</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a23a062e43f35e294d8ee40c0f6654eed"/><section>
+    <title>F5_t_sb_500us</title>
+<indexterm><primary>F5_t_sb_500us</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F5_t_sb_500us</secondary></indexterm>
+<para><computeroutput>#define F5_t_sb_500us&#160;&#160;&#160;0b00000000</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00034">34</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a9b8b7b5c9c824f448aa2ebac48f629ba"/><section>
+    <title>F5_t_sb_62500us</title>
+<indexterm><primary>F5_t_sb_62500us</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>F5_t_sb_62500us</secondary></indexterm>
+<para><computeroutput>#define F5_t_sb_62500us&#160;&#160;&#160;0b00100000</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00035">35</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+</section>
+<section>
+<title>Typedef Documentation</title>
+<anchor xml:id="__b_m_p280_8h_1afeec80b9216e454120e4da1b094bad3d"/><section>
+    <title>read_value</title>
+<indexterm><primary>read_value</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>read_value</secondary></indexterm>
+<para><computeroutput>typedef struct <link linkend="_structreading">reading</link> <link linkend="__b_m_p280_8h_1afeec80b9216e454120e4da1b094bad3d">read_value</link></computeroutput></para></section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="__b_m_p280_8h_1acb159e980500707f4b78480997970b88"/><section>
+    <title>BMP280_get_calib_values()</title>
+<indexterm><primary>BMP280_get_calib_values</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>BMP280_get_calib_values</secondary></indexterm>
+<para><computeroutput>void BMP280_get_calib_values ( )</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00048">48</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1ae3168b9163675628a89fc1e422de4b5e"/><section>
+    <title>BMP280_init()</title>
+<indexterm><primary>BMP280_init</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>BMP280_init</secondary></indexterm>
+<para><computeroutput>void BMP280_init ( )</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00068">68</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a631a6834a2390b88c16a10f843c43d65"/><section>
+    <title>BMP280_measure()</title>
+<indexterm><primary>BMP280_measure</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>BMP280_measure</secondary></indexterm>
+<para><computeroutput>struct <link linkend="_structreading">reading</link> BMP280_measure ( )</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00076">76</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1af6079c6b3e672b3589085c593c297240"/><section>
+    <title>compensate_pressure()</title>
+<indexterm><primary>compensate_pressure</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>compensate_pressure</secondary></indexterm>
+<para><computeroutput>uint32_t compensate_pressure (int32_t uncomp_pres)</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00124">124</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a551bba6dee710a9094921214413fce8d"/><section>
+    <title>compensate_temperature()</title>
+<indexterm><primary>compensate_temperature</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>compensate_temperature</secondary></indexterm>
+<para><computeroutput>int32_t compensate_temperature (int32_t uncomp_temp)</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00115">115</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1afda0d94a266ff3e0e81213e20b8b58a9"/><section>
+    <title>readMBRegister()</title>
+<indexterm><primary>readMBRegister</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>readMBRegister</secondary></indexterm>
+<para><computeroutput>void readMBRegister (uint8_t address, uint8_t * values, uint8_t length)</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00029">29</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a7577a12a887998c60b62dcc8fdd9dbbf"/><section>
+    <title>readRegister()</title>
+<indexterm><primary>readRegister</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>readRegister</secondary></indexterm>
+<para><computeroutput>uint8_t readRegister (uint8_t address)</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00012">12</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1aef20ed38fe5d55700f0ccdbd5b77ba71"/><section>
+    <title>spiReadWrite()</title>
+<indexterm><primary>spiReadWrite</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>spiReadWrite</secondary></indexterm>
+<para><computeroutput>uint8_t spiReadWrite (uint8_t tx_message)</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00040">40</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a03d1b94ea3a07a44504a0385a1914e12"/><section>
+    <title>writeRegister()</title>
+<indexterm><primary>writeRegister</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>writeRegister</secondary></indexterm>
+<para><computeroutput>void writeRegister (uint8_t address, uint8_t value)</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00021">21</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="__b_m_p280_8h_1a0e13a4b4ae0cefdac2a413284239caa6"/><section>
+    <title>altitude</title>
+<indexterm><primary>altitude</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>altitude</secondary></indexterm>
+<para><computeroutput>float altitude</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00067">67</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a5c6fd14e092d5b1b3db9133918d6c88c"/><section>
+    <title>dig_P1</title>
+<indexterm><primary>dig_P1</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>dig_P1</secondary></indexterm>
+<para><computeroutput>unsigned short dig_P1</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00065">65</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a6d7667e0986d0409dfdaa31d5f4ab05e"/><section>
+    <title>dig_P2</title>
+<indexterm><primary>dig_P2</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>dig_P2</secondary></indexterm>
+<para><computeroutput>signed short dig_P2</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00066">66</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a4778d0f9f9c5c231c472e6f9cc34bff7"/><section>
+    <title>dig_P3</title>
+<indexterm><primary>dig_P3</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>dig_P3</secondary></indexterm>
+<para><computeroutput>signed short dig_P3</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00066">66</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a60ff58d4f1f442387729c7f9a1942d63"/><section>
+    <title>dig_P4</title>
+<indexterm><primary>dig_P4</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>dig_P4</secondary></indexterm>
+<para><computeroutput>signed short dig_P4</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00066">66</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1aab5995336960b6917304bca095d1f896"/><section>
+    <title>dig_P5</title>
+<indexterm><primary>dig_P5</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>dig_P5</secondary></indexterm>
+<para><computeroutput>signed short dig_P5</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00066">66</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1ab40e5774b084a648dae55c161de91f66"/><section>
+    <title>dig_P6</title>
+<indexterm><primary>dig_P6</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>dig_P6</secondary></indexterm>
+<para><computeroutput>signed short dig_P6</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00066">66</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1aeae4c61fa98974140b9694edd4799883"/><section>
+    <title>dig_P7</title>
+<indexterm><primary>dig_P7</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>dig_P7</secondary></indexterm>
+<para><computeroutput>signed short dig_P7</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00066">66</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1af39515ecaa77e6b01544388fc7d44cfe"/><section>
+    <title>dig_P8</title>
+<indexterm><primary>dig_P8</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>dig_P8</secondary></indexterm>
+<para><computeroutput>signed short dig_P8</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00066">66</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1ae808932e571d157081b847f311cec555"/><section>
+    <title>dig_P9</title>
+<indexterm><primary>dig_P9</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>dig_P9</secondary></indexterm>
+<para><computeroutput>signed short dig_P9</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00066">66</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a9a07537928655a6f90cbb127e77aabc8"/><section>
+    <title>dig_T1</title>
+<indexterm><primary>dig_T1</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>dig_T1</secondary></indexterm>
+<para><computeroutput>unsigned short dig_T1<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00005">5</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1af657fd5581a3713d4325c6cf6619798e"/><section>
+    <title>dig_T2</title>
+<indexterm><primary>dig_T2</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>dig_T2</secondary></indexterm>
+<para><computeroutput>signed short dig_T2<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00006">6</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a5b4a37c3483f9b66e3c9320c76bd191d"/><section>
+    <title>dig_T3</title>
+<indexterm><primary>dig_T3</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>dig_T3</secondary></indexterm>
+<para><computeroutput>signed short dig_T3</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00066">66</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1af7b2c26e44dadaaa798a5c3d82914ba7"/><section>
+    <title>hi2c1</title>
+<indexterm><primary>hi2c1</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>hi2c1</secondary></indexterm>
+<para><computeroutput>I2C_HandleTypeDef hi2c1<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_main_8c_source_1l00047">47</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1ab9da65f935e805137e2eb4e18c5ab224"/><section>
+    <title>hspi2</title>
+<indexterm><primary>hspi2</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>hspi2</secondary></indexterm>
+<para><computeroutput>SPI_HandleTypeDef hspi2<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_main_8c_source_1l00049">49</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a98fc2874cec8addec2e0468bc677303c"/><section>
+    <title>init_height</title>
+<indexterm><primary>init_height</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>init_height</secondary></indexterm>
+<para><computeroutput>float init_height</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00067">67</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1ac870e1249bab4a2a68cc4126761d24ef"/><section>
+    <title>pressure</title>
+<indexterm><primary>pressure</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>pressure</secondary></indexterm>
+<para><computeroutput>float pressure</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00067">67</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a2a9d5ec8e55acc2432d0878308de4bc7"/><section>
+    <title>pressure_raw</title>
+<indexterm><primary>pressure_raw</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>pressure_raw</secondary></indexterm>
+<para><computeroutput>signed long pressure_raw</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00064">64</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1afc1d28cfbce795d6ea954ebe725241f5"/><section>
+    <title>temperature</title>
+<indexterm><primary>temperature</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>temperature</secondary></indexterm>
+<para><computeroutput>float temperature<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00007">7</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+<anchor xml:id="__b_m_p280_8h_1a3d72ff2b32266596ae3baaf4fa6f2f50"/><section>
+    <title>temperature_raw</title>
+<indexterm><primary>temperature_raw</primary><secondary>BMP280.h</secondary></indexterm>
+<indexterm><primary>BMP280.h</primary><secondary>temperature_raw</secondary></indexterm>
+<para><computeroutput>signed long temperature_raw<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8c_source_1l00004">4</link> of file <link linkend="__b_m_p280_8c_source">BMP280.c</link>.</para>
+</section>
+</section>
+</section>

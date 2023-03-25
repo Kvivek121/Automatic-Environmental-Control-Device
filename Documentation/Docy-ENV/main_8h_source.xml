@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_main_8h_source" xml:lang="en-US">
+<title>main.h</title>
+<indexterm><primary>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Inc/main.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_main_8h_source_1l00001"/>00001 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;Header&#32;*/</emphasis>
+<anchor xml:id="_main_8h_source_1l00019"/>00019 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;Header&#32;*/</emphasis>
+<anchor xml:id="_main_8h_source_1l00020"/>00020 
+<anchor xml:id="_main_8h_source_1l00021"/>00021 <emphasis role="comment">/*&#32;Define&#32;to&#32;prevent&#32;recursive&#32;inclusion&#32;-------------------------------------*/</emphasis>
+<anchor xml:id="_main_8h_source_1l00022"/>00022 <emphasis role="preprocessor">#ifndef&#32;__MAIN_H</emphasis>
+<anchor xml:id="_main_8h_source_1l00023"/>00023 <emphasis role="preprocessor">#define&#32;__MAIN_H</emphasis>
+<anchor xml:id="_main_8h_source_1l00024"/>00024 
+<anchor xml:id="_main_8h_source_1l00025"/>00025 <emphasis role="preprocessor">#ifdef&#32;__cplusplus</emphasis>
+<anchor xml:id="_main_8h_source_1l00026"/>00026 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="stringliteral">&quot;C&quot;</emphasis>&#32;{
+<anchor xml:id="_main_8h_source_1l00027"/>00027 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="_main_8h_source_1l00028"/>00028 
+<anchor xml:id="_main_8h_source_1l00029"/>00029 <emphasis role="comment">/*&#32;Includes&#32;------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="_main_8h_source_1l00030"/>00030 <emphasis role="preprocessor">#include&#32;&quot;stm32f1xx_hal.h&quot;</emphasis>
+<anchor xml:id="_main_8h_source_1l00031"/>00031 
+<anchor xml:id="_main_8h_source_1l00032"/>00032 <emphasis role="comment">/*&#32;Private&#32;includes&#32;----------------------------------------------------------*/</emphasis>
+<anchor xml:id="_main_8h_source_1l00033"/>00033 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;Includes&#32;*/</emphasis>
+<anchor xml:id="_main_8h_source_1l00034"/>00034 
+<anchor xml:id="_main_8h_source_1l00035"/>00035 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;Includes&#32;*/</emphasis>
+<anchor xml:id="_main_8h_source_1l00036"/>00036 
+<anchor xml:id="_main_8h_source_1l00037"/>00037 <emphasis role="comment">/*&#32;Exported&#32;types&#32;------------------------------------------------------------*/</emphasis>
+<anchor xml:id="_main_8h_source_1l00038"/>00038 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;ET&#32;*/</emphasis>
+<anchor xml:id="_main_8h_source_1l00039"/>00039 
+<anchor xml:id="_main_8h_source_1l00040"/>00040 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;ET&#32;*/</emphasis>
+<anchor xml:id="_main_8h_source_1l00041"/>00041 
+<anchor xml:id="_main_8h_source_1l00042"/>00042 <emphasis role="comment">/*&#32;Exported&#32;constants&#32;--------------------------------------------------------*/</emphasis>
+<anchor xml:id="_main_8h_source_1l00043"/>00043 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;EC&#32;*/</emphasis>
+<anchor xml:id="_main_8h_source_1l00044"/>00044 
+<anchor xml:id="_main_8h_source_1l00045"/>00045 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;EC&#32;*/</emphasis>
+<anchor xml:id="_main_8h_source_1l00046"/>00046 
+<anchor xml:id="_main_8h_source_1l00047"/>00047 <emphasis role="comment">/*&#32;Exported&#32;macro&#32;------------------------------------------------------------*/</emphasis>
+<anchor xml:id="_main_8h_source_1l00048"/>00048 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;EM&#32;*/</emphasis>
+<anchor xml:id="_main_8h_source_1l00049"/>00049 
+<anchor xml:id="_main_8h_source_1l00050"/>00050 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;EM&#32;*/</emphasis>
+<anchor xml:id="_main_8h_source_1l00051"/>00051 
+<anchor xml:id="_main_8h_source_1l00052"/>00052 <emphasis role="comment">/*&#32;Exported&#32;functions&#32;prototypes&#32;---------------------------------------------*/</emphasis>
+<anchor xml:id="_main_8h_source_1l00053"/>00053 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8h_1a1730ffe1e560465665eb47d9264826f9">Error_Handler</link>(<emphasis role="keywordtype">void</emphasis>);
+<anchor xml:id="_main_8h_source_1l00054"/>00054 
+<anchor xml:id="_main_8h_source_1l00055"/>00055 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;EFP&#32;*/</emphasis>
+<anchor xml:id="_main_8h_source_1l00056"/>00056 
+<anchor xml:id="_main_8h_source_1l00057"/>00057 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;EFP&#32;*/</emphasis>
+<anchor xml:id="_main_8h_source_1l00058"/>00058 
+<anchor xml:id="_main_8h_source_1l00059"/>00059 <emphasis role="comment">/*&#32;Private&#32;defines&#32;-----------------------------------------------------------*/</emphasis>
+<anchor xml:id="_main_8h_source_1l00060"/>00060 
+<anchor xml:id="_main_8h_source_1l00061"/>00061 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;BEGIN&#32;Private&#32;defines&#32;*/</emphasis>
+<anchor xml:id="_main_8h_source_1l00062"/>00062 
+<anchor xml:id="_main_8h_source_1l00063"/>00063 <emphasis role="comment">/*&#32;USER&#32;CODE&#32;END&#32;Private&#32;defines&#32;*/</emphasis>
+<anchor xml:id="_main_8h_source_1l00064"/>00064 
+<anchor xml:id="_main_8h_source_1l00065"/>00065 <emphasis role="preprocessor">#ifdef&#32;__cplusplus</emphasis>
+<anchor xml:id="_main_8h_source_1l00066"/>00066 }
+<anchor xml:id="_main_8h_source_1l00067"/>00067 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="_main_8h_source_1l00068"/>00068 
+<anchor xml:id="_main_8h_source_1l00069"/>00069 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;__MAIN_H&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+</programlisting></section>

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_70a6d67381c338dd4beb826ae2e54a7b" xml:lang="en-US">
+<title>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core Directory Reference</title>
+<indexterm><primary>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Directories    </title>
+        <itemizedlist>
+            <listitem><para>directory <link linkend="_dir_e4bb686314e5f4230fe0d0ab5baa7f5d">Inc</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_7283f3f17430e2ff3a1d8893b6de6549">Src</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

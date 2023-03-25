@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structreading" xml:lang="en-US">
+<title>reading Struct Reference</title>
+<indexterm><primary>reading</primary></indexterm>
+<para>
+<computeroutput>#include &lt;BMP280.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Data Fields    </title>
+        <itemizedlist>
+            <listitem><para>float <link linkend="_structreading_1a24d61a35b72d7299eb6b5f48e71a571b">temp</link></para>
+</listitem>
+            <listitem><para>float <link linkend="_structreading_1a512591c298ab1304bf391d08271daf2b">press</link></para>
+</listitem>
+            <listitem><para>float <link linkend="_structreading_1aa97670ab3ffe5a94fe4d8e807083825e">alti</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00057">57</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<section>
+<title>Field Documentation</title>
+<anchor xml:id="_structreading_1aa97670ab3ffe5a94fe4d8e807083825e"/><section>
+    <title>alti</title>
+<indexterm><primary>alti</primary><secondary>reading</secondary></indexterm>
+<indexterm><primary>reading</primary><secondary>alti</secondary></indexterm>
+<para><computeroutput>float alti</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00061">61</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="_structreading_1a512591c298ab1304bf391d08271daf2b"/><section>
+    <title>press</title>
+<indexterm><primary>press</primary><secondary>reading</secondary></indexterm>
+<indexterm><primary>reading</primary><secondary>press</secondary></indexterm>
+<para><computeroutput>float press</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00060">60</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<anchor xml:id="_structreading_1a24d61a35b72d7299eb6b5f48e71a571b"/><section>
+    <title>temp</title>
+<indexterm><primary>temp</primary><secondary>reading</secondary></indexterm>
+<indexterm><primary>reading</primary><secondary>temp</secondary></indexterm>
+<para><computeroutput>float temp</computeroutput></para><para>
+Definition at line <link linkend="__b_m_p280_8h_source_1l00059">59</link> of file <link linkend="__b_m_p280_8h_source">BMP280.h</link>.</para>
+</section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Inc/<link linkend="__b_m_p280_8h">BMP280.h</link></section>
+</section>

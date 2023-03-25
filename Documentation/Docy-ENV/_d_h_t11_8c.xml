@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_h_t11_8c" xml:lang="en-US">
+<title>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Src/DHT11.c File Reference</title>
+<indexterm><primary>C:/Users/acer/STM32CubeIDE/workspace_1.10.2/Final_Selec_v3/Core/Src/DHT11.c</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;main.h&quot;<?linebreak?>#include &quot;stdio.h&quot;<?linebreak?>#include &quot;DHT11.h&quot;<?linebreak?>#include &quot;liquidcrystal_i2c.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="__d_h_t11_8c_1a42071dc0f568b5e965502014a4d215c3">delay</link> (uint16_t delay)</para>
+</listitem>
+            <listitem><para>void <link linkend="__d_h_t11_8c_1aef1aec2157382676edb25c22e4b7ecef">Set_Pin_Output</link> (GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)</para>
+</listitem>
+            <listitem><para>void <link linkend="__d_h_t11_8c_1a3b8cee858a35581caf1bcb14ce5cb367">Set_Pin_Input</link> (GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)</para>
+</listitem>
+            <listitem><para>void <link linkend="__d_h_t11_8c_1ad22d2fc6f1c044bfca99e8f38c419d78">DHT11_Start</link> (void)</para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="__d_h_t11_8c_1a4abe1bb0e528279d5b260a9d44bc7ffb">DHT11_Check_Response</link> (void)</para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="__d_h_t11_8c_1aaf1ec7026bcc0784c685b79753955ff4">DHT11_Read</link> (void)</para>
+</listitem>
+            <listitem><para><link linkend="__d_h_t11_8h_1ac88e11ffa065f4c53d75428a5809220a">DHT11_read_value</link> <link linkend="__d_h_t11_8c_1a90da1df4ae78a755072b7c76cf4dabfd">DHT11_Print_Value</link> (void)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>TIM_HandleTypeDef <link linkend="__d_h_t11_8c_1a25fc663547539bc49fecc0011bd76ab5">htim1</link></para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="__d_h_t11_8c_1ad9a2a1c5f490104dc717f5a48b3b8a27">Rh_byte1</link></para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="__d_h_t11_8c_1a2dbbbd8e0fc90796f6389fc31ef811ad">Rh_byte2</link></para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="__d_h_t11_8c_1a8b0074c25d30592e460b56b9f87d1ba9">Temp_byte1</link></para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="__d_h_t11_8c_1a5544d12933412c17ee41513fa46cac02">Temp_byte2</link></para>
+</listitem>
+            <listitem><para>uint16_t <link linkend="__d_h_t11_8c_1a4622f107cd73d99fbf4ca91205f3acca">SUM</link></para>
+</listitem>
+            <listitem><para>uint16_t <link linkend="__d_h_t11_8c_1aa3731a0173b9bbde97d8a3cba6d13531">RH</link></para>
+</listitem>
+            <listitem><para>uint16_t <link linkend="__d_h_t11_8c_1aab2ce7d9ba3bab5ef3b090c61e1eca6b">TEMP</link></para>
+</listitem>
+            <listitem><para>float <link linkend="__d_h_t11_8c_1afa66fac91ab948980be979b768e67c5a">Temperature</link> = 0</para>
+</listitem>
+            <listitem><para>float <link linkend="__d_h_t11_8c_1afe6173f00c89e1ccfe06abd8502ff19f">Humidity</link> = 0</para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="__d_h_t11_8c_1a653c5750f288e99e638bbd607fb885dc">Presence</link> = 0</para>
+</listitem>
+            <listitem><para><link linkend="__d_h_t11_8h_1ac88e11ffa065f4c53d75428a5809220a">DHT11_read_value</link> <link linkend="__d_h_t11_8c_1a9673b9ee577f4ba82aea307a23e7c6f1">DHT11_read_value1</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="__d_h_t11_8c_1a42071dc0f568b5e965502014a4d215c3"/><section>
+    <title>delay()</title>
+<indexterm><primary>delay</primary><secondary>DHT11.c</secondary></indexterm>
+<indexterm><primary>DHT11.c</primary><secondary>delay</secondary></indexterm>
+<para><computeroutput>void delay (uint16_t delay)</computeroutput></para><para>
+Definition at line <link linkend="__d_h_t11_8c_source_1l00022">22</link> of file <link linkend="__d_h_t11_8c_source">DHT11.c</link>.</para>
+</section>
+<anchor xml:id="__d_h_t11_8c_1a4abe1bb0e528279d5b260a9d44bc7ffb"/><section>
+    <title>DHT11_Check_Response()</title>
+<indexterm><primary>DHT11_Check_Response</primary><secondary>DHT11.c</secondary></indexterm>
+<indexterm><primary>DHT11.c</primary><secondary>DHT11_Check_Response</secondary></indexterm>
+<para><computeroutput>uint8_t DHT11_Check_Response (void )</computeroutput></para><para>
+Definition at line <link linkend="__d_h_t11_8c_source_1l00058">58</link> of file <link linkend="__d_h_t11_8c_source">DHT11.c</link>.</para>
+</section>
+<anchor xml:id="__d_h_t11_8c_1a90da1df4ae78a755072b7c76cf4dabfd"/><section>
+    <title>DHT11_Print_Value()</title>
+<indexterm><primary>DHT11_Print_Value</primary><secondary>DHT11.c</secondary></indexterm>
+<indexterm><primary>DHT11.c</primary><secondary>DHT11_Print_Value</secondary></indexterm>
+<para><computeroutput><link linkend="__d_h_t11_8h_1ac88e11ffa065f4c53d75428a5809220a">DHT11_read_value</link> DHT11_Print_Value (void )</computeroutput></para><para>
+Definition at line <link linkend="__d_h_t11_8c_source_1l00090">90</link> of file <link linkend="__d_h_t11_8c_source">DHT11.c</link>.</para>
+</section>
+<anchor xml:id="__d_h_t11_8c_1aaf1ec7026bcc0784c685b79753955ff4"/><section>
+    <title>DHT11_Read()</title>
+<indexterm><primary>DHT11_Read</primary><secondary>DHT11.c</secondary></indexterm>
+<indexterm><primary>DHT11.c</primary><secondary>DHT11_Read</secondary></indexterm>
+<para><computeroutput>uint8_t DHT11_Read (void )</computeroutput></para><para>
+Definition at line <link linkend="__d_h_t11_8c_source_1l00073">73</link> of file <link linkend="__d_h_t11_8c_source">DHT11.c</link>.</para>
+</section>
+<anchor xml:id="__d_h_t11_8c_1ad22d2fc6f1c044bfca99e8f38c419d78"/><section>
+    <title>DHT11_Start()</title>
+<indexterm><primary>DHT11_Start</primary><secondary>DHT11.c</secondary></indexterm>
+<indexterm><primary>DHT11.c</primary><secondary>DHT11_Start</secondary></indexterm>
+<para><computeroutput>void DHT11_Start (void )</computeroutput></para><para>
+Definition at line <link linkend="__d_h_t11_8c_source_1l00048">48</link> of file <link linkend="__d_h_t11_8c_source">DHT11.c</link>.</para>
+</section>
+<anchor xml:id="__d_h_t11_8c_1a3b8cee858a35581caf1bcb14ce5cb367"/><section>
+    <title>Set_Pin_Input()</title>
+<indexterm><primary>Set_Pin_Input</primary><secondary>DHT11.c</secondary></indexterm>
+<indexterm><primary>DHT11.c</primary><secondary>Set_Pin_Input</secondary></indexterm>
+<para><computeroutput>void Set_Pin_Input (GPIO_TypeDef * GPIOx, uint16_t GPIO_Pin)</computeroutput></para><para>
+Definition at line <link linkend="__d_h_t11_8c_source_1l00038">38</link> of file <link linkend="__d_h_t11_8c_source">DHT11.c</link>.</para>
+</section>
+<anchor xml:id="__d_h_t11_8c_1aef1aec2157382676edb25c22e4b7ecef"/><section>
+    <title>Set_Pin_Output()</title>
+<indexterm><primary>Set_Pin_Output</primary><secondary>DHT11.c</secondary></indexterm>
+<indexterm><primary>DHT11.c</primary><secondary>Set_Pin_Output</secondary></indexterm>
+<para><computeroutput>void Set_Pin_Output (GPIO_TypeDef * GPIOx, uint16_t GPIO_Pin)</computeroutput></para><para>
+Definition at line <link linkend="__d_h_t11_8c_source_1l00029">29</link> of file <link linkend="__d_h_t11_8c_source">DHT11.c</link>.</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="__d_h_t11_8c_1a9673b9ee577f4ba82aea307a23e7c6f1"/><section>
+    <title>DHT11_read_value1</title>
+<indexterm><primary>DHT11_read_value1</primary><secondary>DHT11.c</secondary></indexterm>
+<indexterm><primary>DHT11.c</primary><secondary>DHT11_read_value1</secondary></indexterm>
+<para><computeroutput><link linkend="__d_h_t11_8h_1ac88e11ffa065f4c53d75428a5809220a">DHT11_read_value</link> DHT11_read_value1</computeroutput></para><para>
+Definition at line <link linkend="__d_h_t11_8c_source_1l00020">20</link> of file <link linkend="__d_h_t11_8c_source">DHT11.c</link>.</para>
+</section>
+<anchor xml:id="__d_h_t11_8c_1a25fc663547539bc49fecc0011bd76ab5"/><section>
+    <title>htim1</title>
+<indexterm><primary>htim1</primary><secondary>DHT11.c</secondary></indexterm>
+<indexterm><primary>DHT11.c</primary><secondary>htim1</secondary></indexterm>
+<para><computeroutput>TIM_HandleTypeDef htim1<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_main_8c_source_1l00051">51</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+<anchor xml:id="__d_h_t11_8c_1afe6173f00c89e1ccfe06abd8502ff19f"/><section>
+    <title>Humidity</title>
+<indexterm><primary>Humidity</primary><secondary>DHT11.c</secondary></indexterm>
+<indexterm><primary>DHT11.c</primary><secondary>Humidity</secondary></indexterm>
+<para><computeroutput>float Humidity = 0</computeroutput></para><para>
+Definition at line <link linkend="__d_h_t11_8c_source_1l00018">18</link> of file <link linkend="__d_h_t11_8c_source">DHT11.c</link>.</para>
+</section>
+<anchor xml:id="__d_h_t11_8c_1a653c5750f288e99e638bbd607fb885dc"/><section>
+    <title>Presence</title>
+<indexterm><primary>Presence</primary><secondary>DHT11.c</secondary></indexterm>
+<indexterm><primary>DHT11.c</primary><secondary>Presence</secondary></indexterm>
+<para><computeroutput>uint8_t Presence = 0</computeroutput></para><para>
+Definition at line <link linkend="__d_h_t11_8c_source_1l00019">19</link> of file <link linkend="__d_h_t11_8c_source">DHT11.c</link>.</para>
+</section>
+<anchor xml:id="__d_h_t11_8c_1aa3731a0173b9bbde97d8a3cba6d13531"/><section>
+    <title>RH</title>
+<indexterm><primary>RH</primary><secondary>DHT11.c</secondary></indexterm>
+<indexterm><primary>DHT11.c</primary><secondary>RH</secondary></indexterm>
+<para><computeroutput>uint16_t RH</computeroutput></para><para>
+Definition at line <link linkend="__d_h_t11_8c_source_1l00015">15</link> of file <link linkend="__d_h_t11_8c_source">DHT11.c</link>.</para>
+</section>
+<anchor xml:id="__d_h_t11_8c_1ad9a2a1c5f490104dc717f5a48b3b8a27"/><section>
+    <title>Rh_byte1</title>
+<indexterm><primary>Rh_byte1</primary><secondary>DHT11.c</secondary></indexterm>
+<indexterm><primary>DHT11.c</primary><secondary>Rh_byte1</secondary></indexterm>
+<para><computeroutput>uint8_t Rh_byte1</computeroutput></para><para>
+Definition at line <link linkend="__d_h_t11_8c_source_1l00014">14</link> of file <link linkend="__d_h_t11_8c_source">DHT11.c</link>.</para>
+</section>
+<anchor xml:id="__d_h_t11_8c_1a2dbbbd8e0fc90796f6389fc31ef811ad"/><section>
+    <title>Rh_byte2</title>
+<indexterm><primary>Rh_byte2</primary><secondary>DHT11.c</secondary></indexterm>
+<indexterm><primary>DHT11.c</primary><secondary>Rh_byte2</secondary></indexterm>
+<para><computeroutput>uint8_t Rh_byte2</computeroutput></para><para>
+Definition at line <link linkend="__d_h_t11_8c_source_1l00014">14</link> of file <link linkend="__d_h_t11_8c_source">DHT11.c</link>.</para>
+</section>
+<anchor xml:id="__d_h_t11_8c_1a4622f107cd73d99fbf4ca91205f3acca"/><section>
+    <title>SUM</title>
+<indexterm><primary>SUM</primary><secondary>DHT11.c</secondary></indexterm>
+<indexterm><primary>DHT11.c</primary><secondary>SUM</secondary></indexterm>
+<para><computeroutput>uint16_t SUM</computeroutput></para><para>
+Definition at line <link linkend="__d_h_t11_8c_source_1l00015">15</link> of file <link linkend="__d_h_t11_8c_source">DHT11.c</link>.</para>
+</section>
+<anchor xml:id="__d_h_t11_8c_1aab2ce7d9ba3bab5ef3b090c61e1eca6b"/><section>
+    <title>TEMP</title>
+<indexterm><primary>TEMP</primary><secondary>DHT11.c</secondary></indexterm>
+<indexterm><primary>DHT11.c</primary><secondary>TEMP</secondary></indexterm>
+<para><computeroutput>uint16_t TEMP</computeroutput></para><para>
+Definition at line <link linkend="__d_h_t11_8c_source_1l00015">15</link> of file <link linkend="__d_h_t11_8c_source">DHT11.c</link>.</para>
+</section>
+<anchor xml:id="__d_h_t11_8c_1a8b0074c25d30592e460b56b9f87d1ba9"/><section>
+    <title>Temp_byte1</title>
+<indexterm><primary>Temp_byte1</primary><secondary>DHT11.c</secondary></indexterm>
+<indexterm><primary>DHT11.c</primary><secondary>Temp_byte1</secondary></indexterm>
+<para><computeroutput>uint8_t Temp_byte1</computeroutput></para><para>
+Definition at line <link linkend="__d_h_t11_8c_source_1l00014">14</link> of file <link linkend="__d_h_t11_8c_source">DHT11.c</link>.</para>
+</section>
+<anchor xml:id="__d_h_t11_8c_1a5544d12933412c17ee41513fa46cac02"/><section>
+    <title>Temp_byte2</title>
+<indexterm><primary>Temp_byte2</primary><secondary>DHT11.c</secondary></indexterm>
+<indexterm><primary>DHT11.c</primary><secondary>Temp_byte2</secondary></indexterm>
+<para><computeroutput>uint8_t Temp_byte2</computeroutput></para><para>
+Definition at line <link linkend="__d_h_t11_8c_source_1l00014">14</link> of file <link linkend="__d_h_t11_8c_source">DHT11.c</link>.</para>
+</section>
+<anchor xml:id="__d_h_t11_8c_1afa66fac91ab948980be979b768e67c5a"/><section>
+    <title>Temperature</title>
+<indexterm><primary>Temperature</primary><secondary>DHT11.c</secondary></indexterm>
+<indexterm><primary>DHT11.c</primary><secondary>Temperature</secondary></indexterm>
+<para><computeroutput>float Temperature = 0</computeroutput></para><para>
+Definition at line <link linkend="__d_h_t11_8c_source_1l00017">17</link> of file <link linkend="__d_h_t11_8c_source">DHT11.c</link>.</para>
+</section>
+</section>
+</section>
