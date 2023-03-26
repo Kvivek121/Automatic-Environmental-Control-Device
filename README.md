@@ -1,30 +1,6 @@
 # Automatic-Environmental-Control-Device
 
 
-
-Mini Project-Selec Controls Pvt. Ltd. 
-
-
-
-
-Report 
-
-
-
-
-
-
-
-
-
-Automatic Environment Control Device
-
-
-Submitted by:
-Vivek kaushik
-Shri Ramdeobaba College of Engineering and Management Nagpur
-Content
-
  
 1.	Project details ---------------------------------------------------------------------1
 (– Problem Statement / Objectives / Expectations / Working principle)
